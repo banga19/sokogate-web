@@ -1402,9 +1402,9 @@
     "@parcel/watcher-win32-x64" "2.5.1"
 
 "@paypal/sdk-constants@^1.0.64":
-  version "1.0.157"
-  resolved "https://registry.npmmirror.com/@paypal/sdk-constants/-/sdk-constants-1.0.157.tgz"
-  integrity sha512-BjxWT9rK6dM1AOffSpvHYY47/8BY775jgEYYiwH6eL4YaqU5Epcw7zOtwQ8L4UaEn4FCAjZ2EWxaS83dCN7SpA==
+  version "1.0.158"
+  resolved "https://registry.yarnpkg.com/@paypal/sdk-constants/-/sdk-constants-1.0.158.tgz#e2374f03c54b2be75c2c74e3dcce0b3f95bdb8cc"
+  integrity sha512-OrX2kN4gsBl6fG1GS1ewsNk7TTqYmdtUMVaJ+wAzPhsv9M7dfni95WuJdt4pMALOo5ioZeJ05a16BUSca5IC+Q==
   dependencies:
     hi-base32 "^0.5.0"
 
