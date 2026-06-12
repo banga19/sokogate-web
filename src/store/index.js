@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import { mapCategory } from "@/utils/category";
 import navModules from './nav'
 Vue.use(Vuex);
 
@@ -139,7 +140,7 @@ const store = new Vuex.Store({
       try {
         const { GetCategoryLists } = await import('@/utils/api')
         const res = await GetCategoryLists();
-        commit('setMenu', res.data.rows);
+        commit('setMenu', (res.data.rows || []).map(mapCategory));
       } catch (e) {
         console.error('fetchMenus failed:', e);
       }

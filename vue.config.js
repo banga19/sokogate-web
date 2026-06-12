@@ -115,8 +115,11 @@ module.exports = {
             }));
     },
 
-    outputDir: process.env.outputDir,
-    publicPath: process.env.publicPath,
+    outputDir: process.env.OUTPUT_DIR || 'dist',
+    publicPath: process.env.PUBLIC_PATH || '/',
+    // Note: only PUBLIC_PATH (uppercase) — lowercase publicPath conflicts
+    // with a Git Bash on Windows environment variable that resolves to
+    // "C:/Program Files/Git/" causing broken asset paths.
     lintOnSave: false,
     productionSourceMap: process.env.NODE_ENV === 'production' ? false : true,
 

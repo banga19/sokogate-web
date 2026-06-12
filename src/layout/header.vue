@@ -24,6 +24,7 @@
 import HomeSearch from "@/components/HomeSearch.vue";
 import Hamburger from "@/components/hamburger.vue";
 import { GetCategoryLists } from "@/utils/api";
+import { mapCategory } from "@/utils/category";
 import Nav from "./nav";
 export default {
   components: {
@@ -43,9 +44,8 @@ export default {
     } else {
       GetCategoryLists()
         .then((res) => {
-          // console.log(res, "getCategoryList");
-          this.list = res.data.rows;
-          this.$store.commit("setMenu", res.data.rows);
+          this.list = (res.data.rows || []).map(mapCategory);
+          this.$store.commit("setMenu", this.list);
         })
         .catch((err) => {
           console.log(err);

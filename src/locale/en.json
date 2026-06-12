@@ -46,6 +46,7 @@
     "login.email-error": "Invalid email",
     "login.password-error": "Invalid password",
     "index.search": "Search",
+    "index.noResults": "No products found",
     "login.out": "Login out",
     "login.out-confirm": "Confirm login out?",
     "hardloading": "Hard loading",

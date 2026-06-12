@@ -47,6 +47,7 @@
     "login.email-error": "آدرس ایمیل اشتباه است",
     "login.password-error": "رمز عبور نادرست است",
     "index.search": "جستجو کردن",
+    "index.noResults": "محصولی یافت نشد",
     "login.out": "خروج از سیستم",
     "login.out-confirm": "ورود به خروج را تأیید کنید؟",
     "hardloading": "ناامید کننده",

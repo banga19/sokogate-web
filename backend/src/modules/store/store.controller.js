@@ -1,5 +1,5 @@
 const storeService = require('./store.service');
-const { success } = require('../../common/utils/apiResponse');
+const { success, successPaginated } = require('../../common/utils/apiResponse');
 
 async function getStore(req, res, next) {
   try {
@@ -19,7 +19,17 @@ async function getStorebyName(req, res, next) {
   }
 }
 
+async function getStoreProducts(req, res, next) {
+  try {
+    const result = await storeService.getStoreProducts(req.body.storeId, req.body);
+    return successPaginated(res, result.rows, result.total, result.page, result.pageSize);
+  } catch (err) {
+    next(err);
+  }
+}
+
 module.exports = {
   getStore,
   getStorebyName,
+  getStoreProducts,
 };

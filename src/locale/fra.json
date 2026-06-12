@@ -47,6 +47,7 @@
     "login.email-error": "L’adresse e-mail est incorrecte",
     "login.password-error": "Le mot de passe est incorrect",
     "index.search": "Recherche",
+    "index.noResults": "Aucun produit trouvé",
     "login.out": "Déconnexion du login",
     "login.out-confirm": "Confirmer déconnexion connexion？",
     "hardloading": "Chargement désespéré",

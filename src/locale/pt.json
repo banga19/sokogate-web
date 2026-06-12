@@ -47,6 +47,7 @@
 	"login.email-error": "Endereço de e-mail incorreto",
 	"login.password-error": "A senha não está correta",
 	"index.search": "Busca",
+	"index.noResults": "Nenhum produto encontrado",
 	"login.out": "Sair do login",
 	"login.out-confirm": "Confirmar sair do login?",
 	"hardloading": "Carregando desesperadamente",

@@ -47,6 +47,7 @@
     "login.email-error": "गलत इमेल पता",
     "login.password-error": "गलत पासवर्ड",
     "index.search": "खोजें",
+	"index.noResults": "कोई उत्पाद नहीं मिला",
     "login.out": "लॉग आउट",
     "login.out-confirm": "क्या तुम सच्चे लगआउट करने के लिए?",
     "hardloading": "स्वयंपूर्ण रूप से लोड करें",

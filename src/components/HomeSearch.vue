@@ -38,16 +38,34 @@
           </svg>
         </b-button>
       </template>
-      <b-list-group v-show="isFocus && keyword.length > 0" class="search-list">
+      <b-list-group v-show="isFocus && keyword.length > 0 && changeValue === $t('common.product')" class="search-list">
         <b-list-group-item
           v-for="(item, i) in list"
           :key="item.id"
           button
+          class="search-result-item"
           @click="
             $router.push({ path: '/v2/product/detail', query: { id: item.id } })
           "
-          >{{ i + 1 }}.{{ item.spuName }}</b-list-group-item
         >
+          <img
+            v-if="item.img"
+            :src="item.img + '?x-oss-process=style/w200'"
+            class="search-result-img"
+            alt=""
+          />
+          <span class="search-result-name">{{ item.name || item.spuName }}</span>
+          <span class="search-result-price" v-if="item.min_price != null">
+            {{ $store.state.currency === 'USD' ? '$' : $store.state.currency }}{{ item.min_price }}
+          </span>
+        </b-list-group-item>
+        <b-list-group-item
+          v-if="list.length === 0 && keyword.length > 0"
+          disabled
+          class="search-result-empty"
+        >
+          {{ $t('index.noResults') || 'No products found' }}
+        </b-list-group-item>
       </b-list-group>
       <b-list-group
         v-show="
@@ -64,8 +82,8 @@
               path: '/v2/store/collections',
               query: { id: item.id },
             })
-          "
-          >{{ i + 1 }}.{{ item.storeName }}</b-list-group-item
+          "        >
+          <span class="search-result-name">{{ item.storeName || item.name }}</span></b-list-group-item
         >
       </b-list-group>
       <!-- @click="$utils.navto(`/v2/product/list/${item._id}`)" -->
@@ -166,12 +184,16 @@ export default {
       });
     },
     getTeacherList(keyword) {
-      // console.log("getTeacherList");
       GetSpuList({
         search: keyword,
+        pageSize: 8,
       }).then((res) => {
-        // console.log(res);
-        this.list = res.data.rows;
+        this.list = (res.data.rows || []).map((item) => ({
+          ...item,
+          img: item.img || (item.galleryList && item.galleryList[0]) || '',
+        }));
+      }).catch(() => {
+        this.list = [];
       });
     },
   },
@@ -225,6 +247,50 @@ export default {
     width: calc(100% - 70px);
     top: 55px;
     z-index: 9999;
+  }
+
+  &-result-item {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px !important;
+    border: none !important;
+    transition: background 0.2s;
+
+    &:hover {
+      background-color: #f5f5f5;
+    }
+  }
+
+  &-result-img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  &-result-name {
+    flex: 1;
+    font-size: 13px;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &-result-price {
+    font-size: 13px;
+    color: #ef2e22;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  &-result-empty {
+    font-size: 13px;
+    color: #999;
+    text-align: center;
+    border: none !important;
   }
     @include mobile {
         .input-group{

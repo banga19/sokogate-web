@@ -47,6 +47,7 @@
 	"login.email-error": "عنوان صندوق البريد غير صحيح",
 	"login.password-error": "كلمة المرور ليست صحيحة",
 	"index.search": "البحث",
+	"index.noResults": "لم يتم العثور على منتجات",
 	"login.out": "خروج تسجيل الدخول",
 	"login.out-confirm": "تأكيد خروج الدخول؟",
 	"hardloading": "تم تحميلها بشدة",

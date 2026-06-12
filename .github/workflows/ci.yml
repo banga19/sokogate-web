@@ -76,8 +76,44 @@ jobs:
         run: yarn audit --level high || true
         continue-on-error: true
 
-  backend-test:
-    name: Backend Tests + Coverage
+  # ────────────────────────────────────────────────────────────
+  # Backend Unit Tests (fast — no external services needed)
+  # ────────────────────────────────────────────────────────────
+  backend-unit:
+    name: Backend Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install backend dependencies
+        working-directory: ./backend
+        run: npm ci
+
+      - name: Run unit tests
+        working-directory: ./backend
+        run: npm run test:unit
+
+      - name: Upload unit test coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-unit
+          path: backend/coverage/
+          retention-days: 7
+
+  # ────────────────────────────────────────────────────────────
+  # Backend Integration Tests (requires PostgreSQL + Redis)
+  # ────────────────────────────────────────────────────────────
+  backend-integration:
+    name: Backend Integration Tests
+    needs: [lint, backend-unit]
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -143,9 +179,9 @@ jobs:
           REDIS_PORT: 6379
           NODE_ENV: test
 
-      - name: Run tests with coverage
+      - name: Run all tests with coverage (unit + integration)
         working-directory: ./backend
-        run: npm test
+        run: npm run test:coverage
         env:
           DB_HOST: localhost
           DB_PORT: 5432
@@ -158,10 +194,10 @@ jobs:
           LOG_LEVEL: silent
           NODE_ENV: test
 
-      - name: Upload coverage report
+      - name: Upload integration coverage report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: coverage
+          name: coverage-integration
           path: backend/coverage/
           retention-days: 14

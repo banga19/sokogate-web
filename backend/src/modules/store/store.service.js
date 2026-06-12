@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { Store, Product } = require('../../common/database/models');
 const { NotFoundError } = require('../../common/utils/errors');
 
@@ -12,7 +13,7 @@ async function getStoreByName(name) {
   if (!store) {
     // Try partial name match
     const stores = await Store.findAll({
-      where: { name: { [require('sequelize').Op.iLike]: `%${name}%` } },
+      where: { name: { [Op.iLike]: `%${name}%` } },
     });
     return { rows: stores };
   }

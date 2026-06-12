@@ -47,6 +47,7 @@
     "login.email-error": "La dirección de correo electrónico es incorrecta",
     "login.password-error": "La contraseña es incorrecta",
     "index.search": "Búsqueda",
+    "index.noResults": "No se encontraron productos",
     "login.out": "Salir del login",
     "login.out-confirm": "Salir del login？",
     "hardloading": "Confirmar cerrar sesión",

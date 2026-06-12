@@ -46,6 +46,7 @@
 	"login.email-error": "邮箱地址不正确",
 	"login.password-error": "密码不正确",
 	"index.search": "搜索",
+	"index.noResults": "未找到产品",
 	"login.out": "退出登录",
 	"login.out-confirm": "确认退出登录？",
 	"hardloading": "拼命加载中",

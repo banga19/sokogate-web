@@ -47,6 +47,7 @@
 	"login.email-error": "Почтовый адрес неправильный",
 	"login.password-error": "Неправильный пароль.",
 	"index.search": "поиск",
+	"index.noResults": "Товары не найдены",
 	"login.out": "Выход из системы.",
 	"login.out-confirm": "Подтвердить выход?",
 	"hardloading": "Загружаю как сумасшедший",

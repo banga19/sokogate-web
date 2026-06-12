@@ -16,11 +16,12 @@ const globalLimiter = rateLimit({
 });
 
 /**
- * Strict rate limiter for auth endpoints (5 attempts per 15 min per IP)
+ * Strict rate limiter for auth endpoints (5 attempts per 15 min per IP;
+ * 10,000 in test mode so integration tests don't get blocked)
  */
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 5,
+  max: config.env === 'test' ? 10000 : 5,
   message: {
     errcode: 42901,
     errmsg: 'Too many login attempts, please try again later',

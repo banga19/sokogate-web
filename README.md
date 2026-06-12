@@ -187,15 +187,24 @@ Backend tests are in `backend/tests/`:
 backend/tests/
 ├── setup.js                  # Test env vars (loads before all suites)
 ├── unit/
-│   ├── auth.service.test.js  # Auth service (14 tests)
-│   ├── apiResponse.test.js   # API response helpers (15 tests)
-│   ├── errors.test.js        # Error classes (23 tests)
-│   └── utils.test.js         # Pagination utilities (8 tests)
+│   ├── auth.service.test.js      # Auth service (14 tests)
+│   ├── apiResponse.test.js       # API response helpers (15 tests)
+│   ├── errors.test.js            # Error classes (23 tests)
+│   ├── utils.test.js             # Pagination utilities (8 tests)
+│   ├── product.service.test.js   # Product service (11 tests)
+│   ├── product.controller.test.js# Product controller (11 tests)
+│   ├── store.service.test.js     # Store service (8 tests)
+│   ├── store.controller.test.js  # Store controller (4 tests)
+│   ├── order.service.test.js     # Order service (15 tests)
+│   ├── order.controller.test.js  # Order controller (8 tests)
+│   ├── payment.service.test.js   # Payment service (10 tests)
+│   └── payment.controller.test.js# Payment controller (8 tests)
 └── integration/
-    └── auth.test.js          # Auth API (7 tests)
+    ├── auth.test.js              # Auth API (7 tests)
+    └── auth.flow.test.js         # Auth full flow (30 tests)
 ```
 
-**67 tests total** across 5 suites with coverage thresholds enforced in CI.
+**173 tests total** across 14 suites with coverage thresholds enforced in CI.
 
 ### Running Tests
 
@@ -257,14 +266,23 @@ npm run test:integration
 > ⚠️ The test compose file uses the same ports (5432, 6379) as the main Docker stack.
 > Run `docker compose down` before `npm run test:db:start`.
 
+### Coverage Badges
+
+![Statements](https://img.shields.io/badge/statements-64.1%25-red.svg?style=flat)
+![Branches](https://img.shields.io/badge/branches-59.37%25-red.svg?style=flat)
+![Functions](https://img.shields.io/badge/functions-38.82%25-red.svg?style=flat)
+![Lines](https://img.shields.io/badge/lines-64.1%25-red.svg?style=flat)
+
+> Badges are auto-generated from the latest Jest coverage report. Run `npm run test:badges` to refresh.
+
 ### Coverage Thresholds
 
 | Metric | Threshold | Current |
 |--------|-----------|---------|
-| Statements | 40% | ~46% |
-| Branches | 20% | ~26% |
-| Functions | 8% | ~12% |
-| Lines | 40% | ~47% |
+| Statements | 40% | 64.1% |
+| Branches | 20% | 59.4% |
+| Functions | 8% | 38.8% |
+| Lines | 40% | 64.1% |
 
 ---
 
