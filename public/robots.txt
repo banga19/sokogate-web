@@ -1,0 +1,10 @@
+# Sokogate robots.txt
+User-agent: *
+Allow: /
+# Sitemap
+Sitemap: https://sokogate.com/sitemap.xml
+# Disallow private areas
+Disallow: /dashboard/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /login

@@ -1,0 +1,57 @@
+/* 在线链接服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
+@font-face {
+  font-family: 'sokogateIconfont';
+  /* Project id 5041239 */
+  src:
+    url('//at.alicdn.com/t/c/font_5041239_mt225j9ki7o.woff2?t=1761117914872') format('woff2'),
+    url('//at.alicdn.com/t/c/font_5041239_mt225j9ki7o.woff?t=1761117914872') format('woff'),
+    url('//at.alicdn.com/t/c/font_5041239_mt225j9ki7o.ttf?t=1761117914872') format('truetype');
+}
+
+.sicon {
+  font-family: "sokogateIconfont" !important;
+  font-size: inherit;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sicon-airplane:before {
+  content: "\e600";
+}
+
+.sicon-card-pay:before {
+  content: "\e674";
+}
+
+.sicon-Email:before {
+  content: "\e6b7";
+}
+
+.sicon-ai:before {
+  content: "\ec96";
+}
+
+.sicon-AirplaneInFlight:before {
+  content: "\e64a";
+}
+
+.sicon-boat-outline:before {
+  content: "\e6da";
+}
+
+.sicon-delivery:before {
+  content: "\e601";
+}
+
+.sicon-guarantee:before {
+  content: "\e6a5";
+}
+
+.sicon-store:before {
+  content: "\e60d";
+}
+
+.sicon-user:before {
+  content: "\eaa1";
+}

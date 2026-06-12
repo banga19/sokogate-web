@@ -1,0 +1,7 @@
+{
+    "$schema": "https://raw.githubusercontent.com/cipchk/vscode-cssrem/master/schema.json",
+    "rootFontSize": 16,
+    "fixedDigits": 3,
+    "vwDesign": 1920,
+    "vw": true
+}

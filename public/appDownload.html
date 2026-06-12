@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>App Download</title>
+        <script>
+            ;(function () {
+                const ua = navigator.userAgent
+                if (/iPhone|iPad|iPod/i.test(ua)) {
+                    window.location.href =
+                        'https://apps.apple.com/app/sokogate/id6480171536'
+                } else if (/Android/i.test(ua)) {
+                    window.location.href =
+                        'https://play.google.com/store/apps/details?id=sokogate.app'
+                } else {
+                    setTimeout(() => {
+                        document.getElementById('manual-choice').style.display =
+                            'block'
+                    }, 0)
+                }
+            })()
+        </script>
+    </head>
+    <body>
+        <div id="manual-choice" style="display: none">
+            <p>Please choose your platform:</p>
+            <a href="https://apps.apple.com/app/sokogate/id6480171536">
+                Download for iOS
+            </a>
+            <span style="margin: 0 1em"></span>
+            <a
+                href="https://play.google.com/store/apps/details?id=sokogate.app"
+            >
+                Download for Android
+            </a>
+        </div>
+        <p>Redirecting...</p>
+    </body>
+</html>

@@ -1,0 +1,151 @@
+# ============================================================================
+# Sokogate Web — Docker Compose
+#
+# Starts the full stack:
+#   - Frontend: Vue.js SPA served via Nginx
+#   - Backend:  Node.js Express API
+#   - Database: PostgreSQL 16
+#   - Cache:    Redis 7
+#
+# Usage:
+#   docker compose up -d                    # Start all services
+#   docker compose up -d --build            # Rebuild and start
+#   docker compose logs -f api              # Watch API logs
+#   docker compose down                     # Stop all services
+#   docker compose down -v                  # Stop and remove volumes
+# ============================================================================
+
+version: "3.8"
+
+services:
+  # ---- Frontend ----
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: sokogate-frontend
+    ports:
+      - "80:80"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      api:
+        condition: service_started
+    networks:
+      - sokogate
+    restart: unless-stopped
+
+  # ---- Backend API ----
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: sokogate-api
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - CORS_ORIGIN=http://localhost:80
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    networks:
+      - sokogate
+    restart: unless-stopped
+    volumes:
+      - api_logs:/app/logs
+
+  # ---- PostgreSQL Database ----
+  postgres:
+    image: postgis/postgis:16-3.4
+    container_name: sokogate-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: sokogate
+      POSTGRES_USER: sokogate
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-changeme}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sokogate"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - sokogate
+    restart: unless-stopped
+
+  # ---- Redis Cache ----
+  redis:
+    image: redis:7-alpine
+    container_name: sokogate-redis
+    ports:
+      - "6379:6379"
+    command: >
+      redis-server
+      --appendonly yes
+      --requirepass ${REDIS_PASSWORD:-changeme}
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    networks:
+      - sokogate
+    restart: unless-stopped
+
+  # ---- Optional: pgAdmin for DB management ----
+  # pgadmin:
+  #   image: dpage/pgadmin4:latest
+  #   container_name: sokogate-pgadmin
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: admin@sokogate.com
+  #     PGADMIN_DEFAULT_PASSWORD: changeme
+  #   ports:
+  #     - "5050:80"
+  #   depends_on:
+  #     - postgres
+  #   networks:
+  #     - sokogate
+  #   restart: unless-stopped
+
+  # ---- Optional: Redis Commander for cache management ----
+  # redis-commander:
+  #   image: rediscommander/redis-commander:latest
+  #   container_name: sokogate-redis-commander
+  #   environment:
+  #     REDIS_HOST: redis
+  #     REDIS_PORT: 6379
+  #     REDIS_PASSWORD: ${REDIS_PASSWORD:-changeme}
+  #   ports:
+  #     - "8081:8081"
+  #   depends_on:
+  #     - redis
+  #   networks:
+  #     - sokogate
+  #   restart: unless-stopped
+
+volumes:
+  postgres_data:
+    name: sokogate_postgres_data
+  redis_data:
+    name: sokogate_redis_data
+  api_logs:
+    name: sokogate_api_logs
+
+networks:
+  sokogate:
+    name: sokogate_network
+    driver: bridge

@@ -1,0 +1,47 @@
+.el-step__head {
+  font-size: 20px;
+
+  .el-step__icon.is-text {
+    width: 44px;
+    height: 44px;
+    background-color: #c4c4c4;
+    border-width: 6px;
+    border-style: solid;
+    border-color: #e5e5e5;
+  }
+  .el-step__icon-inner {
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  &.is-success {
+    .el-step__icon.is-text {
+      background-color: #ef2e22;
+      border-color: #ffdadb;
+    }
+  }
+}
+.el-step__title.is-success,
+.el-step__description.is-success {
+  color: #ef2e22;
+}
+
+.el-step.is-center {
+  .el-step__line {
+    top: 22px;
+    left: 60%;
+    right: -40%;
+    background-color: #e6e6e6;
+  }
+}
+
+.el-dialog {
+  max-width: 100%;
+}
+
+.badge-danger {
+  top: -3px;
+  right: -3px;
+  color: #fff;
+  background-color: #f84949;
+}

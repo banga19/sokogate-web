@@ -1,0 +1,51 @@
+@use "sass:color";
+
+$mobile-width: 320px;
+$tablet-width: 768px;
+$small-laptop: 1025px;
+$laptop: 1445px;
+$desktop: 1919px;
+$largeScrenn: 1920px;
+
+@mixin mobile {
+  @media (min-width: #{$mobile-width}) and (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tabletLand {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$small-laptop - 1px}) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin tabletPro {
+  @media (min-width: 1024px) and (max-width: 1140px) and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$small-laptop - 1px})  and (orientation: portrait)  {
+    @content;
+  }
+}
+
+
+@mixin laptop {
+  @media (min-width: #{$small-laptop}) and (max-width: #{$laptop - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$laptop}) and (max-width: #{$desktop - 1px}) {
+    @content;
+  }
+}
+
+@mixin largeScrenn {
+  @media (min-width: #{$largeScrenn}) {
+    @content;
+  }
+}
