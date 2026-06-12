@@ -34,13 +34,14 @@
               <div class="block" v-if="!list.img">
                 <el-image></el-image>
               </div>
-              <b-card-img
+              <sui-image
                 v-else
-                top
-                :src="list.img + '?x-oss-process=style/w405h539'"
-                alt="Image"
+                :src="list.img"
+                cut="405h539"
+                :lazy="true"
+                fit="contain"
                 class="starting-card-img"
-              ></b-card-img>
+              />
             </div>
             <b-card-text class="starting-card-text">
               {{ list.spuName }}
@@ -63,7 +64,9 @@
 
 
 <script>
+import SuiImage from "@/components/s-ui/media/Image";
 export default {
+  components: { SuiImage },
   props: {
     loading: {
       type: Boolean,

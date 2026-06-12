@@ -1,0 +1,64 @@
+# ============================================================================
+# Sokogate API — Test Infrastructure
+#
+# Starts PostgreSQL and Redis for running backend integration tests locally.
+# Credentials match what tests/setup.js expects so no extra config is needed.
+#
+# ⚠️  PORT CONFLICT: Uses the same ports (5432, 6379) as the main
+#     docker-compose.yml. Stop the main stack before starting this one:
+#       docker compose down
+#       docker compose -f docker-compose.test.yml up -d
+#
+# Usage:
+#   docker compose -f docker-compose.test.yml up -d          # Start services
+#   docker compose -f docker-compose.test.yml down           # Stop services
+#   docker compose -f docker-compose.test.yml down -v        # Stop + delete volumes
+#
+# Or use the npm shortcuts:
+#   npm run test:db:start    →  starts postgres + redis
+#   npm run test:db:setup    →  starts + runs migrations + seeds
+#   npm run test:db:stop     →  stops containers
+# ============================================================================
+
+version: "3.8"
+
+services:
+  postgres-test:
+    image: postgres:16-alpine
+    container_name: sokogate-postgres-test
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: sokogate_test
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+    volumes:
+      - postgres_test_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U test -d sokogate_test"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+  redis-test:
+    image: redis:7-alpine
+    container_name: sokogate-redis-test
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly no
+    volumes:
+      - redis_test_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  postgres_test_data:
+    name: sokogate_postgres_test_data
+  redis_test_data:
+    name: sokogate_redis_test_data

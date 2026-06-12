@@ -10,11 +10,13 @@
         "
       >
         <div class="card-cover">
-          <b-card-img
-            top
-            :src="item.gallery[0].img + '?x-oss-process=style/w405h539'"
-            alt="Image"
-          ></b-card-img>
+          <sui-image
+            :src="item.gallery[0].img"
+            cut="405h539"
+            :lazy="true"
+            fit="contain"
+            class="cover-img"
+          />
         </div>
         <b-card-text class="bigpic-price">
           ${{ $utils.formatToDecimal(item.price) }}
@@ -30,7 +32,9 @@
 
 
 <script>
+import SuiImage from "@/components/s-ui/media/Image";
 export default {
+  components: { SuiImage },
   props: {
     item: {
       type: Object,

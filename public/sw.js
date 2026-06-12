@@ -1,11 +1,16 @@
 /* ==========================================================================
    Sokogate Web — Service Worker
-   Provides offline caching for static assets and network-first for API calls
+   Provides offline caching for static assets, images, and API calls
    ========================================================================== */
 
-const CACHE_NAME = 'sokogate-v1';
-const STATIC_CACHE = 'sokogate-static-v1';
-const API_CACHE = 'sokogate-api-v1';
+const CACHE_VERSION = 'v2';
+const CACHE_PREFIX = 'sokogate';
+
+const CACHES = {
+  static: `${CACHE_PREFIX}-static-${CACHE_VERSION}`,
+  images: `${CACHE_PREFIX}-images-${CACHE_VERSION}`,
+  api: `${CACHE_PREFIX}-api-${CACHE_VERSION}`,
+};
 
 const PRECACHE_URLS = [
   '/',
@@ -14,10 +19,16 @@ const PRECACHE_URLS = [
   '/offline.html',
 ];
 
+// Image extensions to cache via cache-first strategy
+const IMAGE_EXT_REGEX = /\.(png|jpg|jpeg|gif|svg|ico|webp|avif)$/;
+
+// Static asset extensions
+const STATIC_EXT_REGEX = /\.(js|css|woff2?|ttf|eot|otf)$/;
+
 // ---- Install: Pre-cache critical assets ----
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(STATIC_CACHE).then((cache) => {
+    caches.open(CACHES.static).then((cache) => {
       return cache.addAll(PRECACHE_URLS).catch((err) => {
         console.warn('[SW] Pre-cache failed for some URLs:', err);
       });
@@ -32,7 +43,10 @@ self.addEventListener('activate', (event) => {
       return Promise.all(
         cacheNames
           .filter((name) => {
-            return name.startsWith('sokogate-') && name !== STATIC_CACHE && name !== API_CACHE;
+            return (
+              name.startsWith(CACHE_PREFIX) &&
+              !Object.values(CACHES).includes(name)
+            );
           })
           .map((name) => caches.delete(name))
       );
@@ -40,7 +54,7 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// ---- Fetch: Network-first for API, cache-first for static ----
+// ---- Fetch Strategy Router ----
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
@@ -50,42 +64,51 @@ self.addEventListener('fetch', (event) => {
 
   // API calls — network first, fallback to cache
   if (url.pathname.startsWith('/api/')) {
-    event.respondWith(networkFirstWithTimeout(request, API_CACHE, 5000));
+    event.respondWith(networkFirstWithTimeout(request, CACHES.api, 5000));
     return;
   }
 
-  // Static assets (JS, CSS, fonts, images) — cache first
+  // Images — cache first with stale-while-revalidate behavior
+  if (IMAGE_EXT_REGEX.test(url.pathname) || url.pathname.startsWith('/img/')) {
+    event.respondWith(cacheFirstWithRefresh(request, CACHES.images));
+    return;
+  }
+
+  // Static assets (JS, CSS, fonts) — cache first
   if (
-    url.pathname.match(/\.(js|css|woff2?|ttf|png|jpg|jpeg|gif|svg|ico)$/) ||
+    STATIC_EXT_REGEX.test(url.pathname) ||
     url.pathname.startsWith('/css/') ||
     url.pathname.startsWith('/js/') ||
-    url.pathname.startsWith('/fonts/') ||
-    url.pathname.startsWith('/img/')
+    url.pathname.startsWith('/fonts/')
   ) {
-    event.respondWith(cacheFirst(request, STATIC_CACHE));
+    event.respondWith(cacheFirst(request, CACHES.static));
     return;
   }
 
   // HTML pages (including SPA) — network first
   if (request.mode === 'navigate') {
-    event.respondWith(networkFirstWithTimeout(request, STATIC_CACHE, 3000));
+    event.respondWith(networkFirstWithTimeout(request, CACHES.static, 3000));
     return;
   }
 
   // Everything else — network first
-  event.respondWith(networkFirst(request, STATIC_CACHE));
+  event.respondWith(cacheFirst(request, CACHES.static));
 });
 
 // ---- Cache Strategies ----
 
+/**
+ * Cache-first: return cached response if available, otherwise fetch and cache.
+ */
 async function cacheFirst(request, cacheName) {
   const cached = await caches.match(request);
   if (cached) return cached;
 
   try {
     const response = await fetch(request);
-    if (response.ok) {
+    if (response.ok && response.type === 'basic') {
       const cache = await caches.open(cacheName);
+      // Don't block on cache put
       cache.put(request, response.clone());
     }
     return response;
@@ -94,25 +117,50 @@ async function cacheFirst(request, cacheName) {
   }
 }
 
-async function networkFirst(request, cacheName) {
-  try {
-    const response = await fetch(request);
-    if (response.ok) {
-      const cache = await caches.open(cacheName);
-      cache.put(request, response.clone());
+/**
+ * Cache-first with background refresh (stale-while-revalidate).
+ * Returns cached response immediately, then updates cache in background.
+ * Good for images — user sees cached version instantly, and it updates silently.
+ */
+async function cacheFirstWithRefresh(request, cacheName) {
+  const cached = await caches.match(request);
+  
+  // Fetch in background to update cache (don't await — fire and forget)
+  const fetchPromise = fetch(request).then((response) => {
+    if (response.ok && response.type === 'basic') {
+      caches.open(cacheName).then((cache) => {
+        cache.put(request, response);
+      });
     }
     return response;
-  } catch (err) {
-    const cached = await caches.match(request);
-    if (cached) return cached;
+  }).catch(() => {
+    // Network failed, that's ok — we have cached version
+  });
 
+  // Return cached version immediately if available
+  if (cached) {
+    // Still trigger background refresh
+    fetchPromise;
+    return cached;
+  }
+
+  // No cache — wait for network
+  try {
+    const response = await fetchPromise;
+    return response;
+  } catch (err) {
+    // Network failed and no cache
     if (request.mode === 'navigate') {
       return caches.match('/offline.html');
     }
-    return new Response('', { status: 408, statusText: 'Offline' });
+    // For images, return a transparent placeholder
+    return new Response('', { status: 204 });
   }
 }
 
+/**
+ * Network first with timeout: try network, fall back to cache on failure/timeout.
+ */
 async function networkFirstWithTimeout(request, cacheName, timeoutMs) {
   const timeoutPromise = new Promise((_, reject) =>
     setTimeout(() => reject(new Error('Timeout')), timeoutMs)

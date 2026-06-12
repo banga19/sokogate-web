@@ -10,11 +10,12 @@
         "
       >
         <div class="card-cover">
-          <b-card-img
-            top
-            :src="item.gallery[0].img + '?x-oss-process=style/w405h539'"
-            alt="Image"
-          ></b-card-img>
+          <sui-image
+            :src="item.gallery[0].img"
+            cut="405h539"
+            :lazy="true"
+            fit="contain"
+          />
         </div>
         <b-card-text class="startend-card-text">
           {{ item.name }}
@@ -39,7 +40,9 @@
 
 
 <script>
+import SuiImage from "@/components/s-ui/media/Image";
 export default {
+  components: { SuiImage },
   props: {
     list: {
       type: Array,

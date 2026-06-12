@@ -11,7 +11,7 @@ env:
 
 jobs:
   lint:
-    name: Lint
+    name: Frontend Lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -29,7 +29,7 @@ jobs:
         run: yarn lint
 
   build:
-    name: Build
+    name: Frontend Build
     needs: lint
     runs-on: ubuntu-latest
     steps:
@@ -75,3 +75,93 @@ jobs:
       - name: Run security audit
         run: yarn audit --level high || true
         continue-on-error: true
+
+  backend-test:
+    name: Backend Tests + Coverage
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: sokogate_test
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install backend dependencies
+        working-directory: ./backend
+        run: npm ci
+
+      - name: Run database migrations
+        working-directory: ./backend
+        run: npx sequelize-cli db:migrate
+        env:
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_NAME: sokogate_test
+          DB_USER: test
+          DB_PASSWORD: test
+          REDIS_HOST: localhost
+          REDIS_PORT: 6379
+          NODE_ENV: test
+
+      - name: Run seed data
+        working-directory: ./backend
+        run: npx sequelize-cli db:seed:all
+        env:
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_NAME: sokogate_test
+          DB_USER: test
+          DB_PASSWORD: test
+          REDIS_HOST: localhost
+          REDIS_PORT: 6379
+          NODE_ENV: test
+
+      - name: Run tests with coverage
+        working-directory: ./backend
+        run: npm test
+        env:
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_NAME: sokogate_test
+          DB_USER: test
+          DB_PASSWORD: test
+          REDIS_HOST: localhost
+          REDIS_PORT: 6379
+          JWT_SECRET: ci-test-secret-key
+          LOG_LEVEL: silent
+          NODE_ENV: test
+
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: backend/coverage/
+          retention-days: 14

@@ -3,7 +3,7 @@
     <div v-title :data-title="$t('login.title')">
       <b-row align-v="end" class="text-center head">
         <b-col cols="12" md="auto" class="centre logo-box">
-          <img class="logo" src="https://oss.sokogate.com/image/af82b848785b079390200737ab15cdff.png" alt=""
+          <img class="logo" src="https://oss.sokogate.com/image/af82b848785b079390200737ab15cdff.png" alt="" loading="lazy"
             @click="$router.push({ path: '/' })" />
         </b-col>
         <b-col cols="12" md="2" class="centre logo-box">

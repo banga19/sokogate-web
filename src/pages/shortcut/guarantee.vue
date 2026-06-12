@@ -41,7 +41,7 @@
         </b-col>
         <!-- <b-col cols="12" md="5">
           <div class="col">
-            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" />
+            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" loading="lazy" />
           </div>
         </b-col> -->
       </b-row>
@@ -102,7 +102,7 @@
         </b-col>
         <!-- <b-col cols="12" md="5">
           <div class="col">
-            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" />
+            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" loading="lazy" />
           </div>
         </b-col> -->
       </b-row>
@@ -159,7 +159,7 @@
         </b-col>
         <!-- <b-col cols="12" md="5">
           <div class="col">
-            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" />
+            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" loading="lazy" />
           </div>
         </b-col> -->
       </b-row>
@@ -221,7 +221,7 @@
         </b-col>
         <!-- <b-col cols="12" md="5">
           <div class="col">
-            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" />
+            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" loading="lazy" />
           </div>
         </b-col> -->
       </b-row>
@@ -283,7 +283,7 @@
         </b-col>
         <!-- <b-col cols="12" md="5">
           <div class="col">
-            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" />
+            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" loading="lazy" />
           </div>
         </b-col> -->
       </b-row>
@@ -336,7 +336,7 @@
         </b-col>
         <!-- <b-col cols="12" md="5">
           <div class="col">
-            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" />
+            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" loading="lazy" />
           </div>
         </b-col> -->
       </b-row>
@@ -392,7 +392,7 @@
         </b-col>
         <!-- <b-col cols="12" md="5">
           <div class="col">
-            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" />
+            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" loading="lazy" />
           </div>
         </b-col> -->
       </b-row>
@@ -443,7 +443,7 @@
         </b-col>
         <!-- <b-col cols="12" md="5">
           <div class="col">
-            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" />
+            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" loading="lazy" />
           </div>
         </b-col> -->
       </b-row>
@@ -494,7 +494,7 @@
         </b-col>
         <!-- <b-col cols="12" md="5">
           <div class="col">
-            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" />
+            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" loading="lazy" />
           </div>
         </b-col> -->
       </b-row>

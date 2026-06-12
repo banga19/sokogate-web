@@ -61,7 +61,7 @@ sokogate-web/
 │   └── package.json
 │
 ├── docker-compose.yml        # Full stack: frontend + api + postgres + redis
-├── .github/workflows/       # CI/CD (lint → test → build → deploy)
+├── .github/workflows/       # CI/CD (frontend: lint → build → audit → backend: tests + coverage)
 ├── .env.example              # All environment variables (frontend + backend)
 └── SYSTEM_DESIGN.md          # Full system architecture document
 ```
@@ -102,9 +102,34 @@ npm install
 
 # Copy environment file
 cp .env.example .env
+# Edit .env with your settings
 
 # Start with auto-reload
 npm run dev
+
+# Run database migrations
+npm run migrate
+
+# Seed demo data
+npm run seed
+```
+
+### Backend with Test DB
+
+```bash
+cd backend
+
+# Start PostgreSQL + Redis for tests (Docker required)
+npm run test:db:start
+
+# Run migrations + seed
+npm run test:db:setup
+
+# Run tests (requires DB running)
+npm test
+
+# Stop test DB
+npm run test:db:stop
 ```
 
 ### Full Stack (Docker)
@@ -152,6 +177,97 @@ The Nginx config includes:
 
 ---
 
+## Testing
+
+### Test Structure
+
+Backend tests are in `backend/tests/`:
+
+```
+backend/tests/
+├── setup.js                  # Test env vars (loads before all suites)
+├── unit/
+│   ├── auth.service.test.js  # Auth service (14 tests)
+│   ├── apiResponse.test.js   # API response helpers (15 tests)
+│   ├── errors.test.js        # Error classes (23 tests)
+│   └── utils.test.js         # Pagination utilities (8 tests)
+└── integration/
+    └── auth.test.js          # Auth API (7 tests)
+```
+
+**67 tests total** across 5 suites with coverage thresholds enforced in CI.
+
+### Running Tests
+
+```bash
+cd backend
+
+# Run all tests (includes unit + integration)
+npm test
+
+# Run tests with coverage report
+npm run test:coverage
+
+# Run specific test file
+npx jest tests/unit/auth.service.test.js
+
+# Watch mode
+npm run test:watch
+```
+
+### Test Infrastructure (Docker)
+
+Integration tests require PostgreSQL and Redis. A dedicated Docker Compose file provides these services with credentials matching `tests/setup.js`:
+
+```bash
+cd backend
+
+# Step 1: Start test DB services
+docker compose -f docker-compose.test.yml up -d
+
+# Step 2: Wait + run migrations
+npm run test:db:migrate
+
+# Step 3: Seed demo data
+npm run test:db:seed
+
+# Step 4: Run tests
+npm test
+
+# Step 5: Clean up
+docker compose -f docker-compose.test.yml down
+```
+
+Or use the one-liner:
+
+```bash
+npm run test:integration
+```
+
+| Script | Purpose |
+|--------|---------|
+| `npm run test:db:start` | Start PostgreSQL + Redis containers |
+| `npm run test:db:setup` | Start + migrate + seed |
+| `npm run test:db:migrate` | Run migrations against test DB |
+| `npm run test:db:seed` | Seed demo data into test DB |
+| `npm run test:db:stop` | Stop and remove containers |
+| `npm run test:db:reset` | Stop and delete all test data volumes |
+| `npm run test:integration` | Full pipeline: start → migrate → seed → test → stop |
+
+> ⚠️ The test compose file uses the same ports (5432, 6379) as the main Docker stack.
+> Run `docker compose down` before `npm run test:db:start`.
+
+### Coverage Thresholds
+
+| Metric | Threshold | Current |
+|--------|-----------|---------|
+| Statements | 40% | ~46% |
+| Branches | 20% | ~26% |
+| Functions | 8% | ~12% |
+| Lines | 40% | ~47% |
+
+---
+
 ## Key Features
 
 ### 🌍 Multi-Language
@@ -177,14 +293,18 @@ Flutterwave · Paystack · Stripe · PayPal · CinetPay · QuikkPay · PayDunya 
 - Redis-backed sessions
 
 ### 🗺️ African Market SEO
-8 zero-click SEO market pages with FAQPage, HowTo, and LocalBusiness schema markup:
-- Guinea · Senegal · Ghana · Côte d'Ivoire · Cameroon · Sierra Leone · Kenya · Zimbabwe
+8 zero-click SEO-optimized market pages with FAQPage, HowTo, LocalBusiness, and BreadcrumbList schema markup:
 
-### 🌍 African Market SEO
-8 zero-click SEO-optimized market pages with structured data markup:
-- `/guinea` · `/senegal` · `/ghana` · `/cote-divoire` · `/cameroon` · `/sierra-leone` · `/kenya` · `/zimbabwe`
-- Each page includes: FAQPage, HowTo, LocalBusiness, BreadcrumbList schema
-- Multi-language (French for Francophone markets, English for Anglophone)
+| Market | Route | Language |
+|--------|-------|----------|
+| Guinea | `/guinea` | French |
+| Senegal | `/senegal` | French |
+| Ghana | `/ghana` | English |
+| Côte d'Ivoire | `/cote-divoire` | French |
+| Cameroon | `/cameroon` | French |
+| Sierra Leone | `/sierra-leone` | English |
+| Kenya | `/kenya` | English |
+| Zimbabwe | `/zimbabwe` | English |
 
 ### 🤖 AI Features (Hermes)
 - Personalized product feed
@@ -300,13 +420,14 @@ Key variables:
 
 ## CI/CD
 
-Located in `.github/workflows/ci.yml`:
+Located in `.github/workflows/ci.yml` — runs on push/PR to `main` and `develop`.
 
 | Job | Description |
 |-----|-------------|
-| `lint` | ESLint check |
-| `build` | Production build |
-| `security-audit` | npm/yarn audit |
+| `Frontend Lint` | ESLint check |
+| `Frontend Build` | Production build + upload artifact |
+| `Security Audit` | npm/yarn audit |
+| `Backend Tests + Coverage` | Spin up PostgreSQL + Redis, run migrations, seed, test with coverage thresholds |
 
 **Branch strategy:** GitFlow Simplified
 - `main` → production (protected, requires PR)
@@ -328,13 +449,20 @@ yarn generate-sitemap   # Generate SEO sitemap
 
 ### Backend
 ```bash
-npm run dev             # Dev server with auto-reload
-npm start               # Production start
-npm test                # Run all tests
-npm run test:coverage   # Tests with coverage report
-npm run migrate         # Run DB migrations
-npm run seed            # Seed database
-npm run lint            # ESLint
+npm run dev              # Dev server with auto-reload
+npm start                # Production start
+npm test                 # Run all tests (unit + integration)
+npm run test:coverage    # Tests with coverage report
+npm run test:watch       # Watch mode
+npm run migrate          # Run DB migrations
+npm run seed             # Seed database
+npm run seed:undo        # Remove all seed data
+npm run migrate:undo     # Rollback last migration
+npm run lint             # ESLint
+npm run test:db:start    # Start test DB (Docker)
+npm run test:db:setup    # Start DB + migrate + seed
+npm run test:db:stop     # Stop test DB
+npm run test:integration # Full integration test run
 ```
 
 ---
