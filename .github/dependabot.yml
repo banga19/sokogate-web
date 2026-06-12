@@ -1,0 +1,78 @@
+# ============================================================================
+# Dependabot — Automated Dependency Updates
+# ============================================================================
+# Keeps both frontend (yarn) and backend (npm) dependencies up to date.
+# Runs weekly, auto-creates PRs for patch/minor updates.
+# ============================================================================
+
+version: 2
+updates:
+  # Frontend (Yarn)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Shanghai"
+    versioning-strategy: "increase"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "frontend"
+    assignees:
+      - "banga19"
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+    pull-request-branch-name:
+      separator: "-"
+    ignore:
+      - dependency-name: "vue"
+        versions: [">=3.0.0"]
+      - dependency-name: "element-ui"
+        versions: [">=3.0.0"]
+      - dependency-name: "vue-router"
+        versions: [">=4.0.0"]
+      - dependency-name: "vuex"
+        versions: [">=4.0.0"]
+    # Security updates only for certain packages
+    allow:
+      - dependency-type: "direct"
+      - dependency-type: "indirect"
+    # Always review major updates manually
+    reviewers:
+      - "banga19"
+
+  # Backend (npm)
+  - package-ecosystem: "npm"
+    directory: "/backend"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Shanghai"
+    versioning-strategy: "increase"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "backend"
+    assignees:
+      - "banga19"
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Shanghai"
+    labels:
+      - "dependencies"
+      - "ci"

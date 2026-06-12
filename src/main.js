@@ -31,6 +31,9 @@ Vue.use(VueJsonp)
 import Meta from "vue-meta";
 Vue.use(Meta);
 
+// Sentry error tracking — will be initialized after Vue instance is created
+import { initSentry } from './utils/sentry';
+
 let i18nConfig = {
   locale: "zh",
   // silentTranslationWarn: true, //去除国际化警告
@@ -77,6 +80,9 @@ window.vm = new Vue({
   render: (h) => h(App),
 });
 
+// Initialize Sentry after Vue instance is created (window.vm is now set)
+initSentry();
+
 if (process.env.NODE_ENV !== 'production') {
   const warn = console.error
   console.error = function (...args) {
@@ -85,4 +91,15 @@ if (process.env.NODE_ENV !== 'production') {
     }
     warn.apply(console, args)
   }
+}
+
+// ---- Register Service Worker for PWA -------
+if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').then((reg) => {
+      console.log('[PWA] Service worker registered:', reg.scope);
+    }).catch((err) => {
+      console.warn('[PWA] Service worker registration failed:', err);
+    });
+  });
 }

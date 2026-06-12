@@ -49,6 +49,9 @@ router.use('/onboarding', require('../modules/onboarding/onboarding.routes'));
 // Share routes
 router.use('/', require('../modules/share/share.routes'));
 
+// Monitoring routes (Prometheus metrics)
+router.use('/', require('../modules/monitoring/monitoring.routes'));
+
 // Hermes AI routes
 const { User } = require('../common/database/models');
 const { authenticate } = require('../common/middleware/auth.middleware');

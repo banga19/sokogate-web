@@ -1,0 +1,42 @@
+{
+  "name": "Sokogate — B2B Cross-Border E-Commerce",
+  "short_name": "Sokogate",
+  "description": "Import from China to Africa — B2B cross-border e-commerce platform connecting African buyers with verified Chinese suppliers.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#EF2E22",
+  "orientation": "portrait-primary",
+  "lang": "en",
+  "scope": "/",
+  "categories": ["shopping", "business", "ecommerce"],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "Browse Products",
+      "short_name": "Products",
+      "description": "Browse our catalog",
+      "url": "/v2/product/list"
+    },
+    {
+      "name": "Shopping Cart",
+      "short_name": "Cart",
+      "description": "View your shopping cart",
+      "url": "/v2/shopping-cart"
+    },
+    {
+      "name": "Orders",
+      "short_name": "Orders",
+      "description": "View your orders",
+      "url": "/v2/order"
+    }
+  ]
+}
