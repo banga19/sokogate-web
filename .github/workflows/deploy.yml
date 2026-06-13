@@ -1,0 +1,116 @@
+name: Deploy Sokogate
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+env:
+  NODE_VERSION: '20'
+  DOCKER_REGISTRY: registry.cn-hongkong.aliyuncs.com
+
+jobs:
+  lint:
+    name: Lint & Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
+      - run: yarn lint
+
+  test:
+    name: Run Tests
+    needs: lint
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: sokogate_test
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
+      - run: cp .env.example .env
+      - run: yarn test
+      - name: Upload coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage/
+
+  build:
+    name: Build Docker Images
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Log in to Docker Registry
+        run: echo "${{ secrets.ALIYUN_DOCKER_PASSWORD }}" | docker login ${{ env.DOCKER_REGISTRY }} -u "${{ secrets.ALIYUN_DOCKER_USERNAME }}" --password-stdin
+      - name: Build Frontend
+        run: |
+          docker build -t ${{ env.DOCKER_REGISTRY }}/sokogate/frontend:latest -t ${{ env.DOCKER_REGISTRY }}/sokogate/frontend:${{ github.sha }} -f frontend/Dockerfile ./frontend
+      - name: Build Backend
+        run: |
+          docker build -t ${{ env.DOCKER_REGISTRY }}/sokogate/backend:latest -t ${{ env.DOCKER_REGISTRY }}/sokogate/backend:${{ github.sha }} -f backend/Dockerfile ./backend
+      - name: Push Images
+        run: |
+          docker push ${{ env.DOCKER_REGISTRY }}/sokogate/frontend --all-tags
+          docker push ${{ env.DOCKER_REGISTRY }}/sokogate/backend --all-tags
+
+  deploy-production:
+    name: Deploy to Production
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Execute SSH Deploy
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USER }}
+          key: ${{ secrets.PROD_SSH_KEY }}
+          script: |
+            cd /opt/sokogate
+            docker compose pull
+            docker compose up -d --remove-orphans
+            docker system prune -f
+
+  deploy-staging:
+    name: Deploy to Staging
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop'
+    steps:
+      - name: Deploy to staging
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.STAGING_HOST }}
+          username: ${{ secrets.STAGING_USER }}
+          key: ${{ secrets.STAGING_SSH_KEY }}
+          script: |
+            cd /opt/sokogate-staging
+            git pull origin develop
+            docker compose -f docker-compose.staging.yml up -d --build --remove-orphans

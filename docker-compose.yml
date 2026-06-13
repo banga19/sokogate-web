@@ -137,6 +137,48 @@ services:
   #     - sokogate
   #   restart: unless-stopped
 
+  # ---- Prometheus (metrics collection) ----
+  prometheus:
+    image: prom/prometheus:v2.53.0
+    container_name: sokogate-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus:/etc/prometheus:ro
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=30d'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    depends_on:
+      api:
+        condition: service_started
+    networks:
+      - sokogate
+    restart: unless-stopped
+
+  # ---- Grafana (metrics dashboards) ----
+  grafana:
+    image: grafana/grafana:11.1.0
+    container_name: sokogate-grafana
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
+      - GF_INSTALL_PLUGINS=
+    volumes:
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning:ro
+      - grafana_data:/var/lib/grafana
+    depends_on:
+      - prometheus
+    networks:
+      - sokogate
+    restart: unless-stopped
+
 volumes:
   postgres_data:
     name: sokogate_postgres_data
@@ -144,6 +186,10 @@ volumes:
     name: sokogate_redis_data
   api_logs:
     name: sokogate_api_logs
+  prometheus_data:
+    name: sokogate_prometheus_data
+  grafana_data:
+    name: sokogate_grafana_data
 
 networks:
   sokogate:

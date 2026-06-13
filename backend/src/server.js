@@ -2,6 +2,7 @@ const app = require('./app');
 const config = require('./config');
 const logger = require('./common/logger/logger');
 const sequelize = require('./config/database');
+const { connectRedis, disconnectRedis } = require('./config/redis');
 
 async function start() {
   try {
@@ -15,6 +16,9 @@ async function start() {
       logger.info('Database models synchronized');
     }
 
+    // Connect to Redis (lazy connect by default — explicitly connect here)
+    await connectRedis();
+
     // Start server
     const server = app.listen(config.port, () => {
       logger.info(`Server running on port ${config.port} in ${config.env} mode`);
@@ -25,12 +29,12 @@ async function start() {
     // Graceful shutdown
     const shutdown = async (signal) => {
       logger.info(`${signal} received — shutting down gracefully...`);
-      server.close(() => {
+      server.close(async () => {
         logger.info('HTTP server closed');
-        sequelize.close().then(() => {
-          logger.info('Database connection closed');
-          process.exit(0);
-        });
+        await disconnectRedis();
+        await sequelize.close();
+        logger.info('Database connection closed');
+        process.exit(0);
       });
       // Force close after 10s
       setTimeout(() => {

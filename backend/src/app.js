@@ -8,8 +8,33 @@ const logger = require('./common/logger/logger');
 const { globalLimiter } = require('./common/middleware/rateLimiter.middleware');
 const { errorHandler } = require('./common/middleware/errorHandler.middleware');
 const routes = require('./routes');
+const { metricsMiddleware } = require('./common/middleware/metrics.middleware');
 
 const app = express();
+
+// ---- Sentry Error Tracking (must be first) ----
+if (config.sentry.dsn) {
+  try {
+    const Sentry = require('@sentry/node');
+    const { ProfilingIntegration } = require('@sentry/profiling-node');
+    Sentry.init({
+      dsn: config.sentry.dsn,
+      environment: config.env,
+      integrations: [
+        new Sentry.Integrations.Http({ tracing: true }),
+        new Sentry.Integrations.Express({ app }),
+        new ProfilingIntegration(),
+      ],
+      tracesSampleRate: config.env === 'production' ? 0.1 : 1.0,
+      profilesSampleRate: 0.1,
+    });
+    app.use(Sentry.Handlers.requestHandler());
+    app.use(Sentry.Handlers.tracingHandler());
+    logger.info('Sentry error tracking initialized');
+  } catch (err) {
+    logger.warn(`Sentry initialization skipped: ${err.message}`);
+  }
+}
 
 // ---- Security Middleware ----
 app.use(helmet());
@@ -29,6 +54,9 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // ---- Rate Limiting ----
 app.use(globalLimiter);
+
+// ---- Metrics (Prometheus) ----
+app.use(metricsMiddleware);
 
 // ---- Request Logging ----
 app.use(morgan('combined', {
@@ -65,5 +93,15 @@ app.use((req, res) => {
 
 // ---- Error Handler ----
 app.use(errorHandler);
+
+// ---- Sentry Error Handler (must be after all routes) ----
+if (config.sentry.dsn) {
+  try {
+    const Sentry = require('@sentry/node');
+    app.use(Sentry.Handlers.errorHandler());
+  } catch (err) {
+    // Sentry not available
+  }
+}
 
 module.exports = app;
