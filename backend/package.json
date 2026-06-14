@@ -8,11 +8,11 @@
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "lint": "eslint src/ tests/",
-    "test": "jest --forceExit --detectOpenHandles",
+    "test": "jest tests/unit --forceExit --detectOpenHandles",
     "test:unit": "jest tests/unit --forceExit --detectOpenHandles",
     "test:int": "jest tests/integration --forceExit --detectOpenHandles",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage --forceExit --detectOpenHandles && npm run test:badges",
+    "test:coverage": "jest tests/unit --coverage --forceExit --detectOpenHandles && npm run test:badges",
     "migrate": "npx sequelize-cli db:migrate",
     "migrate:undo": "npx sequelize-cli db:migrate:undo",
     "seed": "npx sequelize-cli db:seed:all",
@@ -24,7 +24,7 @@
     "test:db:seed": "npx dotenv-cli -e .env.test -- npx sequelize-cli db:seed:all",
     "test:db:wait": "node -e \"setTimeout(() => process.exit(0), 3000)\"",
     "test:db:setup": "npm run test:db:start && npm run test:db:wait && npm run test:db:migrate && npm run test:db:seed",
-    "test:integration": "npm run test:db:start && npm run test:db:wait && npm run test:db:migrate && npm run test:db:seed && npm test && npm run test:db:stop",
+    "test:integration": "npm run test:db:start && npm run test:db:wait && npm run test:db:migrate && npm run test:db:seed && npm run test:unit && npm run test:int && npm run test:db:stop",
     "test:badges": "npx istanbul-badges-readme --coverageDir=./coverage --readmeDir=.."
   },
   "dependencies": {
@@ -65,6 +65,9 @@
     ],
     "testMatch": [
       "**/*.test.js"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
     ],
     "collectCoverage": true,
     "coverageDirectory": "./coverage",

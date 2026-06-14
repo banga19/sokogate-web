@@ -12,7 +12,7 @@ async function getStore(req, res, next) {
 
 async function getStorebyName(req, res, next) {
   try {
-    const store = await storeService.getStoreByName(req.body.name);
+    const store = await storeService.getStoreByName(req.body.storeName);
     return success(res, store);
   } catch (err) {
     next(err);

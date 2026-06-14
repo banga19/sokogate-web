@@ -19,10 +19,9 @@
       <b-form-input
         :placeholder="this.$t('index.search')"
         v-model.trim="keyword"
-        @focus.native="onfocus($event)"
-        @input="onInput($event)"
-        @blur.native="onBlur($event)"
-        debounce
+        @focus.native="onfocus"
+        @input="onInput"
+        @blur.native="onBlur"
         class="search search-box"
         autocomplete="off"
       ></b-form-input>
@@ -39,33 +38,40 @@
         </b-button>
       </template>
       <b-list-group v-show="isFocus && keyword.length > 0 && changeValue === $t('common.product')" class="search-list">
-        <b-list-group-item
-          v-for="(item, i) in list"
-          :key="item.id"
-          button
-          class="search-result-item"
-          @click="
-            $router.push({ path: '/v2/product/detail', query: { id: item.id } })
-          "
-        >
-          <img
-            v-if="item.img"
-            :src="item.img + '?x-oss-process=style/w200'"
-            class="search-result-img"
-            alt=""
-          />
-          <span class="search-result-name">{{ item.name || item.spuName }}</span>
-          <span class="search-result-price" v-if="item.min_price != null">
-            {{ $store.state.currency === 'USD' ? '$' : $store.state.currency }}{{ item.min_price }}
-          </span>
+        <!-- Loading indicator -->
+        <b-list-group-item v-if="loading" disabled class="search-result-loading">
+          <i class="el-icon-loading search-spinner"></i>
+          {{ $t('productList.isLoadingMsg') || 'Searching...' }}
         </b-list-group-item>
-        <b-list-group-item
-          v-if="list.length === 0 && keyword.length > 0"
-          disabled
-          class="search-result-empty"
-        >
-          {{ $t('index.noResults') || 'No products found' }}
-        </b-list-group-item>
+        <template v-else>
+          <b-list-group-item
+            v-for="(item, i) in list"
+            :key="item.id"
+            button
+            class="search-result-item"
+            @click="
+              $router.push({ path: '/v2/product/detail', query: { id: item.id } })
+            "
+          >
+            <img
+              v-if="item.img"
+              :src="item.img + '?x-oss-process=style/w200'"
+              class="search-result-img"
+              alt=""
+            />
+            <span class="search-result-name">{{ item.name || item.spuName }}</span>
+            <span class="search-result-price" v-if="item.min_price != null">
+              {{ $store.state.currency === 'USD' ? '$' : $store.state.currency }}{{ item.min_price }}
+            </span>
+          </b-list-group-item>
+          <b-list-group-item
+            v-if="list.length === 0 && keyword.length > 0"
+            disabled
+            class="search-result-empty"
+          >
+            {{ $t('index.noResults') || 'No products found' }}
+          </b-list-group-item>
+        </template>
       </b-list-group>
       <b-list-group
         v-show="
@@ -73,18 +79,33 @@
         "
         class="search-list"
       >
-        <b-list-group-item
-          v-for="(item, i) in list"
-          :key="item.id"
-          button
-          @click="
-            $router.push({
-              path: '/v2/store/collections',
-              query: { id: item.id },
-            })
-          "        >
-          <span class="search-result-name">{{ item.storeName || item.name }}</span></b-list-group-item
-        >
+        <!-- Loading indicator -->
+        <b-list-group-item v-if="loading" disabled class="search-result-loading">
+          <i class="el-icon-loading search-spinner"></i>
+          {{ $t('productList.isLoadingMsg') || 'Searching...' }}
+        </b-list-group-item>
+        <template v-else>
+          <b-list-group-item
+            v-for="(item, i) in list"
+            :key="item.id"
+            button
+            class="search-result-item"
+            @click="
+              $router.push({
+                path: '/v2/store/collections',
+                query: { id: item.id },
+              })
+            "
+          >
+            <img
+              v-if="item.img"
+              :src="item.img + '?x-oss-process=style/w200'"
+              class="search-result-img"
+              alt=""
+            />
+            <span class="search-result-name">{{ item.storeName || item.name }}</span>
+          </b-list-group-item>
+        </template>
       </b-list-group>
       <!-- @click="$utils.navto(`/v2/product/list/${item._id}`)" -->
     </b-input-group>
@@ -109,6 +130,7 @@ export default {
       keyword: "",
       isFocus: false,
       list: [],
+      loading: false,
     };
   },
   watch: {
@@ -129,12 +151,13 @@ export default {
   },
   methods: {
     handleCommand(command) {
-      // console.log("command", command);
       this.changeValue = command;
+      this.list = [];
     },
     onClean() {
       this.keyword = "";
       this.isFocus = false;
+      this.list = [];
     },
     onBlur() {
       // console.log("onBlur-e", e);
@@ -143,18 +166,23 @@ export default {
       }, 500);
     },
     onfocus() {
-      // console.log("onfocus-e", e);
       this.isFocus = true;
-    },
-    onInput: debounce(function (e) {
-      if (this.changeValue === this.$t("common.store")) {
-        this.getStorebyName(e);
-      } else {
-        this.getTeacherList(e);
+      // Re-trigger search when refocusing if keyword exists
+      if (this.keyword && this.keyword.length > 0) {
+        this.onInput();
       }
-      // this.addKeyword(this.input);
-      // this.refreshKeyword();
-      // console.log("onInput-e", e);
+    },
+    onInput: debounce(function () {
+      if (!this.keyword || this.keyword.length === 0) {
+        this.list = [];
+        return;
+      }
+      this.loading = true;
+      if (this.changeValue === this.$t("common.store")) {
+        this.getStorebyName(this.keyword);
+      } else {
+        this.getTeacherList(this.keyword);
+      }
     }),
     onSubmit(e) {
       e && e.preventDefault();
@@ -179,8 +207,14 @@ export default {
       GetStorebyName({
         storeName: keyword,
       }).then((res) => {
-        // console.log(res, "getStorebyName");
-        this.list = res.data.rows;
+        this.list = (res.data.rows || []).map((item) => ({
+          ...item,
+          img: item.logo || item.img || '',
+        }));
+      }).catch(() => {
+        this.list = [];
+      }).finally(() => {
+        this.loading = false;
       });
     },
     getTeacherList(keyword) {
@@ -194,6 +228,8 @@ export default {
         }));
       }).catch(() => {
         this.list = [];
+      }).finally(() => {
+        this.loading = false;
       });
     },
   },
@@ -284,6 +320,24 @@ export default {
     color: #ef2e22;
     font-weight: bold;
     white-space: nowrap;
+  }
+
+  &-result-loading {
+    font-size: 13px;
+    color: #666;
+    text-align: center;
+    border: none !important;
+    cursor: default !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px !important;
+
+    .search-spinner {
+      font-size: 16px;
+      color: #ef2e22;
+    }
   }
 
   &-result-empty {

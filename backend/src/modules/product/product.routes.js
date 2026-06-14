@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const controller = require('./product.controller');
 const { validate } = require('../../common/middleware/validator.middleware');
-const { optionalAuth } = require('../../common/middleware/auth.middleware');
 const {
   getSpuListSchema,
   getSpuSchema,

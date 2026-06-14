@@ -127,32 +127,49 @@ describe('getMetrics', () => {
 });
 
 // ──────────────────────────────────────────────────────────────
-// Fallback behavior (isolated module)
+// Fallback behavior (prom-client without register)
+// Uses resetModules + doMock to override the top-level mock
 // ──────────────────────────────────────────────────────────────
-describe('when prom-client is unavailable', () => {
-  it('should return fallback string from getMetrics', () => {
+describe('when prom-client register is unavailable', () => {
+  afterEach(() => {
+    // Re-import the module under test to restore original state
+    jest.resetModules();
     jest.isolateModules(() => {
-      jest.mock('prom-client', () => { throw new Error('not available'); });
-      const fallbackMetrics = require('../../src/common/middleware/metrics.middleware');
+      require('../../src/common/middleware/metrics.middleware');
+    });
+  });
 
-      // getMetrics should handle gracefully
-      return fallbackMetrics.getMetrics().then((metrics) => {
-        expect(metrics).toBe('# Prometheus client not available\n');
-      });
+  it('should return fallback string from getMetrics', () => {
+    jest.resetModules();
+    jest.doMock('prom-client', () => ({
+      collectDefaultMetrics: jest.fn(),
+      Histogram: jest.fn().mockReturnValue({ startTimer: jest.fn(), observe: jest.fn() }),
+      Counter: jest.fn().mockReturnValue({ inc: jest.fn() }),
+      // No `register` property — simulates register not being available
+    }));
+
+    const fallbackMetrics = require('../../src/common/middleware/metrics.middleware');
+
+    return fallbackMetrics.getMetrics().then((metrics) => {
+      expect(metrics).toBe('# Prometheus client not available\n');
     });
   });
 
   it('should call next() without crashing in middleware', () => {
-    jest.isolateModules(() => {
-      jest.mock('prom-client', () => { throw new Error('not available'); });
-      const { metricsMiddleware: fallbackMw } = require('../../src/common/middleware/metrics.middleware');
+    jest.resetModules();
+    jest.doMock('prom-client', () => ({
+      collectDefaultMetrics: jest.fn(),
+      Histogram: jest.fn().mockReturnValue({ startTimer: jest.fn(), observe: jest.fn() }),
+      Counter: jest.fn().mockReturnValue({ inc: jest.fn() }),
+    }));
 
-      const req = { method: 'GET', path: '/test' };
-      const res = { on: jest.fn() };
-      const next = jest.fn();
+    const { metricsMiddleware: fallbackMw } = require('../../src/common/middleware/metrics.middleware');
 
-      fallbackMw(req, res, next);
-      expect(next).toHaveBeenCalledTimes(1);
-    });
+    const req = { method: 'GET', path: '/test' };
+    const res = { on: jest.fn() };
+    const next = jest.fn();
+
+    fallbackMw(req, res, next);
+    expect(next).toHaveBeenCalledTimes(1);
   });
 });

@@ -11,7 +11,7 @@ async function addCollection(userId, productId) {
   });
 }
 
-async function getCollectionList(userId, params = {}) {
+async function getCollectionList(userId) {
   return Collection.findAll({
     where: { user_id: userId },
     include: [{ model: Product, attributes: ['id', 'name', 'images', 'min_price', 'max_price', 'status'] }],

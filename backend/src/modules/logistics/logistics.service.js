@@ -8,7 +8,7 @@ async function getLogistics(userId) {
   return Logistics.findAll({ where: { user_id: userId } });
 }
 
-async function getPriceList(params) {
+async function getPriceList() {
   // Mock: return placeholder pricing
   return [
     { id: 1, name: 'Standard Shipping (18-25 days)', price: 1500, currency: 'USD' },

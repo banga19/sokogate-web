@@ -9,7 +9,6 @@ const {
   registerSchema,
   forgetSchema,
   refreshSchema,
-  addVerifyCodeSchema,
 } = require('./auth.validation');
 
 // POST /api/v2/login

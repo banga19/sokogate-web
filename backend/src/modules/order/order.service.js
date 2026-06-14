@@ -1,6 +1,4 @@
-const { Op } = require('sequelize');
-const { v4: uuidv4 } = require('uuid');
-const { Order, CartItem, Product, ProductVariant, Address } = require('../../common/database/models');
+const { Order, Product, ProductVariant, Address } = require('../../common/database/models');
 const { NotFoundError } = require('../../common/utils/errors');
 const { getPagination } = require('../../common/utils/pagination');
 

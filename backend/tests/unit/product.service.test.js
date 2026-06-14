@@ -65,7 +65,7 @@ describe('getProductList', () => {
       where: { status: 'active' },
       offset: 0, limit: 20,
       order: [['sale_count', 'DESC']],
-      include: [{ model: Category, as: 'category', attributes: ['id', 'name', 'slug'] }],
+      include: [{ model: Category, as: 'Category', attributes: ['id', 'name', 'slug'] }],
       attributes: { exclude: ['description'] },
     });
     expect(result).toEqual({ rows: mockProducts, total: 2, page: 1, pageSize: 20 });
@@ -134,7 +134,7 @@ describe('getProductDetail', () => {
     expect(Product.findByPk).toHaveBeenCalledWith('prod-1', {
       include: [
         { model: require('../../src/common/database/models').ProductVariant, as: 'variants', where: { is_active: true }, required: false },
-        { model: Category, as: 'category', attributes: ['id', 'name', 'slug'] },
+        { model: Category, as: 'Category', attributes: ['id', 'name', 'slug'] },
         { model: require('../../src/common/database/models').Store, as: 'store', attributes: ['id', 'name', 'slug', 'logo_url', 'rating'] },
       ],
     });

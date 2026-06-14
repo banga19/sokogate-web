@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const { authenticate, requireAdmin } = require('../../common/middleware/auth.middleware');
-const { Banner } = require('../../common/database/models');
 const { Category } = require('../../common/database/models');
 const { success, created } = require('../../common/utils/apiResponse');
 

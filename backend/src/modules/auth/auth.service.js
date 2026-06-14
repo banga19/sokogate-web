@@ -2,9 +2,8 @@ const bcrypt = require('bcryptjs');
 const { v4: uuidv4 } = require('uuid');
 const { User } = require('../../common/database/models');
 const { generateAccessToken, generateRefreshToken, verifyToken } = require('../../common/utils/jwt');
-const { AuthError, ConflictError, NotFoundError } = require('../../common/utils/errors');
+const { AuthError, ConflictError } = require('../../common/utils/errors');
 const redis = require('../../config/redis');
-const config = require('../../config');
 
 const SALT_ROUNDS = 12;
 

@@ -63,7 +63,7 @@ describe('getStorebyName', () => {
   beforeEach(() => { jest.clearAllMocks(); });
 
   it('should return store by name', async () => {
-    const req = mockReq({ name: 'demo-store' });
+    const req = mockReq({ storeName: 'demo-store' });
     const res = mockRes();
     storeService.getStoreByName.mockResolvedValue(mockStore);
 

@@ -36,7 +36,7 @@ async function getProductList(params = {}) {
           ? [['created_at', 'DESC']]
           : [['sale_count', 'DESC']],
     include: [
-      { model: Category, as: 'category', attributes: ['id', 'name', 'slug'] },
+      { model: Category, as: 'Category', attributes: ['id', 'name', 'slug'] },
     ],
     attributes: { exclude: ['description'] },
   });
@@ -53,7 +53,7 @@ async function getProductDetail(productId) {
   const product = await Product.findByPk(productId, {
     include: [
       { model: ProductVariant, as: 'variants', where: { is_active: true }, required: false },
-      { model: Category, as: 'category', attributes: ['id', 'name', 'slug'] },
+      { model: Category, as: 'Category', attributes: ['id', 'name', 'slug'] },
       { model: Store, as: 'store', attributes: ['id', 'name', 'slug', 'logo_url', 'rating'] },
     ],
   });

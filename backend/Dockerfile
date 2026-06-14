@@ -3,8 +3,8 @@ FROM node:20-alpine
 WORKDIR /app
 
 # Install production dependencies first (for better caching)
-COPY package.json ./
-RUN yarn install --production --frozen-lockfile
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev
 
 # Copy source code
 COPY . .
