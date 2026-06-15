@@ -14,7 +14,7 @@
         alt=""
       />
       <h5 class="store-name">
-        {{ item.storeName }}
+        {{ item.storeName || item.name }}
         <span v-if="item.is_verified" class="verified-badge" :title="$t('common.verified') || 'Verified'">
           <i class="el-icon-success"></i>
         </span>

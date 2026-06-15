@@ -4,8 +4,8 @@ const { defineConfig, devices } = require('@playwright/test');
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
-module.exports = defineConfig({
-  testDir: './tests',
+const config = {
+  testDir: '.',
   /* Maximum time one test can run */
   timeout: 30000,
   expect: {
@@ -53,4 +53,16 @@ module.exports = defineConfig({
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
   outputDir: 'test-results',
-});
+};
+
+// In CI, auto-start the frontend dev server before tests and shut it down after
+if (process.env.CI) {
+  config.webServer = {
+    command: 'npx vue-cli-service serve --port 4500',
+    port: 4500,
+    timeout: 120000,
+    reuseExistingServer: false,
+  };
+}
+
+module.exports = defineConfig(config);

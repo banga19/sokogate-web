@@ -201,3 +201,44 @@ jobs:
           name: coverage-integration
           path: backend/coverage/
           retention-days: 14
+
+  # ────────────────────────────────────────────────────────────
+  # Frontend Visual Regression Tests (requires dev server)
+  # ────────────────────────────────────────────────────────────
+  frontend-visual-regression:
+    name: Visual Regression
+    needs: [lint]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Create .env from example
+        run: cp .env.example .env
+
+      - name: Install Playwright Chromium
+        run: npx playwright install chromium
+
+      - name: Run visual regression tests
+        run: npm run test:e2e:visual
+        # webServer in playwright.config.js auto-starts vue-cli-service on port 4500
+        # If tests fail, actual screenshots and diffs are in test-results/
+
+      - name: Upload snapshot diffs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-regression-diffs
+          path: |
+            test-results/
+            playwright-report/
+          retention-days: 14
+          if-no-files-found: warn

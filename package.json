@@ -9,7 +9,11 @@
     "start": "vue-cli-service serve --port 4500 --watch",
     "sync:prod": "yarn build && ~/ossutilmac64 cp -r ./dist/ oss://www-sokogate-com/ -u",
     "sync:test": "yarn build:test && ~/ossutilmac64 cp -r ./test/ oss://www-sokogate-test/ -u",
-    "generate-sitemap": "node scripts/generate-sitemap.js"
+    "generate-sitemap": "node scripts/generate-sitemap.js",
+    "test:e2e:visual": "npx playwright test tests/e2e/store-visual.spec.js --config=tests/e2e/playwright.config.js --project=chromium",
+    "test:e2e:visual:update": "npx playwright test tests/e2e/store-visual.spec.js --config=tests/e2e/playwright.config.js --project=chromium --update-snapshots",
+    "test:e2e:badge": "npx playwright test tests/e2e/store-banner.spec.js --config=tests/e2e/playwright.config.js --project=chromium",
+    "test:e2e:all": "npx playwright test tests/e2e/ --config=tests/e2e/playwright.config.js --project=chromium"
   },
   "dependencies": {
     "@paystack/inline-js": "^2.12.6",
@@ -48,6 +52,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.29.7",
+    "@playwright/test": "^1.61.0",
     "@sentry/vue": "^10.57.0",
     "@vue/cli-plugin-babel": "^5.0.9",
     "@vue/cli-plugin-eslint": "^5.0.9",

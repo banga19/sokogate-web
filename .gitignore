@@ -73,6 +73,11 @@ coverage/
 .nyc_output/
 *.test.js.snap
 
+# Playwright E2E test artifacts
+playwright-report/
+test-results/
+*.playwright/
+
 # ============================================================================
 # Cache & Temp
 # ============================================================================
