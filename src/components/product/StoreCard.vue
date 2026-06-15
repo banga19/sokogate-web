@@ -10,6 +10,10 @@
       <i v-else class="sokogate icon-shop" />
       {{ store.storeName }}
     </h4>
+    <div v-if="store.rating" class="store-rating">
+      <Star :value="store.rating" />
+      <span class="rating-text">{{ store.rating.toFixed(1) }}</span>
+    </div>
     <el-divider></el-divider>
     <button
       class="opt-btn-info"
@@ -22,7 +26,9 @@
 
 <script>
 import { getStoreLogoUrl } from "@/utils/banner";
+import Star from "@/components/product/Star.vue";
 export default {
+  components: { Star },
   props: {
     store: {
       type: Object,
@@ -63,6 +69,18 @@ export default {
 
   .sokogate {
     font-size: 18px;
+  }
+}
+.store-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0;
+
+  .rating-text {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
   }
 }
 .opt-btn-info {
