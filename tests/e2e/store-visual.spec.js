@@ -81,7 +81,7 @@ const EMPTY_BANNERS = { errcode: 0, data: [] };
 // ──────────────────────────────────────────────────────────────
 
 /**
- * Inject GotoTalking chat dialog header HTML into the page.
+ * Inject GotoTalking dialog header HTML into the page.
  * The GotoTalking component is not rendered on any active page (commented out
  * in product detail), so we inject the matching DOM structure directly.
  *
@@ -92,16 +92,18 @@ const EMPTY_BANNERS = { errcode: 0, data: [] };
  * The inner `.el-dialog` must override `position: fixed` from the component's
  * CSS with an explicit `position: relative !important` to stay inside the
  * centered wrapper without interfering with the page layout or test teardown.
+ *
+ * @param {import('@playwright/test').Page} page
+ * @param {object} storeData - Mock store data
+ * @param {number} [width] - Optional explicit pixel width. When omitted, the
+ *   component's CSS breakpoints take effect (e.g. @include mobile { width: 75% }).
  */
 const GOTO_TALKING_ID = 'goto-talking-visual-test';
 
-/**
- * Inject GotoTalking dialog header with an explicit pixel width.
- * Used by desktop tests where we want a fixed-width dialog.
- * The component's CSS width (20%) is overridden by the inline width.
- */
-async function injectGotoTalkingHeader(page, storeData, width = 380) {
-  await page.evaluate(({ data, id, w }) => {
+async function injectGotoTalkingHeader(page, storeData, width) {
+  const widthStyle = width ? `width:${width}px;` : '';
+
+  await page.evaluate(({ data, id, wStyle }) => {
     const prev = document.getElementById(id);
     if (prev) prev.remove();
 
@@ -110,7 +112,7 @@ async function injectGotoTalkingHeader(page, storeData, width = 380) {
     wrapper.className = 'talking-room';
     wrapper.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:99999;';
     wrapper.innerHTML = `
-      <div class="el-dialog" style="position:relative !important;width:${w}px;margin:0 auto;background:#fff;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,0.1);">
+      <div class="el-dialog" style="position:relative !important;${wStyle}margin:0 auto;background:#fff;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,0.1);">
         <div class="el-dialog__header">
           <div class="room-hd">
             <div class="hd-back"><i class="el-icon-arrow-left"></i></div>
@@ -126,51 +128,7 @@ async function injectGotoTalkingHeader(page, storeData, width = 380) {
       </div>
     `;
     document.body.appendChild(wrapper);
-  }, { data: storeData, id: GOTO_TALKING_ID, w: width });
-}
-
-/**
- * Inject GotoTalking dialog header WITHOUT an inline pixel width.
- * The component's CSS breakpoints take effect:
- *   - mobile (320-767px): width: 75%
- *   - default: width: 20% (but position:fixed is overridden)
- * Use this for responsive/mobile viewport tests.
- */
-async function injectGotoTalkingHeaderResponsive(page, storeData) {
-  await page.evaluate(({ data, id }) => {
-    const prev = document.getElementById(id);
-    if (prev) prev.remove();
-
-    const wrapper = document.createElement('div');
-    wrapper.id = id;
-    wrapper.className = 'talking-room';
-    wrapper.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:99999;';
-    wrapper.innerHTML = `
-      <div class="el-dialog" style="position:relative !important;margin:0 auto;background:#fff;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,0.1);">
-        <div class="el-dialog__header">
-          <div class="room-hd">
-            <div class="hd-back"><i class="el-icon-arrow-left"></i></div>
-            <img class="hd-logo" src="${data.logo_url}" alt="" />
-            <div class="hd-name">
-              ${data.storeName}
-              ${data.is_verified
-                ? '<span class="verified-badge" title="Verified"><i class="el-icon-success"></i></span>'
-                : ''}
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-    document.body.appendChild(wrapper);
-  }, { data: storeData, id: GOTO_TALKING_ID });
-}
-
-/** Remove the injected GotoTalking header to keep the page clean */
-async function cleanupGotoTalking(page) {
-  await page.evaluate((id) => {
-    const el = document.getElementById(id);
-    if (el) el.remove();
-  }, GOTO_TALKING_ID);
+  }, { data: storeData, id: GOTO_TALKING_ID, wStyle: widthStyle });
 }
 
 // ──────────────────────────────────────────────────────────────
@@ -414,8 +372,8 @@ test.describe('GotoTalking Dialog Header — Visual Regression', () => {
     await page.waitForLoadState('networkidle').catch(() => {});
     await page.waitForTimeout(1500);
 
-    // Inject the GotoTalking dialog header HTML matching the component's structure
-    await injectGotoTalkingHeader(page, VERIFIED_STORE);
+    // Inject the GotoTalking dialog header with fixed desktop width
+    await injectGotoTalkingHeader(page, VERIFIED_STORE, 380);
     await page.waitForTimeout(500);
 
     // The header should contain the store name
@@ -438,7 +396,7 @@ test.describe('GotoTalking Dialog Header — Visual Regression', () => {
     await page.waitForLoadState('networkidle').catch(() => {});
     await page.waitForTimeout(1500);
 
-    await injectGotoTalkingHeader(page, VERIFIED_STORE);
+    await injectGotoTalkingHeader(page, VERIFIED_STORE, 380);
     await page.waitForTimeout(500);
 
     // Close-up screenshot of just the verified badge
@@ -454,7 +412,7 @@ test.describe('GotoTalking Dialog Header — Visual Regression', () => {
     await page.waitForLoadState('networkidle').catch(() => {});
     await page.waitForTimeout(1500);
 
-    await injectGotoTalkingHeader(page, UNVERIFIED_STORE);
+    await injectGotoTalkingHeader(page, UNVERIFIED_STORE, 380);
     await page.waitForTimeout(500);
 
     // Header should show the store name without a badge
@@ -491,7 +449,7 @@ test.describe('GotoTalking Dialog Header — Mobile (375px)', () => {
     await page.waitForTimeout(1500);
 
     // Use responsive injection — no hardcoded width, so @include mobile { width: 75% } applies
-    await injectGotoTalkingHeaderResponsive(page, VERIFIED_STORE);
+    await injectGotoTalkingHeader(page, VERIFIED_STORE);
     await page.waitForTimeout(500);
 
     const hdName = page.locator('.room-hd .hd-name');
@@ -511,7 +469,7 @@ test.describe('GotoTalking Dialog Header — Mobile (375px)', () => {
     await page.waitForLoadState('networkidle').catch(() => {});
     await page.waitForTimeout(1500);
 
-    await injectGotoTalkingHeaderResponsive(page, VERIFIED_STORE);
+    await injectGotoTalkingHeader(page, VERIFIED_STORE);
     await page.waitForTimeout(500);
 
     const badge = page.locator('.room-hd .hd-name .verified-badge');
@@ -526,7 +484,7 @@ test.describe('GotoTalking Dialog Header — Mobile (375px)', () => {
     await page.waitForLoadState('networkidle').catch(() => {});
     await page.waitForTimeout(1500);
 
-    await injectGotoTalkingHeaderResponsive(page, UNVERIFIED_STORE);
+    await injectGotoTalkingHeader(page, UNVERIFIED_STORE);
     await page.waitForTimeout(500);
 
     const hdName = page.locator('.room-hd .hd-name');
