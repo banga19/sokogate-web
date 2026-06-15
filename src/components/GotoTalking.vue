@@ -21,6 +21,12 @@
           <div class="hd-back" @click="goback">
             <i class="el-icon-arrow-left"></i>
           </div>
+          <img
+            v-if="store.logo_url"
+            :src="store.logo_url + '?x-oss-process=style/w64'"
+            class="hd-logo"
+            alt=""
+          />
           <div class="hd-name">{{ storeName }}</div>
         </div>
         <div class="room-bd">
@@ -88,6 +94,12 @@
                   <div class="hd-back" @click="gobackinner">
                     <i class="el-icon-arrow-left"></i>
                   </div>
+                  <img
+                    v-if="store.logo_url"
+                    :src="store.logo_url + '?x-oss-process=style/w64'"
+                    class="hd-logo"
+                    alt=""
+                  />
                   <div class="hd-name">{{ storeName }}</div>
                 </div>
                 <div class="room-bd">
@@ -388,12 +400,22 @@ export default {
         color: #333;
         cursor: pointer;
       }
+      .hd-logo {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+        margin-left: 8px;
+      }
+
       .hd-name {
         font-size: 16px;
         font-weight: normal;
         color: #333;
         text-align: center;
         margin: auto;
+        margin-left: 8px;
       }
     }
     .room-bd {
