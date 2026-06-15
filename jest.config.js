@@ -11,6 +11,7 @@ module.exports = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '\.(css|scss|less)$': 'identity-obj-proxy',
+    '\.(png|jpg|jpeg|gif|svg|webp)$': '<rootDir>/tests/frontend/__mocks__/fileMock.js',
   },
   testEnvironment: 'jsdom',
   testMatch: ['<rootDir>/tests/frontend/**/*.test.js'],

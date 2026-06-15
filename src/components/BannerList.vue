@@ -88,7 +88,8 @@ export default {
           console.log("GetBannerList-type-res==========:", this.type, res);
           // API now returns banners array directly as res.data
           // Normalize image_url → image for consistent template usage
-          const rawList = Array.isArray(res.data) ? res.data : (res.data.rows || []);
+          const rawData = res && res.data;
+          const rawList = Array.isArray(rawData) ? rawData : (rawData && rawData.rows) || [];
           this.list = rawList.map((banner) => ({
             ...banner,
             image: banner.image || banner.image_url || '',
