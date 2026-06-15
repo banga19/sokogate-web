@@ -13,7 +13,12 @@
         class="store-logo"
         alt=""
       />
-      <h5 class="store-name">{{ item.storeName }}</h5>
+      <h5 class="store-name">
+        {{ item.storeName }}
+        <span v-if="item.is_verified" class="verified-badge" :title="$t('common.verified') || 'Verified'">
+          <i class="el-icon-success"></i>
+        </span>
+      </h5>
     </div>
     <div class="store-about">
       <span
@@ -134,6 +139,38 @@ export default {
       font-weight: 500;
       font-size: 30px;
       color: #000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .verified-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #1e90ff, #0066cc);
+        color: #fff;
+        font-size: 14px;
+        flex-shrink: 0;
+        box-shadow: 0 2px 4px rgba(30, 144, 255, 0.4);
+
+        i {
+          font-size: 14px;
+        }
+
+        @include mobile {
+          width: 20px;
+          height: 20px;
+          font-size: 12px;
+
+          i {
+            font-size: 12px;
+          }
+        }
+      }
+
       @include mobile {
         font-size: 20px;
       }
