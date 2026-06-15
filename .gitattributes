@@ -1,0 +1,13 @@
+* text=auto eol=lf
+
+*.json text
+*.yml text
+*.yaml text
+*.xml text
+*.sh text eol=lf
+*.bat text eol=crlf
+
+*.{png,jpg,jpeg,gif,ico,ico,webp,svg,woff,woff2,ttf,eot,otf} binary
+
+*.log export-ignore
+backend/logs/** export-ignore
