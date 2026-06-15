@@ -19,8 +19,8 @@ services:
   # ---- Frontend ----
   frontend:
     build:
-      context: ./frontend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./frontend/Dockerfile
     container_name: sokogate-frontend
     ports:
       - "80:80"

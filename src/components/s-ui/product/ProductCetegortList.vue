@@ -138,8 +138,8 @@ export default {
           this.req.page++;
         }
         // console.log("this.$route.query.cid:", this.$route.query.cid);
-        this.req.categoryId = this.$route.query.cid;
-        this.req.search = this.$route.query.search;
+        this.req.categoryId = this.$route.query.cid || undefined;
+        this.req.search = this.$route.query.search || undefined;
         // console.log("this.req:", this.req);
         GetSpuList(this.req)
           .then((res) => {
