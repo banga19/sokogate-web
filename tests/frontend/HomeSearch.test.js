@@ -8,9 +8,22 @@ import HomeSearch from '@/components/HomeSearch.vue';
 jest.mock('@/utils/api', () => ({
   GetSpuList: jest.fn(),
   GetStorebyName: jest.fn(),
+  UploadFileToOSS: jest.fn(),
 }));
 
-const { GetSpuList, GetStorebyName } = require('@/utils/api');
+jest.mock('@/utils/OSS', () => ({
+  getOSSImageFullUrl: jest.fn((path) => `https://oss.sokogate.com/${path}?x-oss-process=image/format,webp`),
+}));
+
+jest.mock('element-ui', () => ({
+  Message: {
+    error: jest.fn(),
+  },
+}));
+
+const { GetSpuList, GetStorebyName, UploadFileToOSS } = require('@/utils/api');
+const { getOSSImageFullUrl } = require('@/utils/OSS');
+const { Message } = require('element-ui');
 
 const mockT = jest.fn((key) => {
   const translations = {
@@ -50,6 +63,8 @@ function createWrapper(options = {}) {
     navto: jest.fn(),
   };
 
+  const $loading = jest.fn().mockReturnValue({ close: jest.fn() });
+
   return shallowMount(HomeSearch, {
     mocks: {
       $t: mockT,
@@ -57,6 +72,7 @@ function createWrapper(options = {}) {
       $router: router,
       $route: route,
       $utils: utils,
+      $loading,
     },
     stubs: {
       'b-form': true,
@@ -68,6 +84,8 @@ function createWrapper(options = {}) {
       'el-dropdown': true,
       'el-dropdown-menu': true,
       'el-dropdown-item': true,
+      'el-upload': true,
+      'el-button': true,
     },
   });
 }
@@ -547,6 +565,502 @@ describe('HomeSearch.vue', () => {
       wrapper.setData({ isFocus: true, keyword: '' });
 
       expect(wrapper.vm.keyword.length).toBe(0);
+    });
+  });
+
+  // ──────────────────────────────────────────────────────────────
+  // Image Search: beforeUpload
+  // ──────────────────────────────────────────────────────────────
+  describe('beforeUpload (image search)', () => {
+    beforeEach(() => {
+      jest.clearAllMocks();
+    });
+
+    it('should accept valid image files', () => {
+      const wrapper = createWrapper();
+      const file = new File(['dummy'], 'test.png', { type: 'image/png' });
+      Object.defineProperty(file, 'size', { value: 1024 * 1024 }); // 1MB
+
+      const result = wrapper.vm.beforeUpload(file);
+
+      expect(result).toBe(true);
+      expect(Message.error).not.toHaveBeenCalled();
+    });
+
+    it('should reject non-image files', () => {
+      const wrapper = createWrapper();
+      const file = new File(['dummy'], 'test.pdf', { type: 'application/pdf' });
+
+      expect(() => wrapper.vm.beforeUpload(file)).toThrow('Only images allowed');
+      expect(Message.error).toHaveBeenCalled();
+    });
+
+    it('should reject files larger than 4MB', () => {
+      const wrapper = createWrapper();
+      const file = new File(['dummy'], 'test.png', { type: 'image/png' });
+      Object.defineProperty(file, 'size', { value: 5 * 1024 * 1024 }); // 5MB
+
+      expect(() => wrapper.vm.beforeUpload(file)).toThrow('File too large');
+      expect(Message.error).toHaveBeenCalled();
+    });
+
+    it('should show loading overlay when upload starts', () => {
+      const wrapper = createWrapper();
+      const file = new File(['dummy'], 'test.png', { type: 'image/png' });
+      Object.defineProperty(file, 'size', { value: 1024 * 1024 });
+
+      wrapper.vm.beforeUpload(file);
+
+      expect(wrapper.vm.uploadLoading).toBeDefined();
+    });
+
+    it('should accept image/webp files', () => {
+      const wrapper = createWrapper();
+      const file = new File(['dummy'], 'test.webp', { type: 'image/webp' });
+      Object.defineProperty(file, 'size', { value: 500 * 1024 });
+
+      const result = wrapper.vm.beforeUpload(file);
+
+      expect(result).toBe(true);
+    });
+  });
+
+  // ──────────────────────────────────────────────────────────────
+  // Image Search: handleUpload
+  // ──────────────────────────────────────────────────────────────
+  describe('handleUpload (image search)', () => {
+    beforeEach(() => {
+      jest.clearAllMocks();
+    });
+
+    it('should upload file to OSS and return full URL', async () => {
+      UploadFileToOSS.mockResolvedValue('searchImg/image_md5.png');
+      const wrapper = createWrapper();
+      const params = { file: new File(['dummy'], 'test.png', { type: 'image/png' }) };
+
+      const result = await wrapper.vm.handleUpload(params);
+
+      expect(UploadFileToOSS).toHaveBeenCalledWith(params.file, 'searchImg/');
+      expect(result).toBe('https://oss.sokogate.com/searchImg/image_md5.png?x-oss-process=image/format,webp');
+    });
+
+    it('should close loading overlay when upload completes', async () => {
+      UploadFileToOSS.mockResolvedValue('searchImg/test.png');
+      const closeMock = jest.fn();
+      const wrapper = createWrapper();
+      wrapper.setData({ uploadLoading: { close: closeMock } });
+
+      await wrapper.vm.handleUpload({ file: 'test' });
+
+      expect(closeMock).toHaveBeenCalled();
+    });
+
+    it('should close loading overlay even when upload fails', async () => {
+      UploadFileToOSS.mockRejectedValue(new Error('Upload failed'));
+      const closeMock = jest.fn();
+      const wrapper = createWrapper();
+      wrapper.setData({ uploadLoading: { close: closeMock } });
+
+      await expect(wrapper.vm.handleUpload({ file: 'test' })).rejects.toThrow('Upload failed');
+      expect(closeMock).toHaveBeenCalled();
+    });
+
+    it('should not crash when uploadLoading is null', async () => {
+      UploadFileToOSS.mockResolvedValue('searchImg/test.png');
+      const wrapper = createWrapper();
+      wrapper.setData({ uploadLoading: null });
+
+      await expect(wrapper.vm.handleUpload({ file: 'test' })).resolves.toBeDefined();
+    });
+  });
+
+  // ──────────────────────────────────────────────────────────────
+  // Image Search: handleUploadSuccess
+  // ──────────────────────────────────────────────────────────────
+  describe('handleUploadSuccess (image search)', () => {
+    beforeEach(() => {
+      jest.clearAllMocks();
+    });
+
+    it('should navigate to product list with encoded searchImg URL', () => {
+      const wrapper = createWrapper();
+      const imageUrl = 'https://oss.sokogate.com/searchImg/test.png';
+
+      wrapper.vm.handleUploadSuccess(imageUrl);
+
+      expect(wrapper.vm.$utils.navto).toHaveBeenCalledWith('/v2/product/list', {
+        searchImg: encodeURIComponent(imageUrl),
+      });
+    });
+
+    it('should encode special characters in URL', () => {
+      const wrapper = createWrapper();
+      const imageUrl = 'https://oss.sokogate.com/searchImg/test with spaces.png';
+
+      wrapper.vm.handleUploadSuccess(imageUrl);
+
+      expect(wrapper.vm.$utils.navto).toHaveBeenCalledWith('/v2/product/list', {
+        searchImg: 'https%3A%2F%2Foss.sokogate.com%2FsearchImg%2Ftest%20with%20spaces.png',
+      });
+    });
+  });
+
+  // ──────────────────────────────────────────────────────────────
+  // getTeacherList: images array fallback
+  // ──────────────────────────────────────────────────────────────
+  describe('getTeacherList - images array fallback', () => {
+    beforeEach(() => {
+      jest.clearAllMocks();
+    });
+
+    it('should use item.images[0] when img and galleryList are missing', async () => {
+      const mockProduct = { id: '1', spuName: 'Phone', images: ['oss-image.jpg'] };
+      GetSpuList.mockResolvedValue({ data: { rows: [mockProduct] } });
+      const wrapper = createWrapper();
+
+      wrapper.vm.getTeacherList('phone');
+      await flushPromises();
+
+      expect(wrapper.vm.list[0].img).toBe('oss-image.jpg');
+    });
+
+    it('should prefer item.img over images array', async () => {
+      const mockProduct = { id: '1', spuName: 'Phone', img: 'direct.jpg', images: ['array.jpg'] };
+      GetSpuList.mockResolvedValue({ data: { rows: [mockProduct] } });
+      const wrapper = createWrapper();
+
+      wrapper.vm.getTeacherList('phone');
+      await flushPromises();
+
+      expect(wrapper.vm.list[0].img).toBe('direct.jpg');
+    });
+
+    it('should prefer galleryList over images array', async () => {
+      const mockProduct = { id: '1', spuName: 'Phone', galleryList: ['gallery.jpg'], images: ['array.jpg'] };
+      GetSpuList.mockResolvedValue({ data: { rows: [mockProduct] } });
+      const wrapper = createWrapper();
+
+      wrapper.vm.getTeacherList('phone');
+      await flushPromises();
+
+      expect(wrapper.vm.list[0].img).toBe('gallery.jpg');
+    });
+
+    it('should handle images as a string (not array) as empty (backend always returns array)', async () => {
+      // The backend always returns images as an array (Sequelize JSONB).
+      // If it somehow comes as a string, the component treats it as empty.
+      const mockProduct = { id: '1', spuName: 'Phone', images: 'single-image.jpg' };
+      GetSpuList.mockResolvedValue({ data: { rows: [mockProduct] } });
+      const wrapper = createWrapper();
+
+      wrapper.vm.getTeacherList('phone');
+      await flushPromises();
+
+      expect(wrapper.vm.list[0].img).toBe('');
+    });
+
+    it('should return empty string when no images at all', async () => {
+      const mockProduct = { id: '1', spuName: 'Phone' };
+      GetSpuList.mockResolvedValue({ data: { rows: [mockProduct] } });
+      const wrapper = createWrapper();
+
+      wrapper.vm.getTeacherList('phone');
+      await flushPromises();
+
+      expect(wrapper.vm.list[0].img).toBe('');
+    });
+
+    it('should return empty string when images is empty array', async () => {
+      const mockProduct = { id: '1', spuName: 'Phone', images: [] };
+      GetSpuList.mockResolvedValue({ data: { rows: [mockProduct] } });
+      const wrapper = createWrapper();
+
+      wrapper.vm.getTeacherList('phone');
+      await flushPromises();
+
+      expect(wrapper.vm.list[0].img).toBe('');
+    });
+  });
+
+  // ──────────────────────────────────────────────────────────────
+  // getStorebyName: response format variants
+  // ──────────────────────────────────────────────────────────────
+  describe('getStorebyName - response format variants', () => {
+    beforeEach(() => {
+      jest.clearAllMocks();
+    });
+
+    it('should handle response data as direct array', async () => {
+      const mockStores = [{ id: 's1', storeName: 'Store One', logo: 'logo.png' }];
+      GetStorebyName.mockResolvedValue({ data: mockStores });
+      const wrapper = createWrapper();
+
+      wrapper.vm.getStorebyName('store');
+      await flushPromises();
+
+      expect(wrapper.vm.list).toHaveLength(1);
+      expect(wrapper.vm.list[0].img).toBe('logo.png');
+    });
+
+    it('should handle response data as { rows } object', async () => {
+      const mockStores = [{ id: 's1', storeName: 'Store One', logo: 'logo.png' }];
+      GetStorebyName.mockResolvedValue({ data: { rows: mockStores } });
+      const wrapper = createWrapper();
+
+      wrapper.vm.getStorebyName('store');
+      await flushPromises();
+
+      expect(wrapper.vm.list).toHaveLength(1);
+    });
+
+    it('should prefer logo over img when both exist', async () => {
+      const mockStores = [{ id: 's1', storeName: 'Store', logo: 'logo.png', img: 'img.jpg' }];
+      GetStorebyName.mockResolvedValue({ data: { rows: mockStores } });
+      const wrapper = createWrapper();
+
+      wrapper.vm.getStorebyName('store');
+      await flushPromises();
+
+      expect(wrapper.vm.list[0].img).toBe('logo.png');
+    });
+
+    it('should use img when logo is missing', async () => {
+      const mockStores = [{ id: 's1', storeName: 'Store', img: 'img.jpg' }];
+      GetStorebyName.mockResolvedValue({ data: { rows: mockStores } });
+      const wrapper = createWrapper();
+
+      wrapper.vm.getStorebyName('store');
+      await flushPromises();
+
+      expect(wrapper.vm.list[0].img).toBe('img.jpg');
+    });
+
+    it('should handle empty rows gracefully', async () => {
+      GetStorebyName.mockResolvedValue({ data: { rows: [] } });
+      const wrapper = createWrapper();
+
+      wrapper.vm.getStorebyName('empty');
+      await flushPromises();
+
+      expect(wrapper.vm.list).toEqual([]);
+    });
+
+    it('should handle null/undefined data gracefully', async () => {
+      GetStorebyName.mockResolvedValue({ data: null });
+      const wrapper = createWrapper();
+
+      wrapper.vm.getStorebyName('test');
+      await flushPromises();
+
+      expect(wrapper.vm.list).toEqual([]);
+    });
+  });
+
+  // ──────────────────────────────────────────────────────────────
+  // Mode switching: Product <-> Store
+  // ──────────────────────────────────────────────────────────────
+  describe('mode switching (Product <-> Store)', () => {
+    beforeEach(() => {
+      jest.clearAllMocks();
+      jest.useFakeTimers();
+    });
+
+    afterEach(() => {
+      jest.useRealTimers();
+    });
+
+    it('should switch from Product to Store mode via handleCommand', () => {
+      const wrapper = createWrapper();
+      wrapper.setData({ changeValue: 'Product' });
+
+      wrapper.vm.handleCommand('Store');
+
+      expect(wrapper.vm.changeValue).toBe('Store');
+    });
+
+    it('should switch from Store to Product mode via handleCommand', () => {
+      const wrapper = createWrapper();
+      wrapper.setData({ changeValue: 'Store' });
+
+      wrapper.vm.handleCommand('Product');
+
+      expect(wrapper.vm.changeValue).toBe('Product');
+    });
+
+    it('should call correct search method when onInput fires in Product mode', () => {
+      const wrapper = createWrapper();
+      wrapper.setData({ changeValue: 'Product', keyword: 'phone' });
+      const getTeacherListSpy = jest.spyOn(wrapper.vm, 'getTeacherList');
+
+      wrapper.vm.onInput();
+      jest.advanceTimersByTime(500);
+
+      expect(getTeacherListSpy).toHaveBeenCalledWith('phone');
+      getTeacherListSpy.mockRestore();
+    });
+
+    it('should call correct search method when onInput fires in Store mode', () => {
+      const wrapper = createWrapper();
+      wrapper.setData({ changeValue: 'Store', keyword: 'my-store' });
+      const getStorebyNameSpy = jest.spyOn(wrapper.vm, 'getStorebyName');
+
+      wrapper.vm.onInput();
+      jest.advanceTimersByTime(500);
+
+      expect(getStorebyNameSpy).toHaveBeenCalledWith('my-store');
+      getStorebyNameSpy.mockRestore();
+    });
+
+    it('should navigate to correct route in Product mode via onSubmit', () => {
+      const wrapper = createWrapper();
+      wrapper.setData({ changeValue: 'Product', keyword: 'phone' });
+
+      wrapper.vm.onSubmit({ preventDefault: jest.fn() });
+
+      expect(wrapper.vm.$utils.navto).toHaveBeenCalledWith('/v2/product/list', {
+        search: 'phone',
+      });
+    });
+
+    it('should navigate to correct route in Store mode via onSubmit', () => {
+      const wrapper = createWrapper();
+      wrapper.setData({ changeValue: 'Store', keyword: 'my-store' });
+
+      wrapper.vm.onSubmit({ preventDefault: jest.fn() });
+
+      expect(wrapper.vm.$utils.navto).toHaveBeenCalledWith('/v2/store/storeList', {
+        search: 'my-store',
+      });
+    });
+
+    it('should preserve list across mode switches via handleCommand', () => {
+      const wrapper = createWrapper();
+      wrapper.setData({
+        changeValue: 'Product',
+        keyword: 'phone',
+        list: [{ id: '1', spuName: 'Phone' }],
+      });
+
+      // Switching to Store should clear the list
+      wrapper.vm.handleCommand('Store');
+      expect(wrapper.vm.list).toEqual([]);
+
+      // Switching back to Product should keep list empty (fresh start)
+      wrapper.vm.handleCommand('Product');
+      expect(wrapper.vm.list).toEqual([]);
+    });
+
+    it('should set loading when switching modes with keyword', () => {
+      const wrapper = createWrapper();
+      wrapper.setData({
+        changeValue: 'Product',
+        keyword: 'phone',
+      });
+
+      wrapper.vm.handleCommand('Store');
+
+      // After switching mode, list should be cleared
+      expect(wrapper.vm.changeValue).toBe('Store');
+      expect(wrapper.vm.list).toEqual([]);
+    });
+  });
+
+  // ──────────────────────────────────────────────────────────────
+  // $route.query watcher
+  // ──────────────────────────────────────────────────────────────
+  describe('$route.query watcher', () => {
+    beforeEach(() => {
+      jest.clearAllMocks();
+    });
+
+    it('should update keyword from route query on product list page', () => {
+      const wrapper = createWrapper({
+        routePath: '/v2/product/list',
+        routeQuery: { search: 'laptop' },
+      });
+
+      const mockQuery = { search: 'laptop' };
+      wrapper.vm.$options.watch['$route.query'].call(wrapper.vm, mockQuery);
+
+      expect(wrapper.vm.keyword).toBe('laptop');
+    });
+
+    it('should update keyword from route query on store list page', () => {
+      const wrapper = createWrapper({
+        routePath: '/v2/store/storeList',
+        routeQuery: { search: 'my-store' },
+      });
+
+      const mockQuery = { search: 'my-store' };
+      wrapper.vm.$options.watch['$route.query'].call(wrapper.vm, mockQuery);
+
+      expect(wrapper.vm.keyword).toBe('my-store');
+    });
+
+    it('should clear keyword when not on searchable pages', () => {
+      const wrapper = createWrapper({
+        routePath: '/',
+        routeQuery: { search: 'phone' },
+      });
+      wrapper.setData({ keyword: 'old-keyword' });
+
+      const mockQuery = { search: 'phone' };
+      wrapper.vm.$options.watch['$route.query'].call(wrapper.vm, mockQuery);
+
+      expect(wrapper.vm.keyword).toBe('');
+    });
+
+    it('should handle null query gracefully', () => {
+      const wrapper = createWrapper({
+        routePath: '/v2/product/list',
+      });
+      wrapper.setData({ keyword: 'existing' });
+
+      wrapper.vm.$options.watch['$route.query'].call(wrapper.vm, null);
+
+      expect(wrapper.vm.keyword).toBe('');
+    });
+
+    it('should set keyword to empty when query.search is missing', () => {
+      const wrapper = createWrapper({
+        routePath: '/v2/product/list',
+        routeQuery: { search: 'phone' },
+      });
+
+      wrapper.vm.$options.watch['$route.query'].call(wrapper.vm, {});
+
+      expect(wrapper.vm.keyword).toBe('');
+    });
+  });
+
+  // ──────────────────────────────────────────────────────────────
+  // Data initialization
+  // ──────────────────────────────────────────────────────────────
+  describe('data initialization', () => {
+    it('should initialize uploadLoading as null', () => {
+      const wrapper = createWrapper();
+      expect(wrapper.vm.uploadLoading).toBeNull();
+    });
+
+    it('should initialize with empty list and loading false', () => {
+      const wrapper = createWrapper();
+      expect(wrapper.vm.list).toEqual([]);
+      expect(wrapper.vm.loading).toBe(false);
+      expect(wrapper.vm.isFocus).toBe(false);
+    });
+
+    it('should read keyword from route on create', () => {
+      const wrapper = createWrapper({
+        routeQuery: { search: 'test-query' },
+      });
+
+      // created() runs automatically during shallowMount
+      expect(wrapper.vm.keyword).toBe('test-query');
+    });
+
+    it('should handle missing route query on create', () => {
+      const wrapper = createWrapper();
+      expect(wrapper.vm.keyword).toBe('');
     });
   });
 });
