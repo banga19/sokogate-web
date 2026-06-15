@@ -85,7 +85,7 @@ test.describe('Store Page — Verified Badge', () => {
   test('should render verified badge in DOM when Store.is_verified is true', async ({ page }) => {
     await page.goto('/v2/store/about?id=store-1');
     // Wait for Vue app to mount and page resources to load
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectStoreData(page, makeVerifiedStore());
@@ -103,7 +103,7 @@ test.describe('Store Page — Verified Badge', () => {
 
   test('should NOT render verified badge when Store.is_verified is false', async ({ page }) => {
     await page.goto('/v2/store/about?id=store-2');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectStoreData(page, makeUnverifiedStore());

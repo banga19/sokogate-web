@@ -185,7 +185,7 @@ test.describe('Store About Page — Visual Regression', () => {
 
   test('full banner header with verified store', async ({ page }) => {
     await page.goto('/v2/store/about?id=store-1');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectVueData(page, 'storelist', VERIFIED_STORE);
@@ -201,7 +201,7 @@ test.describe('Store About Page — Visual Regression', () => {
 
   test('full banner header with unverified store', async ({ page }) => {
     await page.goto('/v2/store/about?id=store-2');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectVueData(page, 'storelist', UNVERIFIED_STORE);
@@ -217,7 +217,7 @@ test.describe('Store About Page — Visual Regression', () => {
 
   test('contact info section (verified store with email and phone)', async ({ page }) => {
     await page.goto('/v2/store/about?id=store-1');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectVueData(page, 'storelist', VERIFIED_STORE);
@@ -236,7 +236,7 @@ test.describe('Store About Page — Visual Regression', () => {
 
   test('no contact info section when fields are empty', async ({ page }) => {
     await page.goto('/v2/store/about?id=store-2');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectVueData(page, 'storelist', UNVERIFIED_STORE);
@@ -252,7 +252,7 @@ test.describe('Store About Page — Visual Regression', () => {
 
   test('store name appears correctly', async ({ page }) => {
     await page.goto('/v2/store/about?id=store-1');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectVueData(page, 'storelist', VERIFIED_STORE);
@@ -280,7 +280,7 @@ test.describe('Store About Page — Mobile (375px)', () => {
 
   test('mobile banner header with verified store', async ({ page }) => {
     await page.goto('/v2/store/about?id=store-1');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectVueData(page, 'storelist', VERIFIED_STORE);
@@ -297,7 +297,7 @@ test.describe('Store About Page — Mobile (375px)', () => {
 
   test('mobile banner header with unverified store', async ({ page }) => {
     await page.goto('/v2/store/about?id=store-2');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectVueData(page, 'storelist', UNVERIFIED_STORE);
@@ -314,7 +314,7 @@ test.describe('Store About Page — Mobile (375px)', () => {
 
   test('mobile store name with verified badge', async ({ page }) => {
     await page.goto('/v2/store/about?id=store-1');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectVueData(page, 'storelist', VERIFIED_STORE);
@@ -331,7 +331,7 @@ test.describe('Store About Page — Mobile (375px)', () => {
 
   test('mobile contact info section', async ({ page }) => {
     await page.goto('/v2/store/about?id=store-1');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectVueData(page, 'storelist', VERIFIED_STORE);
@@ -362,7 +362,7 @@ test.describe('StoreCard — Visual Regression', () => {
 
   test('StoreCard with verified badge and rating', async ({ page }) => {
     await page.goto('/v2/store/storeList?search=demo');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectVueData(page, 'list', [VERIFIED_STORE]);
@@ -378,7 +378,7 @@ test.describe('StoreCard — Visual Regression', () => {
 
   test('StoreCard without verified badge (unverified, no rating)', async ({ page }) => {
     await page.goto('/v2/store/storeList?search=new');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectVueData(page, 'list', [UNVERIFIED_STORE]);
@@ -394,7 +394,7 @@ test.describe('StoreCard — Visual Regression', () => {
 
   test('StoreCard with rating but no verified badge', async ({ page }) => {
     await page.goto('/v2/store/storeList?search=popular');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectVueData(page, 'list', [RATED_UNVERIFIED_STORE]);
@@ -410,7 +410,7 @@ test.describe('StoreCard — Visual Regression', () => {
 
   test('StoreCard verified badge detail', async ({ page }) => {
     await page.goto('/v2/store/storeList?search=demo');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectVueData(page, 'list', [VERIFIED_STORE]);
@@ -426,7 +426,7 @@ test.describe('StoreCard — Visual Regression', () => {
 
   test('StoreCard no badge when unverified', async ({ page }) => {
     await page.goto('/v2/store/storeList?search=new');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectVueData(page, 'list', [UNVERIFIED_STORE]);
@@ -450,7 +450,7 @@ test.describe('StoreCard — Mobile (375px)', () => {
 
   test('mobile StoreCard with verified badge and rating', async ({ page }) => {
     await page.goto('/v2/store/storeList?search=demo');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectVueData(page, 'list', [VERIFIED_STORE]);
@@ -467,7 +467,7 @@ test.describe('StoreCard — Mobile (375px)', () => {
 
   test('mobile StoreCard without verified badge (unverified, no rating)', async ({ page }) => {
     await page.goto('/v2/store/storeList?search=new');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectVueData(page, 'list', [UNVERIFIED_STORE]);
@@ -483,7 +483,7 @@ test.describe('StoreCard — Mobile (375px)', () => {
 
   test('mobile StoreCard with rating but no verified badge', async ({ page }) => {
     await page.goto('/v2/store/storeList?search=popular');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectVueData(page, 'list', [RATED_UNVERIFIED_STORE]);
@@ -499,7 +499,7 @@ test.describe('StoreCard — Mobile (375px)', () => {
 
   test('mobile StoreCard verified badge close-up', async ({ page }) => {
     await page.goto('/v2/store/storeList?search=demo');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectVueData(page, 'list', [VERIFIED_STORE]);
@@ -516,7 +516,7 @@ test.describe('StoreCard — Mobile (375px)', () => {
 
   test('mobile StoreCard no badge when unverified', async ({ page }) => {
     await page.goto('/v2/store/storeList?search=new');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectVueData(page, 'list', [UNVERIFIED_STORE]);
@@ -540,7 +540,7 @@ test.describe('GotoTalking Dialog Header — Visual Regression', () => {
 
   test('dialog header with verified badge', async ({ page }) => {
     await page.goto('/v2/store/about?id=store-1');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     // Inject the GotoTalking dialog header with fixed desktop width
@@ -564,7 +564,7 @@ test.describe('GotoTalking Dialog Header — Visual Regression', () => {
 
   test('dialog header verified badge close-up', async ({ page }) => {
     await page.goto('/v2/store/about?id=store-1');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectGotoTalkingHeader(page, VERIFIED_STORE, 380);
@@ -580,7 +580,7 @@ test.describe('GotoTalking Dialog Header — Visual Regression', () => {
 
   test('dialog header without verified badge', async ({ page }) => {
     await page.goto('/v2/store/about?id=store-2');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectGotoTalkingHeader(page, UNVERIFIED_STORE, 380);
@@ -616,7 +616,7 @@ test.describe('GotoTalking Dialog Header — Mobile (375px)', () => {
 
   test('mobile dialog header with verified badge', async ({ page }) => {
     await page.goto('/v2/store/about?id=store-1');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     // Use responsive injection — no hardcoded width, so @include mobile { width: 75% } applies
@@ -637,7 +637,7 @@ test.describe('GotoTalking Dialog Header — Mobile (375px)', () => {
 
   test('mobile dialog header verified badge close-up', async ({ page }) => {
     await page.goto('/v2/store/about?id=store-1');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectGotoTalkingHeader(page, VERIFIED_STORE);
@@ -652,7 +652,7 @@ test.describe('GotoTalking Dialog Header — Mobile (375px)', () => {
 
   test('mobile dialog header without verified badge', async ({ page }) => {
     await page.goto('/v2/store/about?id=store-2');
-    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(1500);
 
     await injectGotoTalkingHeader(page, UNVERIFIED_STORE);
