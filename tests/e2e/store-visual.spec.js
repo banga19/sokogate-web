@@ -268,6 +268,87 @@ test.describe('Store About Page — Visual Regression', () => {
 });
 
 // ──────────────────────────────────────────────────────────────
+// Tests — Store About Page (Mobile 375px)
+// ──────────────────────────────────────────────────────────────
+
+test.describe('Store About Page — Mobile (375px)', () => {
+  test.describe.configure({ mode: 'serial' });
+
+  test.beforeEach(async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 667 });
+  });
+
+  test('mobile banner header with verified store', async ({ page }) => {
+    await page.goto('/v2/store/about?id=store-1');
+    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForTimeout(1500);
+
+    await injectVueData(page, 'storelist', VERIFIED_STORE);
+    await page.waitForTimeout(500);
+
+    const banner = page.locator('.banner-list-box');
+    await expect(banner).toBeAttached({ timeout: 5000 });
+
+    // Mobile: logo 36px, name font 20px, badge 20px, left-aligned at 9%
+    await expect(banner).toHaveScreenshot('store-about-mobile-verified-banner.png', {
+      maxDiffPixelRatio: 0.02,
+    });
+  });
+
+  test('mobile banner header with unverified store', async ({ page }) => {
+    await page.goto('/v2/store/about?id=store-2');
+    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForTimeout(1500);
+
+    await injectVueData(page, 'storelist', UNVERIFIED_STORE);
+    await page.waitForTimeout(500);
+
+    const banner = page.locator('.banner-list-box');
+    await expect(banner).toBeAttached({ timeout: 5000 });
+
+    // No verified badge at mobile
+    await expect(banner).toHaveScreenshot('store-about-mobile-unverified-banner.png', {
+      maxDiffPixelRatio: 0.02,
+    });
+  });
+
+  test('mobile store name with verified badge', async ({ page }) => {
+    await page.goto('/v2/store/about?id=store-1');
+    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForTimeout(1500);
+
+    await injectVueData(page, 'storelist', VERIFIED_STORE);
+    await page.waitForTimeout(500);
+
+    const storeName = page.locator('.store-name');
+    await expect(storeName).toHaveText(/Demo/, { timeout: 5000 });
+
+    // Mobile: font 20px, badge 20px with 12px icon
+    await expect(storeName).toHaveScreenshot('store-about-mobile-verified-store-name.png', {
+      maxDiffPixelRatio: 0.02,
+    });
+  });
+
+  test('mobile contact info section', async ({ page }) => {
+    await page.goto('/v2/store/about?id=store-1');
+    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForTimeout(1500);
+
+    await injectVueData(page, 'storelist', VERIFIED_STORE);
+    await page.waitForTimeout(500);
+
+    await expect(page.locator('.store-name')).toHaveText(/Demo/, { timeout: 5000 });
+
+    const contactInfo = page.locator('.contact-info');
+    await expect(contactInfo).toBeVisible({ timeout: 5000 });
+
+    await expect(contactInfo).toHaveScreenshot('store-about-mobile-contact-info.png', {
+      maxDiffPixelRatio: 0.02,
+    });
+  });
+});
+
+// ──────────────────────────────────────────────────────────────
 // Tests — Store List Page (StoreCard)
 // ──────────────────────────────────────────────────────────────
 
@@ -344,6 +425,96 @@ test.describe('StoreCard — Visual Regression', () => {
   });
 
   test('StoreCard no badge when unverified', async ({ page }) => {
+    await page.goto('/v2/store/storeList?search=new');
+    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForTimeout(1500);
+
+    await injectVueData(page, 'list', [UNVERIFIED_STORE]);
+    await page.waitForTimeout(500);
+
+    const badge = page.locator('.store-card .verified-badge');
+    await expect(badge).toHaveCount(0);
+  });
+});
+
+// ──────────────────────────────────────────────────────────────
+// Tests — StoreCard (Mobile 375px)
+// ──────────────────────────────────────────────────────────────
+
+test.describe('StoreCard — Mobile (375px)', () => {
+  test.describe.configure({ mode: 'serial' });
+
+  test.beforeEach(async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 667 });
+  });
+
+  test('mobile StoreCard with verified badge and rating', async ({ page }) => {
+    await page.goto('/v2/store/storeList?search=demo');
+    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForTimeout(1500);
+
+    await injectVueData(page, 'list', [VERIFIED_STORE]);
+    await page.waitForTimeout(500);
+
+    const storeCard = page.locator('.store-card');
+    await expect(storeCard).toBeAttached({ timeout: 5000 });
+
+    // Same card layout — narrower at mobile, no responsive CSS changes
+    await expect(storeCard).toHaveScreenshot('store-card-mobile-verified-rated.png', {
+      maxDiffPixelRatio: 0.02,
+    });
+  });
+
+  test('mobile StoreCard without verified badge (unverified, no rating)', async ({ page }) => {
+    await page.goto('/v2/store/storeList?search=new');
+    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForTimeout(1500);
+
+    await injectVueData(page, 'list', [UNVERIFIED_STORE]);
+    await page.waitForTimeout(500);
+
+    const storeCard = page.locator('.store-card');
+    await expect(storeCard).toBeAttached({ timeout: 5000 });
+
+    await expect(storeCard).toHaveScreenshot('store-card-mobile-unverified-norating.png', {
+      maxDiffPixelRatio: 0.02,
+    });
+  });
+
+  test('mobile StoreCard with rating but no verified badge', async ({ page }) => {
+    await page.goto('/v2/store/storeList?search=popular');
+    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForTimeout(1500);
+
+    await injectVueData(page, 'list', [RATED_UNVERIFIED_STORE]);
+    await page.waitForTimeout(500);
+
+    const storeCard = page.locator('.store-card');
+    await expect(storeCard).toBeAttached({ timeout: 5000 });
+
+    await expect(storeCard).toHaveScreenshot('store-card-mobile-unverified-rated.png', {
+      maxDiffPixelRatio: 0.02,
+    });
+  });
+
+  test('mobile StoreCard verified badge close-up', async ({ page }) => {
+    await page.goto('/v2/store/storeList?search=demo');
+    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForTimeout(1500);
+
+    await injectVueData(page, 'list', [VERIFIED_STORE]);
+    await page.waitForTimeout(500);
+
+    const badge = page.locator('.store-card .verified-badge');
+    await expect(badge).toBeAttached({ timeout: 5000 });
+
+    // Same 20px badge at mobile (no responsive change for StoreCard)
+    await expect(badge).toHaveScreenshot('store-card-mobile-badge-closeup.png', {
+      maxDiffPixelRatio: 0.02,
+    });
+  });
+
+  test('mobile StoreCard no badge when unverified', async ({ page }) => {
     await page.goto('/v2/store/storeList?search=new');
     await page.waitForLoadState('networkidle').catch(() => {});
     await page.waitForTimeout(1500);
