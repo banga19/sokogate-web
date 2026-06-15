@@ -624,6 +624,87 @@ describe('StorebannerList.vue', () => {
   });
 
   // ──────────────────────────────────────────────────────────────
+  // displayImage computed property
+  // ──────────────────────────────────────────────────────────────
+  describe('displayImage (banner_url fallback)', () => {
+    it('should use items[0].image when banners exist', async () => {
+      GetBannerList.mockResolvedValue({ data: mockBannersArray });
+      const wrapper = createStoreBannerListWrapper();
+      await flushPromises();
+
+      expect(wrapper.vm.displayImage).toBe('https://oss.example.com/summer.jpg');
+    });
+
+    it('should fall back to item.banner_url when items is empty', () => {
+      GetBannerList.mockResolvedValue({ data: [] });
+      const wrapper = createStoreBannerListWrapper({
+        item: { storeName: 'Store', id: 's1', banner_url: 'https://oss.example.com/store-banner.jpg' },
+      });
+
+      // displayImage is a computed property, so it evaluates immediately
+      expect(wrapper.vm.displayImage).toBe('https://oss.example.com/store-banner.jpg');
+    });
+
+    it('should return empty string when both items and banner_url are empty', () => {
+      GetBannerList.mockResolvedValue({ data: [] });
+      const wrapper = createStoreBannerListWrapper({
+        item: { storeName: 'Store', id: 's1' }, // no banner_url
+      });
+
+      expect(wrapper.vm.displayImage).toBe('');
+    });
+
+    it('should return empty string when banner_url is null', () => {
+      GetBannerList.mockResolvedValue({ data: [] });
+      const wrapper = createStoreBannerListWrapper({
+        item: { storeName: 'Store', id: 's1', banner_url: null },
+      });
+
+      expect(wrapper.vm.displayImage).toBe('');
+    });
+
+    it('should prefer banner carousel image over store banner_url', async () => {
+      GetBannerList.mockResolvedValue({ data: mockBannersArray });
+      const wrapper = createStoreBannerListWrapper({
+        item: { storeName: 'Store', id: 's1', banner_url: 'https://oss.example.com/store-banner.jpg' },
+      });
+      await flushPromises();
+
+      // Should use the carousel image, not the store's banner_url
+      expect(wrapper.vm.displayImage).toBe('https://oss.example.com/summer.jpg');
+    });
+
+    it('should re-evaluate when items become available after API call', async () => {
+      GetBannerList.mockResolvedValue({ data: mockBannersArray });
+      const wrapper = createStoreBannerListWrapper({
+        item: { storeName: 'Store', id: 's1', banner_url: 'https://oss.example.com/store-banner.jpg' },
+      });
+
+      // Before API resolves, items is empty, so displayImage should be banner_url
+      expect(wrapper.vm.displayImage).toBe('https://oss.example.com/store-banner.jpg');
+
+      // After API resolves, displayImage should update to banner image
+      await flushPromises();
+      expect(wrapper.vm.displayImage).toBe('https://oss.example.com/summer.jpg');
+    });
+
+    it('should use banner_url after API call returns empty', async () => {
+      GetBannerList.mockResolvedValue({ data: [] });
+      const wrapper = createStoreBannerListWrapper({
+        item: { storeName: 'Store', id: 's1', banner_url: 'https://oss.example.com/store-banner.jpg' },
+      });
+
+      // Initial: no items, use banner_url
+      expect(wrapper.vm.displayImage).toBe('https://oss.example.com/store-banner.jpg');
+
+      // After API: still no items, still use banner_url
+      await flushPromises();
+      expect(wrapper.vm.items).toEqual([]);
+      expect(wrapper.vm.displayImage).toBe('https://oss.example.com/store-banner.jpg');
+    });
+  });
+
+  // ──────────────────────────────────────────────────────────────
   // Edge cases
   // ──────────────────────────────────────────────────────────────
   describe('edge cases', () => {
@@ -633,6 +714,7 @@ describe('StorebannerList.vue', () => {
       await flushPromises();
 
       expect(wrapper.vm.items).toEqual([]);
+      expect(wrapper.vm.displayImage).toBe('');
     });
 
     it('should handle null res.data', async () => {
@@ -649,6 +731,23 @@ describe('StorebannerList.vue', () => {
       await flushPromises();
 
       expect(wrapper.vm.items).toEqual([]);
+      // displayImage should still fall back to banner_url on error
+    });
+
+    it('should use banner_url when API errors', async () => {
+      GetBannerList.mockRejectedValue(new Error('Network error'));
+      const wrapper = createStoreBannerListWrapper({
+        item: { storeName: 'Store', id: 's1', banner_url: 'https://oss.example.com/store-banner-error.jpg' },
+      });
+
+      // Before API resolves, use banner_url
+      expect(wrapper.vm.displayImage).toBe('https://oss.example.com/store-banner-error.jpg');
+
+      await flushPromises();
+
+      // items remain empty after error, displayImage should still be banner_url
+      expect(wrapper.vm.items).toEqual([]);
+      expect(wrapper.vm.displayImage).toBe('https://oss.example.com/store-banner-error.jpg');
     });
   });
 });

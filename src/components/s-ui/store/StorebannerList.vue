@@ -1,8 +1,8 @@
 <template>
   <div class="banner-list-box">
     <sui-image
-      v-if="items.length"
-      :src="items[0].image"
+      v-if="displayImage"
+      :src="displayImage"
       :lazy="true"
       :style="{ height: '108px' }"
     ></sui-image>
@@ -56,6 +56,18 @@ export default {
     return {
       items: [],
     };
+  },
+  computed: {
+    /**
+     * Display image for the store banner header.
+     * Priority: banner carousel images > store's own banner_url > empty
+     */
+    displayImage() {
+      if (this.items.length && this.items[0].image) {
+        return this.items[0].image;
+      }
+      return this.item.banner_url || '';
+    },
   },
   created() {
     this.getBannerList();
