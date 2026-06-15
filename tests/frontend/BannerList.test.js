@@ -624,6 +624,52 @@ describe('StorebannerList.vue', () => {
   });
 
   // ──────────────────────────────────────────────────────────────
+  // Store logo (logo_url)
+  // ──────────────────────────────────────────────────────────────
+  describe('store logo (logo_url)', () => {
+    it('should render store logo when item.logo_url is provided', () => {
+      GetBannerList.mockResolvedValue({ data: [] });
+      const wrapper = createStoreBannerListWrapper({
+        item: { storeName: 'Logo Store', id: 's1', logo_url: 'https://oss.example.com/logo.png' },
+      });
+
+      const logoImg = wrapper.find('.store-logo');
+      expect(logoImg.exists()).toBe(true);
+      expect(logoImg.attributes('src')).toBe('https://oss.example.com/logo.png');
+    });
+
+    it('should not render store logo when item.logo_url is missing', () => {
+      GetBannerList.mockResolvedValue({ data: [] });
+      const wrapper = createStoreBannerListWrapper({
+        item: { storeName: 'No Logo Store', id: 's2' },
+      });
+
+      expect(wrapper.find('.store-logo').exists()).toBe(false);
+    });
+
+    it('should not render store logo when item.logo_url is null', () => {
+      GetBannerList.mockResolvedValue({ data: [] });
+      const wrapper = createStoreBannerListWrapper({
+        item: { storeName: 'Null Logo Store', id: 's3', logo_url: null },
+      });
+
+      expect(wrapper.find('.store-logo').exists()).toBe(false);
+    });
+
+    it('should render store logo alongside the store name', () => {
+      GetBannerList.mockResolvedValue({ data: [] });
+      const wrapper = createStoreBannerListWrapper({
+        item: { storeName: 'My Store', id: 's1', logo_url: 'https://oss.example.com/logo.png' },
+      });
+
+      // Both logo and store name should be present
+      expect(wrapper.find('.store-logo').exists()).toBe(true);
+      expect(wrapper.find('.store-name').exists()).toBe(true);
+      expect(wrapper.find('.store-name').text()).toBe('My Store');
+    });
+  });
+
+  // ──────────────────────────────────────────────────────────────
   // displayImage computed property
   // ──────────────────────────────────────────────────────────────
   describe('displayImage (banner_url fallback)', () => {

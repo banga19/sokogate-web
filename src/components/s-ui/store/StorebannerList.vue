@@ -7,6 +7,12 @@
       :style="{ height: '108px' }"
     ></sui-image>
     <div class="store-item">
+      <img
+        v-if="item.logo_url"
+        :src="item.logo_url"
+        class="store-logo"
+        alt=""
+      />
       <h5 class="store-name">{{ item.storeName }}</h5>
     </div>
     <div class="store-about">
@@ -96,12 +102,30 @@ export default {
 .banner-list-box {
   width: 100%;
   margin-bottom: 5px;
-  position: relative;
-  .store-item {
+  position: relative;    .store-item {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .store-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      flex-shrink: 0;
+
+      @include mobile {
+        width: 36px;
+        height: 36px;
+      }
+    }
+
     .store-name {
       margin: 0;
       font-weight: 500;

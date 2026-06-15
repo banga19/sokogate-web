@@ -1,7 +1,14 @@
 <template>
   <div class="store-card">
     <h4 class="store-name">
-      <i class="sokogate icon-shop" />{{ store.storeName }}
+      <img
+        v-if="store.logo_url"
+        :src="store.logo_url + '?x-oss-process=style/w64'"
+        class="store-logo"
+        alt=""
+      />
+      <i v-else class="sokogate icon-shop" />
+      {{ store.storeName }}
     </h4>
     <el-divider></el-divider>
     <button
@@ -36,10 +43,20 @@ export default {
 .store-name {
   font-size: 18px;
   padding-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .store-logo {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
 
   .sokogate {
     font-size: 18px;
-    margin-right: 8px;
   }
 }
 .opt-btn-info {
