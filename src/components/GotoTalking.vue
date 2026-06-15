@@ -27,7 +27,12 @@
             class="hd-logo"
             alt=""
           />
-          <div class="hd-name">{{ storeName }}</div>
+          <div class="hd-name">
+            {{ storeName }}
+            <span v-if="store.is_verified" class="verified-badge" :title="$t('common.verified') || 'Verified'">
+              <i class="el-icon-success"></i>
+            </span>
+          </div>
         </div>
         <div class="room-bd">
           <div id="msgBody">
@@ -100,7 +105,12 @@
                     class="hd-logo"
                     alt=""
                   />
-                  <div class="hd-name">{{ storeName }}</div>
+                  <div class="hd-name">
+                    {{ storeName }}
+                    <span v-if="store.is_verified" class="verified-badge" :title="$t('common.verified') || 'Verified'">
+                      <i class="el-icon-success"></i>
+                    </span>
+                  </div>
                 </div>
                 <div class="room-bd">
                   <div id="msgBody">
@@ -420,6 +430,26 @@ export default {
         text-align: center;
         margin: auto;
         margin-left: 8px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        .verified-badge {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #1e90ff, #0066cc);
+          color: #fff;
+          flex-shrink: 0;
+          box-shadow: 0 2px 4px rgba(30, 144, 255, 0.4);
+
+          i {
+            font-size: 11px;
+          }
+        }
       }
     }
     .room-bd {

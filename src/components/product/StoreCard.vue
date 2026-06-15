@@ -9,6 +9,9 @@
       />
       <i v-else class="sokogate icon-shop" />
       {{ store.storeName }}
+      <span v-if="store.is_verified" class="verified-badge" :title="$t('common.verified') || 'Verified'">
+        <i class="el-icon-success"></i>
+      </span>
     </h4>
     <div v-if="store.rating" class="store-rating">
       <Star :value="store.rating" />
@@ -69,6 +72,23 @@ export default {
 
   .sokogate {
     font-size: 18px;
+  }
+
+  .verified-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1e90ff, #0066cc);
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 2px 4px rgba(30, 144, 255, 0.4);
+
+    i {
+      font-size: 12px;
+    }
   }
 }
 .store-rating {
