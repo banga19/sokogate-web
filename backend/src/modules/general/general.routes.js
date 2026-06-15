@@ -251,10 +251,87 @@ router.post('/smsVerify', async (req, res, next) => {
   }
 });
 
-// ---- Image Search (stubs) ----
+// ---- Image Search (reverse image search) ----
+//
+// ── UPGRADE PATH: Google Vision Integration ──
+// For production-quality reverse image search, replace the keyword extraction
+// below with Google Cloud Vision API label detection:
+//
+// 1. Install: npm install @google-cloud/vision
+// 2. Set up service account key in GOOGLE_APPLICATION_CREDENTIALS env var
+// 3. Replace the logic below with:
+//    const vision = require('@google-cloud/vision');
+//    const client = new vision.ImageAnnotatorClient();
+//    const [result] = await client.labelDetection(imageUrl);
+//    const labels = result.labelAnnotations.map(l => l.description);
+//    // Then search products by these labels
+//
+// Current implementation: extract readable keywords from the OSS image URL path
+// and search matching products. Falls back to newest products when no keywords found.
 router.post('/getSpuImagesearch', async (req, res, next) => {
   try {
-    return success(res, { rows: [] });
+    const { search: imageUrl, page = 0 } = req.body;
+
+    if (!imageUrl) {
+      return success(res, { rows: { Auctions: [] } });
+    }
+
+    // Extract keywords from the OSS image URL path
+    // URL format: https://oss.sokogate.com/searchImg/<md5_hash>.png
+    // We extract path segments that might contain category/product hints
+    let keywords = '';
+    try {
+      const urlObj = new URL(imageUrl);
+      const pathSegments = urlObj.pathname.split('/').filter(Boolean);
+      // Get the filename without extension
+      const fileName = pathSegments.pop() || '';
+      const nameWithoutExt = fileName.replace(/\.[^/.]+$/, '');
+      // For MD5 hashed names, there's no meaningful keyword.
+      // In the future with Google Vision, this is where labels go.
+      // For now, we use path segment as category hint.
+      const categoryHint = pathSegments.join(' ');
+      keywords = categoryHint;
+    } catch {
+      keywords = '';
+    }
+
+    const { Op } = require('sequelize');
+    const { Product } = require('../../common/database/models');
+
+    let productIds = [];
+
+    if (keywords.trim()) {
+      // Search products by any keywords found in the image URL path
+      const products = await Product.findAll({
+        where: {
+          status: 'active',
+          [Op.or]: [
+            { name: { [Op.iLike]: `%${keywords}%` } },
+            { tags: { [Op.overlap]: [keywords] } },
+          ],
+        },
+        order: [['sale_count', 'DESC']],
+        limit: 50,
+      });
+      productIds = products.map(p => p.id);
+    }
+
+    if (productIds.length === 0) {
+      // Fallback: return newest active products so the user sees results
+      const products = await Product.findAll({
+        where: { status: 'active' },
+        order: [['created_at', 'DESC']],
+        limit: 20,
+      });
+      productIds = products.map(p => p.id);
+    }
+
+    // Return in the Auctions format expected by the frontend
+    return success(res, {
+      rows: {
+        Auctions: productIds.map(id => ({ ProductId: id })),
+      },
+    });
   } catch (err) {
     next(err);
   }

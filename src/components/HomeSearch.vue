@@ -31,6 +31,22 @@
         @click="onClean"
       />
       <template v-slot:append>
+        <el-upload
+          action=""
+          accept="image/*"
+          :show-file-list="false"
+          :on-success="handleUploadSuccess"
+          :before-upload="beforeUpload"
+          :http-request="handleUpload"
+          class="search-img-upload"
+        >
+          <el-button
+            type="text"
+            class="search-img-btn"
+            icon="el-icon-camera"
+            circle
+          ></el-button>
+        </el-upload>
         <b-button variant="outline-light" type="submit" class="search-btn">
           <svg class="colorful" aria-hidden="true">
             <use xlink:href="#colorful-a-Group1242" />
@@ -122,7 +138,9 @@ function debounce(func, wait = 500) {
   };
 }
 // import { homeSearch } from "@/utils/api_v1";
-import { GetSpuList, GetStorebyName } from "@/utils/api";
+import { GetSpuList, GetStorebyName, UploadFileToOSS } from "@/utils/api";
+import { getOSSImageFullUrl } from '@/utils/OSS'
+import { Message } from 'element-ui'
 export default {
   data() {
     return {
@@ -131,6 +149,7 @@ export default {
       isFocus: false,
       list: [],
       loading: false,
+      uploadLoading: null,
     };
   },
   watch: {
@@ -214,6 +233,38 @@ export default {
         this.loading = false;
       });
     },
+    beforeUpload(file) {
+      if (file.type.indexOf('image/') !== 0) {
+        Message.error(this.$t('upload.limitOnlyImage') || 'Images only')
+        throw new Error('Only images allowed')
+      }
+      if (file.size / 1024 / 1024 > 4) {
+        Message.error((this.$t('upload.limitFileSize') || 'File too large') + ': 4MB')
+        throw new Error('File too large')
+      }
+      this.uploadLoading = this.$loading({
+        lock: true,
+        text: this.$t('upload.uploading') || 'Uploading...',
+        spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.7)',
+      })
+      return true
+    },
+    async handleUpload(params) {
+      try {
+        const response = await UploadFileToOSS(params.file, 'searchImg/')
+        return getOSSImageFullUrl(response)
+      } finally {
+        if (this.uploadLoading) {
+          this.uploadLoading.close()
+        }
+      }
+    },
+    handleUploadSuccess(url) {
+      this.$utils.navto('/v2/product/list', {
+        searchImg: encodeURIComponent(url),
+      })
+    },
     onSubmit(e) {
       e && e.preventDefault();
       // console.log("onSubmit:", e, this.keyword);
@@ -262,6 +313,33 @@ export default {
       height:100%
     }
   }
+  &-img-upload {
+    display: inline-flex;
+    align-items: center;
+    height: 50px;
+
+    @include mobile {
+      height: 40px;
+    }
+
+    .el-upload {
+      display: inline-flex;
+      align-items: center;
+    }
+  }
+
+  &-img-btn {
+    padding: 7px;
+    font-size: 20px;
+    color: #999;
+    border: none;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #ef2e22;
+    }
+  }
+
   &-btn {
     padding: 0;
     margin: 0;
