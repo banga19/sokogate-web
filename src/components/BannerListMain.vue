@@ -91,7 +91,12 @@ export default {
       })
         .then((res) => {
           // API now returns banners array directly as res.data
-          this.list = Array.isArray(res.data) ? res.data : (res.data.rows || []);
+          // Normalize image_url → image for consistent template usage
+          const rawList = Array.isArray(res.data) ? res.data : (res.data.rows || []);
+          this.list = rawList.map((banner) => ({
+            ...banner,
+            image: banner.image || banner.image_url || '',
+          }));
           if (this.list.length === 0) {
             // Fallback static banners when API returns empty
             this.list = [{

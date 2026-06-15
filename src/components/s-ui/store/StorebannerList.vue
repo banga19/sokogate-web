@@ -67,7 +67,12 @@ export default {
       }).then((res) => {
         // console.log("GetBannerList", res);
         // API now returns banners array directly as res.data
-        this.items = Array.isArray(res.data) ? res.data : (res.data.rows || []);
+        // Normalize image_url → image for consistent template usage
+        const rawItems = Array.isArray(res.data) ? res.data : (res.data.rows || []);
+        this.items = rawItems.map((banner) => ({
+          ...banner,
+          image: banner.image || banner.image_url || '',
+        }));
         // console.log(this.items, "items");
       });
     },
