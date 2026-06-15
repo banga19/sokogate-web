@@ -22,8 +22,8 @@
             <i class="el-icon-arrow-left"></i>
           </div>
           <img
-            v-if="store.logo_url"
-            :src="store.logo_url + '?x-oss-process=style/w64'"
+            v-if="getStoreLogoUrl(store)"
+            :src="getStoreLogoUrl(store)"
             class="hd-logo"
             alt=""
           />
@@ -95,8 +95,8 @@
                     <i class="el-icon-arrow-left"></i>
                   </div>
                   <img
-                    v-if="store.logo_url"
-                    :src="store.logo_url + '?x-oss-process=style/w64'"
+                    v-if="getStoreLogoUrl(store)"
+                    :src="getStoreLogoUrl(store)"
                     class="hd-logo"
                     alt=""
                   />
@@ -142,6 +142,7 @@ import {
   AddMyImChat,
   GetMyImChatList,
 } from "@/utils/api";
+import { getStoreLogoUrl } from "@/utils/banner";
 import { conn } from "@/utils/WebIM.js";
 //格式化时间
 import { formatDate } from "@/utils";
@@ -184,6 +185,9 @@ export default {
     },
   },
   methods: {
+    getStoreLogoUrl(store) {
+      return getStoreLogoUrl(store);
+    },
     //登陆
     loginIM() {
       var options = {

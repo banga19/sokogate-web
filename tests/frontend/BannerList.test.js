@@ -107,6 +107,57 @@ describe('normalizeBannerList utility', () => {
 });
 
 // ──────────────────────────────────────────────────────────────
+// getStoreLogoUrl utility (direct unit tests)
+// ──────────────────────────────────────────────────────────────
+
+describe('getStoreLogoUrl utility', () => {
+  const { getStoreLogoUrl } = require('@/utils/banner');
+
+  it('should return formatted URL with default size 64', () => {
+    const result = getStoreLogoUrl({ logo_url: 'https://oss.example.com/logo.png' });
+    expect(result).toBe('https://oss.example.com/logo.png?x-oss-process=style/w64');
+  });
+
+  it('should return formatted URL with custom size', () => {
+    const result = getStoreLogoUrl({ logo_url: 'https://oss.example.com/logo.png' }, 128);
+    expect(result).toBe('https://oss.example.com/logo.png?x-oss-process=style/w128');
+  });
+
+  it('should return raw URL when size is 0', () => {
+    const result = getStoreLogoUrl({ logo_url: 'https://oss.example.com/logo.png' }, 0);
+    expect(result).toBe('https://oss.example.com/logo.png');
+  });
+
+  it('should return empty string when storeObj is null', () => {
+    expect(getStoreLogoUrl(null)).toBe('');
+  });
+
+  it('should return empty string when storeObj is undefined', () => {
+    expect(getStoreLogoUrl(undefined)).toBe('');
+  });
+
+  it('should return empty string when logo_url is missing', () => {
+    expect(getStoreLogoUrl({})).toBe('');
+  });
+
+  it('should return empty string when logo_url is null', () => {
+    expect(getStoreLogoUrl({ logo_url: null })).toBe('');
+  });
+
+  it('should return empty string when logo_url is empty string', () => {
+    expect(getStoreLogoUrl({ logo_url: '' })).toBe('');
+  });
+
+  it('should preserve all other store fields unchanged', () => {
+    const store = { id: 's1', storeName: 'Store', logo_url: 'https://oss.example.com/logo.png' };
+    const url = getStoreLogoUrl(store);
+    expect(url).toContain('style/w64');
+    expect(store.id).toBe('s1');
+    expect(store.storeName).toBe('Store');
+  });
+});
+
+// ──────────────────────────────────────────────────────────────
 // Helpers
 // ──────────────────────────────────────────────────────────────
 

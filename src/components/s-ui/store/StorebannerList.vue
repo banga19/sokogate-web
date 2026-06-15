@@ -8,8 +8,8 @@
     ></sui-image>
     <div class="store-item">
       <img
-        v-if="item.logo_url"
-        :src="item.logo_url"
+        v-if="getStoreLogoUrl(item)"
+        :src="getStoreLogoUrl(item, 0)"
         class="store-logo"
         alt=""
       />
@@ -44,7 +44,7 @@
 <script>
 import SuiImage from "@/components/s-ui/media/Image";
 import { GetBannerList } from "@/utils/api";
-import { normalizeBannerList } from "@/utils/banner";
+import { normalizeBannerList, getStoreLogoUrl } from "@/utils/banner";
 export default {
   props: {
     item: {
@@ -79,6 +79,9 @@ export default {
     this.getBannerList();
   },
   methods: {
+    getStoreLogoUrl(item, size) {
+      return getStoreLogoUrl(item, size);
+    },
     getBannerList() {
       GetBannerList({
         storeId: this.$route.query.id,

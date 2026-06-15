@@ -2,8 +2,8 @@
   <div class="store-card">
     <h4 class="store-name">
       <img
-        v-if="store.logo_url"
-        :src="store.logo_url + '?x-oss-process=style/w64'"
+        v-if="getStoreLogoUrl(store)"
+        :src="getStoreLogoUrl(store)"
         class="store-logo"
         alt=""
       />
@@ -21,10 +21,16 @@
 </template>
 
 <script>
+import { getStoreLogoUrl } from "@/utils/banner";
 export default {
   props: {
     store: {
       type: Object,
+    },
+  },
+  methods: {
+    getStoreLogoUrl(store) {
+      return getStoreLogoUrl(store);
     },
   },
 };

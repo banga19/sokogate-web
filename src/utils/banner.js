@@ -28,3 +28,29 @@ export function normalizeBannerList(res) {
     image: banner.image || banner.image_url || '',
   }));
 }
+
+/**
+ * Get the store logo image URL, optionally resized for OSS.
+ *
+ * Returns an empty string when the store object or logo_url is missing,
+ * so it can be used directly in v-if / computed properties.
+ *
+ * @param {Object|null|undefined} storeObj - Store object or item with a logo_url field
+ * @param {number} [size=64] - Desired width in pixels (0 or null to skip resize)
+ * @returns {string} Formatted logo URL, or empty string
+ *
+ * @example
+ * getStoreLogoUrl({ logo_url: 'https://oss.example.com/logo.png' })
+ *   → 'https://oss.example.com/logo.png?x-oss-process=style/w64'
+ *
+ * getStoreLogoUrl({ logo_url: 'https://oss.example.com/logo.png' }, 0)
+ *   → 'https://oss.example.com/logo.png'
+ *
+ * getStoreLogoUrl(null)
+ *   → ''
+ */
+export function getStoreLogoUrl(storeObj, size = 64) {
+  const logoUrl = storeObj && storeObj.logo_url;
+  if (!logoUrl) return '';
+  return size ? `${logoUrl}?x-oss-process=style/w${size}` : logoUrl;
+}
