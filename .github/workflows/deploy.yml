@@ -87,7 +87,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Execute SSH Deploy
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/ssh-action@v1.2.5
         with:
           host: ${{ secrets.PROD_HOST }}
           username: ${{ secrets.PROD_USER }}
@@ -105,7 +105,7 @@ jobs:
     if: github.ref == 'refs/heads/develop'
     steps:
       - name: Deploy to staging
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/ssh-action@v1.2.5
         with:
           host: ${{ secrets.STAGING_HOST }}
           username: ${{ secrets.STAGING_USER }}
