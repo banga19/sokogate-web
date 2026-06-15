@@ -48,13 +48,27 @@ async function getCategoryList(req, res, next) {
 
 async function getRecommListbyTypes(req, res, next) {
   try {
-    // For now, returns recent products as recommendations
+    const { types } = req.body;
+    // Map types to different recommendation strategies
+    let sort = 'newest';
+    let pageSize = 12;
+
+    if (Array.isArray(types)) {
+      if (types.includes(111)) { sort = 'newest'; pageSize = 12; }
+      else if (types.includes(112)) { sort = 'sale_count'; pageSize = 12; }
+      else if (types.includes(113)) { sort = 'newest'; pageSize = 20; }
+      else if (types.includes(114)) { sort = 'sale_count'; pageSize = 12; }
+      else if (types.includes(115)) { sort = 'newest'; pageSize = 20; }
+    }
+
     const result = await productService.getProductList({
       page: 1,
-      pageSize: 12,
-      sort: 'newest',
+      pageSize,
+      sort,
     });
-    return success(res, { rows: result.rows });
+
+    // All frontend recommendation components expect: res.data[0].spuList
+    return success(res, [{ spuList: result.rows }]);
   } catch (err) {
     next(err);
   }

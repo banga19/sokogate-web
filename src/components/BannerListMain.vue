@@ -1,7 +1,7 @@
 <template>
   <div class="banner-list-main">
     <b-carousel
-      v-if="banner.length"
+      v-if="list.length"
       :interval="3000"
       controls
       indicators
@@ -9,7 +9,7 @@
       label-next=""
     >
       <b-carousel-slide
-        v-for="(item, index) in banner"
+        v-for="(item, index) in list"
         :key="`bannerList_${index}`"
         class="bg-carousel"
       >
@@ -22,7 +22,7 @@
                         <!-- <p class="banner_text">{{item.text}}</p> -->
                         <div class="banner_btn" @click="link(item.jumpContent)">Read More</div>
                     </div>
-                    <img :src="item.image" class="banner_img" /> 
+                    <img :src="item.image || item.image_url" class="banner_img" /> 
                 </div>
             </div>
             
@@ -75,7 +75,6 @@ export default {
   data() {
     return {
       list: [],
-      banner :[]
     };
   },
   created() {
@@ -91,9 +90,17 @@ export default {
         type: Number(this.type),
       })
         .then((res) => {
-          this.banner = [{image:require(`../assets/6505515-ai.png`),title:'SokoGate',text:'一个专注于连接非洲采购商与全球供应商的B2B跨境电商平台立即入驻',jumpContent:"https://www.sokogate.com/merchant-settlement"}]
-          this.list = res.data;
-          // 当banner数据渲染出来后发送自定义事件到子组件
+          // API now returns banners array directly as res.data
+          this.list = Array.isArray(res.data) ? res.data : (res.data.rows || []);
+          if (this.list.length === 0) {
+            // Fallback static banners when API returns empty
+            this.list = [{
+              image: require(`../assets/6505515-ai.png`),
+              title: 'SokoGate',
+              text: 'Sokogate is an artful fusion of tradition & innovation, seamlessly connecting manufacturers, wholesalers, & discerning consumers on a global stage.',
+              jumpContent: 'https://www.sokogate.com/merchant-settlement'
+            }];
+          }
           if (this.list && this.list.length) {
             this.$emit("success");
           }

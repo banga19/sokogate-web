@@ -41,8 +41,13 @@ async function getProductList(params = {}) {
     attributes: { exclude: ['description'] },
   });
 
+  // Map images array to the fields expected by the frontend:
+  // - img: first image URL (string)
+  // - galleryList: full images array
+  const mappedRows = mapProductImages(rows);
+
   return {
-    rows,
+    rows: mappedRows,
     total: count,
     page,
     pageSize,
@@ -64,16 +69,17 @@ async function getProductDetail(productId) {
   // Increment view count
   await product.increment('view_count');
 
-  return product;
+  return mapSingleProductImages(product);
 }
 
 async function getProductListByIds(ids) {
-  return Product.findAll({
+  const products = await Product.findAll({
     where: { id: ids, status: 'active' },
     include: [
       { model: ProductVariant, as: 'variants', where: { is_active: true }, required: false },
     ],
   });
+  return mapProductImages(products);
 }
 
 async function searchProducts(query, params = {}) {
@@ -94,7 +100,30 @@ async function searchProducts(query, params = {}) {
     order: [['sale_count', 'DESC']],
   });
 
-  return { rows, total: count, page, pageSize };
+  return { rows: mapProductImages(rows), total: count, page, pageSize };
+}
+
+/**
+ * Map images array to img (first image URL) and galleryList (all images)
+ * for a single product (returns JSON object).
+ */
+function mapSingleProductImages(product) {
+  if (!product) return product;
+  const productJson = product.toJSON ? product.toJSON() : product;
+  const images = productJson.images || [];
+  return {
+    ...productJson,
+    img: productJson.img || (Array.isArray(images) ? images[0] : images) || '',
+    galleryList: Array.isArray(images) ? images : (images ? [images] : []),
+  };
+}
+
+/**
+ * Map images array for an array of products.
+ */
+function mapProductImages(products) {
+  if (!Array.isArray(products)) return [];
+  return products.map(mapSingleProductImages);
 }
 
 async function getCategoryList() {

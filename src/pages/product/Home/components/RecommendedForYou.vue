@@ -116,7 +116,7 @@ export default {
         const recommProducts = get(recommRes, 'data.rows', []).slice(0, 8 - categoryProducts.length)
          this.dataList = shuffle([...categoryProducts, ...recommProducts].map(item => ({
              ...item,
-             img: item.img || (item.galleryList && item.galleryList[0]) || ''
+             img: item.img || (item.galleryList && item.galleryList[0]) || (Array.isArray(item.images) ? item.images[0] : '') || ''
            })))
         this.loading = false
       } catch (error) {

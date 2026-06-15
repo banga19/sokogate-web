@@ -86,7 +86,8 @@ export default {
       })
         .then((res) => {
           console.log("GetBannerList-type-res==========:", this.type, res);
-          this.list = res.data;
+          // API now returns banners array directly as res.data
+          this.list = Array.isArray(res.data) ? res.data : (res.data.rows || []);
           // 当banner数据渲染出来后发送自定义事件到子组件
           if (this.list && this.list.length) {
             this.$emit("success");

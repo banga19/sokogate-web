@@ -3,11 +3,25 @@ const { success, created } = require('../../common/utils/apiResponse');
 
 async function getBannerList(req, res, next) {
   try {
+    const where = { is_active: true };
+
+    // Filter by storeId if provided (for store-specific banners)
+    if (req.body.storeId) {
+      where.store_id = req.body.storeId;
+    }
+
+    // Filter by type if provided
+    if (req.body.type) {
+      where.type = req.body.type;
+    }
+
     const banners = await Banner.findAll({
-      where: { is_active: true },
+      where,
       order: [['sort_order', 'ASC']],
     });
-    return success(res, { rows: banners });
+
+    // Return as plain array for direct use by frontend (res.data = array)
+    return success(res, banners);
   } catch (err) {
     next(err);
   }

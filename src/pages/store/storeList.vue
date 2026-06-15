@@ -34,7 +34,8 @@ export default {
         storeName: keyword,
       }).then((res) => {
         // console.log(res, "getStorebyName");
-        this.list = res.data.rows;
+        // Handle both formats: res.data.rows or res.data being the rows object
+        this.list = res.data && res.data.rows ? res.data.rows : (Array.isArray(res.data) ? res.data : []);
       });
     },
   },

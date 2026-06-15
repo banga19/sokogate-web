@@ -66,7 +66,8 @@ export default {
         type: Number(this.type),
       }).then((res) => {
         // console.log("GetBannerList", res);
-        this.items = res.data;
+        // API now returns banners array directly as res.data
+        this.items = Array.isArray(res.data) ? res.data : (res.data.rows || []);
         // console.log(this.items, "items");
       });
     },

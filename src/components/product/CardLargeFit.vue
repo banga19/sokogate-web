@@ -120,6 +120,7 @@ export default {
     img() {
       if (this.item.img) return this.item.img
       if (this.item.galleryList && this.item.galleryList[0]) return this.item.galleryList[0]
+      if (Array.isArray(this.item.images) && this.item.images[0]) return this.item.images[0]
       return ''
     },
     realColorId() {

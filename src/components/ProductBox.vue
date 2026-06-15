@@ -278,7 +278,7 @@ export default {
   computed: {
     imgUrl() {
       try {
-        const src = this.item.img || (this.item.galleryList && this.item.galleryList[0]) || ''
+        const src = this.item.img || (this.item.galleryList && this.item.galleryList[0]) || (Array.isArray(this.item.images) ? this.item.images[0] : '') || ''
         return src ? (src + '?x-oss-process=style/w64') : ''
       } catch (e) { return '' }
     },

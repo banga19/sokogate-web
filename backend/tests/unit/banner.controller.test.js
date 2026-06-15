@@ -50,7 +50,7 @@ describe('getBannerList', () => {
       where: { is_active: true },
       order: [['sort_order', 'ASC']],
     });
-    expect(success).toHaveBeenCalledWith(res, { rows: mockBanners });
+    expect(success).toHaveBeenCalledWith(res, mockBanners);
   });
 
   it('should pass error to next', async () => {

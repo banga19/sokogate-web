@@ -9,15 +9,16 @@ async function getStore(storeId) {
 }
 
 async function getStoreByName(name) {
+  // Try slug match first
   const store = await Store.findOne({ where: { slug: name } });
-  if (!store) {
-    // Try partial name match
-    const stores = await Store.findAll({
-      where: { name: { [Op.iLike]: `%${name}%` } },
-    });
-    return { rows: stores };
+  if (store) {
+    return { rows: [store] };
   }
-  return store;
+  // Try partial name match
+  const stores = await Store.findAll({
+    where: { name: { [Op.iLike]: `%${name}%` } },
+  });
+  return { rows: stores };
 }
 
 async function getStoreProducts(storeId, params = {}) {

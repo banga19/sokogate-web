@@ -118,7 +118,7 @@ export default {
         })
         this.dataList = result.map(item => ({
           ...item,
-          img: (item.img || (item.galleryList && item.galleryList[0]) || '').replace(/\?x-oss-process=style\/w64(?:\([^)]*\))?$/, '')
+          img: (item.img || (item.galleryList && item.galleryList[0]) || (Array.isArray(item.images) ? item.images[0] : '') || '').replace(/\?x-oss-process=style\/w64(?:\([^)]*\))?$/, '')
         }))
         this.loading = false
         return
@@ -134,7 +134,7 @@ export default {
         })
         this.dataList = get(response, 'data.rows', []).map(item => ({
           ...item,
-          img: item.img || (item.galleryList && item.galleryList[0]) || ''
+          img: item.img || (item.galleryList && item.galleryList[0]) || (Array.isArray(item.images) ? item.images[0] : '') || ''
         }))
         this.loading = false
       } catch (error) {

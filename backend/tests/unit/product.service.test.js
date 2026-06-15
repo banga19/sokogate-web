@@ -68,7 +68,9 @@ describe('getProductList', () => {
       include: [{ model: Category, as: 'Category', attributes: ['id', 'name', 'slug'] }],
       attributes: { exclude: ['description'] },
     });
-    expect(result).toEqual({ rows: mockProducts, total: 2, page: 1, pageSize: 20 });
+    expect(result).toEqual({ rows: expect.arrayContaining([
+      expect.objectContaining({ id: 'prod-1', img: '', galleryList: [] }),
+    ]), total: 2, page: 1, pageSize: 20 });
   });
 
   it('should filter by categoryId, search term, price range, and storeId', async () => {
@@ -139,7 +141,12 @@ describe('getProductDetail', () => {
       ],
     });
     expect(productWithIncludes.increment).toHaveBeenCalledWith('view_count');
-    expect(result).toBe(productWithIncludes);
+    expect(result).toEqual(expect.objectContaining({
+      id: 'prod-1',
+      img: '',
+      galleryList: [],
+    }));
+    expect(productWithIncludes.increment).toHaveBeenCalledWith('view_count');
   });
 
   it('should throw NotFoundError when product does not exist', async () => {
@@ -166,7 +173,9 @@ describe('getProductListByIds', () => {
         { model: require('../../src/common/database/models').ProductVariant, as: 'variants', where: { is_active: true }, required: false },
       ],
     });
-    expect(result).toEqual(mockProducts);
+    expect(result).toEqual(expect.arrayContaining([
+      expect.objectContaining({ id: 'prod-1', img: '', galleryList: [] }),
+    ]));
   });
 
   it('should return empty array when no IDs match', async () => {
@@ -196,7 +205,9 @@ describe('searchProducts', () => {
       { tags: { [require('sequelize').Op.overlap]: ['smartphone'] } },
     ]);
     expect(callArgs.order).toEqual([['sale_count', 'DESC']]);
-    expect(result.rows).toHaveLength(1);
+    expect(result.rows).toEqual(expect.arrayContaining([
+      expect.objectContaining({ id: 'prod-1' }),
+    ]));
     expect(result.total).toBe(1);
   });
 

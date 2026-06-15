@@ -110,7 +110,7 @@ export default {
         .then((res) => {
           this.list = res.data.rows.map((item) => ({
               ...item,
-              img: item.img || (item.galleryList && item.galleryList[0]) || "",
+              img: item.img || (item.galleryList && item.galleryList[0]) || (Array.isArray(item.images) ? item.images[0] : '') || '',
             }))
         })
         .catch((err) => {

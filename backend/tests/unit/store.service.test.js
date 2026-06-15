@@ -57,7 +57,7 @@ describe('getStoreByName', () => {
     const result = await storeService.getStoreByName('demo-store');
 
     expect(Store.findOne).toHaveBeenCalledWith({ where: { slug: 'demo-store' } });
-    expect(result).toEqual(mockStore);
+    expect(result).toEqual({ rows: [mockStore] });
   });
 
   it('should fall back to partial name search when slug does not match', async () => {

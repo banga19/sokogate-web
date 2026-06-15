@@ -145,16 +145,14 @@ export default {
           .then((res) => {
             // console.log("GetSpuList", res);
             // startover 为 true 重来，否重增加到现有的列表后面
+        const mapImage = (item) => ({
+          ...item,
+          img: item.img || (item.galleryList && item.galleryList[0]) || (Array.isArray(item.images) ? item.images[0] : '') || '',
+        });
         this.list = startover
-          ? (res.data.rows || []).map((item) => ({
-              ...item,
-              img: item.img || (item.galleryList && item.galleryList[0]) || "",
-            }))
+          ? (res.data.rows || []).map(mapImage)
           : this.list.concat(
-              (res.data.rows || []).map((item) => ({
-                ...item,
-                img: item.img || (item.galleryList && item.galleryList[0]) || "",
-              }))
+              (res.data.rows || []).map(mapImage)
             );
             // 数据总条数
             this.count = res.data.count;
@@ -196,7 +194,7 @@ export default {
           })
           this.list = get(productListRes, 'data.rows', []).map((item) => ({
               ...item,
-              img: item.img || (item.galleryList && item.galleryList[0]) || "",
+              img: item.img || (item.galleryList && item.galleryList[0]) || (Array.isArray(item.images) ? item.images[0] : '') || '',
             }))
         }
       } catch (error) {

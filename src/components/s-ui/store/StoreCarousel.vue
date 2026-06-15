@@ -63,7 +63,8 @@ export default {
       })
         .then((res) => {
           // console.log("GetBannerList", res);
-          this.list = res.data;
+          // API now returns banners array directly as res.data
+          this.list = Array.isArray(res.data) ? res.data : (res.data.rows || []);
           // console.log(this.list,"list");
         })
         .catch((err) => {

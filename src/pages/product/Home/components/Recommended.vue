@@ -103,11 +103,11 @@ export default {
         ])
         this.newProductList = get(newProductRes, 'data[0].spuList', []).slice(0, 4).map(item => ({
           ...item,
-          img: item.img || (item.galleryList && item.galleryList[0]) || ''
+          img: item.img || (item.galleryList && item.galleryList[0]) || (Array.isArray(item.images) ? item.images[0] : '') || ''
         }))
         this.featuredProductList = get(featuredProductsRes, 'data[0].spuList', []).slice(0, 4).map(item => ({
           ...item,
-          img: item.img || (item.galleryList && item.galleryList[0]) || ''
+          img: item.img || (item.galleryList && item.galleryList[0]) || (Array.isArray(item.images) ? item.images[0] : '') || ''
         }))
         this.loading = false
       } catch (error) {
