@@ -20,6 +20,7 @@
 <script>
 import SuiImage from "@/components/s-ui/media/Image";
 import { GetBannerList } from "@/utils/api";
+import { normalizeBannerList } from "@/utils/banner";
 export default {
   components: { SuiImage },
   props: {
@@ -48,13 +49,8 @@ export default {
         type: Number(this.type),
       }).then((res) => {
         // console.log("GetBannerList", res);
-        // Normalize image_url → image for consistent template usage
-        const rawData = res && res.data;
-        const rawList = Array.isArray(rawData) ? rawData : (rawData && rawData.rows) || [];
-        this.list = rawList.map((banner) => ({
-          ...banner,
-          image: banner.image || banner.image_url || '',
-        }));
+        // Normalize banner data (handles both array and { rows } response formats)
+        this.list = normalizeBannerList(res);
       }).catch((err) => {
         console.log("GetBannerList-err", err);
       });

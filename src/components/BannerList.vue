@@ -54,6 +54,7 @@
 <script>
 import SuiImage from "@/components/s-ui/media/Image";
 import { GetBannerList } from "@/utils/api";
+import { normalizeBannerList } from "@/utils/banner";
 export default {
   components: {
     SuiImage,
@@ -86,14 +87,8 @@ export default {
       })
         .then((res) => {
           console.log("GetBannerList-type-res==========:", this.type, res);
-          // API now returns banners array directly as res.data
-          // Normalize image_url → image for consistent template usage
-          const rawData = res && res.data;
-          const rawList = Array.isArray(rawData) ? rawData : (rawData && rawData.rows) || [];
-          this.list = rawList.map((banner) => ({
-            ...banner,
-            image: banner.image || banner.image_url || '',
-          }));
+          // Normalize banner data (handles both array and { rows } response formats)
+          this.list = normalizeBannerList(res);
           // 当banner数据渲染出来后发送自定义事件到子组件
           if (this.list && this.list.length) {
             this.$emit("success");

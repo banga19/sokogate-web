@@ -33,6 +33,80 @@ const mockBannersNoImage = [
 ];
 
 // ──────────────────────────────────────────────────────────────
+// normalizeBannerList utility (direct unit tests)
+// ──────────────────────────────────────────────────────────────
+
+describe('normalizeBannerList utility', () => {
+  const { normalizeBannerList } = require('@/utils/banner');
+
+  it('should map image_url → image from direct array response', () => {
+    const result = normalizeBannerList({ data: mockBannersArray });
+    expect(result).toHaveLength(3);
+    expect(result[0].image).toBe('https://oss.example.com/summer.jpg');
+    expect(result[1].image).toBe('https://oss.example.com/new.jpg');
+    expect(result[2].image).toBe('https://oss.example.com/free-ship.jpg');
+  });
+
+  it('should normalize from { rows } response format', () => {
+    const result = normalizeBannerList({ data: { rows: mockBannersArray } });
+    expect(result).toHaveLength(3);
+    expect(result[0].image).toBe('https://oss.example.com/summer.jpg');
+  });
+
+  it('should prefer existing image field over image_url', () => {
+    const result = normalizeBannerList({ data: mockBannersWithImage });
+    expect(result[0].image).toBe('https://oss.example.com/direct.jpg');
+  });
+
+  it('should fall back to empty string when both image and image_url are missing', () => {
+    const result = normalizeBannerList({ data: mockBannersNoImage });
+    expect(result[0].image).toBe('');
+  });
+
+  it('should handle null image as empty string', () => {
+    const result = normalizeBannerList({ data: [{ id: 'b1', image: null }] });
+    expect(result[0].image).toBe('');
+  });
+
+  it('should handle undefined image as empty string', () => {
+    const result = normalizeBannerList({ data: [{ id: 'b1', image: undefined }] });
+    expect(result[0].image).toBe('');
+  });
+
+  it('should preserve all original banner fields', () => {
+    const result = normalizeBannerList({ data: mockBannersArray });
+    expect(result[0].id).toBe('ban-1');
+    expect(result[0].title).toBe('Summer Sale');
+    expect(result[0].link_url).toBe('/products/1');
+    expect(result[0].image_url).toBe('https://oss.example.com/summer.jpg');
+  });
+
+  it('should return empty array for null data', () => {
+    expect(normalizeBannerList({ data: null })).toEqual([]);
+  });
+
+  it('should return empty array for undefined data', () => {
+    expect(normalizeBannerList({ data: undefined })).toEqual([]);
+  });
+
+  it('should return empty array for null res', () => {
+    expect(normalizeBannerList(null)).toEqual([]);
+  });
+
+  it('should return empty array for undefined res', () => {
+    expect(normalizeBannerList(undefined)).toEqual([]);
+  });
+
+  it('should handle empty rows as empty array', () => {
+    expect(normalizeBannerList({ data: { rows: [] } })).toEqual([]);
+  });
+
+  it('should handle empty data array as empty array', () => {
+    expect(normalizeBannerList({ data: [] })).toEqual([]);
+  });
+});
+
+// ──────────────────────────────────────────────────────────────
 // Helpers
 // ──────────────────────────────────────────────────────────────
 

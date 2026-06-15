@@ -38,6 +38,7 @@
 <script>
 import SuiImage from "@/components/s-ui/media/Image";
 import { GetBannerList } from "@/utils/api";
+import { normalizeBannerList } from "@/utils/banner";
 export default {
   props: {
     item: {
@@ -66,14 +67,8 @@ export default {
         type: Number(this.type),
       }).then((res) => {
         // console.log("GetBannerList", res);
-        // API now returns banners array directly as res.data
-        // Normalize image_url → image for consistent template usage
-        const rawData = res && res.data;
-        const rawItems = Array.isArray(rawData) ? rawData : (rawData && rawData.rows) || [];
-        this.items = rawItems.map((banner) => ({
-          ...banner,
-          image: banner.image || banner.image_url || '',
-        }));
+        // Normalize banner data (handles both array and { rows } response formats)
+        this.items = normalizeBannerList(res);
         // console.log(this.items, "items");
       }).catch((err) => {
         console.log("GetBannerList-err", err);
