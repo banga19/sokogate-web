@@ -111,6 +111,8 @@ test.describe('Checkout & Payment Flow', () => {
       await mockAllApis(page);
       await page.goto('/');
       await waitForApp(page);
+      // Actual page title is set by vue-meta in the app shell
+      await expect(page).toHaveTitle(/sokogate-web/i);
       const bodyText = await page.locator('body').textContent();
       expect(bodyText.length).toBeGreaterThan(0);
     });
