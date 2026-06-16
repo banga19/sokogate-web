@@ -13,7 +13,7 @@
     "test:e2e:visual": "npx playwright test tests/e2e/store-visual.spec.js --config=tests/e2e/playwright.config.js --project=chromium",
     "test:e2e:visual:update": "npx playwright test tests/e2e/store-visual.spec.js --config=tests/e2e/playwright.config.js --project=chromium --update-snapshots",
     "test:e2e:badge": "npx playwright test tests/e2e/store-banner.spec.js --config=tests/e2e/playwright.config.js --project=chromium",
-    "test:e2e:all": "npx playwright test tests/e2e/ --config=tests/e2e/playwright.config.js --project=chromium"
+    "test:e2e:all": "bash scripts/kill-port-4500.sh && npx playwright test tests/e2e/ --config=tests/e2e/playwright.config.js --project=chromium"
   },
   "dependencies": {
     "@paystack/inline-js": "^2.12.6",
