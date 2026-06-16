@@ -38,37 +38,37 @@
       <div class="item">
         <span class="text">Visa & banks</span>
         <span class="icon ">
-          <img src="https://oss.sokogate.com/static/visa.png" alt="visa" />
+          <img src="HTTPS://oss.sokogate.com/static/visa.png" alt="visa" />
         </span>
       </div>
       <div class="item">
         <span class="text">mpesa</span>
         <span class="icon">
-          <img src="https://oss.sokogate.com/static/mpesa.png" alt="mpesa" />
+          <img src="HTTPS://oss.sokogate.com/static/mpesa.png" alt="mpesa" />
         </span>
       </div>
       <div class="item">
         <span class="text">wave</span>
         <span class="icon ">
-          <img src="https://oss.sokogate.com/static/wave.jpg" alt="wave" />
+          <img src="HTTPS://oss.sokogate.com/static/wave.jpg" alt="wave" />
         </span>
       </div>
       <div class="item">
         <span class="text">orange money</span>
         <span class="icon">
-          <img src="https://oss.sokogate.com/static/orangemoney.jpg" alt="orangemoney" />
+          <img src="HTTPS://oss.sokogate.com/static/orangemoney.jpg" alt="orangemoney" />
         </span>
       </div>
       <div class="item">
         <span class="text">airtel</span>
         <span class="icon">
-          <img src="https://oss.sokogate.com/static/airtel.jpg" alt="airtel" />
+          <img src="HTTPS://oss.sokogate.com/static/airtel.jpg" alt="airtel" />
         </span>
       </div>
       <div class="item">
         <span class="text">Tigo</span>
         <span class="icon">
-          <img src="https://oss.sokogate.com/static/tigo.png" alt="Tigo" />
+          <img src="HTTPS://oss.sokogate.com/static/tigo.png" alt="Tigo" />
         </span>
       </div>
       <div class="item">
@@ -190,7 +190,7 @@ $mainColor: #EF2E22;
 
     &.pay {
       .item {
-        height: 2.604vw;
+        height: 2,604vw;
         align-items: center;
 
         &+.item {
@@ -203,7 +203,7 @@ $mainColor: #EF2E22;
 
         .icon {
           width: 2.083vw;
-          height: 2.604vw;
+          height: 2,604vw;
           display: flex;
           align-items: center;
 

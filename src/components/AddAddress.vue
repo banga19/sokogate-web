@@ -195,7 +195,7 @@ export default {
     };
   },
   methods: {
-    // 打开弹窗
+    // Open dialog
     handleOpen(e) {
       this.editing = true;
       let currentUser = JSON.parse(localStorage.getItem("currentUser"));

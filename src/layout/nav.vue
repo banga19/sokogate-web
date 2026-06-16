@@ -138,7 +138,7 @@ export default {
   },
   data() {
     return {
-      // 是否吸顶
+      // whether吸顶
       ifFixed: false,
       // 目标元素与整个文档顶部间的距离
       targetTop: 0,
@@ -369,7 +369,7 @@ export default {
       //   "Industrial Supplies": "red",
       //   "Manufacturing Equipment": "red",
       //   "Material Handling & Construction Machinery": "red",
-      //   "Home ，Lights & Construction": "red",
+      //   "Home , Lights & Construction": "red",
       //   home: "brown",
       //   "Bathroom Products": "red",
       //   "Garden Supplies": "red",
@@ -684,7 +684,7 @@ export default {
         "Manufacturing Equipment": "icon-tubiaozhizuomoban-116",
         "Material Handling & Construction Machinery": "icon-jixiexingye",
         "Service Equipment": "icon-dianzishebei",
-        "Home ，Lights & Construction": "icon-jianzhu",
+        "Home , Lights & Construction": "icon-jianzhu",
         home: "icon-jiaju1",
         "Bathroom Products": "icon-yushiyongpin",
         "Garden Supplies": "icon-kongzhonghuayuan",
@@ -771,7 +771,7 @@ export default {
   },
   mounted() {
     window.addEventListener("scroll", this.scrolling);
-    // 获取目标元素与整个文档顶部间的距离
+    // Get目标元素与整个文档顶部间的距离
     this.targetTop = document.querySelector("#target").offsetTop;
     // console.log(this.targetTop, "this.targetTop");
   },

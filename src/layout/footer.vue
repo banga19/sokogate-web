@@ -53,17 +53,17 @@
       </b-col >
       <b-col md="3" lg="3" sm="6" class="link-p">
         <h4>{{ $t("layout.quick-links") }}</h4>
-        <p @click="$utils.jumpto('https://vendor.sokogate.com/v2/login')">
+        <p @click="$utils.jumpto('HTTPS://vendor.sokogate.com/v2/login')">
           {{ $t("layout.seller-login") }}
         </p>
-        <p @click="$utils.jumpto('https://vendor.sokogate.com/v2/login')">
+        <p @click="$utils.jumpto('HTTPS://vendor.sokogate.com/v2/login')">
           {{ $t("layout.seller") }} sokogate.com
         </p>
-        <p @click="$utils.jumpto('https://beian.miit.gov.cn/')">
+        <p @click="$utils.jumpto('HTTPS://beian.miit.gov.cn/')">
           粤ICP备2022014110号-1
         </p>
         <h4>{{ $t("layout.sellon-sokogate") }}</h4>
-        <p @click="$utils.jumpto('https://vendor.sokogate.com/v2/register')">
+        <p @click="$utils.jumpto('HTTPS://vendor.sokogate.com/v2/register')">
           {{ $t("layout.become-supplier") }}
         </p>
       </b-col >
@@ -80,9 +80,8 @@
           Address: Room 5001, No. 372, Huanshi East Road, Yuexiu District,
           Guangzhou
         </p>
-        <p>地址: 广东省广州市越秀区环市东路372号正佳东方国际广场5001房</p>
         <p>© 2020-2026 ultimo trading co limited or its affiliates.</p>
-        <a href="https://ultimotradingltd.co.ke/" style="color: white;font-size: 16px;">https://ultimotradingltd.co.ke/</a>
+        <a href="HTTPS://ultimotradingltd.co.ke/" style="color: white;font-size: 16px;">HTTPS://ultimotradingltd.co.ke/</a>
       </b-col>
 
       <!-- <b-col>
@@ -110,55 +109,55 @@
           style="margin-bottom: 30px"
         >
           <b-col class="img-box">
-            <img src="https://oss.sokogate.com/static/discover.png" width="40" height="25" alt="discover card" loading="lazy" />
+            <img src="HTTPS://oss.sokogate.com/static/discover.png" width="40" height="25" alt="discover card" loading="lazy" />
           </b-col>
           <b-col class="img-box">
-            <img src="https://oss.sokogate.com/static/maestro.png" width="40" height="25" alt="maestro" loading="lazy" />
+            <img src="HTTPS://oss.sokogate.com/static/maestro.png" width="40" height="25" alt="maestro" loading="lazy" />
           </b-col>
           <!-- <b-col class="img-box">
-            <img src="https://oss.sokogate.com/static/paypal.png" loading="lazy" />
+            <img src="HTTPS://oss.sokogate.com/static/paypal.png" loading="lazy" />
           </b-col> -->
           <b-col class="img-box">
-            <img src="https://oss.sokogate.com/static/visa.png" width="40" height="25" alt="visa" loading="lazy" />
+            <img src="HTTPS://oss.sokogate.com/static/visa.png" width="40" height="25" alt="visa" loading="lazy" />
           </b-col>
           <b-col class="img-box">
-            <img src="https://oss.sokogate.com/static/mastercard.jpg" width="43" height="42" alt="mastercard" loading="lazy" />
+            <img src="HTTPS://oss.sokogate.com/static/mastercard.jpg" width="43" height="42" alt="mastercard" loading="lazy" />
           </b-col>
           <b-col class="img-box">
-            <img src="https://oss.sokogate.com/static/momo(mtn).png" width="43" height="42" alt="momo(mtn)" loading="lazy" />
+            <img src="HTTPS://oss.sokogate.com/static/momo(mtn).png" width="43" height="42" alt="momo(mtn)" loading="lazy" />
           </b-col>
           <b-col class="img-box">
-            <img src="https://oss.sokogate.com/static/orangemoney.jpg" width="43" height="50" alt="orangemoney" loading="lazy" />
+            <img src="HTTPS://oss.sokogate.com/static/orangemoney.jpg" width="43" height="50" alt="orangemoney" loading="lazy" />
           </b-col>
           <b-col class="img-box">
-            <img src="https://oss.sokogate.com/static/wave.jpg" width="43" height="42" alt="wave" loading="lazy" />
+            <img src="HTTPS://oss.sokogate.com/static/wave.jpg" width="43" height="42" alt="wave" loading="lazy" />
           </b-col>
           <b-col class="img-box">
-            <img src="https://oss.sokogate.com/static/eumobile.jpg" width="43" height="26" alt="eumobile" loading="lazy" />
+            <img src="HTTPS://oss.sokogate.com/static/eumobile.jpg" width="43" height="26" alt="eumobile" loading="lazy" />
           </b-col>
           <b-col class="img-box">
-            <img src="https://oss.sokogate.com/static/mobicash.jpg" width="43" height="13" alt="mobicash" loading="lazy" />
+            <img src="HTTPS://oss.sokogate.com/static/mobicash.jpg" width="43" height="13" alt="mobicash" loading="lazy" />
           </b-col>
           <b-col class="img-box">
-            <img src="https://oss.sokogate.com/static/airtel.jpg" width="43" height="41" alt="airtel" loading="lazy" />
+            <img src="HTTPS://oss.sokogate.com/static/airtel.jpg" width="43" height="41" alt="airtel" loading="lazy" />
           </b-col>
           <b-col class="img-box">
-            <img src="https://oss.sokogate.com/static/vodafone.jpg" width="43" height="42.95" alt="vodafone" loading="lazy" />
+            <img src="HTTPS://oss.sokogate.com/static/vodafone.jpg" width="43" height="42,95" alt="vodafone" loading="lazy" />
           </b-col>
           <b-col class="img-box">
-            <img src="https://oss.sokogate.com/static/wizall.jpg" width="43" height="43" alt="wizall" loading="lazy" />
+            <img src="HTTPS://oss.sokogate.com/static/wizall.jpg" width="43" height="43" alt="wizall" loading="lazy" />
           </b-col>
           <b-col class="img-box">
-            <img src="https://oss.sokogate.com/static/e-money.png" width="43" height="22" alt="e-money" loading="lazy" />
+            <img src="HTTPS://oss.sokogate.com/static/e-money.png" width="43" height="22" alt="e-money" loading="lazy" />
           </b-col>
           <b-col class="img-box">
-            <img src="https://oss.sokogate.com/static/freemoney.png" width="43" height="18" alt="freemoney" loading="lazy" />
+            <img src="HTTPS://oss.sokogate.com/static/freemoney.png" width="43" height="18" alt="freemoney" loading="lazy" />
           </b-col>
           <b-col class="img-box">
-            <img src="https://oss.sokogate.com/static/moovmoney.png" width="43" height="38" alt="moovmoney" loading="lazy" />
+            <img src="HTTPS://oss.sokogate.com/static/moovmoney.png" width="43" height="38" alt="moovmoney" loading="lazy" />
           </b-col>
           <b-col class="img-box">
-            <img src="https://oss.sokogate.com/static/tmoney.jpg" width="43" height="15" alt="tmoney" loading="lazy" />
+            <img src="HTTPS://oss.sokogate.com/static/tmoney.jpg" width="43" height="15" alt="tmoney" loading="lazy" />
           </b-col>
         </b-row>
       </b-col>

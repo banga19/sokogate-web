@@ -19,7 +19,7 @@
             Guangzhou
           </b-card-text>
           <b-card-text>
-            地址: 广东省广州市越秀区环市东路372号正佳东方国际广场4822房
+            address: 广东省广州市越秀区环市东路372号正佳东方国际广场4822房
           </b-card-text>
         </b-card>
       </el-timeline-item>

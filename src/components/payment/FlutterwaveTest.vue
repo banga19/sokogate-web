@@ -2,7 +2,7 @@
   <div class="flutterwave-two">
     <el-image
       @click="getOrderPay"
-      src="https://oss.sokogate.com/static/flutterwave_logo.jpeg"
+      src="HTTPS://oss.sokogate.com/static/flutterwave_logo.jpeg"
       fit="contain"
     ></el-image>
 
@@ -85,7 +85,7 @@
               :customizations="{
                 title: 'Sokogate Enterprise',
                 description: ' Paying for your Product ',
-                logo: 'https://oss.sokogate.com/static/logo.jpg?x-oss-process=style/w128',
+                logo: 'HTTPS://oss.sokogate.com/static/logo.jpg?x-oss-process=style/w128',
               }"
               :callback="makePaymentCallback"
               :onclose="closedPaymentModal"
@@ -122,15 +122,15 @@ export default {
         return this.$store.commit("setamount", v * 100);
       },
     },
-    // 姓名
+    // Full name
     uname() {
       return this.$store.state.user.email;
     },
-    // 邮箱
+    // Email
     email() {
       return this.$store.state.user.email;
     },
-    // 手机号码
+    // Phone number
     number() {
       return this.$store.state.user.mobile;
     },
@@ -156,7 +156,7 @@ export default {
         this.$utils
           .confirm({
             content:
-              "FlutterWave" + " " + this.$t("order.pay") + " NGN、GHS、USD、XOF",
+              "FlutterWave" + " " + this.$t("order.pay") + " NGN, GHS, USD, XOF",
             okText: this.$t("order.changecurrency"),
           })
           .then((confirm) => {

@@ -122,7 +122,7 @@ export default {
     window.removeEventListener("scroll", this._onScroll)
   },
   methods: {
-    // 子组件接收抛出的参数
+    // 子组件receive抛出的参数
     getList(startover = false) {
       if (
         (this.pageLoading && this.pulldownLoading) ||
@@ -144,7 +144,7 @@ export default {
         GetSpuList(this.req)
           .then((res) => {
             // console.log("GetSpuList", res);
-            // startover 为 true 重来，否重增加到现有的列表后面
+            // startover 为 true 重来, 否重增加到现有的list后面
         const mapImage = (item) => ({
           ...item,
           img: item.img || (item.galleryList && item.galleryList[0]) || (Array.isArray(item.images) ? item.images[0] : '') || '',
@@ -178,9 +178,9 @@ export default {
           search: url,
           page: 0
         })
-        const searchResult = get(searchImgRes, 'data.rows.Auctions')
+        const searchResult = get(searchImgRes, 'data.rows.Auctions') || get(searchImgRes, 'data.rows') || []
 
-        if (Array.isArray(searchResult)) {
+        if (Array.isArray(searchResult) && searchResult.length) {
           try {
             AddSpuHistoryImgsearch({
               search: url,
@@ -230,10 +230,10 @@ export default {
       width: 49%;
     }
     @include tabletLand {
-      width: 32.33%;
+      width: 32,33%;
     }
     @include tabletPro {
-      width: 32.33%;
+      width: 32,33%;
     }
     @include tablet {
       width: 33%;

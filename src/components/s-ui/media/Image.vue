@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { getWebPUrl } from '@/utils/image';
+import { getWebPUrl, supportsWebP } from '@/utils/image';
 
 export default {
   props: {
@@ -110,6 +110,13 @@ export default {
     };
   },
   computed: {
+    /**
+     * Build the display URL for the image.
+     *
+     * - `cut` prop provided → applies OSS named style resize (style/w...)
+     * - `webp` enabled → auto-converts OSS images to WebP format
+     *   (skipped when cut is used, since named styles cannot be chained)
+     */
     srcDisplay() {
       let src = this.src;
 
@@ -118,8 +125,10 @@ export default {
         src = `${src}?x-oss-process=style/w${this.cut}`;
       }
 
-      // Auto-convert to WebP for OSS-hosted images
-      if (this.webp && src) {
+      // Auto-convert to WebP for OSS-hosted images (only if browser supports it)
+      // Note: when cut is active, getWebPUrl will skip WebP addition
+      // because named OSS styles (style/...) can't be combined with pipeline ops
+      if (this.webp && src && supportsWebP()) {
         src = getWebPUrl(src);
       }
 

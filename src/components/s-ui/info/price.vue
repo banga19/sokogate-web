@@ -14,7 +14,7 @@ export default {
   },
   computed: {
     current() {
-      // 传入目标货币单位优先 与 全局货币单位
+      // Pass in目标货币单位优先 与 全局货币单位
       return this.to || "USD";
     },
     unitString() {

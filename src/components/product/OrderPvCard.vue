@@ -126,7 +126,7 @@ export default {
     },
     priceSum() {
       if (this.filLadderSkuPriceAllTheSame) {
-        // 当阶梯全部sku价格一致时，各sku数量合并计算 匹配阶梯
+        // 当阶梯全部sku价格一致时, 各sku数量合并计算 匹配阶梯
         const result = this.spu.skuList.find((sku) => {
           const {
             skuLadder: { max, min },

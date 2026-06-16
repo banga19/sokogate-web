@@ -224,7 +224,7 @@ export default {
     },
     url() {
       return (
-        "https://sokogate.com/v2/product/detail?id=" +
+        "HTTPS://sokogate.com/v2/product/detail?id=" +
         this.spu.id +
         "&srcde=" +
         this.srcde
@@ -235,11 +235,11 @@ export default {
     // 分享到facebook
     share_facebook(event) {
       event.preventDefault();
-      // shareUrl是facebook的分享地址，（有资料说需要真实的appkey，必选参数，这里我没用appkey也可以正常分享）
-      //自定义内容
+      // shareUrl是facebook的分享address,  (有资料说需要真实的appkey, 必选参数, 这里我没用appkey也可以正常分享) 
+      //custom内容
       const url = encodeURIComponent(this.url); //参数url设置分享的内容链接
-      var _shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-      // 保留当前页面,打开一个非tab页面（按需求来，可以新开标签页，也可以在当前页新开页面）
+      var _shareUrl = `HTTPS://www.facebook.com/sharer/sharer.php?u=${url}`;
+      // 保留当前页面,打开一个非tab页面 (按需求来, 可以新开标签页, 也可以在当前页新开页面) 
       window.open(
         _shareUrl,
         "_blank",
@@ -251,8 +251,8 @@ export default {
     share_telegram(event) {
       event.preventDefault();
       const url = encodeURIComponent(this.url); //参数url设置分享的内容链接
-      var _shareUrl = `https://t.me/share/url?url=${url}`;
-      // 保留当前页面,打开一个非tab页面（按需求来，可以新开标签页，也可以在当前页新开页面）
+      var _shareUrl = `HTTPS://t.me/share/url?url=${url}`;
+      // 保留当前页面,打开一个非tab页面 (按需求来, 可以新开标签页, 也可以在当前页新开页面) 
       window.open(
         _shareUrl,
         "_blank",
@@ -264,8 +264,8 @@ export default {
     share_whatsapp(event) {
       event.preventDefault();
       const url = encodeURIComponent(this.url); //参数url设置分享的内容链接
-      var _shareUrl = `https://api.whatsapp.com/send?text=${url}`;
-      // 保留当前页面,打开一个非tab页面（按需求来，可以新开标签页，也可以在当前页新开页面）
+      var _shareUrl = `HTTPS://api.whatsapp.com/send?text=${url}`;
+      // 保留当前页面,打开一个非tab页面 (按需求来, 可以新开标签页, 也可以在当前页新开页面) 
       window.open(
         _shareUrl,
         "_blank",
@@ -278,7 +278,7 @@ export default {
       event.preventDefault();
       const url = encodeURIComponent(this.url); //参数url设置分享的内容链接
       var _shareUrl = `http://settings.messenger.live.com/Conversation/IMMe.aspx?invitee=${url}`;
-      // 保留当前页面,打开一个非tab页面（按需求来，可以新开标签页，也可以在当前页新开页面）
+      // 保留当前页面,打开一个非tab页面 (按需求来, 可以新开标签页, 也可以在当前页新开页面) 
       window.open(
         _shareUrl,
         "_blank",
@@ -286,12 +286,12 @@ export default {
         "scrollbars=yes,resizable=1,modal=false,alwaysRaised=yes"
       );
     },
-    // 分享到Youtube(视频)
+    // 分享到Youtube(video)
     share_Youtube(event) {
       event.preventDefault();
       const url = encodeURIComponent(this.url); //参数url设置分享的内容链接
-      var _shareUrl = `https://www.youtube.com/embed/${url}`;
-      // 保留当前页面,打开一个非tab页面（按需求来，可以新开标签页，也可以在当前页新开页面）
+      var _shareUrl = `HTTPS://www.youtube.com/embed/${url}`;
+      // 保留当前页面,打开一个非tab页面 (按需求来, 可以新开标签页, 也可以在当前页新开页面) 
       window.open(
         _shareUrl,
         "_blank",

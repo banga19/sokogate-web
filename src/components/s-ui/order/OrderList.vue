@@ -13,7 +13,7 @@
   </el-card>
 </template>
 <script>
-// Order的列表
+// Order的list
 import SuiList from "@/components/s-ui/list";
 import { GetOrderListbyStatus } from "@/utils/api";
 import { formatDataTime, navto } from "@/utils";
@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       tableColumn: [
-        // 图片
+        // image/picture
         {
           type: "image",
           name: "productImg",
@@ -70,7 +70,7 @@ export default {
           label: "content.orderList.transaction",
           status: this.$t("order.statusText"),
         },
-        // 创建时间
+        // create时间
         {
           name: "createAt",
           label: "content.orderList.createAt",
@@ -78,9 +78,9 @@ export default {
           width: 100,
         },
       ],
-      // 列表的请求接口
+      // list的request接口
       tableFun: GetOrderListbyStatus,
-      // 列表的默认参数
+      // list的default参数
       tableFunReq: {
         orderKey: "",
         status: 0,
@@ -88,7 +88,7 @@ export default {
         userId: "",
         pageSize: this.max || 10,
       },
-      // 获取res.data.rows里面sup里的数据
+      // Getres.data.rows里面sup里的数据
       tableDataRefactor: (list) => {
         // console.log("list", list);
         return list.map((v) => {
@@ -108,7 +108,7 @@ export default {
     };
   },
   methods: {
-    // 分页
+    // Pagination
     backflow(count) {
       this.count = count;
     },

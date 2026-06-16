@@ -7,62 +7,62 @@
         <div class="col">
           <h4>退款政策</h4>
           <p>
-            要使用退款权，退款的产品、商品或/和物品必须有制造缺陷、损坏、破损、错误、假冒/不真实，或不符合先决条件的基本要求。
+            要使用退款权, 退款的产品, 商品或/和物品必须有制造缺陷, 损坏, 破损, 错误, 假冒/不真实, 或不符合先决条件的基本要求.
           </p>
 
           <h4>简单的退款</h4>
           <p>
-            您可以通过电子邮件轻松地通知sokgate关于您的退款产品、商品和/或项目，我们将随时更新您的退款状态
+            您可以通过电子邮件轻松地通知sokgate关于您的退款产品, 商品和/或项目, 我们将随时更新您的退款状态
           </p>
 
           <h4>真实性保证</h4>
           <p>
-            你必须确保所有的封条，标签和附件是完好无损的，项目是在其原始包装。
+            你必须确保所有的封条, 标签和附件是完好无损的, 项目是在其原始包装.
           </p>
           <p>
-            作为一家专业的B2B和电子商务企业，sokgate将在发货前提供货物、产品或/和物品的样品，并有保证，因此退货的产品、产品或/和物品的运费将由买方承担。
+            作为一家专业的B2B和电子business team企业, sokgate将在发货前提供货物, 产品或/和物品的样品, 并有保证, 因此退货的产品, 产品或/和物品的运费将由买方承担.
           </p>
 
           <h4>如何退还订单?</h4>
           <p>您可透过电子邮件联络我们或按以下步骤在网上退款:</p>
-          <p>1.登录你的账户，选择我的订单</p>
-          <p>2.选择您想要退款的订单</p>
-          <p>3.选择退货理由，请确认您选择的理由正确。</p>
-          <p>4.选择退款方式和货物，无论是DHL, UPS，或您购买的国家当地运费。</p>
-          <p>5.审核退款详情并提交。</p>
-          <p>6.在货物离开购买国之前，一定要把钱退了。</p>
+          <p>1,login你的账户, 选择我的订单</p>
+          <p>2,选择您想要退款的订单</p>
+          <p>3,选择退货理由, 请确认您选择的理由正确.</p>
+          <p>4,选择退款method和货物, 无论是DHL, UPS, 或您购买的国家当地运费.</p>
+          <p>5,审核退款详情并提交.</p>
+          <p>6,在货物离开购买国之前, 一定要把钱退了.</p>
 
           <h4>可靠的运输到非洲各地</h4>
           <p>
-            sokgate承诺在运输的每一步都为您提供最好的运输体验，并确保采取所有适当的预防措施，以确保您的订单完整、及时地收到。
-            sokgate承诺在运输的每一步都为您提供最好的运输体验，并确保采取所有适当的预防措施，以确保您的订单完整、及时地收到。
+            sokgate承诺在运输的每一步都为您提供最好的运输体验, 并确保采取所有适当的预防措施, 以确保您的订单完整, 及时地收到.
+            sokgate承诺在运输的每一步都为您提供最好的运输体验, 并确保采取所有适当的预防措施, 以确保您的订单完整, 及时地收到.
           </p>
           <p>
-            您可以选择最便宜、最完美的送货方式。
-            由于sokgate允许您与DHL或UPS公司比较多种方法，以选择最佳价格，无论是通过运费、船运或组合
+            您可以选择最便宜, 最完美的送货method.
+            由于sokgate允许您与DHL或UPS公司比较多种方法, 以选择最佳价格, 无论是通过运费, 船运或组合
           </p>
 
           <h4>在54个国家</h4>
-          <p>sokgate可将货物运送到非洲超过54个国家，其中有DHL和UPS运输公司。</p>
+          <p>sokgate可将货物运送到非洲超过54个国家, 其中有DHL和UPS运输公司.</p>
 
           <h4>跟踪你的订单</h4>
-          <p>sokgate提供了一个跟踪功能，以便跟踪货物，直到送货上门。</p>
+          <p>sokgate提供了一个跟踪feature, 以便跟踪货物, 直到送货上门.</p>
 
           <h4>专家助理</h4>
-          <p>sokgate随时准备帮助您，因此您可以联系物流专家来管理运输流程。</p>
+          <p>sokgate随时准备帮助您, 因此您可以contact物流专家来管理运输流程.</p>
 
-          <h4>从两种运输方式中选择简单、安全的方式运送您的订单:</h4>
-          <h5>1.拼箱</h5>
+          <h4>从两种运输method中选择简单, 安全的method运送您的订单:</h4>
+          <h5>1,拼箱</h5>
           <p>
-            sokgate随时准备帮助您，因此您可以联系物流专家来管理运输流程。
-            拼箱是指小型的海运运力运输，为那些没有容量装满整个集装箱的人节省资金。
-            公司运费将多个拼箱货物放在一起，并根据集装箱的重量或尺寸计算运费。
+            sokgate随时准备帮助您, 因此您可以contact物流专家来管理运输流程.
+            拼箱是指小型的海运运力运输, 为那些没有容量装满整个集装箱的人节省资金.
+            公司运费将多个拼箱货物放在一起, 并根据集装箱的重量或尺寸计算运费.
           </p>
-          <h5>2.整箱货</h5>
+          <h5>2,整箱货</h5>
           <p>
-            整箱是一种海运，在这种海运中，订单要装满集装箱。
-            对于可能在一个或多个运输集装箱中发生的大量订单，这是一个完美的选择。
-            买方将支付全部集装箱容量。
+            整箱是一种海运, 在这种海运中, 订单要装满集装箱.
+            对于可能在一个或多个运输集装箱中发生的大量订单, 这是一个完美的选择.
+            买方将支付全部集装箱容量.
           </p>
         </div>
       </b-col>
@@ -101,19 +101,19 @@
             You can contact us via email or refund your order online by the
             following steps:
           </p>
-          <p>1.Sign in to your account and select my order.</p>
-          <p>2.Select the order that you would like to refund.</p>
+          <p>1,Sign in to your account and select my order.</p>
+          <p>2,Select the order that you would like to refund.</p>
           <p>
-            3.Select the return reason, please make sure that you choose the
+            3,Select the return reason, please make sure that you choose the
             right reason.
           </p>
           <p>
-            4.Select the refund method and cargo whether DHL, UPS, or the
+            4,Select the refund method and cargo whether DHL, UPS, or the
             country you purchased local Freight.
           </p>
-          <p>5.Review the refund details and submit.</p>
+          <p>5,Review the refund details and submit.</p>
           <p>
-            6.Make sure to refund before the goods leave the country of
+            6,Make sure to refund before the goods leave the country of
             purchase.
           </p>
 
@@ -155,14 +155,14 @@
             Ship your Orders in Easy, Safe Way by Choosing from Two Shipping
             Methods:
           </h4>
-          <h5>1.Less than Container Load (LCL)</h5>
+          <h5>1,Less than Container Load (LCL)</h5>
           <p>
             LCL refers to small ocean freight capacity shipment that save money
             for those who don’t have volume to fill an entire container. A
             company freight puts together multiple LCL shipments and the fare is
             calculated by Weight or Measure that taken from the container.
           </p>
-          <h5>2.Full Container Load (FCL)</h5>
+          <h5>2,Full Container Load (FCL)</h5>
           <p>
             FCL is an ocean shipment in which the orders fill full containers.
             This is perfect option for high-volume orders that may take place in
@@ -209,22 +209,22 @@
             Vous pouvez faire un remboursement en ligne en nous contactant par
             e-mail ou en suivant les étapes ci-dessous:
           </p>
-          <p>1. Connectez-vous à votre compte et sélectionnez Mes Commandes</p>
-          <p>2. Sélectionnez la commande que vous souhaitez rembourser</p>
+          <p>1, Connectez-vous à votre compte et sélectionnez Mes Commandes</p>
+          <p>2, Sélectionnez la commande que vous souhaitez rembourser</p>
           <p>
-            3. Choisissez la raison du retour. Veuillez vous assurer que vous
+            3, Choisissez la raison du retour. Veuillez vous assurer que vous
             avez choisi la bonne raison.
           </p>
           <p>
-            4. Choisissez la méthode de remboursement et les marchandises, que
+            4, Choisissez la méthode de remboursement et les marchandises, que
             ce soit DHL, UPS, ou les frais de transport locaux dans le pays où
             vous avez acheté.
           </p>
           <p>
-            5. Passez en revue les détails de remboursement et soumettez-les.
+            5, Passez en revue les détails de remboursement et soumettez-les.
           </p>
           <p>
-            6. Toujours rembourser l’argent avant que les marchandises quittent
+            6, Toujours rembourser l’argent avant que les marchandises quittent
             le pays d’achat.
           </p>
 
@@ -268,7 +268,7 @@
             Choisissez un moyen simple et sécurisé pour expédier votre commande
             parmi deux modes de transport:
           </h4>
-          <h5>1. Expédition LCL</h5>
+          <h5>1, Expédition LCL</h5>
           <p>
             Sokgate est prêt à vous aider afin que vous puissiez contacter des
             experts en logistique pour gérer le processus de transport. LCL est
@@ -278,7 +278,7 @@
             ensemble et calcule le fret en fonction du poids ou de la taille du
             conteneur.
           </p>
-          <h5>2. Marchandises pleines de conteneur</h5>
+          <h5>2, Marchandises pleines de conteneur</h5>
           <p>
             Le FCL est un transport maritime dans lequel les commandes sont
             remplies de conteneurs. Une option parfaite pour les commandes
@@ -325,19 +325,19 @@
             Puede realizar su reembolso en línea contactando con nosotros por
             correo electrónico o siguiendo los siguientes pasos:
           </p>
-          <p>1.Ingrese a su cuenta y seleccione mis pedidos</p>
-          <p>2.Seleccione el pedido que desea reembolsar</p>
+          <p>1,Ingrese a su cuenta y seleccione mis pedidos</p>
+          <p>2,Seleccione el pedido que desea reembolsar</p>
           <p>
-            3.Seleccione el motivo de la devolución. Asegúrese de que ha
+            3,Seleccione el motivo de la devolución. Asegúrese de que ha
             seleccionado el motivo correcto.
           </p>
           <p>
-            4.Elija el método de reembolso y el envío, ya sea DHL, UPS, o los
+            4,Elija el método de reembolso y el envío, ya sea DHL, UPS, o los
             costos de envío locales del país en el que compró.
           </p>
-          <p>5.Revise los detalles del reembolso y envíelos.</p>
+          <p>5,Revise los detalles del reembolso y envíelos.</p>
           <p>
-            6.Asegúrese de devolver el dinero antes de que la mercancía salga
+            6,Asegúrese de devolver el dinero antes de que la mercancía salga
             del país de compra.
           </p>
 
@@ -381,7 +381,7 @@
             Elija entre dos métodos de envío para enviar su pedido de forma
             fácil y segura:
           </h4>
-          <h5>1.De contenedores</h5>
+          <h5>1,De contenedores</h5>
           <p>
             Sokgate está listo para ayudarle, por lo que puede ponerse en
             contacto con un experto en logística para gestionar el proceso de
@@ -391,7 +391,7 @@
             de LCL juntas y calcula la carga según el peso o el tamaño del
             contenedor.
           </p>
-          <h5>2.Carga completa de contenedores</h5>
+          <h5>2,Carga completa de contenedores</h5>
           <p>
             FCL es un transporte marítimo en el que el pedido se llena de
             contenedores. Es una opción perfecta para pedidos de gran volumen
@@ -436,19 +436,19 @@
             Você pode fazer seu reembolso on-line entrando em contato conosco
             por e-mail ou seguindo os passos abaixo:
           </p>
-          <p>1.Entre na sua conta e selecione meus pedidos</p>
-          <p>2.Selecione a encomenda que deseja reembolsar</p>
+          <p>1,Entre na sua conta e selecione meus pedidos</p>
+          <p>2,Selecione a encomenda que deseja reembolsar</p>
           <p>
-            3.Selecione o motivo da devolução. Por favor, verifique se você
+            3,Selecione o motivo da devolução. Por favor, verifique se você
             selecionou o motivo correto.
           </p>
           <p>
-            4.Escolha o método de reembolso e a remessa, seja pela DHL, UPS ou
+            4,Escolha o método de reembolso e a remessa, seja pela DHL, UPS ou
             pelo frete local do país onde você comprou.
           </p>
-          <p>5.Reveja os detalhes do reembolso e envie.</p>
+          <p>5,Reveja os detalhes do reembolso e envie.</p>
           <p>
-            6.Certifique-se de devolver o dinheiro antes que a mercadoria saia
+            6,Certifique-se de devolver o dinheiro antes que a mercadoria saia
             do país de compra.
           </p>
 
@@ -492,7 +492,7 @@
             Escolha entre dois métodos de envio para enviar seu pedido de forma
             simples e segura:
           </h4>
-          <h5>1.LCL</h5>
+          <h5>1,LCL</h5>
           <p>
             Sokgate está pronto para ajudá-lo, para que você possa entrar em
             contato com um especialista em logística para gerenciar o fluxo de
@@ -502,7 +502,7 @@
             de LCL junto e calcula o frete de acordo com o peso ou o tamanho do
             recipiente.
           </p>
-          <h5>2.Carga completa do recipiente</h5>
+          <h5>2,Carga completa do recipiente</h5>
           <p>
             FCL é um transporte marítimo, no qual a ordem é preenchida com
             contêineres. É a opção perfeita para grandes volumes de encomendas
@@ -546,15 +546,15 @@
             يمكنك الاتصال بنا عبر البريد الإلكتروني أو استرداد الأموال عبر
             الإنترنت على الخطوات التالية:
           </p>
-          <p>1.تسجيل الدخول إلى حسابك واختيار طلبي</p>
-          <p>2.اختر طلبك الذي تريد إرجاعه</p>
-          <p>3.اختر سبب الإعادة، يرجى تأكيد أن سبب اختيارك صحيح.</p>
+          <p>1,تسجيل الدخول إلى حسابك واختيار طلبي</p>
+          <p>2,اختر طلبك الذي تريد إرجاعه</p>
+          <p>3,اختر سبب الإعادة، يرجى تأكيد أن سبب اختيارك صحيح.</p>
           <p>
-            4.اختر طريقة السداد والسلع، سواء كانت DHL أو UPS أو الشحن المحلي في
+            4,اختر طريقة السداد والسلع، سواء كانت DHL أو UPS أو الشحن المحلي في
             البلد الذي تشتريه.
           </p>
-          <p>5.استعراض تفاصيل المبالغ المردودة وتقديمها.</p>
-          <p>6.ويجب إعادة الأموال قبل مغادرة البضائع للبلد المشتري.</p>
+          <p>5,استعراض تفاصيل المبالغ المردودة وتقديمها.</p>
+          <p>6,ويجب إعادة الأموال قبل مغادرة البضائع للبلد المشتري.</p>
 
           <h4>في جميع أنحاء أفريقيا</h4>
           <p>
@@ -586,7 +586,7 @@
           </p>
 
           <h4>اختر طريقة بسيطة وآمنة لإرسال طلبك من واسطة نقل:</h4>
-          <h5>1.منافسة صندوق</h5>
+          <h5>1,منافسة صندوق</h5>
           <p>
             Sokgate دائمًا لمساعدتك، حتى تتمكن من الاتصال بخبراء اللوجستيات
             لإدارة عمليات النقل. يقصد بمصطلح "التهجئة" النقل البحري الصغير الحجم
@@ -594,7 +594,7 @@
             بكاملها. وكانت رسوم الشحن التي تتقاضاها الشركة تجمع الشحنات المركبة
             المتعددة معا وتحسب أجرة النقل على أساس وزن الحاوية أو حجمها.
           </p>
-          <h5>2.الشحنة كلها</h5>
+          <h5>2,الشحنة كلها</h5>
           <p>
             والحقيبة بأكملها هي نوع من النقل البحري حيث تُملأ الطلبات بالحاويات.
             وهذا خيار مثالي فيما يتعلق بالطلبات الكبيرة التي قد تحدث في حاوية
@@ -639,16 +639,16 @@
             Вы можете связаться с нами по электронной почте или вернуть деньги
             онлайн по следующим ступеням:
           </p>
-          <p>1.Зайди на свой аккаунт и выбери мой заказ</p>
-          <p>2.Выбра вы хот компенсац заказ</p>
-          <p>3.Пожалуйста, подтвердите, что вы сделали правильный выбор.</p>
+          <p>1,Зайди на свой аккаунт и выбери мой заказ</p>
+          <p>2,Выбра вы хот компенсац заказ</p>
+          <p>3,Пожалуйста, подтвердите, что вы сделали правильный выбор.</p>
           <p>
-            4.Выберите способ возмещения и товары, будь то DHL, UPS или местные
+            4,Выберите способ возмещения и товары, будь то DHL, UPS или местные
             расходы на доставку, которые вы покупаете.
           </p>
-          <p>5.Пересмотри детали возврата и представься.</p>
+          <p>5,Пересмотри детали возврата и представься.</p>
           <p>
-            6.Убедись, что вернул деньги до того, как товар покинет страну
+            6,Убедись, что вернул деньги до того, как товар покинет страну
             покупателя.
           </p>
 
@@ -691,7 +691,7 @@
             Выберите простой и безопасный способ доставки вашего заказа из двух
             путей:
           </h4>
-          <h5>1.Написа ящик</h5>
+          <h5>1,Написа ящик</h5>
           <p>
             Сокгейт готов вам помочь, поэтому вы можете связаться с экспертом по
             логистике, чтобы управлять транспортным процессом. "Ящик"-это
@@ -700,7 +700,7 @@
             складывают несколько упаковок грузов вместе и рассчитывают расходы
             на перевозку в зависимости от веса или размера контейнера.
           </p>
-          <h5>2.Весь ящик.</h5>
+          <h5>2,Весь ящик.</h5>
           <p>
             Целый ящик-это морской транспорт, в котором заказы должны быть
             заполнены контейнерами. Идеальный выбор для огромного количества
@@ -745,19 +745,19 @@
             می‌توانید با ایمیل یا آنلاین به دنبال قدم‌های زیر با ما تماس
             بگیرید::
           </p>
-          <p>1.وارد حساب شما شوید و سفارش من را انتخاب کنید</p>
-          <p>2.انتخاب سفارشی که می‌خواهید بازگردید</p>
+          <p>1,وارد حساب شما شوید و سفارش من را انتخاب کنید</p>
+          <p>2,انتخاب سفارشی که می‌خواهید بازگردید</p>
           <p>
-            3.دلیل بازگشت را انتخاب کنید. لطفا تایید کنید که دلیل انتخاب شما
+            3,دلیل بازگشت را انتخاب کنید. لطفا تایید کنید که دلیل انتخاب شما
             درست است.
           </p>
           <p>
-            4.برگزینید روش و کالای بازگرداندن یا DHL، UPS یا فروش محلی کشوری که
+            4,برگزینید روش و کالای بازگرداندن یا DHL، UPS یا فروش محلی کشوری که
             خریده‌اید.
           </p>
-          <p>5.جزئیات بازگرداندن و تحویل بده.</p>
+          <p>5,جزئیات بازگرداندن و تحویل بده.</p>
           <p>
-            6.مطمئن باشيد که پول رو قبل از اينکه کالاها از کشور خريد برن
+            6,مطمئن باشيد که پول رو قبل از اينکه کالاها از کشور خريد برن
             برگردونيد
           </p>
 
@@ -795,7 +795,7 @@
           </p>
 
           <h4>راه ساده و امن انتخاب کنید تا سفارش شما را از دو روش انتقال:</h4>
-          <h5>1.LCL</h5>
+          <h5>1,LCL</h5>
           <p>
             Sokgate آماده است که به شما کمک کند، بنابراین می توانید با یک متخصص
             دانشمندان شناسی تماس بگیرید تا روش انتقال را مدیریت کند. LCL refers
@@ -804,7 +804,7 @@
             تجارت متعدد LCL را جمع می کند و بار را بر اساس وزن یا اندازه کنترل
             محاسبه می کند.
           </p>
-          <h5>2.بار کامل کنترل</h5>
+          <h5>2,بار کامل کنترل</h5>
           <p>
             کنترل کامل یک نوع انتقال دریا است که در آن دستور پر از کنترل است.
             این انتخاب عالی برای دستورات بزرگ است که ممکن است در یک یا بیشتر
@@ -836,12 +836,12 @@
 
           <h4>कैसे क्रम लौटाना है?</h4>
           <p>You can contact us by email or refund online by following the steps below::</p>
-          <p>1.अपने खाते में लगइन करें और मेरा क्रम चुनें</p>
-          <p>2.क्रम चुनें</p>
-          <p>3.लौटाने के लिए कारण चुनें. कृपया पुष्टि करें कि आप चुने हुए कारण सही है.</p>
-          <p>4.पुनरावृत्ति विधि और सामान चुनें, क्या यह DHL, UPS है या आपने खरीद किया देश के स्थानीय भारी है.</p>
-          <p>5.पुनरावृत्ति विवरण देखें.</p>
-          <p>6.खरीद देश से निकले से पहले पैसा को लौटाने के लिए निश्चित हो जाओ।</p>
+          <p>1,अपने खाते में लगइन करें और मेरा क्रम चुनें</p>
+          <p>2,क्रम चुनें</p>
+          <p>3,लौटाने के लिए कारण चुनें. कृपया पुष्टि करें कि आप चुने हुए कारण सही है.</p>
+          <p>4,पुनरावृत्ति विधि और सामान चुनें, क्या यह DHL, UPS है या आपने खरीद किया देश के स्थानीय भारी है.</p>
+          <p>5,पुनरावृत्ति विवरण देखें.</p>
+          <p>6,खरीद देश से निकले से पहले पैसा को लौटाने के लिए निश्चित हो जाओ।</p>
 
           <h4>अफ्रीका के सभी भागों के लिए विश्वासीय प्रवाहन</h4>
           <p>
@@ -863,13 +863,13 @@
           <p>सॉक्गेट तैयार है तुम्हारी मदद करने के लिए, ताकि आप एक लॉजिस्टिक विश्वासकर्ता को संपर्क कर सकते हैं जो प्रक्र</p>
 
           <h4>Choose a simple and safe way to ship your order from two modes of transportation:</h4>
-          <h5>1.LCL</h5>
+          <h5>1,LCL</h5>
           <p>
             सॉक्गेट तैयार है तुम्हारी मदद करने के लिए, ताकि आप एक लॉजिस्टिक विश्वासकर्ता को संपर्क कर सकते हैं जो प्रक्र
 LCL ने छोटे स्केल समुद्री स्थान परिवहन की है, जो उन लोगों के लिए पैसा बचता है जिनके पास पूरा कन्टेनर भरने के लिए क्ष
 कंपनी फ्राइट बहुतेरे LCL मालों को एक साथ रखता है और कन्टेनर के वजन या आकार के अनुसार भार को गणना करता है.
           </p>
-          <h5>2.पूरा कन्टेनर कार्गो</h5>
+          <h5>2,पूरा कन्टेनर कार्गो</h5>
           <p>
            पूरा कन्टेनर एक प्रकार समुद्र स्थानान्तरण है, जिसमें अनुक्रम पात्रों से भरा जाता है।
 यह बड़े आदेशों के लिए एक अच्छा चुना है जो एक या अधिक सार्वजन कंटेनर में हो सकते हैं.

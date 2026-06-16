@@ -2,7 +2,7 @@
   <div class="shortcut sticky">
     <div class="left">
       <a href="/">
-        <div class="logo"></div>
+        <img class="logo" src="@/assets/logo.svg" alt="Sokogate" />
       </a>
     </div>
     <div class="center">
@@ -138,7 +138,7 @@ export default {
       }
     },
     createMyShop() {
-      window.open('https://vendor.sokogate.com/v2/register')
+      window.open('HTTPS://vendor.sokogate.com/v2/register')
     },
     userCommand(command) {
       if (command === 'exit') {
@@ -223,7 +223,7 @@ export default {
       const data = {
         key: 'RWMBZ-AZHLJ-GIUFW-KLDDX-PC6IO-U7FIG',
       }
-      const url = 'https://apis.map.qq.com/ws/location/v1/ip'
+      const url = 'HTTPS://apis.map.qq.com/ws/location/v1/ip'
       data.output = 'jsonp'
       this.$jsonp(url, data)
         .then(res => {
@@ -244,7 +244,7 @@ export default {
           )
         })
         .catch(error => {
-          console.log('获取地理信息失败')
+          console.log('Failed to get geolocation info')
           throw new Error(error)
         })
         .catch(() => {
@@ -281,11 +281,11 @@ export default {
     beforeUpload(file) {
       if (file.type.indexOf('image/') !== 0) {
         Message.error(this.$t('upload.limitOnlyImage'))
-        throw new Error('只能上传图片')
+        throw new Error('只能uploadimage/picture')
       }
       if (file.size / 1024 / 1024 > 4) {
         Message.error(this.$t('upload.limitFileSize') + ': 4MB')
-        throw new Error('图片过大')
+        throw new Error('image/picture过大')
       }
       return this.checkImageResolution(file).then(result => {
         if (!result.isValid) {
@@ -298,7 +298,7 @@ export default {
               this.$t('upload.imageResolutionToLarge') + ': > 4096px'
             )
           }
-          throw new Error('图片分辨率不符合')
+          throw new Error('image/picture分辨率不符合')
         }
         this.uploadLoading = this.$loading({
           lock: true,
@@ -348,14 +348,14 @@ export default {
           }
 
           img.onerror = function () {
-            reject(new Error('图片加载失败'))
+            reject(new Error('image/picture加载failed'))
           }
 
           img.src = e.target.result
         }
 
         reader.onerror = function () {
-          reject(new Error('文件读取失败'))
+          reject(new Error('file读取failed'))
         }
 
         reader.readAsDataURL(file)
@@ -426,9 +426,7 @@ $mainColor: #EF2E22;
       width: 170px;
       height: 40px;
       cursor: pointer;
-      background-image: url('~@/assets/logo.svg');
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
+      object-fit: contain;
     }
 
   }

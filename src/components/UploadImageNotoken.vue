@@ -109,7 +109,7 @@ export default {
       });
     },
 
-    // 上传事件.
+    // upload事件.
     async handleUpload(option) {
       // console.log("getAuth-option:", option);
       const fileName = await getFileNameMd5(option.file);
@@ -128,7 +128,7 @@ export default {
       //   success_action_status: 200,
       //   file: option.file,
       // }).then(() => {
-      //   const url = `https://oss.sokogate.com/${fileName}`;
+      //   const url = `HTTPS://oss.sokogate.com/${fileName}`;
       //   console.log("handleUpload-uploadRes:", uploadRes, url);
       //   this.$emit("onsuccess", { filename: url });
       // });
@@ -140,7 +140,7 @@ export default {
       // })
       //   .then((res) => {
       //     console.log("AddOssFile-res", res);
-      const url = `https://oss.sokogate.com/${fileName}`;
+      const url = `HTTPS://oss.sokogate.com/${fileName}`;
       this.$emit("onsuccess", { filename: url });
       // })
       // .catch((error) => {

@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-  <!-- 面包屑 start -->
+  <!-- Breadcrumb start -->
   <div class="row">
     <div class="col-12">
       <div class="breadcrumb">
@@ -21,7 +21,7 @@ export default {
       </div>
     </div>
   </div>
-  <!-- 面包屑 end -->
+  <!-- Breadcrumb end -->
 </template>
 
 

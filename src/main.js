@@ -1,13 +1,14 @@
 import Vue from "vue";
 import store from "./store";
-Vue.prototype.$store = store;
 import * as WebIM from "./utils/WebIM.js";
 import "@/style/element-#EF2E22/index.css";
 import ElementUI from "element-ui";
+import ElementLocale from "element-ui/lib/locale";
+import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
+import VueI18n from "vue-i18n";
+// import "element-ui/lib/theme-chalk/index.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
-import BootstrapVue from "bootstrap-vue";
-import VueI18n from "vue-i18n";
 import App from "./App.vue";
 import messages from "./locale/index";
 import VueRouter from "vue-router";
@@ -31,24 +32,80 @@ Vue.use(VueJsonp)
 import Meta from "vue-meta";
 Vue.use(Meta);
 
-// Sentry error tracking — will be initialized after Vue instance is created
-import { initSentry } from './utils/sentry';
+import enLocale from "element-ui/lib/locale/lang/en";
+import zhLocale from "element-ui/lib/locale/lang/zh-CN";
+import frLocale from "element-ui/lib/locale/lang/fr"
+import esLocale from "element-ui/lib/locale/lang/es"
+import ptLocale from "element-ui/lib/locale/lang/pt"
+import arLocale from "element-ui/lib/locale/lang/ar"
+import ruLocale from "element-ui/lib/locale/lang/ru-RU"
+import faLocale from "element-ui/lib/locale/lang/fa"
+import idLocale from "element-ui/lib/locale/lang/id"
+// console.log("messages:", messages);
 
 let i18nConfig = {
   locale: "zh",
   // silentTranslationWarn: true, //去除国际化警告
-  messages: messages
+  messages: {
+    zh: {
+      ...messages.zh,
+      ...zhLocale,
+    },
+    en: {
+      ...messages.en,
+      ...enLocale,
+    },
+    // 法语
+    fra: {
+      ...messages.fra,
+      ...frLocale
+    },
+    // 西班牙语
+    spa: {
+      ...messages.spa,
+      ...esLocale
+    },
+    // 葡萄牙语
+    pt: {
+      ...messages.pt,
+      ...ptLocale
+    },
+    // 阿拉伯语
+    ara: {
+      ...messages.ara,
+      ...arLocale
+    },
+    // 俄语
+    ru: {
+      ...messages.ru,
+      ...ruLocale
+    },
+    // 波斯语
+    per: {
+      ...messages.per,
+      ...faLocale
+    },
+    // 印地语
+    hi: {
+      ...messages.hi,
+      ...idLocale
+    }
+
+  },
 };
 
 Vue.use(VueRouter);
 Vue.use(ElementUI);
 Vue.use(BootstrapVue);
 Vue.use(VueI18n);
+Vue.use(IconsPlugin);
 
 // Vue.use(Flutterwave, { publicKey: 'FLWPUBK-5dc9f9cd81b9281b66830b32c6d79ff0-X' })
 // Vue.use(Flutterwave, { publicKey: 'FLWPUBK_TEST-e95910eabc6a967b8d27de49be9c69e5-X' })
 // Vue.use(Flutterwave, { publicKey: 'FLWPUBK-5dc9f9cd81b9281b66830b32c6d79ff0-X' })
 Vue.use(Flutterwave, { publicKey: 'FLWPUBK-1970364037b09e3a7f047b75911b4e30-X' })
+
+ElementLocale.i18n((key, value) => i18n.t(key, value));
 
 const i18n = new VueI18n(i18nConfig);
 
@@ -79,27 +136,3 @@ window.vm = new Vue({
   store,
   render: (h) => h(App),
 });
-
-// Initialize Sentry after Vue instance is created (window.vm is now set)
-initSentry();
-
-if (process.env.NODE_ENV !== 'production') {
-  const warn = console.error
-  console.error = function (...args) {
-    if (typeof args[0] === 'string' && args[0].includes('ResizeObserver loop completed with undelivered notifications')) {
-      return
-    }
-    warn.apply(console, args)
-  }
-}
-
-// ---- Register Service Worker for PWA -------
-if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').then((reg) => {
-      console.log('[PWA] Service worker registered:', reg.scope);
-    }).catch((err) => {
-      console.warn('[PWA] Service worker registration failed:', err);
-    });
-  });
-}

@@ -77,7 +77,7 @@
                 type="primary"
                 @click="sendMessage()"
                 round
-                >发送</el-button
+                >send</el-button
               >
             </div>
             <div v-show="false">
@@ -86,7 +86,7 @@
                 type="primary"
                 @click="getMessageList"
                 round
-                >获取消息纪录</el-button
+                >获取message纪录</el-button
               >
               <el-dialog
                 :modal-append-to-body="true"
@@ -154,7 +154,7 @@ import {
 } from "@/utils/api";
 import { getStoreLogoUrl } from "@/utils/banner";
 import { conn } from "@/utils/WebIM.js";
-//格式化时间
+//Format time
 import { formatDate } from "@/utils";
 var WebIM = window.WebIM;
 export default {
@@ -171,10 +171,10 @@ export default {
       dialogTableVisible: false,
       innerVisible: false,
       user: "", //自己应用下的用户id
-      pwd: "123", //用户密码
+      pwd: "123", // User密码
       inputMessage: "",
       customerService: "",
-      messageList: [], //消息
+      messageList: [], //Message
       bySelf: true,
     };
   },
@@ -198,7 +198,7 @@ export default {
     getStoreLogoUrl(store) {
       return getStoreLogoUrl(store);
     },
-    //登陆
+    //Login
     loginIM() {
       var options = {
         user: this.user,
@@ -206,7 +206,7 @@ export default {
         appKey: WebIM.config.appkey,
         success: function (res) {
           console.log(res);
-          // console.log("成功");
+          // console.log("success");
         },
         error: function (err) {
           console.log(err);
@@ -215,7 +215,7 @@ export default {
       conn.open(options);
       this.getMessage();
     },
-    // 开启客服聊天
+    // Open customer service chat
     gotodemo() {
       if (localStorage.getItem("currentUser")) {
         this.dialogTableVisible = true;
@@ -232,13 +232,13 @@ export default {
         this.$router.push("/v2/login");
       }
     },
-    // 得到客服id
+    // Get customer service ID
     getUserListbyStoreId() {
       GetUserListbyStoreId({ storeId: this.$props.store.id }).then((res) => {
         this.customerService = res.data.rows[0].userId;
       });
     },
-    //发送消息
+    // Sendmessage
     sendMessage() {
       if (!this.inputMessage || !this.inputMessage.replace(/&nbsp;|\s/g, "")) {
         this.$message.info(this.$t("common.Sendcontentcannotbeempty"));
@@ -246,26 +246,26 @@ export default {
       }
       let that = this;
       let contentMsg = that.inputMessage;
-      let toID = this.customerService; //收信息用户id
-      let id = conn.getUniqueId(); // 生成本地消息id
-      let msg = new WebIM.message("txt", id); // 创建文本消息
+      let toID = this.customerService; //Recipient user ID
+      let id = conn.getUniqueId(); // 生成本地Messageid
+      let msg = new WebIM.message("txt", id); // create文本Message
       msg.set({
-        msg: contentMsg, // 消息内容
-        to: toID, // 接收消息对象（用户id）
-        chatType: "singleChat", // 设置为单聊
+        msg: contentMsg, // Message内容
+        to: toID, // receiveMessage对象 (用户id) 
+        chatType: "singleChat", // Set as single chat
         success: function (id, serverMsgId) {
-          // console.log("成功发送消息");
+          // console.log("Message sent successfully");
           that.sendMessageSuccessful(contentMsg, toID, "txt", id, serverMsgId);
         },
         fail: function (e) {
-          console.log("发送消息失败", e);
+          console.log("sendmessagefailed", e);
         },
       });
       conn.send(msg.body);
-      // console.log(msg.body, "发送成功");
+      // console.log(msg.body, "sendsuccess");
       that.inputMessage = null;
     },
-    //成功发送消息，进行消息加入到聊天信息数组中
+    //Message sent successfully, 进行Message加入到聊天信息数组中
     sendMessageSuccessful(data, toID, type) {
       console.log("存储信息中》》》》》");
       let userMsg = {};
@@ -277,11 +277,11 @@ export default {
         "yyyy-MM-dd hh:mm"
       );
       userMsg.msgType = type;
-      // console.log(userMsg, "发消息啦");
-      //存储信息
+      // console.log(userMsg, "发message啦");
+      //Save info
       this.messageList.push(userMsg);
       // console.log(this.messageList, "message", this.messageList[0].content);
-      // 保存聊天记录
+      // Save chat history
       AddMyImChat({
         storeId: this.$props.store.id,
         kefuId: this.$props.store.id, //客服
@@ -289,18 +289,18 @@ export default {
         msgType: this.messageList[this.messageList.length - 1].msgType,
       }).then((res) => {
         console.log(res, "AddMyImChat");
-        // 获取聊天记录
+        // Get聊天记录
         this.getMyImChatList();
-        // 自动滚动到最新消息那里
+        // Auto-scroll to latest message
         this.getNewmsg();
       });
     },
-    // 点击获取消息记录
+    // Click to get message history
     getMessageList() {
       this.innerVisible = true;
       this.getMyImChatList();
     },
-    // 获取消息记录
+    // Getmessage记录
     getMyImChatList() {
       GetMyImChatList({
         storeId: this.$props.store.id,
@@ -312,12 +312,12 @@ export default {
         // console.log(this.messageList, "GetMyImChatList-res");
       });
     },
-    // 集成收到文本信息方法
+    // Integrated method for receiving text messages
     getMessage() {
       let that = this;
       conn.listen({
         onOpened: function (message) {
-          console.log("用户已上线", message); // 连接成功
+          console.log("用户已上线", message); // connectionSuccess
         },
         onTextMessage: function (message) {
           // console.log("收到文本信息", message);
@@ -326,7 +326,7 @@ export default {
             "yyyy-MM-dd hh:mm"
           );
           let value = {};
-          // 普通文本信息
+          // Normal text message
           value = {
             msgType: "text",
             content: message.data,
@@ -334,21 +334,21 @@ export default {
             from: message.from,
             time: date,
           };
-          that.messageList.push(value); // 添加到聊天信息数组中
+          that.messageList.push(value); // Add到聊天信息数组中
           // console.log("value", value);
         },
       });
     },
-    // 退出客服聊天
+    // Exit customer service chat
     goback() {
       WebIM.conn.close();
       this.dialogTableVisible = false;
     },
-    // 关闭聊天记录
+    // Close chat history
     gobackinner() {
       this.innerVisible = false;
     },
-    // 回到最新消息
+    // Back to latest message
     getNewmsg() {
       let msgBody = document.getElementById("msgBody");
       console.log(msgBody, msgBody.scrollTop, msgBody.scrollHeight, "msgBody");

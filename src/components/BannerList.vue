@@ -55,6 +55,24 @@
 import SuiImage from "@/components/s-ui/media/Image";
 import { GetBannerList } from "@/utils/api";
 import { normalizeBannerList } from "@/utils/banner";
+
+// Static fallback banners (used when the API is unavailable or returns empty)
+import shipping from "@/assets/home/swiper/shipping.jpg";
+import manShop from "@/assets/home/swiper/manShop.png";
+import womenShop1 from "@/assets/home/swiper/womenShop1,png";
+import kids1 from "@/assets/home/swiper/kids1,png";
+import phoneShop from "@/assets/home/swiper/phoneShop.png";
+import freeShipping from "@/assets/home/swiper/freeShipping.png";
+
+const STATIC_BANNERS = [
+  { image: shipping, jumpContent: 'https://www.sokogate.com/' },
+  { image: manShop, jumpContent: 'https://www.sokogate.com/' },
+  { image: womenShop1, jumpContent: 'https://www.sokogate.com/' },
+  { image: kids1, jumpContent: 'https://www.sokogate.com/' },
+  { image: phoneShop, jumpContent: 'https://www.sokogate.com/' },
+  { image: freeShipping, jumpContent: 'https://www.sokogate.com/' },
+];
+
 export default {
   components: {
     SuiImage,
@@ -77,8 +95,8 @@ export default {
     this.getList();
   },
   methods: {
-    link(res){
-        window.open(res)
+    link(res) {
+      window.open(res);
     },
     getList() {
       GetBannerList({
@@ -89,13 +107,21 @@ export default {
           console.log("GetBannerList-type-res==========:", this.type, res);
           // Normalize banner data (handles both array and { rows } response formats)
           this.list = normalizeBannerList(res);
-          // 当banner数据渲染出来后发送自定义事件到子组件
+          // Fallback to static banners when API returns empty
+          if (!this.list || !this.list.length) {
+            this.list = STATIC_BANNERS;
+          }
           if (this.list && this.list.length) {
             this.$emit("success");
           }
         })
         .catch((err) => {
           console.log("GetBannerList-type-err:", this.type, err);
+          // Fallback to static banners when API is unavailable
+          this.list = STATIC_BANNERS;
+          if (this.list.length) {
+            this.$emit("success");
+          }
         });
     },
   },

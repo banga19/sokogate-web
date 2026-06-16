@@ -248,14 +248,14 @@ export default {
       selectIndex: 0,
       countryIndex: 0,
       channelList: [],
-      // 默认参数
+      // default参数
       formData: {
-        startCityKey: "广州市", //起运城市 默认是广州市
+        startCityKey: "广州市", //起运城市 default是广州市
         weight: 1, //重量
         volume: 0, //体积
         specialItems: "139", //货物种类 普货
-        modeCode: "", //运输方式
-        packgeType: 1, //包裹类型 1=WPX(包裹)，2=DOC(文件)
+        modeCode: "", //运输method
+        packgeType: 1, //包裹类型 1=WPX(包裹), 2=DOC(file)
         countryKey: "",
       },
     };
@@ -315,7 +315,7 @@ export default {
         this.getLogisticChannelList();
       }
     },
-    // 获取此物流的运费
+    // Get此物流的运费
     getLogisticChannelList() {
       this.loading = true;
       this.formData.countryKey = this.$store.state.countryName;
@@ -390,10 +390,10 @@ export default {
           GetMyLogistics({})
             .then((res1) => {
               console.log("getMyLogistics-res1:", res1, [
-                ...res1.data.rows,
+                ...res1,data.rows,
                 ...res.data.rows,
               ]);
-              this.list = [...res1.data.rows, ...res.data.rows];
+              this.list = [...res1,data.rows, ...res.data.rows];
               this.$nextTick(() => {
                 this.changeAddress(this.selectIndex);
               });

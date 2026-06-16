@@ -7,84 +7,84 @@
     <router-link to="/v2/login">Go to user/login</router-link> -->
 
       <a
-        href="https://vendor.sokogate.com/v2/register"
+        href="HTTPS://vendor.sokogate.com/v2/register"
         target="_blank"
         v-if="locale == 'zh'"
       >
         <img
-          src="https://oss.sokogate.com/image/5a5f59d9b88acc1eacd9b6b8f6378c7a.jpeg"
+          src="HTTPS://oss.sokogate.com/image/5a5f59d9b88acc1eacd9b6b8f6378c7a.jpeg"
         />
       </a>
       <a
-        href="https://vendor.sokogate.com/v2/register"
+        href="HTTPS://vendor.sokogate.com/v2/register"
         target="_blank"
         v-else-if="locale == 'en'"
       >
         <img
-          src="https://oss.sokogate.com/image/553623b89b4ae03309bf992f591491c3.png"
+          src="HTTPS://oss.sokogate.com/image/553623b89b4ae03309bf992f591491c3,png"
         />
       </a>
       <a
-        href="https://vendor.sokogate.com/v2/register"
+        href="HTTPS://vendor.sokogate.com/v2/register"
         target="_blank"
         v-else-if="locale == 'fra'"
       >
         <img
-          src="https://oss.sokogate.com/image/553623b89b4ae03309bf992f591491c3.png"
+          src="HTTPS://oss.sokogate.com/image/553623b89b4ae03309bf992f591491c3,png"
         />
       </a>
       <a
-        href="https://vendor.sokogate.com/v2/register"
+        href="HTTPS://vendor.sokogate.com/v2/register"
         target="_blank"
         v-else-if="locale == 'spa'"
       >
         <img
-          src="https://oss.sokogate.com/image/553623b89b4ae03309bf992f591491c3.png"
+          src="HTTPS://oss.sokogate.com/image/553623b89b4ae03309bf992f591491c3,png"
         />
       </a>
       <a
-        href="https://vendor.sokogate.com/v2/register"
+        href="HTTPS://vendor.sokogate.com/v2/register"
         target="_blank"
         v-else-if="locale == 'pt'"
       >
         <img
-          src="https://oss.sokogate.com/image/553623b89b4ae03309bf992f591491c3.png"
+          src="HTTPS://oss.sokogate.com/image/553623b89b4ae03309bf992f591491c3,png"
         />
       </a>
       <a
-        href="https://vendor.sokogate.com/v2/register"
+        href="HTTPS://vendor.sokogate.com/v2/register"
         target="_blank"
         v-else-if="locale == 'ara'"
       >
         <img
-          src="https://oss.sokogate.com/image/553623b89b4ae03309bf992f591491c3.png"
+          src="HTTPS://oss.sokogate.com/image/553623b89b4ae03309bf992f591491c3,png"
         />
       </a>
       <a
-        href="https://vendor.sokogate.com/v2/register"
+        href="HTTPS://vendor.sokogate.com/v2/register"
         target="_blank"
         v-else-if="locale == 'ru'"
       >
         <img
-          src="https://oss.sokogate.com/image/553623b89b4ae03309bf992f591491c3.png"
+          src="HTTPS://oss.sokogate.com/image/553623b89b4ae03309bf992f591491c3,png"
         />
       </a>
       <a
-        href="https://vendor.sokogate.com/v2/register"
+        href="HTTPS://vendor.sokogate.com/v2/register"
         target="_blank"
         v-else-if="locale == 'per'"
       >
         <img
-          src="https://oss.sokogate.com/image/553623b89b4ae03309bf992f591491c3.png"
+          src="HTTPS://oss.sokogate.com/image/553623b89b4ae03309bf992f591491c3,png"
         />
       </a>
       <a
-        href="https://vendor.sokogate.com/v2/register"
+        href="HTTPS://vendor.sokogate.com/v2/register"
         target="_blank"
         v-else-if="locale == 'hi'"
       >
         <img
-          src="https://oss.sokogate.com/image/553623b89b4ae03309bf992f591491c3.png"
+          src="HTTPS://oss.sokogate.com/image/553623b89b4ae03309bf992f591491c3,png"
         />
       </a>
 
@@ -95,7 +95,7 @@
               2020年中国货物贸易及跨境电商进出口增速对比情况
             </h4>
             <img
-              src="https://oss.sokogate.com/image/ff9d0df62eb9a3334e14abdb424fb517.png"
+              src="HTTPS://oss.sokogate.com/image/ff9d0df62eb9a3334e14abdb424fb517,png"
             />
           </div>
         </b-col>
@@ -103,10 +103,10 @@
           <div class="col">
             <h4>外贸转型出口——跨境电商</h4>
             <p>
-              由于新冠疫情在海外的肆略导致海外市场需求下降，2020年外贸进出口低迷，至三季度实现由负转正。反观跨境电商，其进出口则一直保持逆势增长的态势，前三季度海关跨境电商监管平台进出口1873.9亿元，已超去年全年，大幅增长52.8%，为外贸进出口回稳做出突出贡献。
+              由于新冠疫情在海外的肆略导致海外市场需求下降, 2020年外贸进出口低迷, 至三季度实现由负转正.反观跨境电商, 其进出口则一直保持逆势增长的态势, 前三季度海关跨境电商监管平台进出口1873,9亿元, 已超去年全年, 大幅增长52,8%, 为外贸进出口回稳做出突出贡献.
             </p>
             <p>
-              截止至2020年底中国货物贸易进出口总值达到32.16万亿元，比2019年增长1.9%。其中，2020年中国跨境电商进出口1.69万亿元，增长了31.1%。
+              截止至2020年底中国货物贸易进出口总值达到32,16万亿元, 比2019年增长1.9%.其中, 2020年中国跨境电商进出口1,69万亿元, 增长了31,1%.
             </p>
           </div>
         </b-col>
@@ -119,7 +119,7 @@
               e-commerce import and export in 2020
             </h4>
             <img
-              src="https://oss.sokogate.com/image/bc296830a9c8b01707e920b913bf4d1e.png"
+              src="HTTPS://oss.sokogate.com/image/bc296830a9c8b01707e920b913bf4d1e.png"
             />
           </div>
         </b-col>
@@ -135,15 +135,15 @@
               cross-border e-commerce has maintained a trend of contrarian
               growth. In the first three quarters, the import and export of the
               customs cross-border e-commerce supervision platform reached
-              187.39 billion yuan, a significant increase of 52.8% over last
+              187,39 billion yuan, a significant increase of 52,8% over last
               year, making outstanding contributions to the stabilization of
               foreign trade import and export.
             </p>
             <p>
               By the end of 2020, the total import and export value of China's
-              goods trade has reached 32.16 trillion yuan, an increase of 1.9%
+              goods trade has reached 32,16 trillion yuan, an increase of 1.9%
               over 2019. Among them, China's cross-border e-commerce import and
-              export reached 1.69 trillion yuan in 2020, an increase of 31.1%.
+              export reached 1,69 trillion yuan in 2020, an increase of 31,1%.
             </p>
           </div>
         </b-col>
@@ -157,7 +157,7 @@
               électronique transfrontalier en 2020
             </h4>
             <img
-              src="https://oss.sokogate.com/image/bc296830a9c8b01707e920b913bf4d1e.png"
+              src="HTTPS://oss.sokogate.com/image/bc296830a9c8b01707e920b913bf4d1e.png"
             />
           </div>
         </b-col>
@@ -185,7 +185,7 @@
             <p>
               La valeur totale des importations et des échanges de marchandises
               de la Chine a atteint 32,16 milliards de yuans à la fin de 2020,
-              soit une augmentation de 1,9% par rapport à 2019. Parmi eux, les
+              soit une augmentation de 1.9% par rapport à 2019. Parmi eux, les
               importations et exportations transfrontalières de commerce
               électronique de la Chine 1,69 billion de yuans en 2020, soit une
               augmentation de 31,1%.
@@ -202,7 +202,7 @@
               electrónico transfronterizo en 2020
             </h4>
             <img
-              src="https://oss.sokogate.com/image/ff9d0df62eb9a3334e14abdb424fb517.png"
+              src="HTTPS://oss.sokogate.com/image/ff9d0df62eb9a3334e14abdb424fb517,png"
             />
           </div>
         </b-col>
@@ -229,9 +229,9 @@
             <p>
               El valor total de las importaciones y exportaciones de comercio de
               bienes de China alcanzó 32,16 billones de yuanes a finales de
-              2020, un 1,9% más que en 2019. De ellos, las importaciones y
+              2020, un 1.9% más que en 2019. De ellos, las importaciones y
               exportaciones transfronterizas de comercio electrónico de China
-              1.69 billones de yuanes en 2020, un aumento del 31,1%.
+              1,69 billones de yuanes en 2020, un aumento del 31,1%.
             </p>
           </div>
         </b-col>
@@ -245,7 +245,7 @@
               transfronteiriço em 2020
             </h4>
             <img
-              src="https://oss.sokogate.com/image/ff9d0df62eb9a3334e14abdb424fb517.png"
+              src="HTTPS://oss.sokogate.com/image/ff9d0df62eb9a3334e14abdb424fb517,png"
             />
           </div>
         </b-col>
@@ -263,7 +263,7 @@
               eletrônico transfronteiriço, suas importações e exportações têm
               mantido uma postura de crescimento inverso, nos primeiros três
               trimestres de alfândega plataforma de supervisão de comércio
-              eletrônico transfronteiriço importação e exportação 187.39 bilhões
+              eletrônico transfronteiriço importação e exportação 187,39 bilhões
               de yuan, superou o ano passado, um aumento substancial de 52, 8%,
               para a recuperação de importação e exportação de comércio exterior
               para fazer uma contribuição proeminente.
@@ -272,7 +272,7 @@
               Até o final de 2020, o valor total das importações e exportações
               de mercadorias da china atingiu 32, 16 trilhões de yuan, 1, 9%
               mais do que em 2019. Dos quais, as importações e exportações
-              transfronteiriças de comércio eletrônico da china 1.69 trilhões de
+              transfronteiriças de comércio eletrônico da china 1,69 trilhões de
               yuan em 2020, aumentaram 31, 1%.
             </p>
           </div>
@@ -286,7 +286,7 @@
               الكهرباء عبر الحدود في عام 2020.
             </h4>
             <img
-              src="https://oss.sokogate.com/image/ff9d0df62eb9a3334e14abdb424fb517.png"
+              src="HTTPS://oss.sokogate.com/image/ff9d0df62eb9a3334e14abdb424fb517,png"
             />
           </div>
         </b-col>
@@ -298,15 +298,15 @@
               الخارج، انخفضت الصادرات والواردات الخارجية في عام 2020، مما أدى
               إلى حدوث تحول سلبي في الربع الثالث. وعلى النقيض من ذلك، ظل تجار
               الطاقة عبر الحدود، ووارداتهم وصادراتهم، في اتجاه معاكس، مع زيادة
-              كبيرة بلغت 52.8 في المائة خلال العام الماضي في الصادرات والواردات
+              كبيرة بلغت 52,8 في المائة خلال العام الماضي في الصادرات والواردات
               الخارجية من خلال منصة الجمارك لرقابة شركات عبر الحدود التي بلغت
-              قيمتها 3.39 18 مليون يوان في الربع الثالث السابق.
+              قيمتها 3,39 18 مليون يوان في الربع الثالث السابق.
             </p>
             <p>
               وبحلول نهاية عام 2020، بلغ إجمالي صادرات وواردات الصين من السلع
-              32.16 تريليون يوان، أي بزيادة قدرها 1.9 في المائة عن عام 2019. ومن
-              بين هذا المبلغ، بلغ حجم الواردات والصادرات الصينية عبر الحدود 1.69
-              تريليون يوان في عام 2020، أي بزيادة قدرها 31.1 في المائة.
+              32,16 تريليون يوان، أي بزيادة قدرها 1.9 في المائة عن عام 2019. ومن
+              بين هذا المبلغ، بلغ حجم الواردات والصادرات الصينية عبر الحدود 1,69
+              تريليون يوان في عام 2020، أي بزيادة قدرها 31,1 في المائة.
             </p>
           </div>
         </b-col>
@@ -319,7 +319,7 @@
               товаров китая в 2020 году
             </h4>
             <img
-              src="https://oss.sokogate.com/image/ff9d0df62eb9a3334e14abdb424fb517.png"
+              src="HTTPS://oss.sokogate.com/image/ff9d0df62eb9a3334e14abdb424fb517,png"
             />
           </div>
         </b-col>
@@ -343,7 +343,7 @@
             </p>
             <p>
               ВВП китая на импорт и экспорт товаров достиг 32,16 триллионов
-              юаней к концу 2020 года, что на 1,9% больше, чем в 2019 году. В
+              юаней к концу 2020 года, что на 1.9% больше, чем в 2019 году. В
               2020 году импорт и экспорт международных электрических предприятий
               китая увеличился на 31,1%.
             </p>
@@ -358,7 +358,7 @@
               e-commerce import and export in 2020
             </h4>
             <img
-              src="https://oss.sokogate.com/image/ff9d0df62eb9a3334e14abdb424fb517.png"
+              src="HTTPS://oss.sokogate.com/image/ff9d0df62eb9a3334e14abdb424fb517,png"
             />
           </div>
         </b-col>
@@ -371,8 +371,8 @@
               و سومین چهارم سال تغییر مثبتی از منفی دید. از طرف دیگر، وارد و
               اخراج تجارت برق مرز بر خلاف این ترند افزایش می‌کند. در سه چهارپای
               اول، وارد و اخراج Plataforma کنترل برق برق برق برق برق برق برق برق
-              برق رسیده است که به 187.39 میلیارد یوان رسیده است، که در طول سال
-              به 52.8 درصد افزایش یافت، و در طول سال به ثابت کردن وارد و اخراج
+              برق رسیده است که به 187,39 میلیارد یوان رسیده است، که در طول سال
+              به 52,8 درصد افزایش یافت، و در طول سال به ثابت کردن وارد و اخراج
               تجارت خارجی کمک‌های زیادی
             </p>
             <p>
@@ -391,7 +391,7 @@
               चीन के सामान व्यापार के वृद्धि दर के तुलना
             </h4>
             <img
-              src="https://oss.sokogate.com/image/ff9d0df62eb9a3334e14abdb424fb517.png"
+              src="HTTPS://oss.sokogate.com/image/ff9d0df62eb9a3334e14abdb424fb517,png"
             />
           </div>
         </b-col>
@@ -404,13 +404,13 @@
               निर्यात के द्वारा के आयात और निर् दूसरे बारे में, क्रास्स सीमा के
               e-व्यापार का आयात और निर्यात ट्रेंड के विरूद्ध बढ़ता है। पहले तीन
               चौथे में, क्रास्स सीमा के e-व्यापार का आयात और निर्यात प्लेटफ़ॉर्म
-              के आयात 187.39 बिलियन यूआ
+              के आयात 187,39 बिलियन यूआ
             </p>
             <p>
               २००२ के अन्त में चीन के कुल आयात और निर्यात की मूल्य २०१९ के लिए
-              32.16 ट्रिलियन यूआन तक पहुँच गया। उनके बीच, २००2020 में, चीन के
-              क्रास्स सीमा के e-व्यापारी आयात और निर्यात 1.69 ट्रिलियन यूआन तक
-              पहुँचा, 31.1% का बढ़ाया
+              32,16 ट्रिलियन यूआन तक पहुँच गया। उनके बीच, २००2020 में, चीन के
+              क्रास्स सीमा के e-व्यापारी आयात और निर्यात 1,69 ट्रिलियन यूआन तक
+              पहुँचा, 31,1% का बढ़ाया
             </p>
           </div>
         </b-col>
@@ -422,18 +422,18 @@
             <h4>广阔的非洲市场</h4>
             <h4>跨境电商的最后一片蓝海</h4>
             <p>
-              非洲，世界第二大洲，同时也是人口第二大洲（约12.86亿），有54个国家，2亿网民，市场渗透率在18%左右。预计2025年非洲人口将突破20亿人次，年轻人口占比超70%，麦肯锡数据称2025年非洲50%的网络覆盖率，电子商务市场的GMV将达到750亿美元，预计年增长率（CAGR
-              2020-2025）为19.6％。
+              非洲, 世界第二大洲, 同时也是人口第二大洲 (约12,86亿) , 有54个国家, 2亿网民, 市场渗透率在18%左右.预计2025年非洲人口将突破20亿人次, 年轻人口占比超70%, 麦肯锡数据称2025年非洲50%的network覆盖率, 电子business team市场的GMV将达到750亿美元, 预计年增长率 (CAGR
+              2020-2025) 为19.6％.
             </p>
             <p>
-              非洲地区本国的工业基础较为薄弱，需求严重依赖于进口，这为跨境电商创造了巨大商机，在国家政策惠利帮扶下，非洲的跨境电商卖家利好优势明显，因此被誉为一带一路上的电商明珠。
+              非洲地区本国的工业基础较为薄弱, 需求严重依赖于进口, 这为跨境电商创造了巨大商机, 在国家政策惠利帮扶下, 非洲的跨境电商卖家利好优势明显, 因此被誉为一带一路上的电商明珠.
             </p>
           </div>
         </b-col>
         <b-col cols="12" md="6">
           <div class="col">
             <img
-              src="https://oss.sokogate.com/image/420514c024b285d9a15f8a680094adee.png"
+              src="HTTPS://oss.sokogate.com/image/420514c024b285d9a15f8a680094adee.png"
             />
           </div>
         </b-col>
@@ -467,7 +467,7 @@
         <b-col cols="12" md="6">
           <div class="col">
             <img
-              src="https://oss.sokogate.com/image/420514c024b285d9a15f8a680094adee.png"
+              src="HTTPS://oss.sokogate.com/image/420514c024b285d9a15f8a680094adee.png"
             />
           </div>
         </b-col>
@@ -482,7 +482,7 @@
             </h4>
             <p>
               L’afrique, 2ème continent mondial mais aussi 2ème continent en
-              termes de population (environ 1,286 milliard d’habitants), compte
+              termes de population (environ 1.286 milliard d’habitants), compte
               54 pays, 200 millions d’internautes et un taux de pénétration du
               marché d’environ 18%. On s’attend à ce que la population africaine
               dépasse les 2 milliards de passagers en 2025 et que les jeunes
@@ -504,7 +504,7 @@
         <b-col cols="12" md="6">
           <div class="col">
             <img
-              src="https://oss.sokogate.com/image/420514c024b285d9a15f8a680094adee.png"
+              src="HTTPS://oss.sokogate.com/image/420514c024b285d9a15f8a680094adee.png"
             />
           </div>
         </b-col>
@@ -523,7 +523,7 @@
               de alrededor del 18%. Se espera que la población de áfrica supere
               los 2 mil millones de visitas en 2025 y que los jóvenes
               representen más del 70%. Mckinsey dice que 50% de la cobertura de
-              internet de áfrica en 2025. El mercado de comercio electrónico
+              internet de áfrica en 2025, El mercado de comercio electrónico
               alcanzará un GMV de 75 mil millones de dólares. 2020-2025) es del
               19,6%.
             </p>
@@ -540,7 +540,7 @@
         <b-col cols="12" md="6">
           <div class="col">
             <img
-              src="https://oss.sokogate.com/image/420514c024b285d9a15f8a680094adee.png"
+              src="HTTPS://oss.sokogate.com/image/420514c024b285d9a15f8a680094adee.png"
             />
           </div>
         </b-col>
@@ -552,11 +552,11 @@
             <h4>O último mar azul do comércio eletrônico transfronteiriço</h4>
             <p>
               África, o segundo continente do mundo e, ao mesmo tempo, o segundo
-              em termos de população (cerca de 1.186 milhões), com 54 países,
+              em termos de população (cerca de 1,186 milhões), com 54 países,
               200 milhões de internautas e uma penetração de mercado de cerca de
               18%. Espera-se que a população africana ultrapasse os 2 bilhões de
               visitas em 2025, e os jovens representem mais de 70%. Os dados da
-              mckinsey dizem que 50% da cobertura de rede da áfrica em 2025. O
+              mckinsey dizem que 50% da cobertura de rede da áfrica em 2025, O
               GMV do mercado de comércio eletrônico alcançará 75 bilhões de
               dólares. A taxa de crescimento anual projetada (CAGR 2020-2025) é
               de 19, 6%.
@@ -575,7 +575,7 @@
         <b-col cols="12" md="6">
           <div class="col">
             <img
-              src="https://oss.sokogate.com/image/420514c024b285d9a15f8a680094adee.png"
+              src="HTTPS://oss.sokogate.com/image/420514c024b285d9a15f8a680094adee.png"
             />
           </div>
         </b-col>
@@ -606,7 +606,7 @@
         <b-col cols="12" md="6">
           <div class="col">
             <img
-              src="https://oss.sokogate.com/image/420514c024b285d9a15f8a680094adee.png"
+              src="HTTPS://oss.sokogate.com/image/420514c024b285d9a15f8a680094adee.png"
             />
           </div>
         </b-col>
@@ -621,7 +621,7 @@
             </h4>
             <p>
               Африка, второй континент мира, а также второй по населению
-              континент (около 1,2 МЛРД человек), 54 страны, 200 миллионов
+              континент (около 1.2 МЛРД человек), 54 страны, 200 миллионов
               интернет-пользователей и 18% проникновения на рынки. Ожидается,
               что к 2025 году население африки превысит 2 миллиарда человек,
               доля молодежи составит более 70%, согласно данным маккинси, 50%
@@ -643,7 +643,7 @@
         <b-col cols="12" md="6">
           <div class="col">
             <img
-              src="https://oss.sokogate.com/image/420514c024b285d9a15f8a680094adee.png"
+              src="HTTPS://oss.sokogate.com/image/420514c024b285d9a15f8a680094adee.png"
             />
           </div>
         </b-col>
@@ -675,7 +675,7 @@
         <b-col cols="12" md="6">
           <div class="col">
             <img
-              src="https://oss.sokogate.com/image/420514c024b285d9a15f8a680094adee.png"
+              src="HTTPS://oss.sokogate.com/image/420514c024b285d9a15f8a680094adee.png"
             />
           </div>
         </b-col>
@@ -704,7 +704,7 @@
         <b-col cols="12" md="6">
           <div class="col">
             <img
-              src="https://oss.sokogate.com/image/420514c024b285d9a15f8a680094adee.png"
+              src="HTTPS://oss.sokogate.com/image/420514c024b285d9a15f8a680094adee.png"
             />
           </div>
         </b-col>
@@ -714,7 +714,7 @@
         <b-col cols="12" md="6">
           <div class="col">
             <img
-              src="https://oss.sokogate.com/image/441a733729106b6db41c6390db411d36.png"
+              src="HTTPS://oss.sokogate.com/image/441a733729106b6db41c6390db411d36,png"
             />
           </div>
         </b-col>
@@ -723,10 +723,10 @@
             <h4>平台介绍</h4>
             <p>
               Sokogate.com
-              是位于非洲的B2B跨境电商平台，致力于促成全球中小企业国际贸易，连接诚信国际供应商和非洲采购商，提供定制化的采购方案，搭建一个值得信赖、可持续发展的贸易交易平台。我们为采购流程双方提供服务，以创建能够为行业提供信息、支持和赋能的解决方案。
+              是位于非洲的B2B跨境电商平台, 致力于促成全球中小企业国际贸易, connection诚信国际供应商和非洲采购商, 提供定制化的采购方案, 搭建一个值得信赖, 可持续发展的贸易交易平台.我们为采购流程双方提供服务, 以create能够为行业提供信息, support和赋能的解决方案.
             </p>
             <p>
-              Sokogate.com会搭建一套完整的诚信系统，降低买卖双方的交易风险，制定严格的供应商&采购商资格审核制度，为买卖双方提供担保，让国际供应商和非洲采购商可以无后顾之忧的完成交易。
+              Sokogate.com会搭建一套完整的诚信系统, 降低买卖双方的交易风险, 制定严格的供应商&采购商资格审核制度, 为买卖双方提供担保, 让国际供应商和非洲采购商可以无后顾之忧的完成交易.
             </p>
           </div>
         </b-col>
@@ -735,7 +735,7 @@
         <b-col cols="12" md="6">
           <div class="col">
             <img
-              src="https://oss.sokogate.com/image/441a733729106b6db41c6390db411d36.png"
+              src="HTTPS://oss.sokogate.com/image/441a733729106b6db41c6390db411d36,png"
             />
           </div>
         </b-col>
@@ -767,7 +767,7 @@
         <b-col cols="12" md="6">
           <div class="col">
             <img
-              src="https://oss.sokogate.com/image/441a733729106b6db41c6390db411d36.png"
+              src="HTTPS://oss.sokogate.com/image/441a733729106b6db41c6390db411d36,png"
             />
           </div>
         </b-col>
@@ -801,7 +801,7 @@
         <b-col cols="12" md="6">
           <div class="col">
             <img
-              src="https://oss.sokogate.com/image/441a733729106b6db41c6390db411d36.png"
+              src="HTTPS://oss.sokogate.com/image/441a733729106b6db41c6390db411d36,png"
             />
           </div>
         </b-col>
@@ -834,7 +834,7 @@
         <b-col cols="12" md="6">
           <div class="col">
             <img
-              src="https://oss.sokogate.com/image/441a733729106b6db41c6390db411d36.png"
+              src="HTTPS://oss.sokogate.com/image/441a733729106b6db41c6390db411d36,png"
             />
           </div>
         </b-col>
@@ -866,7 +866,7 @@
         <b-col cols="12" md="6">
           <div class="col">
             <img
-              src="https://oss.sokogate.com/image/441a733729106b6db41c6390db411d36.png"
+              src="HTTPS://oss.sokogate.com/image/441a733729106b6db41c6390db411d36,png"
             />
           </div>
         </b-col>
@@ -895,7 +895,7 @@
         <b-col cols="12" md="6">
           <div class="col">
             <img
-              src="https://oss.sokogate.com/image/441a733729106b6db41c6390db411d36.png"
+              src="HTTPS://oss.sokogate.com/image/441a733729106b6db41c6390db411d36,png"
             />
           </div>
         </b-col>
@@ -928,7 +928,7 @@
         <b-col cols="12" md="6">
           <div class="col">
             <img
-              src="https://oss.sokogate.com/image/441a733729106b6db41c6390db411d36.png"
+              src="HTTPS://oss.sokogate.com/image/441a733729106b6db41c6390db411d36,png"
             />
           </div>
         </b-col>
@@ -957,7 +957,7 @@
         <b-col cols="12" md="6">
           <div class="col">
             <img
-              src="https://oss.sokogate.com/image/441a733729106b6db41c6390db411d36.png"
+              src="HTTPS://oss.sokogate.com/image/441a733729106b6db41c6390db411d36,png"
             />
           </div>
         </b-col>
@@ -1009,12 +1009,12 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/3346ff9dddf81402c2db3bfafe8eb5b8.png"
+                    src="HTTPS://oss.sokogate.com/image/3346ff9dddf81402c2db3bfafe8eb5b8.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>全程客户服务</h4>
                   <p>
-                    从注册、运营、交易环节提供1V1的商户服务，无论是否有做过外贸，或者是否有做过线上电商，都可以轻松开启跨境电商业务
+                    从注册, 运营, 交易环节提供1V1的商户服务, 无论whether有做过外贸, 或者whether有做过线上电商, 都可以轻松enable跨境电商业务
                   </p></b-col
                 >
               </div>
@@ -1023,12 +1023,12 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/2f1487f4ddf484506de532f357d6402b.png"
+                    src="HTTPS://oss.sokogate.com/image/2f1487f4ddf484506de532f357d6402b.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>专业运营团队</h4>
                   <p>
-                    非洲当地的运营团队，更懂非洲采购商的需求，提供更准确的市场资讯，为国际采购商解决本地文化、语言沟通障碍
+                    非洲当地的运营团队, 更懂非洲采购商的需求, 提供更准确的市场资讯, 为国际采购商解决本地文化, 语言沟通障碍
                   </p></b-col
                 >
               </div>
@@ -1037,12 +1037,12 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/378827d6d2b90d8fdf56114264d04a6d.png"
+                    src="HTTPS://oss.sokogate.com/image/378827d6d2b90d8fdf56114264d04a6d.png"
                 /></b-col>
                 <b-col cols="12"
-                  ><h4>高效营销方式</h4>
+                  ><h4>高效营销method</h4>
                   <p>
-                    非洲当地的市场人员，会在非洲当地针对性的批发市场商家进行采购商指引，为国际供应商挖掘更多实力的采购商
+                    非洲当地的市场人员, 会在非洲当地针对性的批发市场商家进行采购商指引, 为国际供应商挖掘更多实力的采购商
                   </p></b-col
                 >
               </div>
@@ -1051,12 +1051,12 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/4836c5fbda02be418584f11dd4ede056.png"
+                    src="HTTPS://oss.sokogate.com/image/4836c5fbda02be418584f11dd4ede056,png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>便捷无障碍沟通</h4>
                   <p>
-                    移动端同步，在线实时翻译，随时随地接收采购信息，不漏掉任何商机
+                    移动端sync, 在线实时翻译, 随时随地receive采购信息, 不漏掉任何商机
                   </p></b-col
                 >
               </div>
@@ -1065,12 +1065,12 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/5b152c049124a20bf882ad635348fe57.png"
+                    src="HTTPS://oss.sokogate.com/image/5b152c049124a20bf882ad635348fe57,png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>公平与合规环境</h4>
                   <p>
-                    平台对于买卖双方，均进行严格的资质审核，建立完善的诚信系统，解决双方的信任问题，降低买卖双方的交易风险
+                    平台对于买卖双方, 均进行严格的资质审核, 建立完善的诚信系统, 解决双方的信任问题, 降低买卖双方的交易风险
                   </p></b-col
                 >
               </div>
@@ -1091,7 +1091,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/3346ff9dddf81402c2db3bfafe8eb5b8.png"
+                    src="HTTPS://oss.sokogate.com/image/3346ff9dddf81402c2db3bfafe8eb5b8.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Whole process customer service</h4>
@@ -1108,7 +1108,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/2f1487f4ddf484506de532f357d6402b.png"
+                    src="HTTPS://oss.sokogate.com/image/2f1487f4ddf484506de532f357d6402b.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Professional operation team</h4>
@@ -1125,7 +1125,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/378827d6d2b90d8fdf56114264d04a6d.png"
+                    src="HTTPS://oss.sokogate.com/image/378827d6d2b90d8fdf56114264d04a6d.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Efficient marketing mode</h4>
@@ -1141,7 +1141,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/4836c5fbda02be418584f11dd4ede056.png"
+                    src="HTTPS://oss.sokogate.com/image/4836c5fbda02be418584f11dd4ede056,png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Convenient and accessible communication</h4>
@@ -1157,7 +1157,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/5b152c049124a20bf882ad635348fe57.png"
+                    src="HTTPS://oss.sokogate.com/image/5b152c049124a20bf882ad635348fe57,png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Fair and compliance environment</h4>
@@ -1186,7 +1186,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/3346ff9dddf81402c2db3bfafe8eb5b8.png"
+                    src="HTTPS://oss.sokogate.com/image/3346ff9dddf81402c2db3bfafe8eb5b8.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Service client complet</h4>
@@ -1204,7 +1204,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/2f1487f4ddf484506de532f357d6402b.png"
+                    src="HTTPS://oss.sokogate.com/image/2f1487f4ddf484506de532f357d6402b.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Équipe opérationnelle spécialisée</h4>
@@ -1222,7 +1222,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/378827d6d2b90d8fdf56114264d04a6d.png"
+                    src="HTTPS://oss.sokogate.com/image/378827d6d2b90d8fdf56114264d04a6d.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Méthodes de marketing efficaces</h4>
@@ -1239,7 +1239,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/4836c5fbda02be418584f11dd4ede056.png"
+                    src="HTTPS://oss.sokogate.com/image/4836c5fbda02be418584f11dd4ede056,png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Communication facile et accessible</h4>
@@ -1255,7 +1255,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/5b152c049124a20bf882ad635348fe57.png"
+                    src="HTTPS://oss.sokogate.com/image/5b152c049124a20bf882ad635348fe57,png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Environnement équitable et conforme</h4>
@@ -1285,7 +1285,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/3346ff9dddf81402c2db3bfafe8eb5b8.png"
+                    src="HTTPS://oss.sokogate.com/image/3346ff9dddf81402c2db3bfafe8eb5b8.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Servicio completo al cliente</h4>
@@ -1303,7 +1303,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/2f1487f4ddf484506de532f357d6402b.png"
+                    src="HTTPS://oss.sokogate.com/image/2f1487f4ddf484506de532f357d6402b.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Equipo de operaciones profesional</h4>
@@ -1321,7 +1321,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/378827d6d2b90d8fdf56114264d04a6d.png"
+                    src="HTTPS://oss.sokogate.com/image/378827d6d2b90d8fdf56114264d04a6d.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Formas eficientes de marketing</h4>
@@ -1338,7 +1338,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/4836c5fbda02be418584f11dd4ede056.png"
+                    src="HTTPS://oss.sokogate.com/image/4836c5fbda02be418584f11dd4ede056,png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Comunicación fácil y accesible</h4>
@@ -1354,7 +1354,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/5b152c049124a20bf882ad635348fe57.png"
+                    src="HTTPS://oss.sokogate.com/image/5b152c049124a20bf882ad635348fe57,png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Entorno de equidad y cumplimiento</h4>
@@ -1384,7 +1384,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/3346ff9dddf81402c2db3bfafe8eb5b8.png"
+                    src="HTTPS://oss.sokogate.com/image/3346ff9dddf81402c2db3bfafe8eb5b8.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Serviço completo ao cliente</h4>
@@ -1402,7 +1402,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/2f1487f4ddf484506de532f357d6402b.png"
+                    src="HTTPS://oss.sokogate.com/image/2f1487f4ddf484506de532f357d6402b.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Equipe de operações profissional</h4>
@@ -1420,7 +1420,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/378827d6d2b90d8fdf56114264d04a6d.png"
+                    src="HTTPS://oss.sokogate.com/image/378827d6d2b90d8fdf56114264d04a6d.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Formas eficientes de marketing</h4>
@@ -1437,7 +1437,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/4836c5fbda02be418584f11dd4ede056.png"
+                    src="HTTPS://oss.sokogate.com/image/4836c5fbda02be418584f11dd4ede056,png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Comunicação fácil e acessível</h4>
@@ -1453,7 +1453,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/5b152c049124a20bf882ad635348fe57.png"
+                    src="HTTPS://oss.sokogate.com/image/5b152c049124a20bf882ad635348fe57,png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Ambiente de equidade e conformidade</h4>
@@ -1483,7 +1483,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/3346ff9dddf81402c2db3bfafe8eb5b8.png"
+                    src="HTTPS://oss.sokogate.com/image/3346ff9dddf81402c2db3bfafe8eb5b8.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>خدمة العملاء</h4>
@@ -1500,7 +1500,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/2f1487f4ddf484506de532f357d6402b.png"
+                    src="HTTPS://oss.sokogate.com/image/2f1487f4ddf484506de532f357d6402b.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>فريق التشغيل المهني</h4>
@@ -1517,7 +1517,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/378827d6d2b90d8fdf56114264d04a6d.png"
+                    src="HTTPS://oss.sokogate.com/image/378827d6d2b90d8fdf56114264d04a6d.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>طريقة تسويق فعالة</h4>
@@ -1533,7 +1533,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/4836c5fbda02be418584f11dd4ede056.png"
+                    src="HTTPS://oss.sokogate.com/image/4836c5fbda02be418584f11dd4ede056,png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>سهولة الوصول</h4>
@@ -1549,7 +1549,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/5b152c049124a20bf882ad635348fe57.png"
+                    src="HTTPS://oss.sokogate.com/image/5b152c049124a20bf882ad635348fe57,png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>بيئة الإنصاف والامتثال</h4>
@@ -1577,7 +1577,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/3346ff9dddf81402c2db3bfafe8eb5b8.png"
+                    src="HTTPS://oss.sokogate.com/image/3346ff9dddf81402c2db3bfafe8eb5b8.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Полное обслуживание клиентов</h4>
@@ -1595,7 +1595,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/2f1487f4ddf484506de532f357d6402b.png"
+                    src="HTTPS://oss.sokogate.com/image/2f1487f4ddf484506de532f357d6402b.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Профессиональная оперативная команда</h4>
@@ -1613,7 +1613,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/378827d6d2b90d8fdf56114264d04a6d.png"
+                    src="HTTPS://oss.sokogate.com/image/378827d6d2b90d8fdf56114264d04a6d.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Эффективный способ маркетинга</h4>
@@ -1629,7 +1629,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/4836c5fbda02be418584f11dd4ede056.png"
+                    src="HTTPS://oss.sokogate.com/image/4836c5fbda02be418584f11dd4ede056,png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Легко общаться без препятствий</h4>
@@ -1645,7 +1645,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/5b152c049124a20bf882ad635348fe57.png"
+                    src="HTTPS://oss.sokogate.com/image/5b152c049124a20bf882ad635348fe57,png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Справедливая и гармоничная окружающая среда</h4>
@@ -1675,7 +1675,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/3346ff9dddf81402c2db3bfafe8eb5b8.png"
+                    src="HTTPS://oss.sokogate.com/image/3346ff9dddf81402c2db3bfafe8eb5b8.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>خدمت کامل پروژه مشتری</h4>
@@ -1692,7 +1692,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/2f1487f4ddf484506de532f357d6402b.png"
+                    src="HTTPS://oss.sokogate.com/image/2f1487f4ddf484506de532f357d6402b.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>تیم عملیات حرفه ای</h4>
@@ -1709,7 +1709,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/378827d6d2b90d8fdf56114264d04a6d.png"
+                    src="HTTPS://oss.sokogate.com/image/378827d6d2b90d8fdf56114264d04a6d.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Modus marketing efficient</h4>
@@ -1725,7 +1725,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/4836c5fbda02be418584f11dd4ede056.png"
+                    src="HTTPS://oss.sokogate.com/image/4836c5fbda02be418584f11dd4ede056,png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>Convenient and barrier free communication</h4>
@@ -1740,7 +1740,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/5b152c049124a20bf882ad635348fe57.png"
+                    src="HTTPS://oss.sokogate.com/image/5b152c049124a20bf882ad635348fe57,png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>محیط عادلانه و پیروزی</h4>
@@ -1769,7 +1769,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/3346ff9dddf81402c2db3bfafe8eb5b8.png"
+                    src="HTTPS://oss.sokogate.com/image/3346ff9dddf81402c2db3bfafe8eb5b8.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>पूरा प्रक्रिया ग्राहक सेवा</h4>
@@ -1785,7 +1785,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/2f1487f4ddf484506de532f357d6402b.png"
+                    src="HTTPS://oss.sokogate.com/image/2f1487f4ddf484506de532f357d6402b.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>व्यवसायिक आपरेशन टीम</h4>
@@ -1801,7 +1801,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/378827d6d2b90d8fdf56114264d04a6d.png"
+                    src="HTTPS://oss.sokogate.com/image/378827d6d2b90d8fdf56114264d04a6d.png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>प्रभावी मार्केटिंग मोड</h4>
@@ -1816,7 +1816,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/4836c5fbda02be418584f11dd4ede056.png"
+                    src="HTTPS://oss.sokogate.com/image/4836c5fbda02be418584f11dd4ede056,png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>मुक्त संपर्क से उपयोगी और रोकें</h4>
@@ -1831,7 +1831,7 @@
               <div class="p0">
                 <b-col cols="12" class="red-stripe-box-item-head centre"
                   ><img
-                    src="https://oss.sokogate.com/image/5b152c049124a20bf882ad635348fe57.png"
+                    src="HTTPS://oss.sokogate.com/image/5b152c049124a20bf882ad635348fe57,png"
                 /></b-col>
                 <b-col cols="12"
                   ><h4>साधारण और अनुपूर्ण वातावरण</h4>
@@ -1850,43 +1850,43 @@
 
       <img
         v-if="locale == 'zh'"
-        src="https://oss.sokogate.com/image/219b45aa913ff3886eced3aadfa012f6.png"
+        src="HTTPS://oss.sokogate.com/image/219b45aa913ff3886eced3aadfa012f6,png"
       />
       <img
         v-else-if="locale == 'en'"
-        src="https://oss.sokogate.com/image/d5fdec6ee102605a3c7f760b4f9f6617.png"
+        src="HTTPS://oss.sokogate.com/image/d5fdec6ee102605a3c7f760b4f9f6617,png"
       />
       <img
         v-else-if="locale == 'fra'"
-        src="https://oss.sokogate.com/image/d5fdec6ee102605a3c7f760b4f9f6617.png"
+        src="HTTPS://oss.sokogate.com/image/d5fdec6ee102605a3c7f760b4f9f6617,png"
       />
       <img
         v-else-if="locale == 'spa'"
-        src="https://oss.sokogate.com/image/d5fdec6ee102605a3c7f760b4f9f6617.png"
+        src="HTTPS://oss.sokogate.com/image/d5fdec6ee102605a3c7f760b4f9f6617,png"
       />
       <img
         v-else-if="locale == 'pt'"
-        src="https://oss.sokogate.com/image/d5fdec6ee102605a3c7f760b4f9f6617.png"
+        src="HTTPS://oss.sokogate.com/image/d5fdec6ee102605a3c7f760b4f9f6617,png"
       />
       <img
         v-else-if="locale == 'ara'"
-        src="https://oss.sokogate.com/image/d5fdec6ee102605a3c7f760b4f9f6617.png"
+        src="HTTPS://oss.sokogate.com/image/d5fdec6ee102605a3c7f760b4f9f6617,png"
       />
       <img
         v-else-if="locale == 'ru'"
-        src="https://oss.sokogate.com/image/d5fdec6ee102605a3c7f760b4f9f6617.png"
+        src="HTTPS://oss.sokogate.com/image/d5fdec6ee102605a3c7f760b4f9f6617,png"
       />
       <img
         v-else-if="locale == 'per'"
-        src="https://oss.sokogate.com/image/d5fdec6ee102605a3c7f760b4f9f6617.png"
+        src="HTTPS://oss.sokogate.com/image/d5fdec6ee102605a3c7f760b4f9f6617,png"
       />
       <img
         v-else-if="locale == 'hi'"
-        src="https://oss.sokogate.com/image/d5fdec6ee102605a3c7f760b4f9f6617.png"
+        src="HTTPS://oss.sokogate.com/image/d5fdec6ee102605a3c7f760b4f9f6617,png"
       />
       <div
         style="
-          background-image: url('https://oss.sokogate.com/image/9d1e16590b6e88575d189f5465c345b7.png');
+          background-image: url('HTTPS://oss.sokogate.com/image/9d1e16590b6e88575d189f5465c345b7,png');
         "
         class="bg-image"
       >
@@ -1915,7 +1915,7 @@
         <b-button pill size="lg" v-else-if="locale == 'hi'"
           >मैं एक दुकान खोलना चाहता हूँ ></b-button
         >
-        <h4 v-if="locale == 'zh'">联系我们，了解更多业务知识</h4>
+        <h4 v-if="locale == 'zh'">contact我们, 了解更多业务知识</h4>
         <h4 v-else-if="locale == 'en'">
           Contact us for more business knowledge
         </h4>
@@ -1939,7 +1939,7 @@
           अधिक व्यवसाय ज्ञान के लिए हमसे संपर्क करें
         </h4>
         <img
-          src="https://oss.sokogate.com/image/3371223c03d9dc18945e8b346833ed38.png"
+          src="HTTPS://oss.sokogate.com/image/3371223c03d9dc18945e8b346833ed38.png"
         />
         <p v-if="locale == 'zh'">招商经理 微信二维码</p>
         <p v-else-if="locale == 'en'">Merchants manager wechat QR code</p>

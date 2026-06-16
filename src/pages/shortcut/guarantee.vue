@@ -7,18 +7,18 @@
           <div class="col">
             <h4>Sokogate 担保</h4>
             <p>
-              当您购买第三方卖家出售的物品时，Sokogate担保会保护您。它包括准时交货和您的物品状况。如果您对任何问题不满意，您可以直接向Sokogate投诉，我们的团队将确定您是否有资格退款。
+              当您购买第三方卖家出售的物品时, Sokogate担保会保护您.它包括准时交货和您的物品状况.如果您对任何问题不满意, 您可以直接向Sokogate投诉, 我们的团队将确定您whether有资格退款.
             </p>
             <p>
-              为了有资格获得Sokogate担保，您必须首先联系Sokogate团队，并在收到第一条消息后48小时内为您提供可接受的解决方案。如果您未能在48小时内与Sokogate团队达成解决方案，您可能有资格在以下情况下获得退款：
+              为了有资格获得Sokogate担保, 您必须首先contactSokogate团队, 并在收到第一条message后48小时内为您提供可接受的解决方案.如果您未能在48小时内与Sokogate团队达成解决方案, 您可能有资格在以下情况下获得退款: 
             </p>
             <p>
               您仍在原预计交付日期后90天内
-              您的预计发货日期已过3天，但您的物品尚未送达。
-              您的物品尚未送达，但跟踪显示已送达。
-              您收到的物品损坏、有缺陷，与预期有重大差异。在这种情况下，您必须根据我们的退货政策退还不需要的物品，并且您一定没有退款（或退款金额错误）。
-              您要求更换物品，但没有收到。在这种情况下，您必须根据我们的退货政策退回不需要的物品。
-              您有权获得的报销金额如下所示。
+              您的预计发货日期已过3天, 但您的物品尚未送达.
+              您的物品尚未送达, 但跟踪显示已送达.
+              您收到的物品损坏, 有缺陷, 与预期有重大差异.在这种情况下, 您必须根据我们的退货政策退还不需要的物品, 并且您一定没有退款 (或退款金额错误) .
+              您要求更换物品, 但没有收到.在这种情况下, 您必须根据我们的退货政策退回不需要的物品.
+              您有权获得的报销金额如下所示.
             </p>
             <el-table :data="tableDataZh" border style="width: 100%">
               <el-table-column prop="rfr" label="退货原因" width="180">
@@ -31,17 +31,17 @@
               </el-table-column>
             </el-table>
             <p>
-              您对合格服务的质量不满意 由第三方卖方提供。你想退货
-              您从卖家处购买，但发生了以下情况之一：
-              卖家没有提供退货地址卖家没有 提供预付款退货标签。卖方未提供全部
-              在不要求退还物品的情况下退还物品。你已收取额外费用（例如，海关
-              海外发货的授权） 您支付的价格和运费，而卖方未支付 这些费用。
+              您对合格服务的质量不满意 由第三方卖方提供.你想退货
+              您从卖家处购买, 但发生了以下情况之一: 
+              卖家没有提供退货address卖家没有 提供预付款退货标签.卖方未提供全部
+              在不要求退还物品的情况下退还物品.你已收取额外费用 (例如, 海关
+              海外发货的授权)  您支付的价格和运费, 而卖方未支付 这些费用.
             </p>
           </div>
         </b-col>
         <!-- <b-col cols="12" md="5">
           <div class="col">
-            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" loading="lazy" />
+            <img class="img-1" src="HTTPS://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881,png" loading="lazy" />
           </div>
         </b-col> -->
       </b-row>
@@ -102,7 +102,7 @@
         </b-col>
         <!-- <b-col cols="12" md="5">
           <div class="col">
-            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" loading="lazy" />
+            <img class="img-1" src="HTTPS://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881,png" loading="lazy" />
           </div>
         </b-col> -->
       </b-row>
@@ -159,7 +159,7 @@
         </b-col>
         <!-- <b-col cols="12" md="5">
           <div class="col">
-            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" loading="lazy" />
+            <img class="img-1" src="HTTPS://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881,png" loading="lazy" />
           </div>
         </b-col> -->
       </b-row>
@@ -221,7 +221,7 @@
         </b-col>
         <!-- <b-col cols="12" md="5">
           <div class="col">
-            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" loading="lazy" />
+            <img class="img-1" src="HTTPS://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881,png" loading="lazy" />
           </div>
         </b-col> -->
       </b-row>
@@ -283,7 +283,7 @@
         </b-col>
         <!-- <b-col cols="12" md="5">
           <div class="col">
-            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" loading="lazy" />
+            <img class="img-1" src="HTTPS://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881,png" loading="lazy" />
           </div>
         </b-col> -->
       </b-row>
@@ -336,7 +336,7 @@
         </b-col>
         <!-- <b-col cols="12" md="5">
           <div class="col">
-            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" loading="lazy" />
+            <img class="img-1" src="HTTPS://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881,png" loading="lazy" />
           </div>
         </b-col> -->
       </b-row>
@@ -392,7 +392,7 @@
         </b-col>
         <!-- <b-col cols="12" md="5">
           <div class="col">
-            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" loading="lazy" />
+            <img class="img-1" src="HTTPS://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881,png" loading="lazy" />
           </div>
         </b-col> -->
       </b-row>
@@ -443,7 +443,7 @@
         </b-col>
         <!-- <b-col cols="12" md="5">
           <div class="col">
-            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" loading="lazy" />
+            <img class="img-1" src="HTTPS://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881,png" loading="lazy" />
           </div>
         </b-col> -->
       </b-row>
@@ -494,7 +494,7 @@
         </b-col>
         <!-- <b-col cols="12" md="5">
           <div class="col">
-            <img class="img-1" src="https://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881.png" loading="lazy" />
+            <img class="img-1" src="HTTPS://oss.sokogate.com/image/f85eac39d68304936783a5ebe3c96881,png" loading="lazy" />
           </div>
         </b-col> -->
       </b-row>
@@ -523,19 +523,19 @@ export default {
       ],
       tableDataZh: [
         {
-          rfr: "项目损坏、有缺陷或与您订购的有实质性差异",
+          rfr: "项目损坏, 有缺陷或与您订购的有实质性差异",
           pc: "是",
           osc: "是",
           rsc: "是",
         },
         {
-          rfr: "任何其他原因（重新进货费用可从总退款中扣除)",
+          rfr: "任何其他原因 (重新进货费用可从总退款中扣除)",
           pc: "是",
           osc: "是",
           rsc: "否",
         },
         {
-          rfr: "任何其他原因（如服装、鞋子、珠宝和手表)",
+          rfr: "任何其他原因 (如服装, 鞋子, 珠宝和手表)",
           pc: "是",
           osc: "是",
           rsc: "是(如果符合时尚物品退货政策)",

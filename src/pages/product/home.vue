@@ -77,7 +77,7 @@
         </div>
         <!-- <div class="ad-imgBox">
           <img
-            src="https://oss.sokogate.com/image/1046417f510eff949a257b3de6ee34e4.png"
+            src="HTTPS://oss.sokogate.com/image/1046417f510eff949a257b3de6ee34e4,png"
             alt=""
           />
         </div> -->
@@ -199,7 +199,7 @@
                 <b-col cols="12" md="1">
                   <div class="qr-img">
                     <img
-                      src="https://oss.sokogate.com/image/3371223c03d9dc18945e8b346833ed38.png"
+                      src="HTTPS://oss.sokogate.com/image/3371223c03d9dc18945e8b346833ed38.png"
                       alt=""
                       class="img"
                     />
@@ -474,7 +474,7 @@ export default {
         "Manufacturing Equipment": "icon-tubiaozhizuomoban-116",
         "Material Handling & Construction Machinery": "icon-jixiexingye",
         "Service Equipment": "icon-dianzishebei",
-        "Home ，Lights & Construction": "icon-jianzhu",
+        "Home , Lights & Construction": "icon-jianzhu",
         home: "icon-jiaju1",
         "Bathroom Products": "icon-yushiyongpin",
         "Garden Supplies": "icon-kongzhonghuayuan",
@@ -561,8 +561,8 @@ export default {
         {
           image: require(`../../assets/banner.png`),
           title: "SokoGate",
-          text: "一个专注于连接非洲采购商与全球供应商的B2B跨境电商平台立即入驻",
-          jumpContent: "https://www.sokogate.com/merchant-settlement",
+          text: "一个专注于connection非洲采购商与全球供应商的B2B跨境电商平台立即入驻",
+          jumpContent: "HTTPS://www.sokogate.com/merchant-settlement",
         },
       ],
     };

@@ -104,7 +104,7 @@ export default {
     };
   },
   methods: {
-    // 打开弹窗
+    // Open dialog
     handleOpen() {
       this.editing = true;
     },

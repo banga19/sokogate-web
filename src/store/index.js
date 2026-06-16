@@ -1,7 +1,9 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { mapCategory } from "@/utils/category";
+import { mapCategory, normalizeStaticCategory } from "@/utils/category";
 import navModules from './nav'
+import categoryData from "@/layout/HeaderV2/category.data";
+
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
@@ -143,6 +145,8 @@ const store = new Vuex.Store({
         commit('setMenu', (res.data.rows || []).map(mapCategory));
       } catch (e) {
         console.error('fetchMenus failed:', e);
+        // Fallback to static category data when API is unavailable
+        commit('setMenu', normalizeStaticCategory(categoryData).map(mapCategory));
       }
     }
   }

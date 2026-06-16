@@ -52,11 +52,11 @@ export default {
       return (
         process.env.VUE_APP_V1_HOMEPAGE_URL + this.$route.fullPath.slice(1)
       );
-      // 判断是正式环境、开发环境还是测试环境
+      // 判断是正式环境, 开发环境还是测试环境
       // return process.env.VUE_APP_MODE === "development" ||
       //   process.env.VUE_APP_MODE === "test"
       //   ? "http://sokogate.lenneth.cn" + this.$route.fullPath
-      //   : "https://www.sokogate.com" + this.$route.fullPath;
+      //   : "HTTPS://www.sokogate.com" + this.$route.fullPath;
     },
   },
   methods: {
@@ -81,11 +81,11 @@ export default {
     getPayResult() {
       const nowUnix = Math.round(new Date().getTime() / 1000);
       if (this.$route.path !== "/v2/checkout/payment") {
-        // 不在本页，中止轮询
+        // 不在本页, 中止轮询
         // console.log("this.$route.path changed:", this.$route.path);
         return false;
       } else if (this.requestErrorTimes > 10) {
-        // 请求错误次数到达上限，中止轮询
+        // request错误attempts到达上限, 中止轮询
         // console.log("request error times maximum:", this.requestErrorTimes);
         return false;
       } else if (!this.hasBeenActivated) {
@@ -97,7 +97,7 @@ export default {
             // console.log("GetPayResult-res:", res);
             this.requestErrorTimes = 0;
             if (res.data.status === 101) {
-              // 待支付，继续轮询支付状态
+              // 待支付, 继续轮询支付状态
               setTimeout(() => this.getPayResult(), 2500);
             } else {
               this.$message({
@@ -113,7 +113,7 @@ export default {
             this.requestErrorTimes++;
           });
       } else {
-        // 支付超时，中止轮询
+        // 支付超时, 中止轮询
         // console.log("pay qcode is expired - payId:", this.payId);
         this.expired = true;
         return false;

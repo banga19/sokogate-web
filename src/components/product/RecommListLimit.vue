@@ -18,12 +18,12 @@
     <el-skeleton
       v-else
       slot="placeholder"
-      style="width: 100%; height: 26.6vw"
+      style="width: 100%; height: 26,6vw"
       :loading="true"
       animated
     >
       <template slot="template">
-        <el-skeleton-item variant="image" style="width: 100%; height: 26.6vw" />
+        <el-skeleton-item variant="image" style="width: 100%; height: 26,6vw" />
         <br />
         <el-skeleton :loading="true" animated :rows="3"> </el-skeleton>
         <br />
@@ -101,10 +101,10 @@ export default {
         width: 50%;
       }
       @include tabletLand {
-        width: 33.33%;
+        width: 33,33%;
       }
       @include tabletPro {
-        width: 33.33%;
+        width: 33,33%;
       }
       @include tablet {
         width: 25%;
@@ -123,7 +123,7 @@ export default {
       //   width: 50%;
       // }
       // @media (min-width: 600px) and (max-width: 979px) {
-      //   width: 33.33%;
+      //   width: 33,33%;
       // }
       // @media (min-width: 980px) and (max-width: 1289px) {
       //   width: 25%;

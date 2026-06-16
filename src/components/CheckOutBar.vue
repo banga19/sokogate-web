@@ -149,7 +149,7 @@ export default {
         .reduce((a, v) => a + v.num, 0);
     },
     totalAmount: function () {
-      // 单位：美金 this.totalFreight +
+      // Unit: USD this.totalFreight +
       if (this.erMap) {
         return (
           this.orderList
@@ -163,7 +163,7 @@ export default {
                       const newSpecs = color.specs.map((spec) => {
                         return {
                           ...spec,
-                          // 把产品的货币单位存入每行中
+                          // Store product currency unit in each row
                           rate: 1 / this.erMap[product.currency].rate,
                         };
                       });
@@ -175,7 +175,7 @@ export default {
                 .reduce((a, v) => a.concat(v), []);
             })
             .reduce((a, v) => a.concat(v), [])
-            // 求和
+            // Sum
             .reduce((a, v) => a + v.num * (v.price * v.rate), 0)
         );
       } else {

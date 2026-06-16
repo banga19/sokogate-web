@@ -32,7 +32,7 @@
             class="sokogate icon-shop"
             style="font-size: 24px; color: #ef2e22"
           />
-          {{ $t("order.seller") }}：
+          {{ $t("order.seller") }}: 
           {{ item.store.name }}
         </b-card-title>
         <product-box
@@ -199,7 +199,7 @@ export default {
               const newSpecs = color.specs.map((spec) => {
                 return {
                   ...spec,
-                  // 把产品的货币单位存入每行中
+                  // Store product currency unit in each row
                   rate: 1 / this.erMap[p.currency].rate,
                 };
               });

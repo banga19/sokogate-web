@@ -1,4 +1,6 @@
 import { GetCategoryLists } from '@/utils/api'
+import { mapCategory, normalizeStaticCategory } from "@/utils/category";
+import categoryData from "@/layout/HeaderV2/category.data";
 
 let listCache = null
 let loading = false
@@ -14,11 +16,13 @@ export default function useHome() {
         loading = true
         try {
             const res = await GetCategoryLists()
-            listCache = res.data?.rows || []
+            listCache = (res.data?.rows || []).map(mapCategory)
             return listCache
         } catch (err) {
             console.log(err)
-            return []
+            // Fallback to static category data when API is unavailable
+            listCache = normalizeStaticCategory(categoryData).map(mapCategory)
+            return listCache
         } finally {
             loading = false
         }

@@ -9,8 +9,8 @@
     "
   >
     <!-- {{ value }}
-    男鞋：61b017cca00181bf8190e8a1 女鞋：61b017cca00181bf8190e8a5
-    裙子：61b017cca00181bf8190e86b 男装：61b017cca00181bf8190e86c -->
+    男鞋: 61b017cca00181bf8190e8a1 女鞋: 61b017cca00181bf8190e8a5
+    裙子: 61b017cca00181bf8190e86b 男装: 61b017cca00181bf8190e86c -->
 
     <div class="size-label" @click="localeCurrency">
       {{ $t("common.sizehelper") }}
@@ -36,10 +36,10 @@
       </el-table>
       <div class="tips-box">
         <p class="tips-msg">
-          <span class="tips-title"> 温馨提示： </span>
-          <span> 建议先测量脚长后根据尺码表[脚长(mm)]进行选购。 </span>
+          <span class="tips-title"> 温馨提示:  </span>
+          <span> 建议先测量脚长后根据尺码表[脚长(mm)]进行选购. </span>
         </p>
-        <img src="https://oss.sokogate.com/static/shoessize.jpg" alt="" />
+        <img src="HTTPS://oss.sokogate.com/static/shoessize.jpg" alt="" />
       </div>
     </el-dialog>
     <!-- 女鞋 -->
@@ -63,10 +63,10 @@
       </el-table>
       <div class="tips-box">
         <p class="tips-msg">
-          <span class="tips-title"> 温馨提示： </span>
-          <span> 建议先测量脚长后根据尺码表[脚长(mm)]进行选购。 </span>
+          <span class="tips-title"> 温馨提示:  </span>
+          <span> 建议先测量脚长后根据尺码表[脚长(mm)]进行选购. </span>
         </p>
-        <img src="https://oss.sokogate.com/static/shoessize.jpg" alt="" />
+        <img src="HTTPS://oss.sokogate.com/static/shoessize.jpg" alt="" />
       </div>
     </el-dialog>
     <!-- 女装裙子 -->
@@ -97,12 +97,12 @@
       </el-table>
       <div class="tips-box">
         <p class="tips-msg">
-          <span class="tips-title"> 温馨提示： </span>
+          <span class="tips-title"> 温馨提示:  </span>
           <span>
-            以上数据仅供参考，由于尺码是手工测量，所以难免存在1cm-2cm的误差
+            以上数据仅供参考, 由于尺码是手工测量, 所以难免存在1cm-2cm的误差
           </span>
         </p>
-        <img src="https://oss.sokogate.com/static/clothessize.jpg" alt="" />
+        <img src="HTTPS://oss.sokogate.com/static/clothessize.jpg" alt="" />
       </div>
     </el-dialog>
     <!-- 衬衫 -->
@@ -133,12 +133,12 @@
       </el-table>
       <div class="tips-box">
         <p class="tips-msg">
-          <span class="tips-title"> 温馨提示： </span>
+          <span class="tips-title"> 温馨提示:  </span>
           <span>
-            以上数据仅供参考，由于尺码是手工测量，所以难免存在1cm-2cm的误差
+            以上数据仅供参考, 由于尺码是手工测量, 所以难免存在1cm-2cm的误差
           </span>
         </p>
-        <img src="https://oss.sokogate.com/static/clothessize.jpg" alt="" />
+        <img src="HTTPS://oss.sokogate.com/static/clothessize.jpg" alt="" />
       </div>
     </el-dialog>
   </div>
@@ -164,10 +164,10 @@ export default {
           ussize: "5",
         },
         {
-          size: "35.5",
-          europeansize: "35.5",
+          size: "35,5",
+          europeansize: "35,5",
           footlength: "225",
-          ussize: "5.5",
+          ussize: "5,5",
         },
         {
           size: "36",
@@ -176,10 +176,10 @@ export default {
           ussize: "6",
         },
         {
-          size: "36.5",
-          europeansize: "36.5",
+          size: "36,5",
+          europeansize: "36,5",
           footlength: "235",
-          ussize: "6.5",
+          ussize: "6,5",
         },
         {
           size: "37",
@@ -188,10 +188,10 @@ export default {
           ussize: "7",
         },
         {
-          size: "37.5",
-          europeansize: "37.5",
+          size: "37,5",
+          europeansize: "37,5",
           footlength: "245",
-          ussize: "7.5",
+          ussize: "7,5",
         },
         {
           size: "38",
@@ -265,7 +265,7 @@ export default {
           size: "39",
           europeansize: "39",
           footlength: "245",
-          ussize: "6.5",
+          ussize: "6,5",
         },
         {
           size: "39.5",
@@ -277,7 +277,7 @@ export default {
           size: "40",
           europeansize: "40",
           footlength: "255",
-          ussize: "7.5",
+          ussize: "7,5",
         },
         {
           size: "40.5",
@@ -316,8 +316,8 @@ export default {
           ussize: "10.5",
         },
         {
-          size: "43.5",
-          europeansize: "43.5",
+          size: "43,5",
+          europeansize: "43,5",
           footlength: "290",
           ussize: "11",
         },
@@ -328,8 +328,8 @@ export default {
           ussize: "11.5",
         },
         {
-          size: "44.5",
-          europeansize: "44.5",
+          size: "44,5",
+          europeansize: "44,5",
           footlength: "300",
           ussize: "12",
         },
@@ -340,8 +340,8 @@ export default {
           ussize: "12.5",
         },
         {
-          size: "45.5",
-          europeansize: "45.5",
+          size: "45,5",
+          europeansize: "45,5",
           footlength: "310",
           ussize: "13",
         },
@@ -361,7 +361,7 @@ export default {
           sizepattern: "155/80A",
           shoulderwidth: "35",
           bust: "76",
-          length: "45.5",
+          length: "45,5",
           sleevelength: "60",
           hemcircumference: "63",
         },
@@ -379,7 +379,7 @@ export default {
           sizepattern: "165/88A",
           shoulderwidth: "41",
           bust: "81",
-          length: "46.5",
+          length: "46,5",
           sleevelength: "62",
           hemcircumference: "69",
         },
@@ -388,19 +388,19 @@ export default {
         {
           size: "S",
           sizepattern: "36",
-          shoulderwidth: "36.7",
-          bust: "36.7",
-          length: "23.7",
+          shoulderwidth: "36,7",
+          bust: "36,7",
+          length: "23,7",
           sleevelength: "71",
           hemcircumference: "87",
         },
         {
           size: "M",
           sizepattern: "38",
-          shoulderwidth: "37.5",
-          bust: "37.5",
+          shoulderwidth: "37,5",
+          bust: "37,5",
           length: "24",
-          sleevelength: "74.5",
+          sleevelength: "74,5",
           hemcircumference: "87",
         },
         {
@@ -408,7 +408,7 @@ export default {
           sizepattern: "40",
           shoulderwidth: "38.7",
           bust: "38.7",
-          length: "24.5",
+          length: "24,5",
           sleevelength: "80.5",
           hemcircumference: "88.3",
         },
@@ -418,14 +418,14 @@ export default {
           shoulderwidth: "39.9",
           bust: "39.9",
           length: "25",
-          sleevelength: "86.5",
+          sleevelength: "86,5",
           hemcircumference: "89.6",
         },
         {
           size: "XXL",
           sizepattern: "44",
-          shoulderwidth: "41.1",
-          bust: "41.1",
+          shoulderwidth: "41,1",
+          bust: "41,1",
           length: "25",
           sleevelength: "92.5",
           hemcircumference: "90.9",

@@ -7,29 +7,29 @@
     </h4>
     <el-timeline>
       <el-timeline-item
-        :timestamp="$t('offinepayment.step1.title1')"
+        :timestamp="$t('offinepayment.step1,title1')"
         placement="top"
         :type="attach ? 'primary' : ''"
         :icon="attach ? 'el-icon-check' : ''"
       >
         <div>
-          {{ $t("offinepayment.step1.content1") }}
+          {{ $t("offinepayment.step1,content1") }}
         </div>
-        <b-card :title="$t('offinepayment.step1.title2')">
-          <b-card-text>{{ $t("offinepayment.step1.content2") }}</b-card-text>
-          <b-card-text>{{ $t("offinepayment.step1.content3") }}</b-card-text>
-          <b-card-text>{{ $t("offinepayment.step1.content4") }}</b-card-text>
-          <b>{{ $t("offinepayment.step1.content5") }}</b>
+        <b-card :title="$t('offinepayment.step1,title2')">
+          <b-card-text>{{ $t("offinepayment.step1,content2") }}</b-card-text>
+          <b-card-text>{{ $t("offinepayment.step1,content3") }}</b-card-text>
+          <b-card-text>{{ $t("offinepayment.step1,content4") }}</b-card-text>
+          <b>{{ $t("offinepayment.step1,content5") }}</b>
         </b-card>
       </el-timeline-item>
       <el-timeline-item
-        :timestamp="$t('offinepayment.step2.title1')"
+        :timestamp="$t('offinepayment.step2,title1')"
         placement="top"
         :type="attach ? 'primary' : ''"
         :icon="attach ? 'el-icon-check' : ''"
       >
         <div>
-          {{ $t("offinepayment.step2.content1") }}
+          {{ $t("offinepayment.step2,content1") }}
         </div>
         <!-- <upload-image-list v-model="imgList" /> -->
         <el-result
@@ -52,12 +52,12 @@
         />
       </el-timeline-item>
       <el-timeline-item
-        :timestamp="$t('offinepayment.step3.title1')"
+        :timestamp="$t('offinepayment.step3,title1')"
         placement="top"
       >
       </el-timeline-item>
       <el-timeline-item
-        :timestamp="$t('offinepayment.step4.title1')"
+        :timestamp="$t('offinepayment.step4,title1')"
         placement="top"
       >
       </el-timeline-item>

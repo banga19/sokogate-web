@@ -20,6 +20,37 @@ export function isOSSImage(url) {
   return OSS_REGEX.test(url);
 }
 
+/** Cache for WebP support detection (checked once per session) */
+let webpSupported = undefined;
+
+/**
+ * Detect whether the browser supports WebP image format.
+ * Uses canvas toDataURL feature detection and caches the result.
+ *
+ * @returns {boolean}
+ *
+ * @example
+ * supportsWebP()
+ *   → true  (Chrome, Edge 18+, Firefox 65+, Safari 14+)
+ *   → false (IE, old Safari, old Android browsers)
+ */
+export function supportsWebP() {
+  if (webpSupported !== undefined) return webpSupported;
+  if (typeof document === 'undefined') {
+    webpSupported = false;
+    return false;
+  }
+  try {
+    const canvas = document.createElement('canvas');
+    canvas.width = 1;
+    canvas.height = 1;
+    webpSupported = canvas.toDataURL('image/webp').startsWith('data:image/webp');
+  } catch {
+    webpSupported = false;
+  }
+  return webpSupported;
+}
+
 /**
  * Append WebP format processing to an OSS image URL.
  * Uses OSS pipeline syntax to chain multiple image processing operations.
@@ -32,7 +63,8 @@ export function isOSSImage(url) {
  *   → 'https://oss.sokogate.com/image/abc.jpg?x-oss-process=image/format,webp'
  *
  * getWebPUrl('https://oss.sokogate.com/image/abc.jpg?x-oss-process=style/w405h539')
- *   → 'https://oss.sokogate.com/image/abc.jpg?x-oss-process=style/w405h539|image/format,webp'
+ *   → 'https://oss.sokogate.com/image/abc.jpg?x-oss-process=style/w405h539'
+ * (named styles cannot be combined with other operations)
  */
 export function getWebPUrl(url) {
   if (!url || typeof url !== 'string') return url || '';
@@ -47,7 +79,11 @@ export function getWebPUrl(url) {
       const existing = params.get('x-oss-process');
       // Avoid double-appending
       if (existing.includes('format,webp')) return url;
-      urlObj.searchParams.set('x-oss-process', `${existing}|image/format,webp`);
+      // Named styles (style/...) cannot be combined with other operations
+      // Return as-is to avoid breaking the URL
+      if (existing.startsWith('style/')) return url;
+      // Chain with '/' separator (OSS pipeline syntax)
+      urlObj.searchParams.set('x-oss-process', `${existing}/image/format,webp`);
     } else {
       urlObj.searchParams.set('x-oss-process', 'image/format,webp');
     }
@@ -61,6 +97,10 @@ export function getWebPUrl(url) {
 /**
  * Get optimized OSS image URL with optional resize and WebP.
  *
+ * Uses separate x-oss-process query parameters for each operation
+ * (resize, WebP) since chaining with '/' doesn't work with m_fixed
+ * on this OSS bucket configuration.
+ *
  * @param {string} url - Original image URL
  * @param {Object} [options]
  * @param {string|number} [options.width] - Resize width in px (OSS style prefix)
@@ -69,36 +109,43 @@ export function getWebPUrl(url) {
  * @returns {string} - Optimized URL
  *
  * @example
+ * // Both resize and WebP
  * getOptimizedUrl('https://oss.sokogate.com/image/abc.jpg', { width: 200, height: 200 })
- *   → 'https://oss.sokogate.com/image/abc.jpg?x-oss-process=image/resize,m_fixed,w_200,h_200/format,webp'
+ *   → 'https://oss.sokogate.com/image/abc.jpg?x-oss-process=image/resize,m_fixed,w_200,h_200&x-oss-process=image/format,webp'
+ *
+ * // WebP only (no resize)
+ * getOptimizedUrl('https://oss.sokogate.com/image/abc.jpg', { width: 0, height: 0 })
+ *   → 'https://oss.sokogate.com/image/abc.jpg?x-oss-process=image/format,webp'
  */
 export function getOptimizedUrl(url, options = {}) {
   if (!url || typeof url !== 'string') return url || '';
   if (!isOSSImage(url)) return url;
 
   const { width, height, webp = true } = options;
-  const operations = [];
+  const hasResize = Boolean(width || height);
 
-  // Build resize operation
-  if (width || height) {
-    const resize = ['image/resize'];
-    if (width) resize.push(`w_${width}`);
-    if (height) resize.push(`h_${height}`);
-    // m_fixed keeps aspect ratio within bounds
-    resize.splice(1, 0, 'm_fixed');
-    operations.push(resize.join(','));
-  }
-
-  // Append WebP format
-  if (webp) {
-    operations.push('image/format,webp');
-  }
-
-  if (operations.length === 0) return url;
+  if (!hasResize && !webp) return url;
 
   try {
     const urlObj = new URL(url, 'https://oss.sokogate.com');
-    urlObj.searchParams.set('x-oss-process', operations.join('|'));
+
+    // Build query string manually — URLSearchParams encodes commas and slashes
+    // which OSS requires as literal characters.
+    const queryParts = [];
+
+    if (hasResize) {
+      const resize = ['image/resize'];
+      if (width) resize.push(`w_${width}`);
+      if (height) resize.push(`h_${height}`);
+      resize.push('m_fixed');
+      queryParts.push('x-oss-process=' + resize.join(','));
+    }
+
+    if (webp) {
+      queryParts.push('x-oss-process=image/format,webp');
+    }
+
+    urlObj.search = queryParts.join('&');
     return urlObj.toString();
   } catch {
     return url;
@@ -141,6 +188,7 @@ export function getPlaceholderSVG(color = '#f5f5f5') {
 
 export default {
   isOSSImage,
+  supportsWebP,
   getWebPUrl,
   getOptimizedUrl,
   getAspectRatio,

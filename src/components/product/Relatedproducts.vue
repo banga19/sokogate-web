@@ -36,9 +36,9 @@
     </div>
 
 
-    <el-skeleton v-else slot="placeholder" style="width: 100%; height: 26.6vw" :loading="true" animated>
+    <el-skeleton v-else slot="placeholder" style="width: 100%; height: 26,6vw" :loading="true" animated>
       <template slot="template">
-        <el-skeleton-item variant="image" style="width: 100%; height: 26.6vw" />
+        <el-skeleton-item variant="image" style="width: 100%; height: 26,6vw" />
         <br />
         <el-skeleton :loading="true" animated :rows="3"> </el-skeleton>
         <br />
@@ -87,7 +87,7 @@ export default {
         categoryId: '',
         desc: 1, // 排序
         page: 1,
-        orderKey: '', //按创建时间来排序
+        orderKey: '', //按create时间来排序
         pageSize: 30,
         search: '',
       },
@@ -182,7 +182,7 @@ export default {
           this.AIProductList = get(productRes, 'data.rows')
         }
         if (!this.AIProductList.length) {
-          throw new Error('获取 AI 推荐失败')
+          throw new Error('获取 AI 推荐failed')
         }
       } catch (error) {
       }
@@ -261,7 +261,7 @@ export default {
 
       .mouse-wheel-item {
         width: 220px;
-        flex: 0 0 auto; // 不拉伸、不收缩
+        flex: 0 0 auto; // 不拉伸, 不收缩
 
         &+.mouse-wheel-item {
           margin-left: 16px;

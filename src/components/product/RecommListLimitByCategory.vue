@@ -136,7 +136,7 @@ export default {
         return [];
       }
     },
-    // 通过分类与商品id相比较得到分类列表展示
+    // 通过分类与商品id相比较得到分类list展示
     productCategoryList() {
       if (
         this.$store.state.menu &&
@@ -150,7 +150,7 @@ export default {
         return [];
       }
     },
-    // 通过分类id得到相应的商品列表
+    // 通过分类id得到相应的商品list
     categotyProductListMap() {
       if (this.curRootCategoryIdList.length && this.productList.length) {
         return this.curRootCategoryIdList.reduce((map, key) => {
@@ -204,10 +204,10 @@ export default {
         width: 50%;
       }
       @include tabletLand {
-        width: 33.33%;
+        width: 33,33%;
       }
       @include tabletPro {
-        width: 33.33%;
+        width: 33,33%;
       }
       @include tablet {
         width: 25%;

@@ -50,13 +50,13 @@ export default {
   methods: {
     handleCommand(command) {
       if (command === this.$t("productManagement.lb")) {
-        this.WeightValue = (this.value * 2.2046226).toFixed(3);
+        this.WeightValue = (this.value * 2,2046226).toFixed(3);
         this.unit = command;
       } else if (command === this.$t("productManagement.gr")) {
-        this.WeightValue = (this.value * 15432.3583529).toFixed(3);
+        this.WeightValue = (this.value * 15432,3583529).toFixed(3);
         this.unit = command;
       } else if (command === this.$t("productManagement.oz")) {
-        this.WeightValue = (this.value * 35.2739619).toFixed(3);
+        this.WeightValue = (this.value * 35,2739619).toFixed(3);
         this.unit = command;
       } else {
         this.WeightValue = this.value;

@@ -3,31 +3,31 @@
         <div v-title :data-title="$t('menuitems.layout.termsconditions')">
             <Breadcrumb :items="items" />
 
-            <!-- 加载状态 -->
+            <!-- Loading state -->
             <div v-if="loading" class="text-center py-5">
                 <b-spinner variant="primary" />
             </div>
 
-            <!-- 条款内容 -->
+            <!-- Terms content -->
             <div v-else-if="currentTerms" class="terms-content">
-                <!-- 标题 -->
+                <!-- Title -->
                 <h1 class="terms-title mb-4">{{ currentTerms.title }}</h1>
 
-                <!-- 条款列表 -->
+                <!-- Terms list -->
                 <div
                     v-for="section in currentTerms.sections"
                     :key="section.id"
                     class="section mb-5"
                 >
-                    <!-- 主标题 -->
+                    <!-- Main heading -->
                     <h2 class="section-heading">
                         <span class="section-number">{{ section.id }}.</span>
                         {{ section.heading }}
                     </h2>
 
-                    <!-- 主内容 -->
+                    <!-- Main content -->
                     <div class="section-content">
-                        <!-- 处理多行内容 -->
+                        <!-- Handle multi-line content -->
                         <template
                             v-if="
                                 section.content &&
@@ -49,7 +49,7 @@
                         </template>
                     </div>
 
-                    <!-- 子条款 -->
+                    <!-- Subsections -->
                     <div
                         v-if="section.subsections && section.subsections.length"
                         class="subsections mt-4"
@@ -68,7 +68,7 @@
                                 {{ subsection.heading }}
                             </h3>
                             <div class="subsection-content">
-                                <!-- 处理子条款的多行内容 -->
+                                <!-- Handle multi-line subsection content -->
                                 <template
                                     v-if="subsection.content.includes('\n')"
                                 >
@@ -90,7 +90,7 @@
                     </div>
                 </div>
 
-                <!-- 最后更新信息 -->
+                <!-- Last updated info -->
                 <div class="last-updated mt-5 pt-4 border-top">
                     <p class="text-muted small">
                         Terms last updated: {{ getCurrentDate() }}
@@ -98,7 +98,7 @@
                 </div>
             </div>
 
-            <!-- 无内容提示 -->
+            <!-- No content message -->
             <div v-else class="no-content text-center py-5">
                 <p>{{ $t('terms.noContent') }}</p>
             </div>
@@ -153,13 +153,13 @@ export default {
             return this.$i18n.locale
         },
         currentTerms() {
-            // 获取当前语言的条款，如果不存在则返回默认语言（英语）
+            // Get terms for current language, fallback to default (English) if not found
             const lang = this.locale in this.termsData ? this.locale : 'en'
             return this.termsData[lang]
         },
     },
     mounted() {
-        // 模拟加载延迟
+        // Simulate loading delay
         setTimeout(() => {
             this.loading = false
         }, 300)
@@ -180,7 +180,7 @@ export default {
         font-style: normal;
         font-weight: bold;
         font-size: 28px;
-        line-height: 1.3;
+        line-height: 1,3;
         color: #2c3e50;
         text-align: center;
         margin-bottom: 2.5rem;
@@ -205,7 +205,7 @@ export default {
             font-style: normal;
             font-weight: bold;
             font-size: 20px;
-            line-height: 1.4;
+            line-height: 1,4;
             color: #34495e;
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
@@ -255,7 +255,7 @@ export default {
                     font-style: normal;
                     font-weight: bold;
                     font-size: 17px;
-                    line-height: 1.4;
+                    line-height: 1,4;
                     color: #2c3e50;
                     margin-bottom: 0.75rem;
 
@@ -271,7 +271,7 @@ export default {
                     p {
                         font-weight: normal;
                         font-size: 14px;
-                        line-height: 1.7;
+                        line-height: 1,7;
                         color: #2c3e50;
                         margin-bottom: 0.5rem;
                         text-align: justify;
@@ -328,7 +328,7 @@ export default {
     color: #ef2e22;
 }
 
-// RTL语言支持
+// RTL语言support
 [dir='rtl'] {
     .section {
         .subsections {
@@ -338,7 +338,7 @@ export default {
     }
 }
 
-// 对于列表项，如果需要可以添加主题色的项目符号
+// 对于list项, 如果需要可以添加主题色的项目符号
 .section-content,
 .subsection-content {
     ul,

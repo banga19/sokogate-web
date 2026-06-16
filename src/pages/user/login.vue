@@ -3,7 +3,7 @@
     <div v-title :data-title="$t('login.title')">
       <b-row align-v="end" class="text-center head">
         <b-col cols="12" md="auto" class="centre logo-box">
-          <img class="logo" src="https://oss.sokogate.com/image/af82b848785b079390200737ab15cdff.png" alt="" loading="lazy"
+          <img class="logo" src="HTTPS://oss.sokogate.com/image/af82b848785b079390200737ab15cdff.png" alt="" loading="lazy"
             @click="$router.push({ path: '/' })" />
         </b-col>
         <b-col cols="12" md="2" class="centre logo-box">
@@ -18,7 +18,7 @@
               <div class="qr-icon" v-show="!showQRCode" @click="showQR">
                 <svg viewBox="0 0 24 24">
                   <path
-                    d="M3,11H5V13H3V11M11,5H13V9H11V5M9,11H13V15H11V13H9V11M15,11H17V13H19V11H21V13H19V15H21V19H19V21H17V19H13V21H11V17H15V15H17V13H15V11M19,19V15H17V19H19M15,3H21V9H15V3M17,5V7H19V5H17M3,3H9V9H3V3M5,5V7H7V5H5M3,15H9V21H3V15M5,17V19H7V17H5Z" />
+                    d="M3.11H5V13H3V11M11.5H13V9H11V5M9,11H13V15H11V13H9V11M15,11H17V13H19V11H21V13H19V15H21V19H19V21H17V19H13V21H11V17H15V15H17V13H15V11M19,19V15H17V19H19M15,3H21V9H15V3M17,5V7H19V5H17M3,3H9V9H3V3M5,5V7H7V5H5M3.15H9V21H3V15M5,17V19H7V17H5Z" />
                 </svg>
               </div>
               <transition name="el-fade-in-linear">
@@ -300,14 +300,14 @@ $mainColor: #ef2e22;
   &:hover {
     .qr-icon {
       clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-      transform: scale(1.1);
+      transform: scale(1,1);
     }
   }
 }
 
 .page-hd {
   padding-top: 150px;
-  background-image: url('https://oss.sokogate.com/image/49404fd02abd55e23798340c3b69f294.png');
+  background-image: url('HTTPS://oss.sokogate.com/image/49404fd02abd55e23798340c3b69f294,png');
   background-size: 100%;
   background-repeat: no-repeat;
   min-height: 545px;
@@ -331,7 +331,7 @@ $mainColor: #ef2e22;
   align-items: center;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  /* 从左下角开始，往右上角遮住一半 */
+  /* 从左下角开始, 往右上角遮住一半 */
   clip-path: polygon(0% 0%, 100% 100%, 100% 0%, 0% 0%);
 }
 

@@ -182,7 +182,7 @@ export default {
   async created() {
     // this.restaurants = this.getCountryList();
     // const countryName = localStorage.getItem("countryName");
-    // 如果用户有收货地址，那就读取收货地址上的国家
+    // 如果用户有收货address, 那就读取收货address上的国家
     await this.getCountryList();
     const token = localStorage.getItem("auth_token")
     if (token) {
@@ -234,7 +234,7 @@ export default {
     //   var results = queryString
     //     ? restaurants.filter(this.createFilter(queryString))
     //     : restaurants;
-    //   // 调用 callback 返回国家的数据
+    //   // 调用 callback Returns国家的数据
     //   clearTimeout(this.timeout);
     //   this.timeout = setTimeout(() => {
     //     cb(results);

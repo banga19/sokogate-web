@@ -108,14 +108,14 @@ export default {
           active: true,
         },
       ],
-      // 用户信息
+      // User信息
       user: {},
-      // 订单列表
+      // 订单list
       orderList: [],
-      // 附件列表
+      // 附件list
       orderAttachList: [],
       orderPayList: [],
-      // 附件列表
+      // 附件list
       orderAttachTableColumn: [
         {
           name: "type",
@@ -142,7 +142,7 @@ export default {
           width: 100,
         },
       ],
-      // 子订单列表
+      // 子订单list
       orderTableColumn: [
         {
           name: "orderNo",
@@ -218,7 +218,7 @@ export default {
         },
       ],
       operationByState: {
-        // 不同状态下，显示不同的操作按钮 当前状态: [操作后状态, 操作后状态]
+        // 不同状态下, 显示不同的操作按钮 当前状态: [操作后状态, 操作后状态]
         101: [1301],
         301: [401],
       },
@@ -338,11 +338,11 @@ export default {
             status,
             createAt,
             updateAt,
-            // 用户
+            // User
             userId,
             username,
             avatar,
-            // 收货地址
+            // 收货address
             consignee,
             phone,
             country,

@@ -24,8 +24,10 @@
 import HomeSearch from "@/components/HomeSearch.vue";
 import Hamburger from "@/components/hamburger.vue";
 import { GetCategoryLists } from "@/utils/api";
-import { mapCategory } from "@/utils/category";
+import { mapCategory, normalizeStaticCategory } from "@/utils/category";
 import Nav from "./nav";
+import categoryData from "@/layout/HeaderV2/category.data";
+
 export default {
   components: {
     HomeSearch,
@@ -49,6 +51,9 @@ export default {
         })
         .catch((err) => {
           console.log(err);
+          // Fallback to static category data when API is unavailable
+          this.list = normalizeStaticCategory(categoryData).map(mapCategory);
+          this.$store.commit("setMenu", this.list);
         });
     }
   },

@@ -191,7 +191,7 @@ export default {
       border-radius: .417vw;
       overflow: hidden;
       width: 100%;
-      height: 7.292vw;
+      height: 7,292vw;
 
       .img {
         width: 100%;

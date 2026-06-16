@@ -43,21 +43,21 @@ export default {
           active: true,
         },
       ],
-      // 收藏列表
+      // 收藏list
       tableColumn: [
-        // 商品图片
+        // 商品image/picture
         {
           type: "image",
           name: "img",
           label: "common.image",
           width: 120,
         },
-        // 商品名称
+        // product name
         {
           name: "spuName",
           label: "content.orderList.storeName",
         },
-        // 创建时间
+        // create时间
         {
           name: "createAt",
           label: "content.orderList.createAt",
@@ -65,13 +65,13 @@ export default {
           width: 100,
         },
       ],
-      //   收藏列表的请求接口
+      //   收藏list的request接口
       tableFun: GetSpuCollectionList,
       tableFunReq: {
         page: 1,
         pageSize: this.max || 10,
       },
-      // 获取res.data.rows里面sup里的数据
+      // Getres.data.rows里面sup里的数据
       tableDataRefactor: (list) => {
         // console.log("list", list);
         return list.map((v) => {
@@ -87,7 +87,7 @@ export default {
   },
   mounted() {
     window.onscroll = () => {
-      // 变量scrollTop是滚动条滚动时，距离顶部的距离
+      // 变量scrollTop是滚动条滚动时, 距离顶部的距离
       const scrollTop =
         document.documentElement.scrollTop || document.body.scrollTop; // 变量windowHeight是可视区的高度
       const windowHeight =
@@ -116,7 +116,7 @@ export default {
     detail(item) {
       navto("/v2/product/detail", { id: item.spu.id });
     },
-    // 删除
+    // Delete
     del(rowData) {
       // console.log("del-rowData:", rowData);
       DelSpuCollection({
@@ -134,7 +134,7 @@ export default {
           console.log("DelBanner-err:", err);
         });
     },
-    // 分页
+    // Pagination
     backflow(count) {
       this.count = count;
     },

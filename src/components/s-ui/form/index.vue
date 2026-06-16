@@ -30,7 +30,7 @@
                 v-for="item in phoneCodeJson"
                 :key="item.id"
                 :label="
-                  /*$t('categorys.' + item.nicename)很多国家名称没对称，延后处理*/ item.nicename +
+                  /*$t('categorys.' + item.nicename)很多国家名称没对称, 延后处理*/ item.nicename +
                   ' +' +
                   item.phonecode
                 "
@@ -240,7 +240,7 @@ export default {
       return [...propsHiddenNameList, ...this.customHiddenNameList];
     },
     rules() {
-      // 验证身份证号正则
+      // 验证ID card number正则
       // ('xxx' is assigned a value but never used 解决eslint的验证语法)
       // eslint-disable-next-line no-unused-vars
       var validateidCard = (rule, value, callback) => {
@@ -333,8 +333,8 @@ export default {
       if (!this.$utils.isEmpty(value) && m) {
         const [name, targetValue, action] = m;
         let selectArray = [];
-        // 判断是否是数组 是数组就放入新数组中并对list隐藏
-        const setShow = targetValue !== value && !action; // 所选值不等于目标值，设置为显示
+        // 判断whether是数组 是数组就放入新数组中并对list隐藏
+        const setShow = targetValue !== value && !action; // 所选值不等于目标值, 设置为显示
         if (name instanceof Array) {
           selectArray = name;
         } else {
@@ -342,12 +342,12 @@ export default {
         }
 
         if (setShow) {
-          // 显示，就把所有name从隐藏列表中去掉
+          // 显示, 就把所有name从隐藏list中去掉
           this.customHiddenNameList = this.customHiddenNameList.filter(
-            (val) => selectArray.indexOf(val) === -1 // 返回不在列表中的name
+            (val) => selectArray.indexOf(val) === -1 // Returns不在list中的name
           );
         } else {
-          // 隐藏，就把所有name加入到隐藏列表中
+          // 隐藏, 就把所有name加入到隐藏list中
           this.customHiddenNameList = Array.from(
             new Set([...this.customHiddenNameList, ...selectArray])
           );

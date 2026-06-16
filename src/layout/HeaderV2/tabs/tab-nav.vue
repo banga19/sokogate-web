@@ -82,7 +82,7 @@ export default {
         : 0;
 
       this.navOffset = newOffset;
-      // 点击后刷新一下，因为外面隐藏了左箭头
+      // 点击后刷新一下, 因为外面隐藏了左箭头
       this.$nextTick(() => this.$forceUpdate())
     },
     scrollNext() {
@@ -97,7 +97,7 @@ export default {
         : (navSize - containerSize);
 
       this.navOffset = newOffset;
-      // 点击后刷新一下，因为外面隐藏了右箭头
+      // 点击后刷新一下, 因为外面隐藏了右箭头
       this.$nextTick(() => this.$forceUpdate())
     },
     scrollToActiveTab() {
@@ -179,7 +179,7 @@ export default {
         }
       }
       tabList[nextIndex].focus(); // 改变焦点元素
-      tabList[nextIndex].click(); // 选中下一个tab
+      tabList[nextIndex].click(); // Selected下一个tab
       this.setFocus();
     },
     setFocus() {

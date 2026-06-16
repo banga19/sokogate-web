@@ -1,5 +1,5 @@
 /**
- * 获取当前语言下的国际化文本
+ * Get当前语言下的国际化文本
  * @param {string} text
  * @param {Record<string, Object>} transMap
  * @param {string} language

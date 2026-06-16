@@ -7,7 +7,7 @@
             v-for="item in phoneCodeJson"
             :key="item.id"
             :label="
-              /*$t('categorys.' + item.nicename)很多国家名称没对称，延后处理*/ item.nicename +
+              /*$t('categorys.' + item.nicename)很多国家名称没对称, 延后处理*/ item.nicename +
               ' +' +
               item.phonecode
             "

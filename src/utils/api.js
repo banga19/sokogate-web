@@ -3,7 +3,7 @@ import { getOSSInfo } from '@/utils/OSS'
 import { getFileNameMd5 } from "@/utils"
 // import { formatQuery } from "./index";
 
-// 购物车列表
+// Cart list
 export function GetCartList(params) {
   return request({
     url: `getCartList`,
@@ -13,7 +13,7 @@ export function GetCartList(params) {
   });
 }
 
-// 添加到购物车
+// Add to cart
 export function AddCart(params) {
   return request({
     url: `upsertCartList`,
@@ -23,7 +23,7 @@ export function AddCart(params) {
   });
 }
 
-// 创建新订单
+// Create order
 export function AddOrder(params) {
   return request({
     url: `addOrderV2`,
@@ -33,7 +33,7 @@ export function AddOrder(params) {
   });
 }
 
-// 查询订单
+// Query order
 export function GetOrderListbyIds(params) {
   return request({
     url: `getOrderListbyIds`,
@@ -43,7 +43,7 @@ export function GetOrderListbyIds(params) {
   });
 }
 
-// 订单支付
+// Order payment
 export function OrderPay(params) {
   return request({
     url: `checkOrder`,
@@ -53,7 +53,7 @@ export function OrderPay(params) {
   });
 }
 
-// 获取支付结果
+// Get payment result
 export function GetPayResult(params) {
   return request({
     url: `getPayStatus`,
@@ -63,7 +63,7 @@ export function GetPayResult(params) {
   });
 }
 
-/** cinetPay支付 */
+/** cinetPay payment */
 export function UsedCinetPay(params) {
   return request({
     url: `cinetPay`,
@@ -73,7 +73,7 @@ export function UsedCinetPay(params) {
   });
 }
 
-/** quikkPay 支付 */
+/** quikkPay payment */
 export function UsedQuikkPay(params) {
   return request({
     url: `quikkPay`,
@@ -84,7 +84,7 @@ export function UsedQuikkPay(params) {
 }
 
 
-/** 获取用户支付订单数(是否首次购买) */
+/** Get user first purchase status */
 export function GetOrderUserIsOnePay(params) {
   return request({
     url: `getOrderUserIsOnePay`,
@@ -95,7 +95,7 @@ export function GetOrderUserIsOnePay(params) {
 }
 
 
-// 添加我的物流公司
+// Add my logistics company
 export function AddMyLogistics(params) {
   return request({
     url: `addUserLogistics`,
@@ -105,7 +105,7 @@ export function AddMyLogistics(params) {
   });
 }
 
-// 获取我的物流公司
+// Get my logistics company
 export function GetMyLogistics(params) {
   return request({
     url: `getUserLogistics`,
@@ -115,7 +115,7 @@ export function GetMyLogistics(params) {
   });
 }
 
-// 添加收货地址
+// Add shipping address
 export function AddAddress(params) {
   return request({
     url: `addUserAddress`,
@@ -125,7 +125,7 @@ export function AddAddress(params) {
   });
 }
 
-// 删除收货地址
+// Delete shipping address
 export function DelAddress(params) {
   return request({
     url: `delUserAddress`,
@@ -135,7 +135,7 @@ export function DelAddress(params) {
   });
 }
 
-// 修改收货地址
+// Edit shipping address
 export function EditAddress(params) {
   return request({
     url: `editUserAddress`,
@@ -145,7 +145,7 @@ export function EditAddress(params) {
   });
 }
 
-// 获取物流价目表
+// Get logistics price list
 export function GetLogisticsPriceList(params) {
   return request({
     url: `getLogisticsPriceList`,
@@ -155,7 +155,7 @@ export function GetLogisticsPriceList(params) {
   });
 }
 
-// 编辑Banner图片
+// Edit banner image
 export function EditBanner(params) {
   return request({
     url: `editBannerbyAdmin`,
@@ -165,7 +165,7 @@ export function EditBanner(params) {
   });
 }
 
-// 删除Banner图片
+// Delete banner image
 export function DelBanner(params) {
   return request({
     url: `delBannerbyAdmin`,
@@ -175,7 +175,7 @@ export function DelBanner(params) {
   });
 }
 
-// 获取收货地址
+// Get shipping address
 export function GetAddressList(params) {
   return request({
     url: `getUserAddressList`,
@@ -185,7 +185,7 @@ export function GetAddressList(params) {
   });
 }
 
-// 添加分类
+// Add category
 export function AddCategory(params) {
   return request({
     url: `addModCategorybyAdmin`,
@@ -195,7 +195,7 @@ export function AddCategory(params) {
   });
 }
 
-// 编辑分类
+// Edit category
 export function EditCategory(params) {
   return request({
     url: `editModCategorybyAdmin`,
@@ -205,7 +205,7 @@ export function EditCategory(params) {
   });
 }
 
-// 删除分类
+// Delete category
 export function DelCategory(params) {
   return request({
     url: `delModCategorybyAdmin`,
@@ -215,7 +215,7 @@ export function DelCategory(params) {
   });
 }
 
-// 获取分类列表
+// Get category list
 export function GetCategoryList(params) {
   return request({
     url: `getModCategoryListbyAdmin`,
@@ -225,7 +225,7 @@ export function GetCategoryList(params) {
   });
 }
 
-// 获取订单状态
+// Get order status
 export function GetOrderListbyStatus(params) {
   return request({
     url: `getOrderListbyStatus`,
@@ -235,7 +235,7 @@ export function GetOrderListbyStatus(params) {
   });
 }
 
-// 获取订单详情
+// Get order details
 export function GetOrderDetail(params) {
   return request({
     url: `getOrderDetail`,
@@ -245,7 +245,7 @@ export function GetOrderDetail(params) {
   });
 }
 
-// 取消订单
+// Cancel order
 export function CanceOrder(params) {
   return request({
     url: `canceOrder`,
@@ -255,7 +255,7 @@ export function CanceOrder(params) {
   });
 }
 
-// 获取产品详情
+// Get product details
 export function GetSpu(params) {
   return request({
     url: `getSpu`,
@@ -265,7 +265,7 @@ export function GetSpu(params) {
   });
 }
 
-// 查找产品
+// Search products
 export function SearchSpu(params) {
   return request({
     url: `searchSpu`,
@@ -275,7 +275,7 @@ export function SearchSpu(params) {
   });
 }
 
-/** 以图搜图 */
+/** Search by image */
 export function GetSpuImagesearch(params) {
   return request({
     url: `getSpuImagesearch`,
@@ -286,9 +286,9 @@ export function GetSpuImagesearch(params) {
 }
 
 /**
- * 添加用户搜索历史记录
+ * Add user search history
  * 
- * 类似于埋点。无需关注调用结果
+ * Similar to于event tracking.No need to关注调用结果
  *  */ 
 export function AddSpuHistoryImgsearch(params) {
   return request({
@@ -299,7 +299,7 @@ export function AddSpuHistoryImgsearch(params) {
 }
 
 /**
- * 将文件上传到 OSS
+ * Upload file to OSS
  * @param {File} file 
  * @param {string} path 
  * @returns {Promise<filePath>}
@@ -326,7 +326,7 @@ export async function UploadFileToOSS(file, path = 'appimg/') {
 }
 
 
-// 获取产品列表
+// Get product list
 export function GetSpuList(params) {
   return request({
     url: `getSpuList`,
@@ -337,7 +337,7 @@ export function GetSpuList(params) {
 }
 
 /**
- * 获取多商品列表
+ * Get multiple products list
  */
 export function GetSpuListByIds(params) {
   return request({
@@ -348,7 +348,7 @@ export function GetSpuListByIds(params) {
   });
 }
 
-// 获取分类列表
+// Get category list
 export function GetCategoryLists(params) {
   return request({
     url: `getCategoryList`,
@@ -386,7 +386,7 @@ export async function UpdateUserPreference(params) {
   });
 }
 
-// 获取banner列表
+// Get banner list
 export function GetBannerList(params) {
   return request({
     url: `getBannerList`,
@@ -397,7 +397,7 @@ export function GetBannerList(params) {
 }
 
 
-// 获取主页分类列表
+// Get homepage category list
 export function GetModCategoryList(params) {
   return request({
     url: `getModCategoryList`,
@@ -408,7 +408,7 @@ export function GetModCategoryList(params) {
 }
 
 
-// 获取推荐
+// Get recommendations
 export function GetRecommListbyTypes(params) {
   return request({
     url: `getRecommListbyTypes`,
@@ -418,7 +418,7 @@ export function GetRecommListbyTypes(params) {
   });
 }
 
-// 用户登录
+// User login
 export function Login(params) {
   return request({
     url: `login`,
@@ -428,7 +428,7 @@ export function Login(params) {
   });
 }
 
-/** 获取用户登录二维码 */
+/** Get login QR code */
 export function LoginQRCode(params) {
     return request({
     url: `loginQRCode`,
@@ -438,7 +438,7 @@ export function LoginQRCode(params) {
   });
 }
 
-/** 扫描登录状态检查 */
+/** Check scan login status */
 export function GetLoginCheckStatus(params) {
     return request({
     url: `loginCheckStatus`,
@@ -448,7 +448,7 @@ export function GetLoginCheckStatus(params) {
   });
 }
 
-// 用户注册
+// User registration
 export function Registger(params) {
   return request({
     url: `registger`,
@@ -458,7 +458,7 @@ export function Registger(params) {
   });
 }
 
-// 忘记密码
+// Forgot password
 export function Forget(params) {
   return request({
     url: `forget`,
@@ -468,7 +468,7 @@ export function Forget(params) {
   });
 }
 
-// 新建验证码
+// Create verification code
 export function AddVerifyCode(params) {
   return request({
     url: `addVerifyCode`,
@@ -478,7 +478,7 @@ export function AddVerifyCode(params) {
   });
 }
 
-// 获取国家列表
+// Get country list
 export function GetCountryList(params) {
   return request({
     url: `getCountryList`,
@@ -488,7 +488,7 @@ export function GetCountryList(params) {
   });
 }
 
-// 获取店铺详情
+// Get store details
 export function GetStore(params) {
   return request({
     url: `getStore`,
@@ -498,7 +498,7 @@ export function GetStore(params) {
   });
 }
 
-// 获取子分类
+// Get subcategories
 export function GetCategoryChildenList(params) {
   return request({
     url: `getCategoryChildenList`,
@@ -508,7 +508,7 @@ export function GetCategoryChildenList(params) {
   });
 }
 
-// 获取产品列表
+// Get product list
 export function GetStoreSpuList(params) {
   return request({
     url: `getSpuList`,
@@ -518,7 +518,7 @@ export function GetStoreSpuList(params) {
   });
 }
 
-// 获取产品收藏
+// Get product collection
 export function GetSpuCollection(params) {
   return request({
     url: `getSpuCollection`,
@@ -528,7 +528,7 @@ export function GetSpuCollection(params) {
   });
 }
 
-// 添加产品收藏
+// Add product collection
 export function AddSpuCollection(params) {
   return request({
     url: `addSpuCollection`,
@@ -538,7 +538,7 @@ export function AddSpuCollection(params) {
   });
 }
 
-// 获取产品收藏列表
+// Get product collectionlist
 export function GetSpuCollectionList(params) {
   return request({
     url: `getSpuCollectionList`,
@@ -548,7 +548,7 @@ export function GetSpuCollectionList(params) {
   });
 }
 
-// 删除产品收藏
+// Delete product collection
 export function DelSpuCollection(params) {
   return request({
     url: `delSpuCollection`,
@@ -558,7 +558,7 @@ export function DelSpuCollection(params) {
   });
 }
 
-// 获取oss直传凭证
+// Get OSS direct upload token
 export function GetOssPolicyToken(params) {
   return request({
     url: `getOssPolicyToken`,
@@ -568,7 +568,7 @@ export function GetOssPolicyToken(params) {
   });
 }
 
-// 添加本地oss文件
+// Add local OSS file
 export function AddOssFile(params) {
   return request({
     url: `addOssFile`,
@@ -578,7 +578,7 @@ export function AddOssFile(params) {
   });
 }
 
-// 环信客服注册用户
+// Register Easemob customer service user
 export function RegisterEasemodUser(params) {
   return request({
     url: `registerEasemodUser`,
@@ -588,7 +588,7 @@ export function RegisterEasemodUser(params) {
   });
 }
 
-// 添加用户通信记录
+// Add user chat record
 export function AddMyImChat(params) {
   return request({
     url: `addImChat`,
@@ -598,7 +598,7 @@ export function AddMyImChat(params) {
   });
 }
 
-// 获取im记录
+// Get IM chat record
 export function GetMyImChatList(params) {
   return request({
     url: `getImChatList`,
@@ -608,7 +608,7 @@ export function GetMyImChatList(params) {
   });
 }
 
-// 获取店铺下的用户列表
+// Get user list by store ID
 export function GetUserListbyStoreId(params) {
   return request({
     url: `getUserListbyStoreId`,
@@ -618,7 +618,7 @@ export function GetUserListbyStoreId(params) {
   });
 }
 
-// 上传预付款附件
+// Upload prepayment attachment
 export function PrepaymentAttach(params) {
   return request({
     url: `prepaymentAttach`,
@@ -628,7 +628,7 @@ export function PrepaymentAttach(params) {
   });
 }
 
-// 查询店铺
+// Search store
 export function GetStorebyName(params) {
   return request({
     url: `getStorebyName`,
@@ -638,7 +638,7 @@ export function GetStorebyName(params) {
   });
 }
 
-// 查询汇率
+// Get exchange rate
 export function GetExchateRateMap(params) {
   return request({
     url: `getExchateRateMap`,
@@ -648,7 +648,7 @@ export function GetExchateRateMap(params) {
   });
 }
 
-// 获取产品列表
+// Get product list
 export function GetSpuListbyNewproduct(params) {
   return request({
     url: `getSpuList`,
@@ -659,9 +659,9 @@ export function GetSpuListbyNewproduct(params) {
 }
 
 /**
- * 智能推荐-猜你喜欢/Ai商品配套
+ * Smart recommendation - You may also like / AI product matching
  * 
- * - 传入商品名称，返回商品 id
+ * - Pass inproduct name, Returns商品 id
  * @param {string} search 
  * @returns 
  */
@@ -674,7 +674,7 @@ export function GetIntelligentRecommend(search) {
   });
 }
 
-/** 根据名称获取子分类列表 */
+/** Get subcategory list by name */
 export function GetCategoryByName(params) {
   return request({
     url: `getCategoryByName`,
@@ -684,7 +684,7 @@ export function GetCategoryByName(params) {
   });
 }
 
-// 身份证实名认证
+// ID card real-name verification
 export function IdCardCheck(params) {
   return request({
     url: `idCardCheck`,
@@ -694,7 +694,7 @@ export function IdCardCheck(params) {
   });
 }
 
-// 获取校验状态
+// Get verification status
 export function GetCheckStatus(params) {
   return request({
     url: `getCheckStatus`,
@@ -704,7 +704,7 @@ export function GetCheckStatus(params) {
   });
 }
 
-// 获取视频活体h5链接
+// Get video liveness H5 link
 export function LifeCheckLink(params) {
   return request({
     url: `lifeCheckLink`,
@@ -714,7 +714,7 @@ export function LifeCheckLink(params) {
   });
 }
 
-// 身份证实名认证(阿里云数聚)
+// ID card real-name verification(阿里云数聚)
 export function ShuJuIdCardCheck(params) {
   return request({
     url: `shuJuIdCardCheck`,
@@ -724,7 +724,7 @@ export function ShuJuIdCardCheck(params) {
   });
 }
 
-// 人像实人认证
+// Face ID comparison verification
 export function FaceIdCardCompare(params) {
   return request({
     url: `faceIdCardCompare`,
@@ -734,7 +734,7 @@ export function FaceIdCardCompare(params) {
   });
 }
 
-// 发送手机验证码
+// Send SMS verification code
 export function SmsSend(params) {
   return request({
     url: `smsSend`,
@@ -744,7 +744,7 @@ export function SmsSend(params) {
   });
 }
 
-// 手机验证码校验
+// Verify SMS code
 export function SmsVerify(params) {
   return request({
     url: `smsVerify`,
@@ -754,7 +754,7 @@ export function SmsVerify(params) {
   });
 }
 
-// 身份证实名认证
+// ID card real-name verification
 export function Certification(params) {
   return request({
     url: `certification`,
@@ -764,7 +764,7 @@ export function Certification(params) {
   });
 }
 
-// 获取物流通道价格列表
+// Get logistics channel price list
 export function GetLogisticChannelList(params) {
   return request({
     url: `getLogisticChannelList`,
@@ -774,7 +774,7 @@ export function GetLogisticChannelList(params) {
   });
 }
 
-// 获取城市列表
+// Get city list
 export function GetCityList(params) {
   return request({
     url: `getCityList`,
@@ -784,7 +784,7 @@ export function GetCityList(params) {
   });
 }
 
-// 删除购物车
+// Delete cart item
 export function DelCart(params) {
   return request({
     url: `delCart`,
@@ -794,7 +794,7 @@ export function DelCart(params) {
   });
 }
 
-// 修改购物车
+// Update cart item
 export function UpdateCart(params) {
   return request({
     url: `updateCart`,
@@ -805,7 +805,7 @@ export function UpdateCart(params) {
 }
 
 
-// 获取订单支付列表
+// Get order payment list
 export function GetOrderPayList(params) {
   return request({
     url: `getOrderPayList`,
@@ -815,7 +815,7 @@ export function GetOrderPayList(params) {
   });
 }
 
-// 拉取城市列表
+// Fetch city list
 export function GetAreabyAName(params) {
   return request({
     url: `getAreabyAName`,
@@ -825,7 +825,7 @@ export function GetAreabyAName(params) {
   });
 }
 
-// 新建验证码 V2
+// Create verification code V2
 export function AddVerifyCodeV2(params) {
   return request({
     url: `addVerifyCodeV2`,
@@ -835,7 +835,7 @@ export function AddVerifyCodeV2(params) {
   });
 }
 
-// 修改邮箱或电话
+// Update email or phone
 export function UpdateUserPhoneOrEmail(params) {
   return request({
     url: `updateUserPhoneOrEmail`,
@@ -845,7 +845,7 @@ export function UpdateUserPhoneOrEmail(params) {
   });
 }
 
-// 修改用户衣服尺寸
+// Update user clothing size
 export function UpdateUserClothSize(params) {
   return request({
     url: `updateUserClothSize`,
@@ -855,7 +855,7 @@ export function UpdateUserClothSize(params) {
   });
 }
 
-// 获取城市列表
+// Get city list
 export function GeCountryV2List(params) {
   return request({
     url: `geCountryV2List`,
@@ -866,7 +866,7 @@ export function GeCountryV2List(params) {
 }
 
 
-// 获取区域和城市列表
+// Get region and city list by country ID
 export function GetStateAndCityListByCountryId(params) {
   return request({
     url: `getStateAndCityListByCountryId`,
@@ -876,7 +876,7 @@ export function GetStateAndCityListByCountryId(params) {
   });
 }
 
-/** 获取自己的分享码 */
+/** Get own share code */
 export function GetShareCode() {
     return request({
     url: `getShareCode`,
@@ -886,7 +886,7 @@ export function GetShareCode() {
   }); 
 }
 
-/** 新增商品分享链接访问记录 */
+/** Add product share link visit record */
 export function AddShareLinks(params) {
   return request({
     url: `addShareLinks`,

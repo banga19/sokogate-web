@@ -91,7 +91,7 @@ export default {
   },
   mounted() {
     window.onscroll = () => {
-      // 变量scrollTop是滚动条滚动时，距离顶部的距离
+      // 变量scrollTop是滚动条滚动时, 距离顶部的距离
       const scrollTop =
         document.documentElement.scrollTop || document.body.scrollTop; // 变量windowHeight是可视区的高度
       const windowHeight =
@@ -137,7 +137,7 @@ export default {
         GetStoreSpuList(this.req)
           .then((res) => {
             // console.log("GetSpuList", res);
-            // startover 为 true 重来，否则增加到现有的列表后面
+            // startover 为 true 重来, 否则增加到现有的list后面
             this.list = startover
               ? res.data.rows || []
               : this.list.concat(res.data.rows);
@@ -181,10 +181,10 @@ export default {
       width: 49%;
     }
     @include tabletLand {
-      width: 32.33%;
+      width: 32,33%;
     }
     @include tabletPro {
-      width: 32.33%;
+      width: 32,33%;
     }
     @include tablet {
       width: 33%;

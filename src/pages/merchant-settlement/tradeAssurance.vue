@@ -6,36 +6,36 @@
     <b-row v-if="locale == 'zh'">
       <b-col>
         <div class="col">
-          <h4>有sokgate贸易保障，您安全!</h4>
+          <h4>有sokgate贸易保障, 您安全!</h4>
           <p>
-            贸易保证被认为是一个非常重要的服务，建立买家和供应商之间的信任在sokgate。
+            贸易保证被认为是一个非常重要的服务, 建立买家和供应商之间的信任在sokgate.
           </p>
           <p>
-            放心，贸易保证保证您的订单的质量和数量以及装运日期，以满足您的期望。
+            放心, 贸易保证保证您的订单的质量和数量以及装运日期, 以满足您的期望.
           </p>
 
-          <h4>确保你的命令安全!</h4>
+          <h4>确保你的command安全!</h4>
           <p>
-            SokoGate提供贸易保证服务，以保护您的订单，以避免任何航运或质量相关的纠纷。"
+            SokoGate提供贸易保证服务, 以保护您的订单, 以避免任何航运或质量相关的纠纷."
           </p>
           <p>
-            虽然sokgate为可信赖的供应商提供担保，但意外还是会发生。
-            因此，Sokogate贸易保证帮助您在任何纠纷中达到满意的结果，甚至强调要回您的钱。
+            虽然sokgate为可信赖的供应商提供担保, 但意外还是会发生.
+            因此, Sokogate贸易保证帮助您在任何纠纷中达到满意的结果, 甚至强调要回您的钱.
           </p>
           <p>
-            您可以在sokogate.com上购买任何由供应商提供的产品，商品，项目，并有信心您是受贸易保证保护的。
+            您可以在sokogate.com上购买任何由供应商提供的产品, 商品, 项目, 并有信心您是受贸易保证保护的.
           </p>
 
           <h4>如何使用贸易保证?</h4>
-          <p>为了应对sokgate贸易保证，请记住以下提示:</p>
-          <p>1.通过贸易保险公司订购。</p>
-          <p>2. 寻找在sokogate上与贸易保证合作的供应商。</p>
+          <p>为了应对sokgate贸易保证, 请记住以下提示:</p>
+          <p>1,通过贸易保险公司订购.</p>
+          <p>2, 寻找在sokogate上与贸易保证合作的供应商.</p>
           <p>
-            3.
-            使用sokgate支付方式在线支付，包括银行转账，信用卡或借记卡，或更多。
+            3,
+            使用sokgate支付method在线支付, 包括银行转账, 信用卡或借记卡, 或更多.
           </p>
           <p>
-            如果订单有任何问题，那么您可以填写贸易担保申请，我们会协助您完全得到满意。
+            如果订单有任何问题, 那么您可以填写贸易担保request, 我们会协助您完全得到满意.
           </p>
         </div>
       </b-col>
@@ -74,13 +74,13 @@
             In order to deal with SokoGate Trade Assurance, keep in mind the
             following tips:
           </p>
-          <p>1.Place your orders through Trade Assurance.</p>
+          <p>1,Place your orders through Trade Assurance.</p>
           <p>
-            2.Look for suppliers who are working with trade assurance on
+            2,Look for suppliers who are working with trade assurance on
             sokogate.
           </p>
           <p>
-            3.Pay online with Sokogate payment methods, including Bank transfer,
+            3,Pay online with Sokogate payment methods, including Bank transfer,
             Credit or Debit Cards, or more.
           </p>
           <p>
@@ -130,13 +130,13 @@
             Pour faire face à l’assurance commerciale de sokgate, gardez les
             conseils suivants à l’esprit:
           </p>
-          <p>1. Ordre par l’intermédiaire de l’assurance commerciale.</p>
+          <p>1, Ordre par l’intermédiaire de l’assurance commerciale.</p>
           <p>
-            2. Recherchez le fournisseur qui coopèrent avec l’assurance
+            2, Recherchez le fournisseur qui coopèrent avec l’assurance
             commerciale sur sokogate.
           </p>
           <p>
-            3. Payez en ligne avec les méthodes de paiement sokgate, y compris
+            3, Payez en ligne avec les méthodes de paiement sokgate, y compris
             les virements bancaires, les cartes de crédit ou de débit, ou plus.
           </p>
           <p>
@@ -184,13 +184,13 @@
             Para hacer frente a la garantía comercial de sokgate, tenga en
             cuenta los siguientes consejos:
           </p>
-          <p>1.Orden a través de trade assurance company.</p>
+          <p>1,Orden a través de trade assurance company.</p>
           <p>
-            2. Encuentre a un proveedor que trabaje con trade assurance en
+            2, Encuentre a un proveedor que trabaje con trade assurance en
             sokogate.
           </p>
           <p>
-            3. Pague en línea con los métodos de pago sokgate, incluyendo
+            3, Pague en línea con los métodos de pago sokgate, incluyendo
             transferencia bancaria, tarjeta de crédito o débito, o más.
           </p>
           <p>
@@ -237,13 +237,13 @@
           <p>
             Para lidar com sokgate trade assurance, lembre-se das dicas abaixo:
           </p>
-          <p>1.Ordem por trade assurance company.</p>
+          <p>1,Ordem por trade assurance company.</p>
           <p>
-            2. Procurando fornecedores que trabalham com segurança de comércio
+            2, Procurando fornecedores que trabalham com segurança de comércio
             em sokogate.
           </p>
           <p>
-            3. Pague online com os métodos de pagamento sokgate, incluindo
+            3, Pague online com os métodos de pagamento sokgate, incluindo
             transferência bancária, cartão de crédito ou débito ou mais.
           </p>
           <p>
@@ -284,10 +284,10 @@
 
           <h4>كيف تستخدم ضمانات التجارة؟?</h4>
           <p>استجابة لضمانات Sokgate التجارية، يرجى تذكر النصائح التالية:</p>
-          <p>1.طلب من خلال شركة التأمين التجاري.</p>
-          <p>2. ابحث عن موردين يتعاونون مع ضمانات التجارة على سوكوغاتي.</p>
+          <p>1,طلب من خلال شركة التأمين التجاري.</p>
+          <p>2, ابحث عن موردين يتعاونون مع ضمانات التجارة على سوكوغاتي.</p>
           <p>
-            3. ويتم الدفع عبر الإنترنت باستخدام طريقة "سوكيت" للدفع، بما في ذلك
+            3, ويتم الدفع عبر الإنترنت باستخدام طريقة "سوكيت" للدفع، بما في ذلك
             التحويلات المصرفية أو بطاقات الائتمان أو بطاقات الخصم، أو أكثر.
           </p>
           <p>
@@ -331,13 +331,13 @@
             В ответ на торговые гарантии sokgate, пожалуйста, запомните
             следующее:
           </p>
-          <p>1.Закажите через страховую компанию.</p>
+          <p>1,Закажите через страховую компанию.</p>
           <p>
-            2. Ищите поставщика, который сотрудничает с гарантиями торговли на
+            2, Ищите поставщика, который сотрудничает с гарантиями торговли на
             сокогейт.
           </p>
           <p>
-            3. Онлайн платежи с использованием sokgate, включая банковские
+            3, Онлайн платежи с использованием sokgate, включая банковские
             переводы, кредитные или дебетовые карты, или больше.
           </p>
           <p>
@@ -381,12 +381,12 @@
             برای اینکه با تضمین تجارت سوکگیت معامله کنید، لطفا این نقشه‌های بعدی
             را در ذهن نگه دارید:
           </p>
-          <p>1.از طريق شرکت بيمه تجارت دستور بده</p>
+          <p>1,از طريق شرکت بيمه تجارت دستور بده</p>
           <p>
-            2. دنبال تهيه کننده ها که با اطمينان تجارت در سوکوگات همکاري ميکنن
+            2, دنبال تهيه کننده ها که با اطمينان تجارت در سوکوگات همکاري ميکنن
           </p>
           <p>
-            3. استفاده از روش پرداخت سوکگیت برای پرداخت آنلاین، شامل انتقال
+            3, استفاده از روش پرداخت سوکگیت برای پرداخت آنلاین، شامل انتقال
             بانک، کارت اعتبار یا کارت debit، یا بیشتر.
           </p>
           <p>
@@ -429,13 +429,13 @@
             सॉकगेट व्यापार गारंटी के साथ संबंध करने के लिए, कृपया निम्न सूचना को
             मन में रखें:
           </p>
-          <p>1.व्यापार बीमा कंपनी के द्वारा आदेश करें.</p>
+          <p>1,व्यापार बीमा कंपनी के द्वारा आदेश करें.</p>
           <p>
-            2. प्रदान करनेवालों के लिए खोज रहे हैं जो सोकोगाट पर व्यापार सुरक्षा
+            2, प्रदान करनेवालों के लिए खोज रहे हैं जो सोकोगाट पर व्यापार सुरक्षा
             के साथ सहयोग करते हैं।
           </p>
           <p>
-            3. ऑनलाइन पैसा करने के लिए सॉकगेट पैसा पद्धति इस्तेमाल करें, बैंक
+            3, ऑनलाइन पैसा करने के लिए सॉकगेट पैसा पद्धति इस्तेमाल करें, बैंक
             स्थानान्तरण, क्रेडिट कार्ड या डेबिट का
           </p>
           <p>

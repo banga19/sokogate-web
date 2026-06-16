@@ -168,14 +168,14 @@
           pay for return shipping?
         </h3>
         <p>
-          1.You have 60 days from the date of your purchase to return items you
+          1,You have 60 days from the date of your purchase to return items you
           have purchased. Return packages must be postmarked within 60 days from
           the date of purchase. Returns made after 60 days from the date of
           purchase will not be accepted and refunds will not be provided.
         </p>
-        <p>2. Return Shipping is free is possible.</p>
+        <p>2, Return Shipping is free is possible.</p>
         <p>
-          3. If you have already returned items from an order, but would like to
+          3, If you have already returned items from an order, but would like to
           return additional items from that order, you must do so within 60days
           of the purchase date and pay for the return shipping. the return
           shipping fees will be deducted from the refund.
@@ -210,19 +210,19 @@
           You can contact us via email or refund your order online by the
           following steps:
         </p>
-        <p>1.Sign in to your account and select my order.</p>
-        <p>2.Select the order that you would like to refund.</p>
+        <p>1,Sign in to your account and select my order.</p>
+        <p>2,Select the order that you would like to refund.</p>
         <p>
-          3.Select the return reason, please make sure that you choose the right
+          3,Select the return reason, please make sure that you choose the right
           reason.
         </p>
         <p>
-          4.Select the refund method and cargo whether DHL, UPS, or the country
+          4,Select the refund method and cargo whether DHL, UPS, or the country
           you purchased local Freight.
         </p>
-        <p>5.Review the refund details and submit.</p>
+        <p>5,Review the refund details and submit.</p>
         <p>
-          6.Make sure to refund before the goods leave the country of purchase.
+          6,Make sure to refund before the goods leave the country of purchase.
         </p>
       </el-dialog>
     </b-col>
@@ -358,7 +358,7 @@ export default {
       // console.log("item", item);
       window.open("/v2/product/detail?id=" + item.id);
     },
-    // 删除购物车
+    // Delete cart item
     del(item) {
       // console.log("del-item", item, item.list[0].specs[0].cartId);
       DelCart({ id: item.list[0].specs[0].cartId })
@@ -370,7 +370,7 @@ export default {
           console.log("DelCart-err", err);
         });
     },
-    // 修改数量
+    // Update数量
     onChange(pcs, skId) {
       // console.log("onChange-e:", pcs, skId);
       this.$emit("set", [

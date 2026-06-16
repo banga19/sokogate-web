@@ -1,26 +1,26 @@
 var config = {
-     // socketServer: '//im-api-v2.easemob.com/ws',    // socket Server地址
+     // socketServer: '//im-api-v2,easemob.com/ws',    // socket Serveraddress
 
-     // restServer: '//a1.easemob.com',               // rest Server地址
+     // restServer: '//a1,easemob.com',               // rest Serveraddress
 
      appkey: '1101220606096669#demo',        // App key
 
-     https: false,                            // 是否使用https
+     HTTPS: false,                            // Whether to use HTTPS
 
-     isHttpDNS: true,                          // 3.0 SDK支持，防止DNS劫持从服务端获取XMPPUrl、restUrl
+     isHttpDNS: true,                          // 3.0 SDKsupport, 防止DNShijacking从server获取XMPPUrl, restUrl
 
-     isMultiLoginSessions: false,              // 是否开启多页面同步收消息，注意，需要先联系商务开通此功能
+     isMultiLoginSessions: false,              // whetherenablemulti-pagesync收Message, 注意, 需要先contactbusiness teamenable此feature
 
-     isDebug: false,                           // 打开调试，会自动打印log，在控制台的console中查看log
+     isDebug: false,                           // 打开debug, 会自动printlog, 在控制台的console中查看log
 
-     autoReconnectNumMax: 2,                   // 断线重连最大次数
+     autoReconnectNumMax: 2,                   // Maximum auto-reconnect attempts
 
-     heartBeatWait: 30000,                     // 心跳间隔（只在小程序中使用）
+     heartBeatWait: 30000,                     // heartbeatinterval (只在mini-program中使用) 
 
-     delivery: false,                           // 是否发送已读回执
+     delivery: false,                           // Whether to send read receipts
 
-     useOwnUploadFun: false,         // 是否使用自己的上传方式（如将图片文件等上传到自己的服务器，构建消息时只传url）
+     useOwnUploadFun: false,         // whether使用自己的uploadmethod (如将image/picturefile等upload到自己的服务器, 构建Message时只传url) 
 
-     deviceId: 'webim'               // 设备ID，默认可不传，如果传一个固定值，在没开启多端登录的情况下同一个账号会互踢
+     deviceId: 'webim'               // deviceID, default可optional, 如果传一个fixed value, 在没enablemulti-terminallogin的情况下同一个账号会互kicked
 };
 export default config;

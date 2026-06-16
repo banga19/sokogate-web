@@ -228,7 +228,7 @@ const iconMap = {
     'Manufacturing Equipment': 'icon-tubiaozhizuomoban-116',
     'Material Handling & Construction Machinery': 'icon-jixiexingye',
     'Service Equipment': 'icon-dianzishebei',
-    'Home ，Lights & Construction': 'icon-jianzhu',
+    'Home , Lights & Construction': 'icon-jianzhu',
     home: 'icon-jiaju1',
     'Bathroom Products': 'icon-yushiyongpin',
     'Garden Supplies': 'icon-kongzhonghuayuan',

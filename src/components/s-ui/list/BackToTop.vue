@@ -31,7 +31,7 @@ export default {
         this.isShow = false;
       }
     },
-    // 返回顶部
+    // Returns顶部
     gotoTop() {
       // window.scroll({
       //   top: 0,

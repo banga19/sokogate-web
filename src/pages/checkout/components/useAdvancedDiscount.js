@@ -1,5 +1,5 @@
 /**
- * 计算链式乘算的优惠，并给出每一步优惠的具体金额
+ * 计算链式乘算的优惠, 并给出每一步优惠的具体金额
  * @param {number} originalPrice
  * @param {Array} discounts
  * @returns

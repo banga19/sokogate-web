@@ -8,7 +8,7 @@
 </template>
 
 <script>
-// Order的列表页
+// Order的list页
 import OrderList from "@/components/s-ui/order/OrderList.vue";
 import Breadcrumb from "@/components/Breadcrumb.vue";
 export default {

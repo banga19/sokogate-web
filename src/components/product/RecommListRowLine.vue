@@ -34,12 +34,12 @@
     <el-skeleton
       v-else
       slot="placeholder"
-      style="width: 100%; height: 6.6vw"
+      style="width: 100%; height: 6,6vw"
       :loading="true"
       animated
     >
       <template slot="template">
-        <el-skeleton-item variant="image" style="width: 100%; height: 6.6vw" />
+        <el-skeleton-item variant="image" style="width: 100%; height: 6,6vw" />
       </template>
     </el-skeleton>
   </div>

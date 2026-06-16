@@ -4,159 +4,158 @@
       <!-- <Breadcrumb :items="items" /> -->
       <b-row v-if="locale == 'cn'">
         <b-col>
-          <h1>隐私政策</h1>
-          <div>更新日期：<strong>2023/10/14</strong></div>
-          <div>生效日期：<strong>2023/10/14</strong></div>
-          <h2>导言</h2>
+          <h1>Privacy Policy</h1>
+          <div>Last Updated: <strong>2023/10/14</strong></div>
+          <div>Effective Date: <strong>2023/10/14</strong></div>
+          <h2>Introduction</h2>
           <p>
-            <i>sokogate</i> 是一款由
-            <i>广州哈荔亚贸易有限公司</i> （以下简称“我们”）提供的产品。
-            您在使用我们的服务时，我们可能会收集和使用您的相关信息。我们希望通过本《隐私政策》向您说明，在使用我们的服务时，我们如何收集、使用、储存和分享这些信息，以及我们为您提供的访问、更新、控制和保护这些信息的方式。
-            本《隐私政策》与您所使用的
+            <i>sokogate</i> is a product provided by
+            <i>Guangzhou Haliya Trading Co., Ltd.</i> (hereinafter referred to as "we"). When you use our services, we may collect and use your relevant information. We hope to inform you through this Privacy Policy on how we collect, use, store, and share this information when you use our services, as well as the access, update, control, and protection methods we provide for this information.
+            This Privacy Policy is closely related to the
             <i>sokogate</i>
-            服务息息相关，希望您仔细阅读，在需要时，按照本《隐私政策》的指引，作出您认为适当的选择。本《隐私政策》中涉及的相关技术词汇，我们尽量以简明扼要的表述，并提供进一步说明的链接，以便您的理解。
+            services you use. Please read it carefully and make your own decisions as guided. Technical terms used in this Privacy Policy are described as simply as possible, with links to further explanations for your understanding.
           </p>
           <p>
             <strong
-              >您使用或继续使用我们的服务，即意味着同意我们按照本《隐私政策》收集、使用、储存和分享您的相关信息。</strong
+              >By using or continuing to use our services, you agree to our collection, use, storage, and sharing of your relevant information in accordance with this Privacy Policy.</strong
             >
           </p>
           <p>
-            如对本《隐私政策》或相关事宜有任何问题，请通过
-            <strong>sokogatesokogate@gmail.com</strong> 与我们联系。
+            For any questions regarding this Privacy Policy or related matters, please contact us via
+            <strong>sokogatesokogate@gmail.com</strong>.
           </p>
 
-          <h2>1. 我们收集的信息</h2>
+          <h2>1. Information We Collect</h2>
           <p>
-            我们或我们的第三方合作伙伴提供服务时，可能会收集、储存和使用下列与您有关的信息。如果您不提供相关信息，可能无法注册成为我们的用户或无法享受我们提供的某些服务，或者无法达到相关服务拟达到的效果。
+            When we or our third-party partners provide services, we may collect, store, and use the following information related to you. If you do not provide the relevant information, you may not be able to register as a user of our services or enjoy certain services we provide, or you may not be able to achieve the intended effects of the relevant services.
           </p>
 
           <ul>
             <li>
-              <strong>个人信息</strong
-              >，您在注册账户或使用我们的服务时，向我们提供的相关个人信息，例如电话号码、电子邮件等。
+              <strong>Personal Information</strong
+              >: relevant personal information you provide to us when registering an account or using our services, such as phone number, email, etc.
             </li>
             <li>
-              <strong>位置信息</strong
-              >，指您开启设备定位功能并使用我们基于位置提供的相关服务时，收集的有关您位置的信息，包括：
+              <strong>Location Information</strong
+              >: information about your location collected when you enable device location and use our location-based services, including:
               <ul>
                 <li>
-                  您通过具有定位功能的移动设备使用我们的服务时，通过GPS或WiFi等方式收集的您的地理位置信息；
+                  When you use our services on a mobile device with location capabilities, your geographic location information collected via GPS, Wi-Fi, and other methods;
                 </li>
-                <li>您可以通过关闭定位功能，停止对您的地理位置信息的收集。</li>
+                <li>You can stop the collection of your geographic location information by turning off the location feature.</li>
               </ul>
             </li>
             <li>
-              <strong>日志信息</strong
-              >，指您使用我们的服务时，系统可能通过cookies、标识符及相关技术收集的信息，包括您的<strong>设备信息</strong>、<strong>浏览信息</strong>、<strong>点击信息</strong>，并将该等信息储存为日志信息，为您提供个性化的用户体验、保障服务安全。您可以通过浏览器设置拒绝或管理cookie、标识符或相关技术的使用。
+              <strong>Log Information</strong
+              >: information that the system may collect via cookies, identifiers, and related technologies when you use our services, including your <strong>device information</strong>, <strong>browsing information</strong>, and <strong>click information</strong>. This information is stored as log data to provide a personalized user experience and ensure service security. You can refuse or manage the use of cookies, identifiers, or related technologies via your browser settings.
             </li>
           </ul>
 
-          <h2>2. 信息的存储</h2>
-          <strong>2.1 信息存储的方式和期限</strong>
+          <h2>2. Information Storage</h2>
+          <strong>2.1 Storage Methods and Duration</strong>
           <ul>
             <li>
-              我们会通过安全的方式存储您的信息，包括本地存储（例如利用APP进行数据缓存）、数据库和服务器日志。
+              We will store your information securely, including local storage (e.g., data caching via the app), databases, and server logs.
             </li>
             <li>
-              一般情况下，我们只会在为实现服务目的所必需的时间内或法律法规规定的条件下存储您的个人信息。
+              In general, we will only store your personal information for as long as is necessary to achieve the service purpose or under the conditions stipulated by laws and regulations.
             </li>
           </ul>
 
-          <strong>2.2 信息存储的地域</strong>
+          <strong>2.2 Geographic Location of Data Storage</strong>
           <ul>
             <li>
-              我们会按照法律法规规定，将境内收集的用户个人信息存储于中国境内。
+              We will store user personal information collected within China within Chinese territory, in accordance with legal and regulatory requirements.
             </li>
             <li>
-              目前我们不会跨境传输或存储您的个人信息。将来如需跨境传输或存储的，我们会向您告知信息出境的目的、接收方、安全保证措施和安全风险，并征得您的同意。
+              Currently, we do not transfer or store your personal information cross-border. If cross-border transfer or storage is required in the future, we will inform you of the purpose of information export, recipient, security guarantees, and security risks, and obtain your consent.
             </li>
           </ul>
 
-          <strong>2.3 产品或服务停止运营时的通知</strong>
+          <strong>2.3 Notification When Products or Services Cease Operation</strong>
           <ul>
             <li>
-              当我们的产品或服务发生停止运营的情况时，我们将以推送通知、公告等形式通知您，并在合理期限内删除您的个人信息或进行匿名化处理，法律法规另有规定的除外。
+              When our products or services cease operation, we will notify you via push notifications, announcements, etc., and delete your personal information or anonymize it within a reasonable period, unless otherwise provided by laws and regulations.
             </li>
           </ul>
 
-          <h2>3. 信息安全</h2>
+          <h2>3. Information Security</h2>
           <p>
-            我们使用各种安全技术和程序，以防信息的丢失、不当使用、未经授权阅览或披露。例如，在某些服务中，我们将利用加密技术（例如SSL）来保护您提供的个人信息。但请您理解，由于技术的限制以及可能存在的各种恶意手段，在互联网行业，即便竭尽所能加强安全措施，也不可能始终保证信息百分之百的安全。您需要了解，您接入我们的服务所用的系统和通讯网络，有可能因我们可控范围外的因素而出现问题。
+            We use various security technologies and procedures to prevent information loss, misuse, unauthorized access, or disclosure. For example, in certain services, we will use encryption technologies (e.g., SSL) to protect the personal information you provide. However, please understand that due to technical limitations and various malicious means that may exist, in the internet industry, even with all efforts to strengthen security measures, it is impossible to always guarantee 100% information security. You should understand that the system and communication network you use to access our services may encounter problems beyond our control.
           </p>
 
-          <h2>4. 我们如何使用信息</h2>
-          <p>我们可能将在向您提供服务的过程之中所收集的信息用作下列用途：</p>
+          <h2>4. How We Use Information</h2>
+          <p>We may use the information collected during the provision of services to you for the following purposes:</p>
           <ul>
-            <li>向您提供服务；</li>
+            <li>Provide services to you;</li>
             <li>
-              在我们提供服务时，用于身份验证、客户服务、安全防范、诈骗监测、存档和备份用途，确保我们向您提供的产品和服务的安全性；
+              When providing services, used for identity verification, customer service, security, fraud monitoring, archiving, and backup purposes, ensuring the security of the products and services we provide to you;
             </li>
-            <li>帮助我们设计新服务，改善我们现有服务；</li>
+            <li>Help us design new services and improve our existing services;</li>
             <li>
-              使我们更加了解您如何接入和使用我们的服务，从而针对性地回应您的个性化需求，例如语言设定、位置设定、个性化的帮助服务和指示，或对您和其他用户作出其他方面的回应；
+              Better understand how you access and use our services, thereby responding to your personalized needs, such as language settings, location settings, personalized help services and guidance, or other responses to you and other users;
             </li>
-            <li>向您提供与您更加相关的广告以替代普遍投放的广告；</li>
+            <li>Provide you with more relevant ads instead of general ads;</li>
             <li>
-              评估我们服务中的广告和其他促销及推广活动的效果，并加以改善；
+              Evaluate the effectiveness of advertising and other promotional activities in our services, and improve them;
             </li>
-            <li>软件认证或管理软件升级；</li>
-            <li>让您参与有关我们产品和服务的调查。</li>
+            <li>Software certification or managing software upgrades;</li>
+            <li>Allow you to participate in surveys about our products and services.</li>
           </ul>
 
-          <h2>5. 信息共享</h2>
+          <h2>5. Information Sharing</h2>
           <p>
-            目前，我们不会主动共享或转让您的个人信息至第三方，如存在其他共享或转让您的个人信息或您需要我们将您的个人信息共享或转让至第三方情形时，我们会直接或确认第三方征得您对上述行为的明示同意。
+            Currently, we will not proactively share or transfer your personal information to third parties. If there are other circumstances where your personal information is shared or transferred, or you need us to share or transfer your personal information to third parties, we will obtain your explicit consent, either directly or through confirmation by the third party.
           </p>
           <p>
-            为了投放广告，评估、优化广告投放效果等目的，我们需要向广告主及其代理商等第三方合作伙伴共享您的部分数据，要求其严格遵守我们关于数据隐私保护的措施与要求，包括但不限于根据数据保护协议、承诺书及相关数据处理政策进行处理，避免识别出个人身份，保障隐私安全。
+            For purposes of advertising delivery, evaluation, optimization of advertising effectiveness, etc., we need to share some of your data with third-party partners such as advertisers and their agents, and require them to strictly comply with our data privacy protection measures and requirements, including but not limited to processing in accordance with data protection agreements, commitment letters, and related data processing policies, avoiding personal identity identification, and protecting privacy security.
           </p>
           <p>
-            我们不会向合作伙伴分享可用于识别您个人身份的信息（例如您的姓名或电子邮件地址），除非您明确授权。
+            We will not share information with partners that can be used to identify your personal identity (such as your name or email address) unless you explicitly authorize it.
           </p>
           <p>
-            我们不会对外公开披露所收集的个人信息，如必须公开披露时，我们会向您告知此次公开披露的目的、披露信息的类型及可能涉及的敏感信息，并征得您的明示同意。
+            We will not publicly disclose the collected personal information. If disclosure is necessary, we will inform you of the purpose of the disclosure, the type of information disclosed, and the sensitive information that may be involved, and obtain your explicit consent.
           </p>
           <p>
-            随着我们业务的持续发展，我们有可能进行合并、收购、资产转让等交易，我们将告知您相关情形，按照法律法规及不低于本《隐私政策》所要求的标准继续保护或要求新的控制者继续保护您的个人信息。
+            As our business continues to develop, we may engage in transactions such as mergers, acquisitions, and asset transfers. We will inform you of the relevant circumstances and continue to protect your personal information in accordance with laws and regulations and at a standard no lower than that required by this Privacy Policy, or require the new controller to continue protecting your personal information.
           </p>
           <p>
-            另外，根据相关法律法规及国家标准，以下情形中，我们可能会共享、转让、公开披露个人信息无需事先征得您的授权同意：
+            In addition, according to relevant laws, regulations, and national standards, in the following circumstances, we may share, transfer, or publicly disclose personal information without your prior authorization and consent:
           </p>
           <ul>
-            <li>与国家安全、国防安全直接相关的；</li>
-            <li>与公共安全、公共卫生、重大公共利益直接相关的；</li>
-            <li>犯罪侦查、起诉、审判和判决执行等直接相关的；</li>
+            <li>Related to national security and defense security;</li>
+            <li>Related to public security, public health, and major public interests;</li>
+            <li>Related to criminal investigation, prosecution, trial, and execution of judgments;</li>
             <li>
-              出于维护个人信息主体或其他个人的生命、财产等重大合法权益但又很难得到本人同意的；
+              Necessary to protect the life or property of the personal information subject or other individuals, but it is difficult to obtain the consent of the individual;
             </li>
-            <li>个人信息主体自行向社会公众公开个人信息的；</li>
+            <li>The personal information subject publicly discloses personal information on their own;</li>
             <li>
-              从合法公开披露的信息中收集个人信息的，如合法的新闻报道、政府信息公开等渠道。
+              Personal information collected from lawfully publicly disclosed information, such as from legitimate news reports, government information disclosure, and other channels.
             </li>
           </ul>
 
-          <h2>6. 您的权利</h2>
+          <h2>6. Your Rights</h2>
           <p>
-            在您使用我们的服务期间，我们可能会视产品具体情况为您提供相应的操作设置，以便您可以查询、删除、更正或撤回您的相关个人信息，您可参考相应的具体指引进行操作。此外，我们还设置了投诉举报渠道，您的意见将会得到及时的处理。如果您无法通过上述途径和方式行使您的个人信息主体权利，您可以通过本《隐私政策》中提供的联系方式提出您的请求，我们会按照法律法规的规定予以反馈。
+            During your use of our services, we may provide corresponding operation settings depending on the specific product, so that you can query, delete, correct, or recall your relevant personal information. You can refer to the corresponding specific guidelines to operate. In addition, we have also established complaint and reporting channels, and your opinions will be dealt with promptly. If you cannot exercise your rights as a personal information subject through the above channels and methods, you can submit your request through the contact methods provided in this Privacy Policy, and we will provide feedback in accordance with laws and regulations.
           </p>
           <p>
-            当您决定不再使用我们的产品或服务时，可以申请注销账户。注销账户后，除法律法规另有规定外，我们将删除或匿名化处理您的个人信息。
+            When you decide to no longer use our products or services, you can request to cancel your account. After cancellation, unless otherwise provided by laws and regulations, we will delete or anonymize your personal information.
           </p>
 
-          <h2>7. 变更</h2>
+          <h2>7. Modifications</h2>
           <p>
-            我们可能适时修订本《隐私政策》的条款。当变更发生时，我们会在版本更新时向您提示新的《隐私政策》，并向您说明生效日期。请您仔细阅读变更后的《隐私政策》内容，<strong
-              >若您继续使用我们的服务，即表示您同意我们按照更新后的《隐私政策》处理您的个人信息。</strong
+            We may revise the terms of this Privacy Policy from time to time. When changes occur, we will remind you of the new Privacy Policy during version updates and inform you of the effective date. Please carefully read the modified Privacy Policy content. <strong
+              >If you continue to use our services, it means you agree to our processing of your personal information in accordance with the updated Privacy Policy.</strong
             >
           </p>
 
-          <h2>8. 未成年人保护</h2>
+          <h2>8. Protection of Minors</h2>
           <p>
-            我们鼓励父母或监护人指导未满十八岁的未成年人使用我们的服务。我们建议未成年人鼓励他们的父母或监护人阅读本《隐私政策》，并建议未成年人在提交的个人信息之前寻求父母或监护人的同意和指导。
+            We encourage parents or guardians to guide minors under the age of 18 to use our services. We recommend that minors encourage their parents or guardians to read this Privacy Policy, and recommend that minors seek the consent and guidance of their parents or guardians before submitting personal information.
             © 2020-2026 ultimo trading co limited or its affiliates.</p>
             
-        <a href="https://ultimotradingltd.co.ke/" style="color: black;font-size: 16px;">https://ultimotradingltd.co.ke/</a>
+        <a href="HTTPS://ultimotradingltd.co.ke/" style="color: black;font-size: 16px;">HTTPS://ultimotradingltd.co.ke/</a>
         </b-col>
       </b-row>
       <b-row v-else-if="locale == 'en'">
@@ -205,7 +204,7 @@
               by some other means of contact so that you have a reasonable
               opportunity to review the changes before you continue to use the
               Site or the Services.</i
-            >。
+            >.
           </p>
 
           <b
@@ -213,7 +212,7 @@
             Site, or the Services.</b
           >
           <h4>CONTENTS</h4>
-          <h4>1. How We Collect and Use Your Personal Data</h4>
+          <h4>1, How We Collect and Use Your Personal Data</h4>
           <div>
             We respect the privacy of the visitors to our digital properties and
             the users of our products and Services, and we are committed to
@@ -252,11 +251,11 @@
 
               <td>
                 <div>
-                  1.Contact information, including email address and password,
+                  1,Contact information, including email address and password,
                   to register with our Site or App;
                 </div>
                 <div>
-                  2.Profile data, including your style preference, if you
+                  2,Profile data, including your style preference, if you
                   voluntarily choose to provide it for personalization purposes.
                 </div>
               </td>
@@ -265,20 +264,20 @@
               <th>To fulfill or process orders;</th>
               <td>
                 <div>
-                  1.Identity and contact information such as name, phone number,
+                  1,Identity and contact information such as name, phone number,
                   and shipping address, as well as financial information or
                   payment account information, for delivery, returns, refund,
                   sales tax determinations, and payment operations.
                 </div>
                 <div>
-                  2.Transaction details, such as return and refund details, gift
+                  2,Transaction details, such as return and refund details, gift
                   card number, and order history, in our Services, in order to
                   fulfill basic functions, including processing your payment and
                   return requests, and keeping you informed of the order status
                   and shipping logistics
                 </div>
                 <div>
-                  3.Location data at an IP address-based level, to tailor your
+                  3,Location data at an IP address-based level, to tailor your
                   experience in terms of displaying the appropriate local
                   website, language, or user experience.
                 </div>
@@ -291,14 +290,14 @@
               </th>
               <td>
                 <div>
-                  1.Your communication history with us via various channels,
+                  1,Your communication history with us via various channels,
                   such as email, phone, social media, mail, instant chat, and
                   our customer service platform, to respond to your requests, as
                   well as to keep you updated about your account and the
                   Services
                 </div>
                 <div>
-                  2.Photographs you upload to our Services in accordance with
+                  2,Photographs you upload to our Services in accordance with
                   our Terms and Conditions, to provide product advice, and to
                   allow you to voluntarily show other potential customers what
                   items may look like when purchased or worn
@@ -312,29 +311,29 @@
               </th>
               <td>
                 <div>
-                  1.Contact information, such as phone number and email address,
+                  1,Contact information, such as phone number and email address,
                   for telemarketing and email marketing purposes.
                 </div>
                 <div>
-                  2.Non-directly identifiable device identifiers, operating
+                  2,Non-directly identifiable device identifiers, operating
                   system information, to direct and measure the effectiveness of
                   the advertising we offer.
                 </div>
                 <div>
-                  3.Data about how you engage with our Services, such as
+                  3,Data about how you engage with our Services, such as
                   browsing, adding to your shopping cart, saving items, placing
                   an order, and returns) for market research, statistical
                   analysis, and the display of personalized advertising based on
                   your activity on our site and inferred interests.
                 </div>
                 <div>
-                  4.Contact and identity information, such as name, email
+                  4,Contact and identity information, such as name, email
                   address, and phone number, when you voluntarily enter into a
                   competition, market survey, event, or other marketing
                   campaigns organized by us.
                 </div>
                 <div>
-                  5.To share your personal data with third-party service
+                  5,To share your personal data with third-party service
                   providers to advertise our Services and/or products on our
                   Site
                 </div>
@@ -346,13 +345,13 @@
               </th>
               <td>
                 <div>
-                  1.Collect your device information, and usage data on our Site
+                  1,Collect your device information, and usage data on our Site
                   or App for fault analysis, troubleshooting, and system
                   maintenance, as well as setting default options for you, such
                   as language and currency.
                 </div>
                 <div>
-                  2.When you optionally provide such information, we may collect
+                  2,When you optionally provide such information, we may collect
                   general personal data that cannot identify you, such as body
                   shape, personal height, chest/waist/hip circumference, and
                   weight. For example, this information may be used by us to
@@ -360,16 +359,16 @@
                   provide fit prediction services for you.
                 </div>
                 <div>
-                  3.To share your personal data within and across our corporate
+                  3,To share your personal data within and across our corporate
                   organization for our business needs and personalization.
                 </div>
                 <div>
-                  4.Collection of your "like" records and votes when prompted as
+                  4,Collection of your "like" records and votes when prompted as
                   to your preference between two items, to provide preference
                   setting options.
                 </div>
                 <div>
-                  5.The display of information you choose to post on public
+                  5,The display of information you choose to post on public
                   areas of the Services, for example a customer review.
                 </div>
               </td>
@@ -380,20 +379,20 @@
               </th>
               <td>
                 <div>
-                  1.Information automatically collected through the Services,
+                  1,Information automatically collected through the Services,
                   such as browser type, device information, operating system,
                   and account setting information for fraud prevention and
                   detection and credit risk reduction.
                 </div>
-                <div>2.Log-in data for risk control and fraud reporting.</div>
-                <div>3.Billing address to verify payment information.</div>
+                <div>2,Log-in data for risk control and fraud reporting.</div>
+                <div>3,Billing address to verify payment information.</div>
               </td>
             </tr>
             <tr>
               <th>To comply with legal or compliance requirements;</th>
               <td>
                 <div>
-                  1.Identity information, such as ID- or passport-related
+                  1,Identity information, such as ID- or passport-related
                   information, for customs clearance purposes.
                 </div>
                 <div>
@@ -424,7 +423,7 @@
             information pertaining to yourself or to others. We do not collect
             or store sensitive information or special categories of information.
           </div>
-          <h2>2. Sharing_Your Personal Data</h2>
+          <h2>2, Sharing_Your Personal Data</h2>
           <div>
             We may disclose and share your personal information with the parties
             as described below.
@@ -560,7 +559,7 @@
             about the users of our Services, which is information that does not
             identify any specific individual.
           </div>
-          <h2>3. Security Precautions</h2>
+          <h2>3, Security Precautions</h2>
           <div>
             We maintain reasonable physical, electronic, and procedural
             safeguards designed to guard your personal data from unauthorized
@@ -582,10 +581,10 @@
             Privacy Center or as otherwise described in the "Contact Us" section
             below.
           </div>
-          <h2>4.Your Rights</h2>
+          <h2>4,Your Rights</h2>
           <div>
             <b>
-              4.1 Access, Correction, and Deletion of your Personal Information.
+              4,1 Access, Correction, and Deletion of your Personal Information.
             </b>
             You have the right to access, correct, or delete the personal
             information that we collect. To protect the privacy and the security
@@ -602,7 +601,7 @@
             cause the information to be incorrect.
           </div>
           <div>
-            <b> 4.2 Unsubscribe from Our Marketing Communications </b>
+            <b> 4,2 Unsubscribe from Our Marketing Communications </b>
             If you do not want us to use your email account to send you
             marketing emails or non-transactional promotional materials, please
             directly click on the unsubscribe link at the bottom of any of our
@@ -610,13 +609,13 @@
             .
           </div>
           <div>
-            <b> 4.3 Lodging Complaints. </b>
+            <b> 4,3 Lodging Complaints. </b>
             If you believe we have infringed or violated your privacy rights,
             please contact us at our dedicated Privacy Center so that we may
             attempt to resolve any issues to your satisfaction.
           </div>
           <div>
-            <b> 4.4 Right to Opt-Out of Selling </b>
+            <b> 4,4 Right to Opt-Out of Selling </b>
             Residents of certain states, such as California and Virginia, have
             the right to opt-out of having their personal information sold. We
             do not sell your personal information as that term is generally
@@ -632,7 +631,7 @@
             consent tool that will allow you to opt-out of the cookies on our
             Site.
           </div>
-          <h2>5.Retention</h2>
+          <h2>5,Retention</h2>
           <div>
             We will retain your personal data, including any correspondence you
             have with us only for as long as is necessary for the purposes set
@@ -640,14 +639,14 @@
             our legal obligations, to resolve disputes, for information security
             purposes, and to enforce our legal rights, terms, and policies.
           </div>
-          <h2>6.Third-Party Websites</h2>
+          <h2>6,Third-Party Websites</h2>
           <div>
             Our App or Site may contain links to third-party sites. This Policy
             does not apply to those third-party sites. We recommend that you
             read the privacy statements of any other sites that you visit as we
             are not responsible for the privacy practices of those sites.
           </div>
-          <h2>7.Children</h2>
+          <h2>7,Children</h2>
           <div>
             Our Services are not directed to, and we do not knowingly collect
             personal information from, children under the age of 16 or minors(as
@@ -696,7 +695,7 @@
           <div>P.O BOX 13000 tom mboya st</div>
           <div>Email: info@sokogate.com</div>
           <div>© 2020-2026 ultimo trading co limited or its affiliates.</div>
-        <a href="https://ultimotradingltd.co.ke/" style="color: black;font-size: 18px;">https://ultimotradingltd.co.ke/</a></b-col
+        <a href="HTTPS://ultimotradingltd.co.ke/" style="color: black;font-size: 18px;">HTTPS://ultimotradingltd.co.ke/</a></b-col
         >
       </b-row>
       <b-row v-else-if="locale == 'fra'">
@@ -739,7 +738,7 @@
               pour configurer et gérer votre magasin sur sokogate:.
             </p>
 
-            <h4>1. Renseignements personnels que nous recueillons</h4>
+            <h4>1, Renseignements personnels que nous recueillons</h4>
             <p>
               Afin de devenir un utilisateur ou un membre de sokogate.com et
               d’utiliser ou d’acheter les services, nous devons recueillir des
@@ -759,48 +758,48 @@
             </p>
 
             <h4>
-              2. Raisons pour lesquelles les renseignements personnels sont
+              2, Raisons pour lesquelles les renseignements personnels sont
               recueillis
             </h4>
             <p>
               Nous recueillons et utilisons vos informations personnelles pour
               les raisons suivantes:
             </p>
-            <p>2.1. Fournir les services sokgate;</p>
+            <p>2,1, Fournir les services sokgate;</p>
             <p>
-              2.2. Développer et améliorer nos services en fonction des
+              2,2, Développer et améliorer nos services en fonction des
               préférences générales ou personnelles et de l’expérience des
               utilisateurs;
             </p>
             <p>
-              2.3. Développer et améliorer nos services en fonction des
+              2,3, Développer et améliorer nos services en fonction des
               préférences générales ou personnelles et de l’expérience des
               utilisateurs;
             </p>
             <p>
-              2.4. Traiter les achats et/ou les abonnements de nos utilisateurs
+              2,4, Traiter les achats et/ou les abonnements de nos utilisateurs
               sur les marchés internationaux;
             </p>
             <p>
-              2.5. fournir des notifications générales liées au service et des
+              2.5, fournir des notifications générales liées au service et des
               messages promotionnels à nos utilisateurs, en fonction de leur
               historique, afin d’améliorer nos produits et services;
             </p>
             <p>
-              2.6. Se conformer aux lois et règlements applicables ou aux
+              2,6, Se conformer aux lois et règlements applicables ou aux
               procédures légales.
             </p>
             <p>
-              2.7. Pour analyser nos activités marketing et fournir certains
+              2,7, Pour analyser nos activités marketing et fournir certains
               concours, événements et promotions.
             </p>
-            <p>2.8. Vous fournir une assistance professionnelle;</p>
+            <p>2,8. Vous fournir une assistance professionnelle;</p>
             <p>
-              2.9. Renforcer la sécurité des données, la prévention de la fraude
+              2,9. Renforcer la sécurité des données, la prévention de la fraude
               et la détection et la vérification des activités indésirables; et
             </p>
             <p>
-              2.10. Établir des statistiques globales et publier toute
+              2,10. Établir des statistiques globales et publier toute
               information nécessaire pour fournir et améliorer nos services;
             </p>
             <p>
@@ -812,9 +811,9 @@
               proportionnelle et respectueuse de votre droit à la vie privée.
             </p>
 
-            <h4>3. Informations personnelles que nous partageons</h4>
+            <h4>3, Informations personnelles que nous partageons</h4>
             <p>
-              3.1. Sokgate peut partager ou permettre l’accès à vos informations
+              3.1, Sokgate peut partager ou permettre l’accès à vos informations
               personnelles pour les fournisseurs de services, Qui a le devoir de
               confidentialité et d’article peut uniquement être obtenu à partir
               de vos données personnelles, aux fins suivantes au lieu de leur
@@ -830,31 +829,31 @@
               d’autres renseignements commerciaux identifiants similaires.
             </p>
             <p>
-              3.2. Filiales et sociétés affiliées de sokgate: nous pouvons
+              3,2, Filiales et sociétés affiliées de sokgate: nous pouvons
               partager vos informations personnelles au sein de notre famille de
               sociétés aux fins décrites dans la section «2» de cette politique
               de confidentialité. Nous pouvons partager vos informations
               personnelles afin de vous fournir commodité et services.
             </p>
             <p>
-              3.3. Sokgate peut partager vos informations personnelles avec des
+              3,3, Sokgate peut partager vos informations personnelles avec des
               tiers afin de fournir des données agrégées et anonymes, mais ces
               informations personnelles ne vous identifient pas personnellement.
             </p>
             <p>
-              3.4. Sokgate peut également partager vos informations personnelles
+              3,4, Sokgate peut également partager vos informations personnelles
               avec des tiers à d’autres fins, selon d’autres instructions de
               votre part ou avec votre approbation expresse.
             </p>
             <p>
-              3.5. Sokgate peut autoriser l’accès à vos informations
+              3,5, Sokgate peut autoriser l’accès à vos informations
               personnelles sur la base d’une exigence légale (telle qu’une
               citation à comparaître, une procédure judiciaire, un mandat de
               perquisition ou une ordonnance du tribunal), ou avec ou sans
               préavis, conformément aux lois applicables.
             </p>
 
-            <h4>4. Informations personnelles que nous stockons</h4>
+            <h4>4, Informations personnelles que nous stockons</h4>
             <p>
               Les informations personnelles peuvent être stockées dans des
               centres de données et transférées vers des juridictions étrangères
@@ -873,7 +872,7 @@
               informations personnelles.
             </p>
 
-            <h4>5. Vos droits concernant vos informations personnelles</h4>
+            <h4>5, Vos droits concernant vos informations personnelles</h4>
             <p>
               Sokogate vous permet de demander l’accès à vos informations
               personnelles pour mettre à jour, modifier, supprimer ou limiter
@@ -890,7 +889,7 @@
               délai raisonnable.
             </p>
 
-            <h4>6. Nous utilisons des Cookies</h4>
+            <h4>6, Nous utilisons des Cookies</h4>
             <p>
               Les «Cookies» sont de petites quantités de données envoyées à
               votre navigateur et stockées sur votre appareil uniquement lorsque
@@ -908,7 +907,7 @@
               exécution.
             </p>
 
-            <h4>7. La sécurité</h4>
+            <h4>7, La sécurité</h4>
             <p>
               Sokogate.com a pris des mesures de sécurité conçues pour protéger
               les informations personnelles et les informations de paiement que
@@ -954,7 +953,7 @@
               présente politique de confidentialité.
               © 2020-2026 ultimo trading co limited or its affiliates.
             </p>
-        <a href="https://ultimotradingltd.co.ke/" style="color: black;font-size: 18px;">https://ultimotradingltd.co.ke/</a>
+        <a href="HTTPS://ultimotradingltd.co.ke/" style="color: black;font-size: 18px;">HTTPS://ultimotradingltd.co.ke/</a>
           </div>
         </b-col>
       </b-row>
@@ -997,7 +996,7 @@
               configurar y ejecutar su tienda en sokogate:
             </p>
 
-            <h4>1. Información personal que recopilamos</h4>
+            <h4>1, Información personal que recopilamos</h4>
             <p>
               Para convertirse en un usuario o miembro de sokogate.com y usar o
               comprar los servicios, debemos recopilar información personal
@@ -1014,47 +1013,47 @@
               precios y cualquier registro de quejas comerciales.
             </p>
 
-            <h4>2. Razones por las que se recopila información personal</h4>
+            <h4>2, Razones por las que se recopila información personal</h4>
             <p>
               Recopilamos y utilizamos su información personal por las
               siguientes razones:
             </p>
-            <p>2.1.Proporcionar servicios sokgate;</p>
+            <p>2,1,Proporcionar servicios sokgate;</p>
             <p>
-              2.2.Desarrollar y mejorar nuestros servicios basados en las
+              2,2,Desarrollar y mejorar nuestros servicios basados en las
               preferencias y experiencias generales o personales de los
               usuarios;
             </p>
             <p>
-              2.3.Desarrollar y mejorar nuestros servicios basados en las
+              2,3,Desarrollar y mejorar nuestros servicios basados en las
               preferencias y experiencias generales o personales de los
               usuarios;
             </p>
             <p>
-              2.4.Procesar compras y/o suscripciones de nuestros usuarios en
+              2,4,Procesar compras y/o suscripciones de nuestros usuarios en
               mercados internacionales;
             </p>
             <p>
-              2.5.Proporcionar notificaciones generales relacionadas con el
+              2.5,Proporcionar notificaciones generales relacionadas con el
               servicio e información promocional a nuestros usuarios con el fin
               de mejorar nuestros productos y servicios, basados en el historial
               del usuario;
             </p>
             <p>
-              2.6.Cumplir con cualquier ley, regulación o proceso legal
+              2,6,Cumplir con cualquier ley, regulación o proceso legal
               aplicable.
             </p>
             <p>
-              2.7.Analizar nuestras actividades de marketing para ofrecer
+              2,7,Analizar nuestras actividades de marketing para ofrecer
               ciertos concursos, eventos y promociones.
             </p>
-            <p>2.8.Proporcionarle asistencia profesional;</p>
+            <p>2,8.Proporcionarle asistencia profesional;</p>
             <p>
-              2.9.Mejorar la seguridad de la información, la prevención del
+              2,9.Mejorar la seguridad de la información, la prevención del
               fraude y la detección e inspección de actividades indeseables;
             </p>
             <p>
-              2.10.Establecer estadísticas integradas y publicar cualquier
+              2,10.Establecer estadísticas integradas y publicar cualquier
               información que sea necesaria para proporcionar y mejorar nuestros
               servicios;
             </p>
@@ -1067,9 +1066,9 @@
               la privacidad.
             </p>
 
-            <h4>3.Información personal que compartimos</h4>
+            <h4>3,Información personal que compartimos</h4>
             <p>
-              3.1.Sokgate puede compartir o permitir el acceso a su información
+              3.1,Sokgate puede compartir o permitir el acceso a su información
               personal para los proveedores de servicios, Quién es responsable
               de mantener la confidencialidad y permitir el uso de sus datos
               personales sólo para los fines especificados a continuación y no
@@ -1086,30 +1085,30 @@
               información comercial identificadora similar.
             </p>
             <p>
-              3.2.Subsidiarias y afiliadas de sokgate: podemos compartir su
+              3,2,Subsidiarias y afiliadas de sokgate: podemos compartir su
               información personal dentro de nuestra familia de empresas para
               los fines descritos en la sección "2" de esta política de
               privacidad. Podemos compartir su información personal con el fin
               de brindarle comodidad y servicios.
             </p>
             <p>
-              3.3.Sokgate puede compartir su información personal con terceros
+              3,3,Sokgate puede compartir su información personal con terceros
               para proporcionar datos agregados y anónimos, pero esta
               información personal no lo identifica personalmente.
             </p>
             <p>
-              3.4.Sokgate también puede compartir su información personal con
+              3,4,Sokgate también puede compartir su información personal con
               terceros para otros fines, según sus instrucciones adicionales o
               su aprobación expresa.
             </p>
             <p>
-              3.5.Sokgate puede permitir el acceso a su información personal
+              3,5,Sokgate puede permitir el acceso a su información personal
               según lo requiera la ley (como una citación, un proceso legal, una
               orden de registro u orden judicial), o con o sin notificación a
               usted, de acuerdo con las leyes aplicables.
             </p>
 
-            <h4>4.Información personal que almacenamos</h4>
+            <h4>4,Información personal que almacenamos</h4>
             <p>
               La información personal puede almacenarse en centros de datos y
               transferirse a jurisdicciones en el extranjero con el fin de
@@ -1128,7 +1127,7 @@
               recopilación o uso de su información personal.
             </p>
 
-            <h4>5. Sus derechos con respecto a su información personal</h4>
+            <h4>5, Sus derechos con respecto a su información personal</h4>
             <p>
               Sokogate le permite solicitar el acceso a su información personal
               para actualizar, modificar, eliminar o limitar el uso de su
@@ -1144,7 +1143,7 @@
               tiempo razonable.
             </p>
 
-            <h4>6.Utilizamos Cookies para</h4>
+            <h4>6,Utilizamos Cookies para</h4>
             <p>
               Las "Cookies" son pequeñas cantidades de datos que se envían a su
               navegador y se almacenan en su dispositivo solo cuando utiliza y/o
@@ -1161,7 +1160,7 @@
               nuestros servicios y garantizar su correcta ejecución.
             </p>
 
-            <h4>7.seguridad</h4>
+            <h4>7,seguridad</h4>
             <p>
               Sokogate.com ha adoptado medidas de seguridad diseñadas para
               proteger la información personal e información de pago que
@@ -1205,7 +1204,7 @@
               información personal de acuerdo con esta política de privacidad.
               © 2020-2026 ultimo trading co limited or its affiliates.
             </p>
-        <a href="https://ultimotradingltd.co.ke/" style="color: black;font-size: 18px;">https://ultimotradingltd.co.ke/</a>
+        <a href="HTTPS://ultimotradingltd.co.ke/" style="color: black;font-size: 18px;">HTTPS://ultimotradingltd.co.ke/</a>
           </div>
         </b-col>
       </b-row>
@@ -1246,7 +1245,7 @@
               configurar e executar sua loja no sokogate:
             </p>
 
-            <h4>1.Informações pessoais que coletamos</h4>
+            <h4>1,Informações pessoais que coletamos</h4>
             <p>
               Para se tornar um usuário ou membro do sokogate.com e usar ou
               comprar os serviços, devemos coletar informações pessoais
@@ -1262,44 +1261,44 @@
               de preços e quaisquer registros de reclamações comerciais.
             </p>
 
-            <h4>2. Razões para a coleta de informações pessoais</h4>
+            <h4>2, Razões para a coleta de informações pessoais</h4>
             <p>
               Recolhemos e utilizamos as suas informações pessoais pelas
               seguintes razões::
             </p>
-            <p>2.1.Serviço sokgate disponível;</p>
+            <p>2,1,Serviço sokgate disponível;</p>
             <p>
-              2.2.Desenvolver e melhorar os nossos serviços com base nas
+              2,2,Desenvolver e melhorar os nossos serviços com base nas
               preferências e experiências gerais ou pessoais dos utilizadores;
             </p>
             <p>
-              2.3.Desenvolver e melhorar os nossos serviços com base nas
+              2,3,Desenvolver e melhorar os nossos serviços com base nas
               preferências e experiências gerais ou pessoais dos utilizadores;
             </p>
             <p>
-              2.4.Processar compras e/ou assinaturas de nossos usuários em
+              2,4,Processar compras e/ou assinaturas de nossos usuários em
               mercados internacionais;
             </p>
             <p>
-              2.5.Fornecer aos nossos usuários notificações gerais relacionadas
+              2.5,Fornecer aos nossos usuários notificações gerais relacionadas
               ao serviço e informações promocionais com base no histórico do
               usuário para melhorar nossos produtos e serviços;
             </p>
             <p>
-              2.6.Cumprir quaisquer leis, regulamentos ou processos legais
+              2,6,Cumprir quaisquer leis, regulamentos ou processos legais
               aplicáveis.
             </p>
             <p>
-              2.7.Analisar nossas atividades de marketing para oferecer
+              2,7,Analisar nossas atividades de marketing para oferecer
               determinados concursos, eventos e promoções.
             </p>
-            <p>2.8.Assistência especializada para você;</p>
+            <p>2,8.Assistência especializada para você;</p>
             <p>
-              2.9.Melhorar a segurança dos dados, a prevenção de fraudes e a
+              2,9.Melhorar a segurança dos dados, a prevenção de fraudes e a
               identificação e verificação de atividades indesejáveis; e
             </p>
             <p>
-              2.10.Para estabelecer estatísticas integradas e publicar qualquer
+              2,10.Para estabelecer estatísticas integradas e publicar qualquer
               informação necessária para fornecer e melhorar nossos serviços;
             </p>
             <p>
@@ -1310,9 +1309,9 @@
               proporcionado e respeitem seus direitos de privacidade.
             </p>
 
-            <h4>3.Informações pessoais que compartilhamos</h4>
+            <h4>3,Informações pessoais que compartilhamos</h4>
             <p>
-              3.1.A sokgate pode compartilhar ou permitir o acesso às suas
+              3.1,A sokgate pode compartilhar ou permitir o acesso às suas
               informações pessoais para provedores de serviços, Quem é
               responsável por manter a confidencialidade e permitir o uso de
               seus dados pessoais apenas para os fins especificados abaixo e não
@@ -1329,30 +1328,30 @@
               semelhantes.
             </p>
             <p>
-              3.2.Subsidiárias e afiliadas da sokgate: podemos compartilhar suas
+              3,2,Subsidiárias e afiliadas da sokgate: podemos compartilhar suas
               informações pessoais dentro de nossa família de empresas para os
               fins descritos na seção "2" desta política de privacidade. Podemos
               compartilhar suas informações pessoais para fornecer conveniência
               e serviços para você.
             </p>
             <p>
-              3.3.O sokgate pode compartilhar suas informações pessoais com
+              3,3,O sokgate pode compartilhar suas informações pessoais com
               terceiros para fornecer dados agregados e anônimos. No entanto,
               essas informações pessoais não o identificam pessoalmente.
             </p>
             <p>
-              3.4.A sokgate também pode compartilhar suas informações pessoais
+              3,4,A sokgate também pode compartilhar suas informações pessoais
               com terceiros para outros fins, de acordo com suas instruções
               adicionais ou com sua aprovação expressa.
             </p>
             <p>
-              3.5.A sokgate pode permitir o acesso às suas informações pessoais
+              3,5,A sokgate pode permitir o acesso às suas informações pessoais
               conforme exigido por lei (por exemplo, intimação, processo legal,
               mandado de busca ou ordem judicial), ou com ou sem aviso, de
               acordo com a lei aplicável.
             </p>
 
-            <h4>4.Informações pessoais que armazenamos</h4>
+            <h4>4,Informações pessoais que armazenamos</h4>
             <p>
               As informações pessoais podem ser armazenadas em centros de dados
               e transferidas para jurisdições no exterior a fim de fornecer
@@ -1369,7 +1368,7 @@
               relacionadas à nossa coleta ou uso de suas informações pessoais.
             </p>
 
-            <h4>5. Seus direitos em relação às suas informações pessoais</h4>
+            <h4>5, Seus direitos em relação às suas informações pessoais</h4>
             <p>
               Sokogate permite que você solicite acesso às suas informações
               pessoais para atualizar, modificar, excluir ou limitar o uso de
@@ -1385,7 +1384,7 @@
               razoável.
             </p>
 
-            <h4>6.Nós usamos Cookies</h4>
+            <h4>6,Nós usamos Cookies</h4>
             <p>
               "Cookies" são pequenas quantidades de dados que são enviados para
               o seu navegador e armazenados no seu dispositivo apenas quando
@@ -1402,7 +1401,7 @@
               serviços e garantir sua correta execução.
             </p>
 
-            <h4>7.segurança</h4>
+            <h4>7,segurança</h4>
             <p>
               Sokogate.com adotou medidas de segurança projetadas para proteger
               as informações pessoais e de pagamento que você compartilha
@@ -1445,7 +1444,7 @@
               com esta política de privacidade.
               © 2020-2026 ultimo trading co limited or its affiliates.
             </p>
-        <a href="https://ultimotradingltd.co.ke/" style="color: black;font-size: 18px;">https://ultimotradingltd.co.ke/</a>
+        <a href="HTTPS://ultimotradingltd.co.ke/" style="color: black;font-size: 18px;">HTTPS://ultimotradingltd.co.ke/</a>
           </div>
         </b-col>
       </b-row>
@@ -1483,7 +1482,7 @@
               متجرك على سوكوغاتي:
             </p>
 
-            <h4>1.المعلومات الشخصية التي جمعناها</h4>
+            <h4>1,المعلومات الشخصية التي جمعناها</h4>
             <p>
               ولكي نكون مستخدمين أو أعضاء في سوكوغات.com ولكي نستخدم أو نشتري
               الخدمات، يجب علينا أن نجمع المعلومات الشخصية المتعلقة بالأفراد أو
@@ -1496,43 +1495,43 @@
               التجارية.
             </p>
 
-            <h4>2. سبب جمع المعلومات الشخصية</h4>
+            <h4>2, سبب جمع المعلومات الشخصية</h4>
             <p>
               الأسباب التي دفعتنا إلى جمع معلوماتك الشخصية واستخدامها هي كما
               يلي:
             </p>
-            <p>2.1.تقديم خدمة Sokgate;</p>
+            <p>2,1,تقديم خدمة Sokgate;</p>
             <p>
-              2.2.تطوير وتحسين خدماتنا وفقا لتفضيلات المستعملين وخبرتهم العامة
+              2,2,تطوير وتحسين خدماتنا وفقا لتفضيلات المستعملين وخبرتهم العامة
               أو الشخصية;
             </p>
             <p>
-              2.3.تطوير وتحسين خدماتنا وفقا لتفضيلات المستعملين وخبرتهم العامة
+              2,3,تطوير وتحسين خدماتنا وفقا لتفضيلات المستعملين وخبرتهم العامة
               أو الشخصية;
             </p>
             <p>
-              2.4.تجهيز عمليات الشراء و/أو الاشتراك التي يقوم بها مستخدمونا في
+              2,4,تجهيز عمليات الشراء و/أو الاشتراك التي يقوم بها مستخدمونا في
               السوق الدولية;
             </p>
             <p>
-              2.5.تزويد عملائنا بالمعلومات المتعلقة بالإخطارات والتسويق المتصلة
+              2.5,تزويد عملائنا بالمعلومات المتعلقة بالإخطارات والتسويق المتصلة
               بالخدمات العامة لتحسين منتجاتنا وخدماتنا، استنادا إلى السجلات
               التاريخية للمستعملين ؛
             </p>
             <p>
-              2.6.التقيد بأي قوانين أو لوائح أو إجراءات قانونية واجبة التطبيق.
+              2,6,التقيد بأي قوانين أو لوائح أو إجراءات قانونية واجبة التطبيق.
             </p>
             <p>
-              2.7.تحليل أنشطتنا في السوق، وتوفير بعض الألعاب والمناسبات والأنشطة
+              2,7,تحليل أنشطتنا في السوق، وتوفير بعض الألعاب والمناسبات والأنشطة
               الترويجية.
             </p>
-            <p>2.8.لتقديم المساعدة المهنية لك;</p>
+            <p>2,8.لتقديم المساعدة المهنية لك;</p>
             <p>
-              2.9.تعزيز أمن المعلومات، والقدرة على منع الغش، وفرز الأنشطة غير
+              2,9.تعزيز أمن المعلومات، والقدرة على منع الغش، وفرز الأنشطة غير
               المرغوب فيها والكشف عنها ؛ و
             </p>
             <p>
-              2.10.وضع إحصاءات شاملة ونشر أي معلومات من أجل تقديم وتحسين
+              2,10.وضع إحصاءات شاملة ونشر أي معلومات من أجل تقديم وتحسين
               خدماتنا;
             </p>
             <p>
@@ -1542,9 +1541,9 @@
               والترويج، شريطة أن تتم على نحو يتناسب مع خصوصياتك.
             </p>
 
-            <h4>3.المعلومات الشخصية التي نتشاركها</h4>
+            <h4>3,المعلومات الشخصية التي نتشاركها</h4>
             <p>
-              3.1.يمكن لـ Sokgate أن يتشارك أو يسمح له بالوصول إلى معلوماتك
+              3.1,يمكن لـ Sokgate أن يتشارك أو يسمح له بالوصول إلى معلوماتك
               الشخصية لمقدم الخدمة، من هو المسؤول عن الحفاظ على السرية وعدم
               السماح باستخدام بياناتك الشخصية إلا للغرض المحدد، وليس لأغراضه
               الخاصة: يمكن لطرف ثالث أن يستخدم معلوماتك الشخصية من خدمة عملائك،
@@ -1557,28 +1556,28 @@
               تجارية مشابهة.
             </p>
             <p>
-              3.2.شركة سوكجيت الفرعية والشركات المرتبطة بها: للأغراض المبينة في
+              3,2,شركة سوكجيت الفرعية والشركات المرتبطة بها: للأغراض المبينة في
               هذا الجزء "2" من سياسة الخصوصية هذه، قد نتبادل معلوماتك الشخصية
               داخل عائلتنا. قد نشارك معلوماتك الشخصية لتوفير التسهيلات والخدمات
               لك.
             </p>
             <p>
-              3.3.قد تتبادل Sokgate معلوماتك الشخصية مع أطراف ثالثة لتوفير
+              3,3,قد تتبادل Sokgate معلوماتك الشخصية مع أطراف ثالثة لتوفير
               بيانات مجمّعة ومغفلة الهوية، ولكن هذه المعلومات الشخصية لا تحدد
               هويتك الشخصية.
             </p>
             <p>
-              3.4.بناءً على تعليماتك الإضافية أو على موافقتك الصريحة، قد تتبادل
+              3,4,بناءً على تعليماتك الإضافية أو على موافقتك الصريحة، قد تتبادل
               Sokgate معلوماتك الشخصية مع أطراف ثالثة لأغراض أخرى.
             </p>
             <p>
-              3.5.ويجوز لشركة سوكجيت أن تسمح بالوصول إلى معلوماتك الشخصية وفقاً
+              3,5,ويجوز لشركة سوكجيت أن تسمح بالوصول إلى معلوماتك الشخصية وفقاً
               للمتطلبات القانونية (مثل أوامر الحضور أو الإجراءات القانونية أو
               أوامر التفتيش أو أوامر المحكمة) أو في حالة إبلاغك أو عدم إبلاغك،
               وفقاً للقانون المنطبق.
             </p>
 
-            <h4>4.نحن نخزن المعلومات الشخصية</h4>
+            <h4>4,نحن نخزن المعلومات الشخصية</h4>
             <p>
               من أجل تقديم خدماتنا، بما في ذلك تقديم خدمات العملاء، ومراقبة
               المخاطر، ومنع الغش، وإجراءات الامتثال القانوني، والاتصال بك بشأن
@@ -1593,7 +1592,7 @@
               الشخصية.
             </p>
 
-            <h4>5. بخصوص معلوماتك الشخصية</h4>
+            <h4>5, بخصوص معلوماتك الشخصية</h4>
             <p>
               يسمح لك Sokogate بطلب الوصول إلى معلوماتك الشخصية لتحديث أو تعديل
               أو حذف أو تقييد استخدام معلوماتك الشخصية. قبل تلبية طلبك، قد نطلب
@@ -1606,7 +1605,7 @@
               جهد معقول.
             </p>
 
-            <h4>6.نحن نستخدم ملفات تعريف الارتباط</h4>
+            <h4>6,نحن نستخدم ملفات تعريف الارتباط</h4>
             <p>
               "ملفات تعريف الارتباط" هي كمية صغيرة من البيانات التي ترسل إلى
               متصفح الخاص بك وتخزن في جهازك فقط إذا كنت تستخدم و/أو تزور موقع
@@ -1621,7 +1620,7 @@
               خدماتنا وضمان تنفيذها بشكل صحيح.
             </p>
 
-            <h4>7.الأمن</h4>
+            <h4>7,الأمن</h4>
             <p>
               سوكوغات.com اتخذت تدابير أمنية لحماية المعلومات الشخصية ومعلومات
               الدفع التي تتشاطرها معنا. وتخضع المعلومات الحساسة المتعلقة
@@ -1657,7 +1656,7 @@
               سنحسم أي شكاوى تتعلق بمعلوماتكم الشخصية وفقاً لسياسة الخصوصية هذه.
               © 2020-2026 ultimo trading co limited or its affiliates.
             </p>
-        <a href="https://ultimotradingltd.co.ke/" style="color: black;font-size: 18px;">https://ultimotradingltd.co.ke/</a>
+        <a href="HTTPS://ultimotradingltd.co.ke/" style="color: black;font-size: 18px;">HTTPS://ultimotradingltd.co.ke/</a>
           </div>
         </b-col>
       </b-row>
@@ -1700,7 +1699,7 @@
               управлять вашим магазином на сокогейт:
             </p>
 
-            <h4>1.Личная информация, которую мы собрали</h4>
+            <h4>1,Личная информация, которую мы собрали</h4>
             <p>
               Для того чтобы стать пользователем или членом sokogate.com и
               использовать или покупать услуги, мы должны собрать личную
@@ -1716,43 +1715,43 @@
               таких как тип услуг, информация о ценах и записи торговых жалоб.
             </p>
 
-            <h4>2. Причина сбора личной информации</h4>
+            <h4>2, Причина сбора личной информации</h4>
             <p>Вот почему мы собираем и используем вашу личную информацию:</p>
-            <p>2.1.Предлагает услуги sokgate;</p>
+            <p>2,1,Предлагает услуги sokgate;</p>
             <p>
-              2.2.Развивать и улучшать наши услуги в зависимости от общих или
+              2,2,Развивать и улучшать наши услуги в зависимости от общих или
               личных предпочтений и опыта пользователей;
             </p>
             <p>
-              2.3.Развивать и улучшать наши услуги в зависимости от общих или
+              2,3,Развивать и улучшать наши услуги в зависимости от общих или
               личных предпочтений и опыта пользователей;
             </p>
             <p>
-              2.4.Обработа пользовател быт на международн рынк покупк и/ил
+              2,4,Обработа пользовател быт на международн рынк покупк и/ил
               подписк;
             </p>
             <p>
-              2.5.Согласно истории пользователей, мы предоставляем нашим
+              2.5,Согласно истории пользователей, мы предоставляем нашим
               пользователям уведомления и пропагандистскую информацию,
               относящиеся к общим услугам, для улучшения наших продуктов и
               услуг;
             </p>
             <p>
-              2.6.Соблюдайте все соответствующие правовые правила или правовые
+              2,6,Соблюдайте все соответствующие правовые правила или правовые
               процедуры.
             </p>
             <p>
-              2.7.Анализируя нашу рыночную деятельность, мы предлагаем
+              2,7,Анализируя нашу рыночную деятельность, мы предлагаем
               определенные соревнования, мероприятия и рекламные кампании.
             </p>
-            <p>2.8.Оказываю вам профессиональную помощь;</p>
+            <p>2,8.Оказываю вам профессиональную помощь;</p>
             <p>
-              2.9.Укреплять информационную безопасность агентства, предотвращать
+              2,9.Укреплять информационную безопасность агентства, предотвращать
               мошенничество, а также проверку и проверку неблагоприятной
               деятельности; и
             </p>
             <p>
-              2.10.Создание интегрированной статистики и публикация любой
+              2,10.Создание интегрированной статистики и публикация любой
               информации для обеспечения и улучшения наших услуг;
             </p>
             <p>
@@ -1764,9 +1763,9 @@
               частную жизнь.
             </p>
 
-            <h4>3.Личная информация, которую мы делим</h4>
+            <h4>3,Личная информация, которую мы делим</h4>
             <p>
-              3.1.Sokgate может поделиться или предоставить доступ к вашей
+              3.1,Sokgate может поделиться или предоставить доступ к вашей
               личной информации провайдеру службы, Тот, кто несет
               ответственность за конфиденциальность и позволяет использовать ваш
               профиль только для целей, указанных ниже, а не для своих: третья
@@ -1782,30 +1781,30 @@
               другие подобные коммерческие данные идентификатора.
             </p>
             <p>
-              3.2.Дочерняя компания sokgate и связанная с ней компания: для
+              3,2,Дочерняя компания sokgate и связанная с ней компания: для
               целей, указанных в разделе 2 настоящей политики
               конфиденциальности, мы можем поделиться вашей личной информацией
               внутри нашей корпоративной семьи. Мы могли бы поделиться вашей
               личной информацией, чтобы обеспечить вас удобствами и услугами.
             </p>
             <p>
-              3.3.Sokgate может поделиться вашей личной информацией с третьей
+              3,3,Sokgate может поделиться вашей личной информацией с третьей
               стороной, чтобы предоставить сводки и анонимные данные, но эта
               личная информация не может идентифицировать вас.
             </p>
             <p>
-              3.4.Сокгейт также может делиться вашей личной информацией с
+              3,4,Сокгейт также может делиться вашей личной информацией с
               третьей стороны в других целях в соответствии с вашими дальнейшими
               инструкциями или с вашим ясным одобрением.
             </p>
             <p>
-              3.5.Сокгейт может получить доступ к вашей личной информации в
+              3,5,Сокгейт может получить доступ к вашей личной информации в
               соответствии с законом (например, повесткой в суд, судебным
               процессом, ордером или судебным ордером) или в случае уведомления
               или неуведомления в соответствии с применимым законом.
             </p>
 
-            <h4>4.Личные данные, которые мы храним</h4>
+            <h4>4,Личные данные, которые мы храним</h4>
             <p>
               В целях предоставления наших услуг, включая предоставление услуг
               по обслуживанию клиентов, обеспечение контроля над риском,
@@ -1823,7 +1822,7 @@
               информации.
             </p>
 
-            <h4>5. Право на личную информацию</h4>
+            <h4>5, Право на личную информацию</h4>
             <p>
               Sokogate позволяет запрашивать доступ к вашей личной информации
               для обновления, модификации, удаления или ограничения
@@ -1840,7 +1839,7 @@
               разумного времени.
             </p>
 
-            <h4>6.Мы используем куки</h4>
+            <h4>6,Мы используем куки</h4>
             <p>
               "Cookies" — это небольшое количество данных, отправленных в
               браузер и хранящихся на вашем оборудовании, только если вы
@@ -1858,7 +1857,7 @@
               выполнены.
             </p>
 
-            <h4>7.безопасн</h4>
+            <h4>7,безопасн</h4>
             <p>
               Sokogate.com предприняла меры безопасности, направленные на защиту
               личной информации и платежной информации, которой вы делитесь с
@@ -1901,7 +1900,7 @@
               информацией, в соответствии с политикой конфиденциальности бена.
               © 2020-2026 ultimo trading co limited or its affiliates.
             </p>
-        <a href="https://ultimotradingltd.co.ke/" style="color: black;font-size: 18px;">https://ultimotradingltd.co.ke/</a>
+        <a href="HTTPS://ultimotradingltd.co.ke/" style="color: black;font-size: 18px;">HTTPS://ultimotradingltd.co.ke/</a>
           </div>
         </b-col>
       </b-row>
@@ -1940,7 +1939,7 @@
               اجرای فروشگاه شما در سوکوگات است:
             </p>
 
-            <h4>1.اطلاعات شخصی که ما جمع می کنیم</h4>
+            <h4>1,اطلاعات شخصی که ما جمع می کنیم</h4>
             <p>
               برای تبدیل به سوکوگات کم و استفاده از خدمات یا خرید، ما باید
               اطلاعات شخصی که مربوط به فردی یا نماینده های سازمان تجاری هستند را
@@ -1953,37 +1952,37 @@
               خدمات، اطلاعات قیمت و هر گزارش شکایت تجاری.
             </p>
 
-            <h4>2. دلایل جمع اطلاعات شخصی</h4>
+            <h4>2, دلایل جمع اطلاعات شخصی</h4>
             <p>
               ما اطلاعات شخصی شما را برای دلایل زیر جمع می کنیم و استفاده می
               کنیم::
             </p>
-            <p>2.1.Name;</p>
+            <p>2,1,Name;</p>
             <p>
-              2.2.توسعه و تحصیل خدمات ما را بر اساس ترجیح‌های عمومی یا شخصی و
+              2,2,توسعه و تحصیل خدمات ما را بر اساس ترجیح‌های عمومی یا شخصی و
               تجربه‌های کاربر توسعه دهید;
             </p>
             <p>
-              2.3.توسعه و تحصیل خدمات ما را بر اساس ترجیح‌های عمومی یا شخصی و
+              2,3,توسعه و تحصیل خدمات ما را بر اساس ترجیح‌های عمومی یا شخصی و
               تجربه‌های کاربر توسعه دهید;
             </p>
-            <p>2.4.خریدن و / یا تبلیغات کاربران ما در بازار بین المللی;</p>
+            <p>2,4,خریدن و / یا تبلیغات کاربران ما در بازار بین المللی;</p>
             <p>
-              2.5.طبق تاریخ کاربر، کاربران ما را با اطلاعات عمومی و اطلاعات
+              2.5,طبق تاریخ کاربر، کاربران ما را با اطلاعات عمومی و اطلاعات
               ترفیع برای بهترین تولید محصولات و خدمات ما ارائه می دهد;
             </p>
-            <p>2.6.با هر قانون، قانون یا روش قانونی مواجه بشه.</p>
+            <p>2,6,با هر قانون، قانون یا روش قانونی مواجه بشه.</p>
             <p>
-              2.7.فعاليت بازارينگ ما رو تحليل کنيد و مسابقه‌ها، اتفاقات و
+              2,7,فعاليت بازارينگ ما رو تحليل کنيد و مسابقه‌ها، اتفاقات و
               ترفيع‌ها رو تحليل کنيد.
             </p>
-            <p>2.8.به شما کمک حرفه ای دادم;</p>
+            <p>2,8.به شما کمک حرفه ای دادم;</p>
             <p>
-              2.9.امنیت داده‌های وزارت، توانایی جلوگیری از خیانت و تحقیق و بررسی
+              2,9.امنیت داده‌های وزارت، توانایی جلوگیری از خیانت و تحقیق و بررسی
               فعالیت‌های ناپسندیده و
             </p>
             <p>
-              2.10.Establish comprehensive statistics and publish any
+              2,10.Establish comprehensive statistics and publish any
               information to provide and improve our services;
             </p>
             <p>
@@ -1993,9 +1992,9 @@
               این کار به طریقی که با خصوصیت شما ارتباط دارد و به احترام
             </p>
 
-            <h4>3.اطلاعات شخصی که</h4>
+            <h4>3,اطلاعات شخصی که</h4>
             <p>
-              3.1.Sokgate ممکنه دسترسی به اطلاعات شخصی شما برای پردازگاران خدمات
+              3.1,Sokgate ممکنه دسترسی به اطلاعات شخصی شما برای پردازگاران خدمات
               شریک شود یا اجازه دهد، کسانی که مسئولیت محرمانه نگه دارند و تنها
               اجازه دهند استفاده از اطلاعات شخصی شما برای هدف‌های مشخص‌شده، نه
               برای هدف خودشان: سومین گروه می‌توانند از اطلاعات شخصی شما استفاده
@@ -2007,28 +2006,28 @@
               اطلاعات تجارت مشابه‌ای است.
             </p>
             <p>
-              3.2.دفترهای سوکگات و ارتباطات: برای هدف توصیف در بخش 2 از این
+              3,2,دفترهای سوکگات و ارتباطات: برای هدف توصیف در بخش 2 از این
               سیاست خصوصی ممکن است اطلاعات شخصی شما را در خانواده شرکت خود شریک
               کنیم. ما ممکنه اطلاعات شخصي شما رو براي اطلاعات راحتي و خدمات
               براتون تقسيم کنيم
             </p>
             <p>
-              3.3.Sokgate می‌تواند اطلاعات شخصی خود را با سوم فرقه‌ها به تقسیم
+              3,3,Sokgate می‌تواند اطلاعات شخصی خود را با سوم فرقه‌ها به تقسیم
               دهد تا اطلاعات جمع و نام‌نام را بدهید، ولی این اطلاعات شخصی شما را
               شخصا نمی‌تواند شناسایی کند.
             </p>
             <p>
-              3.4.طبق دستورات اضافه‌ای یا تصمیم مشخص شما، سوکگیت می‌تواند
+              3,4,طبق دستورات اضافه‌ای یا تصمیم مشخص شما، سوکگیت می‌تواند
               اطلاعات شخصی خود را برای هدف‌های دیگر با حزب‌های سوم شریک کنید.
             </p>
             <p>
-              3.5.Sokgate می‌تواند به اطلاعات شخصی شما اجازه دهد که با نیازهای
+              3,5,Sokgate می‌تواند به اطلاعات شخصی شما اجازه دهد که با نیازهای
               قانونی دسترسی داشته باشید (مثل قانون قانونی، دادگاه قانونی،
               دستورات جستجو یا دستورات دادگاهی) یا با یا بدون اطلاعات به شما
               برسد، در accordance with laws applicable.
             </p>
 
-            <h4>4.اطلاعات شخصی که ما ذخیره می کنیم</h4>
+            <h4>4,اطلاعات شخصی که ما ذخیره می کنیم</h4>
             <p>
               برای اینکه خدمات ما را تهیه کنیم، شامل تهیه خدمات مشتری، کنترل خطر
               انجام دهیم، جلوگیری از فریب و اجرای تعافی قانونی، با شما در مسائل
@@ -2046,7 +2045,7 @@
               یا استفاده از اطلاعات شخصی شما را حل کند.
             </p>
 
-            <h4>5. درست به اطلاعات شخصی شما</h4>
+            <h4>5, درست به اطلاعات شخصی شما</h4>
             <p>
               Sokogate به شما اجازه می‌دهد که دسترسی به اطلاعات شخصی خود را
               درخواست کنید تا از استفاده از اطلاعات شخصی خودتان آغاز، تغییر، حذف
@@ -2061,7 +2060,7 @@
               منطقي ميکنيم
             </p>
 
-            <h4>6.ما از کیکی استفاده می کنیم</h4>
+            <h4>6,ما از کیکی استفاده می کنیم</h4>
             <p>
               "کوکیها" تعداد کوچک داده‌ای است که به بررسی شما فرستاده می‌شود و
               تنها وقتی استفاده می‌کنید یا / و وبسایت سایت سوکگیت را ببینید. با
@@ -2076,7 +2075,7 @@
               کنید و به عملکرد درست آنها مطمئن کنید.
             </p>
 
-            <h4>7.امنیت</h4>
+            <h4>7,امنیت</h4>
             <p>
               Sokogate.com برای حفاظت از اطلاعات شخصی و اطلاعات پرداختی که با ما
               شریک می‌کنید، مقدار امنیتی را گرفته است. اطلاعات پرداخت حساس،
@@ -2112,7 +2111,7 @@
               این سیاست خصوصی حل خواهیم کرد.
               © 2020-2026 ultimo trading co limited or its affiliates.
             </p>
-        <a href="https://ultimotradingltd.co.ke/" style="color: black;font-size: 18px;">https://ultimotradingltd.co.ke/</a>
+        <a href="HTTPS://ultimotradingltd.co.ke/" style="color: black;font-size: 18px;">HTTPS://ultimotradingltd.co.ke/</a>
           </div>
         </b-col>
       </b-row>
@@ -2151,7 +2150,7 @@
               दुकान कैसे बनाना और चलाना है:
             </p>
 
-            <h4>1.व्यक्तिगत जानकारी</h4>
+            <h4>1,व्यक्तिगत जानकारी</h4>
             <p>
               In order to become sokogate कॉम व्यवसाय संस्थाओं के संबंधित
               व्यक्तियों के संबंधित व्यक्तियों के संबंधित व्यक्तिगत जानकारी जमा
@@ -2163,43 +2162,43 @@
               सकते हैं, जैसे सेवा प्रकार, मूल्य स
             </p>
 
-            <h4>2. व्यक्तिगत जानकारी जमा करने के लिए कारण</h4>
+            <h4>2, व्यक्तिगत जानकारी जमा करने के लिए कारण</h4>
             <p>
               हम निम्न कारणों के लिए तुम्हारी व्यक्तिगत जानकारी एकत्रित करते हैं
               और इसे प्रयोग करते हैं::
             </p>
-            <p>2.1.Name;</p>
+            <p>2,1,Name;</p>
             <p>
-              2.2.उपयोक्ता के सामान्य या व्यक्तिगत प्राथमिकताओं और अनुभवों के
+              2,2,उपयोक्ता के सामान्य या व्यक्तिगत प्राथमिकताओं और अनुभवों के
               अनुसार हमारे सेवा को विकास करें;
             </p>
             <p>
-              2.3.उपयोक्ता के सामान्य या व्यक्तिगत प्राथमिकताओं और अनुभवों के
+              2,3,उपयोक्ता के सामान्य या व्यक्तिगत प्राथमिकताओं और अनुभवों के
               अनुसार हमारे सेवा को विकास करें;
             </p>
             <p>
-              2.4.अंतर्राष्ट्रीय बाजार में हमारे प्रयोक्ता के खरीद और / या
+              2,4,अंतर्राष्ट्रीय बाजार में हमारे प्रयोक्ता के खरीद और / या
               सदस्यता को हैंडल करें;
             </p>
             <p>
-              2.5.उपयोक्ता के इतिहास के अनुसार, हमारे प्रयोक्ताओं को सामान्य
+              2.5,उपयोक्ता के इतिहास के अनुसार, हमारे प्रयोक्ताओं को सामान्य
               सेवा संबंधित सूचना और प्रगति सूचना दे दें;
             </p>
             <p>
-              2.6.किसी लागू होने वाली नियम, नियम या व्यवस्था प्रक्रिया के साथ
+              2,6,किसी लागू होने वाली नियम, नियम या व्यवस्था प्रक्रिया के साथ
               संपूर्ण है.
             </p>
             <p>
-              2.7.हमारी मार्केटिंग क्रियाकलापों को विश्लेषण करें और कुछ सहभाग,
+              2,7,हमारी मार्केटिंग क्रियाकलापों को विश्लेषण करें और कुछ सहभाग,
               घटनाओं और प्रगति देते हैं।
             </p>
-            <p>2.8.आपको प्रोफेशनल सहायता से प्रदान करें;</p>
+            <p>2,8.आपको प्रोफेशनल सहायता से प्रदान करें;</p>
             <p>
-              2.9.विभाग की डाटा सुरक्षा, धोखा प्रेविक्षण क्षमता और अपेक्षित
+              2,9.विभाग की डाटा सुरक्षा, धोखा प्रेविक्षण क्षमता और अपेक्षित
               क्रियाओं की स्क्रीनिंग और परीक्षा करें; 和
             </p>
             <p>
-              2.10.सम्पूर्ण तथ्याङ्क स्थापित करें और हमारे सेवा को प्रदान करने
+              2,10.सम्पूर्ण तथ्याङ्क स्थापित करें और हमारे सेवा को प्रदान करने
               और सुधार करने के लिए किसी जानकारी प्रकाशन;
             </p>
             <p>
@@ -2208,9 +2207,9 @@
               संशोधन, उत्पादक याद से सीमि
             </p>
 
-            <h4>3.व्यक्तिगत जानकारी</h4>
+            <h4>3,व्यक्तिगत जानकारी</h4>
             <p>
-              3.1.सेवा प्रदायकों के लिए सॉक्गेट आपके व्यक्तिगत जानकारी को
+              3.1,सेवा प्रदायकों के लिए सॉक्गेट आपके व्यक्तिगत जानकारी को
               साझेदारी या अनुमति दे सकता है, जिसके पास गुप्त जानकारी रखने के लिए
               है और सिर्फ अपनी व्यक्तिगत जानकारी को निम्न निर्दिष्ट उद्देश्यों
               के लिए इस्तेमाल करने के लिए अनुमति देती है, नहीं, अपने अपने हिस्
@@ -2220,27 +2219,27 @@
               प्रोटोकाल पता, ईमेल पता, खाता नाम, या अन्य समान पहिचान
             </p>
             <p>
-              3.2.सोक्गेट सबसीडीयरी और संबंधित हैं: इस निजीवित पालिसी के खण्ड
+              3,2,सोक्गेट सबसीडीयरी और संबंधित हैं: इस निजीवित पालिसी के खण्ड
               "2" में वर्णन के लिए, हम अपने कंपनी परिवार में तुम्हारी व्यक्तिगत
               हम तुम्हारे लिए उपयोग और सेवा देने के लिए तुम्हारी व्यक्तिगत
               जानकारी साझा कर सकते हैं.
             </p>
             <p>
-              3.3.सारांश और अनामिक डाटा देने के लिए Sokgate आपके व्यक्तिगत
+              3,3,सारांश और अनामिक डाटा देने के लिए Sokgate आपके व्यक्तिगत
               जानकारी को तीसरे पार्टी के साथ साझा कर सकता है, लेकिन यह व्यक्तिगत
               जा
             </p>
             <p>
-              3.4.अपने अतिरिक्त आदेशों के अनुसार या आपकी स्पष्ट अनुमति के
+              3,4,अपने अतिरिक्त आदेशों के अनुसार या आपकी स्पष्ट अनुमति के
               अनुसार, सोकगेट भी अपनी व्यक्तिगत जानकारी को अन्य कार्यों के ल
             </p>
             <p>
-              3.5.सॉक्गेट तुम्हारी व्यक्तिगत जानकारी को व्यक्तिगत जानकारी के
+              3,5,सॉक्गेट तुम्हारी व्यक्तिगत जानकारी को व्यक्तिगत जानकारी के
               अनुसार अनुमति दे सकता है (जहिना उपपुण्स, व्यवस्थापित, खोज वारंट्स
               या कोर्ट
             </p>
 
-            <h4>4.व्यक्तिगत जानकारी जो हम भण्डार करते हैं</h4>
+            <h4>4,व्यक्तिगत जानकारी जो हम भण्डार करते हैं</h4>
             <p>
               हमारे सेवाओं को प्रदान करने के लिए, ग्राहक सेवा प्रदान करने के
               समाविष्ट, जोखिया नियंत्रण करने के लिए, भ्रष्ट और व्यवस्थापित
@@ -2254,7 +2253,7 @@
               जानकारी के बारे में शिक्षा हल करने के ल
             </p>
 
-            <h4>5. अपने व्यक्तिगत जानकारी के लिए दायाँ</h4>
+            <h4>5, अपने व्यक्तिगत जानकारी के लिए दायाँ</h4>
             <p>
               सोकोगेट आपको अपनी व्यक्तिगत जानकारी को अद्यतन, परिमार्जन, मिटाना
               या सीमा करने के लिए अनुमति देता है. आपकी आवश्यकता से पहले, सुरक्षा
@@ -2262,10 +2261,10 @@
               सकते हैं और आपकी पर
             </p>
             <p>
-              如果您需要一份我们为直接营销目的向第三方披露的个人信息清单，您可以发送邮件至tostaff@sokogate.com，我们将在合理的时间内为您的要求做出合理的努力。
+              如果您需要一份我们为直接营销目的向第三方披露的个人信息清单, 您可以send邮件至tostaff@sokogate.com, 我们将在合理的时间内为您的要求做出合理的努力.
             </p>
 
-            <h4>6.हम कुकी उपयोग करते हैं</h4>
+            <h4>6,हम कुकी उपयोग करते हैं</h4>
             <p>
               "कुकीज़" छोटे डाटा हैं जो आपके ब्राउज़र में भेजे जाते हैं और आपके
               डिवाइस में सिर्फ जब आप इस्तेमाल करते हैं या / और सॉकगेट वेबसाइ
@@ -2278,7 +2277,7 @@
               सेवा प्रदान करने के लिए और उनकी सही कार्यान्व
             </p>
 
-            <h4>7.सुरक्षा</h4>
+            <h4>7,सुरक्षा</h4>
             <p>
               Sokogate.com ने व्यक्तिगत जानकारी और पैसा जानकारी को हमारे साथ
               साझा करने के लिए सुरक्षा माप लिया है। संवेदनशील पैसा जानकारी,
@@ -2313,7 +2312,7 @@
               नीति के अनुसार अपने व्यक्तिगत जानकारी के साथ किसी भी शिक्षा को समा
               © 2020-2026 ultimo trading co limited or its affiliates.
             </p>
-        <a href="https://ultimotradingltd.co.ke/" style="color: black;font-size: 18px;">https://ultimotradingltd.co.ke/</a>
+        <a href="HTTPS://ultimotradingltd.co.ke/" style="color: black;font-size: 18px;">HTTPS://ultimotradingltd.co.ke/</a>
           </div>
         </b-col>
       </b-row>

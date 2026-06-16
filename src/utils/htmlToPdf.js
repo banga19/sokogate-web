@@ -1,22 +1,22 @@
-// 导出页面为PDF格式
+// Export page as PDF
 import html2Canvas from 'html2canvas'
 import JsPDF from 'jspdf'
 export default {
     install(Vue) {
         Vue.prototype.getPdf = function (title) {
-            var element = document.querySelector('#pdfDom'); // 这个dom元素是要导出pdf的div容器
+            var element = document.querySelector('#pdfDom'); // DOM element to export as PDF
             setTimeout(() => {
                 html2Canvas(element).then(function (canvas) {
                     var contentWidth = canvas.width;
                     var contentHeight = canvas.height;
 
-                    //一页pdf显示html页面生成的canvas高度;
+                    // Canvas height for one PDF page;
                     var pageHeight = contentWidth / 592.28 * 841.89;
-                    //未生成pdf的html页面高度
+                    // HTML page height not yet in PDF
                     var leftHeight = contentHeight;
-                    //页面偏移
+                    // Page offset
                     var position = 0;
-                    //a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
+                    // A4 paper [595.28,841.89], canvas dimensions in PDF
                     var imgWidth = 595.28;
                     var imgHeight = 592.28 / contentWidth * contentHeight;
 
@@ -24,8 +24,8 @@ export default {
 
                     var pdf = new JsPDF('', 'pt', 'a4');
 
-                    //有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
-                    //当内容未超过pdf一页显示的范围，无需分页
+                    // Two heights: actual HTML vs PDF page height (841.89)
+                    // Content fits one PDF page, no pagination needed
                     if (leftHeight < pageHeight) {
                         pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight);
                     } else {
@@ -33,7 +33,7 @@ export default {
                             pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight)
                             leftHeight -= pageHeight;
                             position -= 841.89;
-                            //避免添加空白页
+                            // Avoid adding blank pages
                             if (leftHeight > 0) {
                                 pdf.addPage();
                             }

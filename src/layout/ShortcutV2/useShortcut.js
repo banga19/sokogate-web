@@ -89,7 +89,7 @@ export default function useShortcut() {
         }
     }
 
-    /** 定位初始国家 */
+    /* Detect initial country */
     async function gpsCountry() {
         let country_en = localStorage.getItem('country_en')
         if (country_en) {
@@ -102,10 +102,10 @@ export default function useShortcut() {
         }
 
         const data = {
-            key: 'RWMBZ-AZHLJ-GIUFW-KLDDX-PC6IO-U7FIG', //密钥
+            key: 'RWMBZ-AZHLJ-GIUFW-KLDDX-PC6IO-U7FIG', //API key
         }
-        const url = 'https://apis.map.qq.com/ws/location/v1/ip' //腾讯地理位置信息接口
-        data.output = 'jsonp' // 解决跨域问题
+        const url = 'HTTPS://apis.map.qq.com/ws/location/v1/ip' //Tencent geolocation API
+        data.output = 'jsonp' // Solve cross-origin issue
         try {
             await proxy
                 .$jsonp(url, data)
@@ -130,7 +130,7 @@ export default function useShortcut() {
                     )
                 })
                 .catch(error => {
-                    console.log('获取地理信息失败')
+                    console.log('Failed to get geolocation info')
                     throw new Error(error)
                 })
         } catch (error) {
@@ -146,7 +146,7 @@ export default function useShortcut() {
     }
 
     function createMyShop() {
-        window.open('https://vendor.sokogate.com/v2/register')
+        window.open('HTTPS://vendor.sokogate.com/v2/register')
     }
 
     function userCommand(command) {
@@ -194,11 +194,11 @@ export default function useShortcut() {
     async function beforeUpload(file) {
         if (file.type.indexOf('image/') !== 0) {
             Message.error(proxy.$t('upload.limitOnlyImage'))
-            throw new Error('只能上传图片')
+            throw new Error('只能uploadimage/picture')
         }
         if (file.size / 1024 / 1024 > 4) {
             Message.error(proxy.$t('upload.limitFileSize') + ': 4MB')
-            throw new Error('图片过大')
+            throw new Error('image/picture过大')
         }
         const result = await checkImageResolution(file)
         if (!result.isValid) {
@@ -211,7 +211,7 @@ export default function useShortcut() {
                     proxy.$t('upload.imageResolutionToLarge') + ': > 4096px'
                 )
             }
-            throw new Error('图片分辨率不符合')
+            throw new Error('image/picture分辨率不符合')
         }
         uploadLoading.value = proxy.$loading({
             lock: true,
@@ -246,7 +246,7 @@ export default function useShortcut() {
                     const width = img.naturalWidth
                     const height = img.naturalHeight
 
-                    // 检查分辨率是否符合要求。识图接口对图片的分辨率有所要求
+                    // 检查分辨率whether符合要求.识图接口对image/picture的分辨率有所要求
                     const isValid =
                         width >= 100 &&
                         width <= 4096 &&
@@ -261,14 +261,14 @@ export default function useShortcut() {
                 }
 
                 img.onerror = function () {
-                    reject(new Error('图片加载失败'))
+                    reject(new Error('image/picture加载failed'))
                 }
 
                 img.src = e.target.result
             }
 
             reader.onerror = function () {
-                reject(new Error('文件读取失败'))
+                reject(new Error('file读取failed'))
             }
 
             reader.readAsDataURL(file)
@@ -278,10 +278,10 @@ export default function useShortcut() {
     return {
         currentUser,
         cartCount,
-        /** 搜索商品-文字 */
+        /* Search products - text */
         searchText,
         handleSearch,
-        /** 跳转到开店页 */
+        /* Go to store creation page */
         createMyShop,
         userCommand,
         beforeUpload,

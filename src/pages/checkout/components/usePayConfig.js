@@ -6,7 +6,7 @@ import AllowedCurrencies, { XOF, XAF, SLE } from './payAllowedCurrencies'
 function openPayWindow(paymentUrl, options) {
     const { windowName = 'payment', width = 500, height = 600 } = options
 
-    // 计算居中位置
+    // 计算居中location
     const left = (window.screen.width - width) / 2
     const top = (window.screen.height - height) / 2
 
@@ -660,7 +660,7 @@ export default {
         },
     },
 
-    // 自定义轮询配置
+    // custom轮询配置
     pollingInterval: 2000,
     maxPollingCount: 15,
 }

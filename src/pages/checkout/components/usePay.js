@@ -2,7 +2,7 @@ let loading = false
 let currentMethod = null
 let pollingCount = 0
 
-// 默认配置
+// default配置
 const defaultConfig = {
     methods: {},
     pollingInterval: 3000,
@@ -31,7 +31,7 @@ export function usePay(config = defaultConfig) {
     const pollPaymentResult = async request => {
         const method = currentMethod
         if (!method || !mergedConfig.methods[method]?.pollResult) {
-            throw new Error(`支付方式 ${method} 不支持轮询查询结果`)
+            throw new Error(`支付method ${method} 不support轮询查询结果`)
         }
 
         pollingCount = 0
@@ -68,7 +68,7 @@ export function usePay(config = defaultConfig) {
 
     const pay = async (method, request = {}) => {
         if (!mergedConfig.methods[method]) {
-            throw new Error(`不支持的支付方式: ${method}`)
+            throw new Error(`不support的支付method: ${method}`)
         }
 
         loading = true
@@ -86,7 +86,7 @@ export function usePay(config = defaultConfig) {
                         })
                     )
                 } catch (error) {
-                    console.error(`支付前处理失败: ${error.message}`)
+                    console.error(`支付前处理failed: ${error.message}`)
                     throw new Error(error.message)
                 }
             }
@@ -120,7 +120,7 @@ export function usePay(config = defaultConfig) {
 
     const payDirectly = async (method, request) => {
         if (!mergedConfig.methods[method]) {
-            throw new Error(`不支持的支付方式: ${method}`)
+            throw new Error(`不support的支付method: ${method}`)
         }
 
         loading = true
@@ -133,7 +133,7 @@ export function usePay(config = defaultConfig) {
                 try {
                     processedRequest = await paymentMethod.beforePay(request)
                 } catch (error) {
-                    console.error(`支付前处理失败: ${error.message}`)
+                    console.error(`支付前处理failed: ${error.message}`)
                     throw new Error(error.message)
                 }
             }

@@ -57,12 +57,58 @@
 </template>
 
 <script>
-// import SuiImage from "@/components/s-ui/media/Image";
 import { GetBannerList } from "@/utils/api";
 import { normalizeBannerList } from "@/utils/banner";
+
+// Static fallback banners (used when the API is unavailable or returns empty)
+import shipping from "@/assets/home/swiper/shipping.jpg";
+import manShop from "@/assets/home/swiper/manShop.png";
+import womenShop1 from "@/assets/home/swiper/womenShop1,png";
+import kids1 from "@/assets/home/swiper/kids1,png";
+import phoneShop from "@/assets/home/swiper/phoneShop.png";
+import freeShipping from "@/assets/home/swiper/freeShipping.png";
+
+const STATIC_BANNERS = [
+  {
+    image: shipping,
+    title: 'SokoGate',
+    text: 'Your trusted B2B platform connecting African buyers with global suppliers.',
+    jumpContent: 'https://www.sokogate.com/merchant-settlement'
+  },
+  {
+    image: manShop,
+    title: 'Fashion Collection',
+    text: 'Discover premium fashion & apparel from top manufacturers worldwide.',
+    jumpContent: 'https://www.sokogate.com/merchant-settlement'
+  },
+  {
+    image: womenShop1,
+    title: 'Women\'s Style',
+    text: 'Explore the latest trends in women\'s clothing & accessories.',
+    jumpContent: 'https://www.sokogate.com/merchant-settlement'
+  },
+  {
+    image: kids1,
+    title: 'Kids & Baby',
+    text: 'Quality products for your little ones at wholesale prices.',
+    jumpContent: 'https://www.sokogate.com/merchant-settlement'
+  },
+  {
+    image: phoneShop,
+    title: 'Electronics Hub',
+    text: 'Source mobile phones, accessories & consumer electronics.',
+    jumpContent: 'https://www.sokogate.com/merchant-settlement'
+  },
+  {
+    image: freeShipping,
+    title: 'Free Shipping',
+    text: 'Enjoy competitive shipping rates on bulk orders worldwide.',
+    jumpContent: 'https://www.sokogate.com/merchant-settlement'
+  },
+];
+
 export default {
   components: {
-    //SuiImage,
   },
   props: {
     title: {
@@ -93,14 +139,9 @@ export default {
         .then((res) => {
           // Normalize banner data (handles both array and { rows } response formats)
           this.list = normalizeBannerList(res);
+          // Fallback to static banners when API returns empty
           if (this.list.length === 0) {
-            // Fallback static banners when API returns empty
-            this.list = [{
-              image: require(`../assets/6505515-ai.png`),
-              title: 'SokoGate',
-              text: 'Sokogate is an artful fusion of tradition & innovation, seamlessly connecting manufacturers, wholesalers, & discerning consumers on a global stage.',
-              jumpContent: 'https://www.sokogate.com/merchant-settlement'
-            }];
+            this.list = STATIC_BANNERS;
           }
           if (this.list && this.list.length) {
             this.$emit("success");
@@ -108,6 +149,11 @@ export default {
         })
         .catch((err) => {
           console.log("GetBannerList-type-err:", this.type, err);
+          // Fallback to static banners when API is unavailable
+          this.list = STATIC_BANNERS;
+          if (this.list.length) {
+            this.$emit("success");
+          }
         });
     },
   },

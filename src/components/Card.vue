@@ -20,7 +20,7 @@
 
 
 <script>
-// 个人中心的卡片
+// Card for personal center
 export default {
   data() {
     return {

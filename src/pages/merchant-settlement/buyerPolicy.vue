@@ -6,19 +6,19 @@
         <b-col cols="12">
           <div class="col">
             <p>
-              爱是甜蜜的，爱是神圣的。 埃涅拉语，舌状叶。 Aenean马萨。
-              我们的社会有生育能力，也有生育能力。
+              爱是甜蜜的, 爱是神圣的. 埃涅拉语, 舌状叶. Aenean马萨.
+              我们的社会有生育能力, 也有生育能力.
             </p>
             <p>
-              这是一种特殊的物质，一种粉状的物质，一种特殊的物质。
-              没有任何结果。 小扁桃、小扁桃、小扁桃、小扁桃、小扁桃
+              这是一种特殊的物质, 一种粉状的物质, 一种特殊的物质.
+              没有任何结果. 小扁桃, 小扁桃, 小扁桃, 小扁桃, 小扁桃
             </p>
             <p>
-              在enim justo, rhoncus ut, imperdiet, venenatis vitae, justo中。
-              这句话没有任何意义。 整数tincidunt。 耐腐蚀合金dapibus。
-              我们是永恒的元素。 埃涅生阴唇，eleifend tellus。 他的名字叫leo
-              ligula, porttitor eu, vitae, eleifend ac, enim。 Aliquam lorem
-              ante, dapibus in, viverra quis, feugiat a， In enim justo, rhoncus
+              在enim justo, rhoncus ut, imperdiet, venenatis vitae, justo中.
+              这句话没有任何意义. 整数tincidunt. 耐腐蚀合金dapibus.
+              我们是永恒的元素. 埃涅生阴唇, eleifend tellus. 他的名字叫leo
+              ligula, porttitor eu, vitae, eleifend ac, enim. Aliquam lorem
+              ante, dapibus in, viverra quis, feugiat a,  In enim justo, rhoncus
               ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
               pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus
               elementum semper nisi. Aenean vulputate eleifend tellus. Aenean
@@ -73,9 +73,9 @@
               Dans enim justo, rhoncus ut, imperdiet, venenatis vitae, justo.
               Cette déclaration n’a aucun sens. Entier tincidunt. Alliage
               résistant à la corrosion dapibus. Nous sommes des éléments
-              éternels. 埃涅生阴唇，eleifend tellus。 他的名字叫leo ligula,
-              porttitor eu, vitae, eleifend ac, enim。 Aliquam lorem ante,
-              dapibus in, viverra quis, feugiat a， In enim justo, rhoncus ut,
+              éternels. 埃涅生阴唇, eleifend tellus. 他的名字叫leo ligula,
+              porttitor eu, vitae, eleifend ac, enim. Aliquam lorem ante,
+              dapibus in, viverra quis, feugiat a,  In enim justo, rhoncus ut,
               imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede
               mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum
               semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
@@ -234,9 +234,9 @@
             <p>
               क्योंकि जास्तो, रोन्कुस ut, imperdiet, venenatis vitae, justo 中.
               इस वाक्य का अर्थ नहीं है. पूर्ण अंक टिंसिडुन्ट. कोरोसियन
-              रेसिस्टेंट अलो डाबीबुस. हम अनन्त तत्व हैं। 埃涅生阴唇，eleifend
-              tellus。 他的名字叫leo ligula, porttitor eu, vitae, eleifend ac,
-              enim。 Aliquam lorem ante, dapibus in, viverra quis, feugiat a，
+              रेसिस्टेंट अलो डाबीबुस. हम अनन्त तत्व हैं। 埃涅生阴唇, eleifend
+              tellus. 他的名字叫leo ligula, porttitor eu, vitae, eleifend ac,
+              enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, 
               In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
               Nullam dictum felis eu pede mollis pretium. Integer tincidunt.
               Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate

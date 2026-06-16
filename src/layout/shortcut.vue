@@ -102,19 +102,19 @@
               t="1676010457745"
               class="icon"
               viewBox="0 0 1024 1024"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
+              version="1,1"
+              xmlns="http://www.w3,org/2000/svg"
               p-id="4118"
               width="12"
               height="12"
             >
               <path
-                d="M512.392533 68.266667C314.760533 68.266667 154.4704 219.648 153.6 408.4736l0.085333 7.850667c1.536 65.160533 22.272 127.0784 59.460267 180.258133l4.010667 5.614933 1.826133 2.952534 1.6896 2.525866c1.143467 1.621333 2.3552 3.157333 3.703467 4.676267l0.3072 0.341333 233.335466 296.021334a68.266667 68.266667 0 0 0 11.349334 11.3664l3.003733 2.218666a68.266667 68.266667 0 0 0 92.859733-13.585066L798.5664 612.693333l-1.6384 1.774934c2.901333-2.9696 5.12-5.905067 7.3216-9.301334l2.1504-3.464533c40.482133-55.0912 63.146667-122.026667 64-192.631467C870.4 220.091733 709.632 68.266667 512.392533 68.266667z m0 68.266666C672.785067 136.533333 802.133333 258.679467 802.133333 408.644267a264.1408 264.1408 0 0 1-51.643733 153.9072l-3.618133 5.632a11.895467 11.895467 0 0 1 1.3824-1.604267l-2.474667 2.798933-234.154667 297.079467-234.154666-297.079467-1.3312-1.570133-2.542934-4.027733 1.9968 3.413333-0.170666-0.170667 0.324266 0.443734C239.616 517.461333 221.866667 464.4352 221.866667 408.644267 222.549333 258.372267 351.573333 136.533333 512.392533 136.533333z"
+                d="M512,392533 68.266667C314,760533 68.266667 154,4704 219.648 153,6 408.4736l0.085333 7,850667c1.536 65,160533 22,272 127.0784 59.460267 180.258133l4.010667 5,614933 1.826133 2,952534 1,6896 2.525866c1,143467 1,621333 2,3552 3.157333 3,703467 4,676267l0.3072 0.341333 233,335466 296.021334a68.266667 68.266667 0 0 0 11,349334 11,3664l3.003733 2,218666a68.266667 68.266667 0 0 0 92,859733-13,585066L798.5664 612,693333l-1,6384 1,774934c2,901333-2,9696 5,12-5,905067 7,3216-9.301334l2,1504-3,464533c40.482133-55.0912 63.146667-122.026667 64-192,631467C870.4 220.091733 709.632 68.266667 512,392533 68.266667z m0 68.266666C672,785067 136,533333 802,133333 258.679467 802,133333 408.644267a264,1408 264,1408 0 0 1-51,643733 153,9072l-3,618133 5,632a11.895467 11.895467 0 0 1 1,3824-1,604267l-2,474667 2,798933-234,154667 297.079467-234,154666-297.079467-1,3312-1.570133-2.542934-4.027733 1.9968 3,413333-0.170666-0.170667 0.324266 0.443734C239.616 517,461333 221.866667 464,4352 221.866667 408.644267 222.549333 258.372267 351.573333 136,533333 512,392533 136,533333z"
                 fill="#444444"
                 p-id="4119"
               ></path>
               <path
-                d="M512 261.0176a153.6 153.6 0 1 0 0 307.2 153.6 153.6 0 0 0 0-307.2z m0 68.266667a85.333333 85.333333 0 1 1 0 170.666666 85.333333 85.333333 0 0 1 0-170.666666z"
+                d="M512 261.0176a153,6 153,6 0 1 0 0 307,2 153,6 153,6 0 0 0 0-307,2z m0 68.266667a85,333333 85,333333 0 1 1 0 170.666666 85,333333 85,333333 0 0 1 0-170.666666z"
                 fill="#d81e06"
                 p-id="4120"
                 data-spm-anchor-id="a313x.7781069.0.i12"
@@ -606,7 +606,7 @@ export default {
       ],
       allCountry: [],
       countryList: [],
-      cutCountry: [], // 搜索出的国家列表
+      cutCountry: [], // 搜索出的国家list
       searchCountry: null,
       country: null,
       appUrl: "",
@@ -722,7 +722,7 @@ export default {
         });
       } else {
         // 其他跳官网
-        window.location.href = "https://www.sokogate.com";
+        window.location.href = "HTTPS://www.sokogate.com";
       }
     },
 
@@ -841,7 +841,7 @@ export default {
       var results = queryString
         ? restaurants.filter(this.createFilter(queryString))
         : restaurants;
-      // 调用 callback 返回建议列表的数据
+      // 调用 callback Returns建议list的数据
       // console.log(results, "results");
       clearTimeout(this.timeout);
       this.timeout = setTimeout(() => {
@@ -1073,7 +1073,7 @@ export default {
       });
     },
     newPage() {
-      window.open("https://vendor.sokogate.com/v2/register");
+      window.open("HTTPS://vendor.sokogate.com/v2/register");
     },
     initLocalStorage() {
       const token = localStorage.getItem("auth_token");
@@ -1177,11 +1177,11 @@ export default {
           case "ru":
             this.$i18n.locale = "ru";
             break;
-          // 伊朗（波斯语）
+          // 伊朗 (波斯语) 
           case "per":
             this.$i18n.locale = "per";
             break;
-          // 印度（印地语）
+          // 印度 (印地语) 
           case "hi":
             this.$i18n.locale = "hi";
             break;
@@ -1507,15 +1507,15 @@ export default {
     gpsCountry() {
       let that = this;
       var data = {
-        key: "RWMBZ-AZHLJ-GIUFW-KLDDX-PC6IO-U7FIG", //密钥
+        key: "RWMBZ-AZHLJ-GIUFW-KLDDX-PC6IO-U7FIG", //API key
       };
-      var url = "https://apis.map.qq.com/ws/location/v1/ip"; //腾讯地理位置信息接口
-      data.output = "jsonp"; // 解决跨域问题
+      var url = "HTTPS://apis.map.qq.com/ws/location/v1/ip"; //Tencent geolocation API
+      data.output = "jsonp"; // Solve cross-origin issue
       that
         .$jsonp(url, data)
         .then((res) => {
           // console.log("ip所属国家", res.result.ad_info.nation);
-          // console.log(this.jsonData.categorys); // 获取所有国家的中文
+          // console.log(this.jsonData.categorys); // Get所有国家的中文
           // 根据中文筛出对应值的键
           // console.log(that.getObjectKey(this.jsonData.categorys, res.result.ad_info.nation));
           let countryEn = that.getObjectKey(
@@ -1530,7 +1530,7 @@ export default {
           console.log(error);
         });
     },
-    // 获取国家列表
+    // Get country list
     initCountry() {
       this.loading = true;
       let country_en = localStorage.getItem("country_en");

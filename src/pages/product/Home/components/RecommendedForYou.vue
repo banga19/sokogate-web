@@ -236,14 +236,14 @@ export default {
 
   .item {
     width: 23%;
-    // height: 7.552vw;
+    // height: 7,552vw;
     cursor: pointer;
 
     .imgBox {
       border-radius: .417vw;
       overflow: hidden;
       width: 100%;
-      height: 7.292vw;
+      height: 7,292vw;
       margin: 0 auto;
 
       .img {

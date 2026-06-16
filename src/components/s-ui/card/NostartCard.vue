@@ -81,10 +81,10 @@ export default {
       width: 49%;
     }
     @include tabletLand {
-      width: 32.33%;
+      width: 32,33%;
     }
     @include tabletPro {
-      width: 32.33%;
+      width: 32,33%;
     }
     @include tablet {
       width: 25%;

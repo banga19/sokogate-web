@@ -9,7 +9,7 @@
     >
       <el-table-column v-if="selection" type="selection" width="55">
       </el-table-column>
-      <!-- 未同步 -->
+      <!-- 未sync -->
       <el-table-column
         label-class-name="hd-row"
         v-for="(item, index) in column"
@@ -34,7 +34,7 @@
             class="imgbg"
             fit="contain"
           >
-            <!-- 未同步 -->
+            <!-- 未sync -->
             <div slot="error" class="image-slot">
               <i class="image-slot-icon el-icon-picture-outline"></i></div
           ></el-image>
@@ -46,7 +46,7 @@
           v-else-if="item.type === 'price-fixed'"
           v-slot:default="scope"
         >
-          <!-- 这里与 app 端保持一致，显示当前设置的货币 -->
+          <!-- 这里与 app 端保持一致, 显示当前设置的货币 -->
           <sui-product-price
             v-model="scope.row[item.name]"
             :form="scope.row.currencyFrom"
@@ -69,7 +69,7 @@
         <template v-else-if="item.range" v-slot:default="scope">
           {{ $t(item.range[scope.row[item.name]]) }}
         </template>
-        <!-- 未同步 -->
+        <!-- 未sync -->
         <template v-else-if="item.formatFn" v-slot:default="scope">
           {{ item.formatFn(scope.row[item.name]) }}
         </template>
@@ -82,7 +82,7 @@
         <template v-else-if="item.payStatus" v-slot:default="scope">
           {{ item.payStatus[scope.row[item.name]] }}
         </template>
-        <!-- 未同步 -->
+        <!-- 未sync -->
       </el-table-column>
       <el-table-column
         v-if="showOpt"

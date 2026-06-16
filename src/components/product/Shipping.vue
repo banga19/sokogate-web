@@ -44,14 +44,14 @@
         activeName: "1",
         channelList: [],
         loading: false,
-        // 默认参数
+        // default参数
         formData: {
-          startCityKey: "广州市", //起运城市 默认是广州市
+          startCityKey: "广州市", //起运城市 default是广州市
           weight: Number(this.weightSum) ? Number(this.weightSum) : 1, //重量
           volume: Number(this.capacitySum), //体积
           specialItems: "139", //货物种类 普货
-          modeCode: "", //运输方式
-          packgeType: 1, //包裹类型 1=WPX(包裹)，2=DOC(文件)
+          modeCode: "", //运输method
+          packgeType: 1, //包裹类型 1=WPX(包裹), 2=DOC(file)
           countryKey: "US",
         },
         timer: null,

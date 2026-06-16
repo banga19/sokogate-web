@@ -5,7 +5,7 @@
         <b-col cols="12" md="auto" class="centre logo-box">
           <img
             class="logo"
-            src="https://oss.sokogate.com/image/af82b848785b079390200737ab15cdff.png"
+            src="HTTPS://oss.sokogate.com/image/af82b848785b079390200737ab15cdff.png"
             alt=""
           />
         </b-col>
@@ -83,9 +83,9 @@ export default {
     return {
       isShow: true,
       SengcodeLoading: false,
-      //获取验证码表单的内容
+      // Get验证码表单的内容
       formListToforget: [
-        // 邮箱
+        // Email
         {
           type: "mail",
           name: "email",
@@ -103,7 +103,7 @@ export default {
             },
           ],
         },
-        // 验证码
+        // Verification code
         {
           type: "input",
           name: "verifyCode",
@@ -145,15 +145,15 @@ export default {
           ],
         },
       ],
-      //获取验证码表单的参数
+      // Get验证码表单的参数
       formDataToforget: {
         email: "",
         verifyCode: "",
         password: "",
       },
-      //忘记密码表单的内容
+      // Forgot password表单的内容
       formListToSengcode: [
-        // 邮箱
+        // Email
         {
           type: "mail",
           name: "cond",
@@ -172,7 +172,7 @@ export default {
           ],
         },
       ],
-      //忘记密码表单的参数
+      // Forgot password表单的参数
       formDataToSengcode: {
         codeType: 1,
         userType: 2,
@@ -205,15 +205,15 @@ export default {
     };
   },
   methods: {
-    // 重新发送验证码
+    // 重新sendVerification code
     reSend() {
       this.isShow = true;
     },
-    // 去登录
+    // 去login
     login() {
       this.$router.push("/v2/login");
     },
-    // 发送验证码的表单提交
+    // Send验证码的表单提交
     submitToSengcode(data) {
       // console.log("submit1", data);
       this.SengcodeLoading = true;
@@ -255,7 +255,7 @@ export default {
           }
         });
     },
-    // 忘记密码的表单提交
+    // Forgot password的表单提交
     submitToforget(data) {
       this.formLoading = true;
       this.formDataToSengcode.cond = this.formDataToforget.email;
@@ -308,7 +308,7 @@ export default {
 }
 .page-hd {
   padding-top: 150px;
-  background-image: url("https://oss.sokogate.com/image/49404fd02abd55e23798340c3b69f294.png");
+  background-image: url("HTTPS://oss.sokogate.com/image/49404fd02abd55e23798340c3b69f294,png");
   background-size: 100%;
   background-repeat: no-repeat;
   min-height: 545px;

@@ -5,16 +5,16 @@
       <div v-if="locale == 'zh'">
         <p class="about-title">关于我们的SOKOGATE</p>
         <h4>
-            Sokogate是一个创新的在线市场，它将斯瓦希里语单词“SOKO”(意思是“商店”)与英语单词“GATE”无缝结合在一起。这种融合反映了我们作为一个充满活力的B2B和B2C电子商务平台的使命，该平台将制造商与批发商和消费者联系起来。Sokogate总部位于中国广州，为企业和个人提供了一个享有盛誉的市场。
+            Sokogate是一个创新的在线市场, 它将斯瓦希里语单词"SOKO"(意思是"商店")与英语单词"GATE"无缝结合在一起.这种融合反映了我们作为一个充满活力的B2B和B2C电子business team平台的使命, 该平台将制造商与批发商和消费者contact起来.Sokogate总部位于中国广州, 为企业和个人提供了一个享有盛誉的市场.
         </h4>
         <h4>
-            我们的主要目标是为中小型企业和消费者提供一个用户友好的平台，让他们展示和获取各种各样的产品。通过Sokogate，制造商有机会展示他们的产品，而批发商和消费者可以方便地浏览，选择和购买他们想要的产品。
+            我们的主要目标是为中小型企业和消费者提供一个用户友好的平台, 让他们展示和获取各种各样的产品.通过Sokogate, 制造商有机会展示他们的产品, 而批发商和消费者可以方便地浏览, 选择和购买他们想要的产品.
         </h4>
         <h4>
-            凭借对质量、透明度和效率的承诺，Sokogate促进了商业交易，促进了经济增长，并促进了全球贸易关系网络。我们致力于弥合供应商和买家之间的差距，促进经济增长，并提供一个值得信赖的商业平台。
+            凭借对质量, 透明度和效率的承诺, Sokogate促进了商业交易, 促进了经济增长, 并促进了全球贸易关系network.我们致力于弥合供应商和买家之间的差距, 促进经济增长, 并提供一个值得信赖的商业平台.
         </h4>
         <h4>
-            Sokogate欢迎您探索我们的在线市场，体验企业对企业和企业对消费者商务的新时代。
+            Sokogate欢迎您探索我们的在线市场, 体验企业对企业和企业对消费者business team的新时代.
         </h4>
       </div>
       <div v-else-if="locale == 'en'">
@@ -144,7 +144,7 @@
         <b-col cols="12" md="6">
           <div class="col">
             <!-- <img
-              src="https://oss.sokogate.com/static/address.jpg"
+              src="HTTPS://oss.sokogate.com/static/address.jpg"
               alt=""
               class="about-img"
             /> -->
@@ -199,15 +199,15 @@ export default {
       ],
       qrcode: [
         {
-          img: "https://oss.sokogate.com/static/wechat.jpg",
+          img: "HTTPS://oss.sokogate.com/static/wechat.jpg",
           msg: "WeChat",
         },
         {
-          img: "https://oss.sokogate.com/static/whatsApp.jpg",
+          img: "HTTPS://oss.sokogate.com/static/whatsApp.jpg",
           msg: "WhatsApp",
         },
         {
-          img: "https://oss.sokogate.com/static/telegram.jpg",
+          img: "HTTPS://oss.sokogate.com/static/telegram.jpg",
           msg: "Telegram",
         },
       ],

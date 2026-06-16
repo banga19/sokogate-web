@@ -128,7 +128,7 @@
                 "FlutterWave" +
                 " " +
                 this.$t("order.pay") +
-                "KES、NGN、GHS、USD、FCFA",
+                "KES, NGN, GHS, USD, FCFA",
               okText: this.$t("order.changecurrency"),
             })
             .then((confirm) => {

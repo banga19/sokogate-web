@@ -269,7 +269,7 @@ export default {
       //   "Industrial Supplies": "red",
       //   "Manufacturing Equipment": "red",
       //   "Material Handling & Construction Machinery": "red",
-      //   "Home ，Lights & Construction": "red",
+      //   "Home , Lights & Construction": "red",
       //   home: "brown",
       //   "Bathroom Products": "red",
       //   "Garden Supplies": "red",
@@ -584,7 +584,7 @@ export default {
       //   "Manufacturing Equipment": "icon-tubiaozhizuomoban-116",
       //   "Material Handling & Construction Machinery": "icon-jixiexingye",
       //   "Service Equipment": "icon-dianzishebei",
-      //   "Home ，Lights & Construction": "icon-jianzhu",
+      //   "Home , Lights & Construction": "icon-jianzhu",
       //   home: "icon-jiaju1",
       //   "Bathroom Products": "icon-yushiyongpin",
       //   "Garden Supplies": "icon-kongzhonghuayuan",
@@ -682,11 +682,11 @@ export default {
         };
       });
     },
-    // 当前选中的节点
+    // 当前Selected的节点
     handleCurrentChange(data) {
       console.log(data, "data");
     },
-    // 获取店铺分类的接口
+    // Get店铺分类的接口
     getCategoryIds() {
       GetCategoryChildenList({ idList: this.$props.item }).then((res) => {
         // console.log("GetCategoryChildenList", res);

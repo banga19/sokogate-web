@@ -22,7 +22,7 @@
 
 
 <script>
-// 地址管理
+// address管理
 import Breadcrumb from "@/components/Breadcrumb.vue";
 import Card from "@/components/Card.vue";
 import CardGroup from "@/components/CardGroup.vue";

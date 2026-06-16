@@ -72,8 +72,8 @@ export default {
   beforeRouteEnter(to, from, next) {
     next((vm) => {
       console.log(from, "fromfdsakfdalsdklkl");
-      //  这里的vm指的就是vue实例，可以用来当做this使用
-      vm.fromPath = from.path; //获取上一级路由的路径
+      //  这里的vm指的就是vue实例, 可以用来当做this使用
+      vm.fromPath = from.path; // Get上一级路由的路径
     });
   },
   computed: {
@@ -223,7 +223,7 @@ export default {
       console.log("logisticsChange",this.logistics);
     },
     countryChange(e) {
-      // 获取改变的国家
+      // Get改变的国家
       this.$store.commit("setselectCountry", e);
     },
     getNewOrder() {
@@ -293,7 +293,7 @@ export default {
         userAddressId: this.userAddressId,
         ...this.logistics,
         currency: this.$store.state.currency,
-        /** 固定传值 1, 现在要求全部订单都享受首购5%折扣 */
+        /* 固定传值 1, 现在要求全部订单都享受首购5%折扣 */
         isUserOnePay: 1,
       };
       delete data["price"];

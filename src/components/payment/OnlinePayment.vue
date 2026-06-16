@@ -3,7 +3,7 @@
     
     <div class="pay-row">
       <flutterwave ref="flutterwaveRef" :order-id-list="orderIdList" />
-      <span> {{ $t("order.pay") }}&ensp;KES、NGN、GHS、USD、FCFA </span>
+      <span> {{ $t("order.pay") }}&ensp;KES, NGN, GHS, USD, FCFA </span>
     </div>
 
     <div class="pay-row">
@@ -36,10 +36,10 @@
     <!-- <div class="pay-row">
       <flutterwave-test ref="shareRef" :order-id-list="orderIdList" />
       <span>
-        {{ $t("order.pay") }}&ensp;NGN、GHS、USD
+        {{ $t("order.pay") }}&ensp;NGN, GHS, USD
       </span>
     </div> -->
-    <!-- 暂时隐藏paydunyaRef支付功能 -->
+    <!-- 暂时隐藏paydunyaRef支付feature -->
     <div class="pay-row" v-if="false">
       <paydunya ref="paydunyaRef" :order-id-list="orderIdList" />
       <span> {{ $t("order.pay") }}&ensp;FCFA </span>
@@ -102,7 +102,7 @@ export default {
   updated() {
     window.onload = window.onresize = function () {
       document.getElementById("a").innerHTML =
-        "屏幕尺寸为：宽 " +
+        "屏幕尺寸为: 宽 " +
         window.screen.width +
         " x " +
         window.screen.height +
@@ -128,7 +128,7 @@ export default {
     }
   }
 }
-/*定义竖屏 css*/
+/* 定义竖屏 css */
 @media screen and (orientation: portrait) {
   .disabled {
     width: 60px;

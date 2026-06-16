@@ -147,7 +147,7 @@ export default {
    font-weight: 700;
    color: #333;
    margin: 0;
-   line-height: 1.3;
+   line-height: 1,3;
  }
 
  .snippet-section {
@@ -159,7 +159,7 @@ export default {
 
 .featured-snippet {
   font-size: 18px;
-  line-height: 1.7;
+  line-height: 1,7;
   color: #555;
   margin: 0 0 20px 0;
 }
@@ -226,7 +226,7 @@ export default {
 .step-content p {
   margin: 0;
   color: #666;
-  line-height: 1.6;
+  line-height: 1,6;
 }
 
 .faq-section {
@@ -249,7 +249,7 @@ export default {
 .faq-answer {
   color: #666;
   margin: 0;
-  line-height: 1.6;
+  line-height: 1,6;
 }
 
 .market-footer {

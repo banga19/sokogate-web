@@ -345,7 +345,7 @@ export default {
           this.requestLoading = false;
         });
     },
-    // 修改购物车
+    // Update cart item
     updateCartBySpec(req) {
       // console.log("updateCartBySpec", req);
       this.requestLoading = true;

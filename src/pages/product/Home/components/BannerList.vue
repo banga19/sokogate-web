@@ -18,7 +18,8 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { onMounted, ref, getCurrentInstance } from 'vue'
 import SuiImage from '@/components/s-ui/media/Image'
 import shipping from '@/assets/home/swiper/shipping.jpg'
 import manShop from '@/assets/home/swiper/manShop.png'
@@ -29,78 +30,72 @@ import jaiju from '@/assets/home/swiper/jaiju.png'
 import jiadian from '@/assets/home/swiper/jiadian.png'
 import freeShipping from '@/assets/home/swiper/freeShipping.png'
 
-export default {
-  name: 'BannerList',
-  components: {
-    SuiImage
+const { proxy } = getCurrentInstance()
+
+defineProps({
+  title: '',
+  type: '',
+})
+
+const emit = defineEmits(['success'])
+onMounted(() => {
+  emit('success')
+})
+
+const banner = ref([
+  {
+    src: shipping,
+    color: '#000000',
   },
-  props: {
-    title: String,
-    type: String,
+  {
+    src: manShop,
+    color: '#000000',
+    toStoreId: '64c1cf84bf766f2989d8aa65',
   },
-  data() {
-    return {
-      banner: [
-        {
-          src: shipping,
-          color: '#000000',
-        },
-        {
-          src: manShop,
-          color: '#000000',
-          toStoreId: '64c1cf84bf766f2989d8aa65',
-        },
-        {
-          src: womenShop1,
-          color: '#df70a6',
-          toStoreId: '62e7825dccd73eba90a28692',
-        },
-        {
-          src: kids1,
-          color: '#e1e0e3',
-          toStoreId: '655bf32e14e14e5e5ee0ae0c',
-        },
-        {
-          src: phoneShop,
-          color: '#644895',
-          toStoreId: '66f24e690d3279116e2695ba',
-        },
-        {
-          src: jaiju,
-          color: '#d2cfc7',
-          id: '61b017cca00181bf8190e94a',
-        },
-        {
-          src: jiadian,
-          color: '#91dce9',
-          id: '61b017cca00181bf8190e94d',
-        },
-        {
-          src: freeShipping,
-          color: '#198ad9',
-          type: 10,
-        },
-      ]
-    }
+  {
+    src: womenShop1,
+    color: '#df70a6',
+    toStoreId: '62e7825dccd73eba90a28692',
   },
-  mounted() {
-    this.$emit('success')
+  {
+    src: kids1,
+    color: '#e1e0e3',
+    toStoreId: '655bf32e14e14e5e5ee0ae0c',
   },
-  methods: {
-    handleClick(item) {
-      if (item.toStoreId) {
-        this.$router.push({
-          path: '/v2/store/collections',
-          query: { id: item.toStoreId },
-        })
-      }
-    }
+  {
+    src: phoneShop,
+    color: '#644895',
+    toStoreId: '66f24e690d3279116e2695ba',
+  },
+  {
+    src: jaiju,
+    color: '#d2cfc7',
+    id: '61b017cca00181bf8190e94a',
+  },
+  {
+    src: jiadian,
+    color: '#91dce9',
+    id: '61b017cca00181bf8190e94d',
+  },
+  {
+    src: freeShipping,
+    color: '#198ad9',
+    type: 10,
+  },
+])
+
+function handleClick(item) {
+  if (item.toStoreId) {
+    proxy.$router.push({
+      path: '/v2/store/collections',
+      query: { id: item.toStoreId },
+    })
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@use '@/style/_responsive.scss' as *;
+@import '@/style/_responsive.scss';
 
 .banner-list-main {
   height: 100%;

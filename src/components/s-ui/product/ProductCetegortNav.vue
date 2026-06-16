@@ -278,7 +278,7 @@ export default {
         "Industrial Supplies": "red",
         "Manufacturing Equipment": "red",
         "Material Handling & Construction Machinery": "red",
-        "Home ，Lights & Construction": "red",
+        "Home , Lights & Construction": "red",
         home: "brown",
         "Bathroom Products": "red",
         "Garden Supplies": "red",
@@ -593,7 +593,7 @@ export default {
         "Manufacturing Equipment": "icon-tubiaozhizuomoban-116",
         "Material Handling & Construction Machinery": "icon-jixiexingye",
         "Service Equipment": "icon-dianzishebei",
-        "Home ，Lights & Construction": "icon-jianzhu",
+        "Home , Lights & Construction": "icon-jianzhu",
         home: "icon-jiaju1",
         "Bathroom Products": "icon-yushiyongpin",
         "Garden Supplies": "icon-kongzhonghuayuan",
@@ -680,7 +680,7 @@ export default {
   },
   computed: {
     tree() {
-      // 获取分类列表数据
+      // Get category list数据
       return this.formatCategory(this.$store.state.menu);
     },
   },
@@ -698,19 +698,19 @@ export default {
         };
       });
     },
-    // 当前选中节点变化时触发的事件
+    // 当前Selected节点变化时触发的事件
     handleCurrentChange(data) {
       // const node = this.$refs.categoryTree.getNode(data.value);
       // console.log("cid", data.value, data.label);
-      // 子组件发送事件给父组件并抛出值(id)
+      // 子组件send事件给父组件并抛出值(id)
       // this.$emit("change", data.value);
-      // 通过点击通过分类id跳转到相应的产品列表
+      // 通过点击通过分类id跳转到相应的产品list
       this.$router.push({
         path: "/v2/product/list",
         query: { cid: data.value },
       });
     },
-    // 当前选中节点的data.parent
+    // 当前Selected节点的data.parent
     findNodeParent(node) {
       if (node.parent) {
         // console.log("node", node.parent);

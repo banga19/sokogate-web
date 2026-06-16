@@ -193,7 +193,7 @@
   </b-container>
 </template>
 <script async defer crossorigin="anonymous" 
-  src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"></script>
+  src="HTTPS://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"></script>
 <script>
 import BackToTop from "@/components/s-ui/list/BackToTop";
 import SuiBreadcrumb from "@/components/s-ui/list/Breadcrumb";
@@ -244,7 +244,7 @@ export default {
       meta: [
         {
           name: "description",
-          content: `${title} - ${siteName}` || "默认描述",
+          content: `${title} - ${siteName}` || "default描述",
         },
         // Open Graph / Facebook
         { property: "og:type", content: "website" },
@@ -252,13 +252,13 @@ export default {
           property: "og:url",
           content: pageUrl,
         },
-        { property: "og:title", content: title || "默认标题" },
-        { property: "og:description", content: siteName || "默认描述" },
+        { property: "og:title", content: title || "default标题" },
+        { property: "og:description", content: siteName || "default描述" },
         {
           property: "og:image",
           content: (product.galleryList && product.galleryList[0])
             ? `${product.galleryList[0]}?x-oss-process=image/resize,w_1200,h_630`
-            : "https://example.com/default.jpg",
+            : "HTTPS://example.com/default.jpg",
         },
         // Twitter
         { name: "twitter:card", content: "summary_large_image" },
@@ -268,17 +268,17 @@ export default {
         },
         {
           name: "twitter:title",
-          content: `${title} - ${siteName}` || "默认标题",
+          content: `${title} - ${siteName}` || "default标题",
         },
         {
           name: "twitter:description",
-          content: siteName || "默认描述",
+          content: siteName || "default描述",
         },
         {
           property: "twitter:image",
           content: (product.galleryList && product.galleryList[0])
             ? `${product.galleryList[0]}?x-oss-process=image/resize,w_1200,h_630`
-            : "https://example.com/default.jpg",
+            : "HTTPS://example.com/default.jpg",
         },
       ],
       link: [
@@ -376,13 +376,13 @@ export default {
         return [];
       }
     },
-    // 视频图片
+    // videoimage/picture
   CoverUrl() {
     return (this.spuData.videoList ? this.spuData.videoList : []).map(v =>
       v.Snapshot && v.Snapshot.CoverUrl ? v.Snapshot.CoverUrl : ""
     );
   },
-  // 视频
+  // video
   FileUrl() {
     return (this.spuData.videoList ? this.spuData.videoList : []).map(v =>
       v.Transcode && v.Transcode.StreamInfos && v.Transcode.StreamInfos.length > 1

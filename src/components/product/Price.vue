@@ -51,11 +51,11 @@ export default {
       return this.$store.state.exchateRateMap;
     },
     exchange() {
-      // 检查原始货币单位 与 目标货币单位 是否相同，来判断是否需要转换
+      // 检查原始货币单位 与 目标货币单位 whether相同, 来判断whether需要转换
       return this.form !== this.current;
     },
     current() {
-      // 传入目标货币单位优先 与 全局货币单位
+      // Pass in目标货币单位优先 与 全局货币单位
       return this.to || this.$store.state.currency || "USD";
     },
     unitString() {

@@ -9,7 +9,7 @@ export const getFileNameMd5 = (file) => {
       const type = types[1];
       var fileReader = new FileReader();
 
-      //异步执行函数
+      // Async execution
       fileReader.onload = function (e) {
         const md5 = CryptoJS.MD5(
           CryptoJS.enc.Latin1.parse(e.target.result)
@@ -19,7 +19,7 @@ export const getFileNameMd5 = (file) => {
           : reject(new Error("md5 error"));
       };
 
-      //获取文件二进制数据
+      // Get file binary data
       fileReader.readAsDataURL(file);
     } catch (error) {
       reject(error);
@@ -92,9 +92,9 @@ export function isEmpty(v) {
   return false;
 }
 
-// 两位小数
+// Two decimal places
 export function formatToDecimal(num) {
-  // 格式化为小数，单位分 -> 元
+  // Format as decimal, cents -> yuan
   const float = parseFloat(num);
   // console.log('float', float);
   if (isNaN(float)) {
@@ -119,9 +119,9 @@ export function keepTwoDecimal(num) {
   }
 }
 
-// 四位小数
+// Four decimal places
 // export function formatToDecimal(num) {
-//   // 格式化为小数，单位分 -> 元
+//   // Format as decimal, cents -> yuan
 //   const float = parseFloat(num);
 //   // console.log('float', float);
 //   if (isNaN(float)) {
@@ -149,16 +149,16 @@ export function keepTwoDecimal(num) {
 // }
 
 export function formatDataTime(unix) {
-  // 格式化时间,戳转日期时间
+  // Format timestamp to date time
   return moment.unix(unix).format("YYYY-MM-DD HH:mm:ss");
 }
 
-//时间戳日期格式化
+// Timestamp date formatting
 export function formatDate(date, fmt) {
   if (/(y+)/.test(fmt)) {
     fmt = fmt.replace(
       RegExp.$1,
-      (date.getFullYear() + "").substr(4 - RegExp.$1.length)
+      (date.getFullYear() + "").substr(4 - RegExp.$1,length)
     );
   }
   let o = {

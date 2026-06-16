@@ -8,11 +8,11 @@ const service = axios.create({
 
 service.interceptors.request.use(
   (config) => {
-    // 设置请求头
+    // Set request headers
     config.headers["Content-Type"] = "application/json; charset=UTF-8";
     let token = localStorage.getItem("auth_token");
     if (config.auth && !token) {
-      console.log("需要登录的接口，却拿不到token");
+      console.log("Auth required but no token found");
       let cancel;
       config.cancelToken = new CancelToken(function executor(c) {
         cancel = c;

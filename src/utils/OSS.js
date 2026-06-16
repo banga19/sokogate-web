@@ -25,7 +25,7 @@ export function getOSSImageFullUrl(fileName) {
     )
 }
 
-/** 获取oss上传凭证 */
+/** Get OSS upload credentials */
 function GetOssToken(params) {
     return request({
         url: `getOssPolicyToken`,
@@ -43,7 +43,7 @@ async function requestOssToken() {
 function checkExpired() {
     if (ossObject && ossObject.expire) {
         const nowUnix = Math.round(new Date().getTime() / 1000)
-        // 有效期大于一小时
+        // Validity > 1 hour
         if (
             ossObject.expire > nowUnix &&
             ossObject.expire - nowUnix > 60 * 60
@@ -51,6 +51,6 @@ function checkExpired() {
             return true
         }
     } else {
-        throw '未获取 OSS 签名信息'
+        throw 'OSS signature not obtained'
     }
 }

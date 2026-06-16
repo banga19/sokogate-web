@@ -20,7 +20,7 @@
                     <div class="head-user">
                       <div class="user-img" v-if="currentUser.img">
                         <el-avatar
-                          src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+                          src="HTTPS://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
                         ></el-avatar>
                       </div>
                       <div class="user-img" v-else>
@@ -206,7 +206,7 @@ export default {
 
               .head-bg {
                 flex: 1;
-                background: url("https://oss.sokogate.com/image/aa38d9c118651204943f8cd06d6c9047.png");
+                background: url("HTTPS://oss.sokogate.com/image/aa38d9c118651204943f8cd06d6c9047,png");
                 background-size: 80% 80%;
                 background-repeat: no-repeat;
                 background-position: 100% 0;

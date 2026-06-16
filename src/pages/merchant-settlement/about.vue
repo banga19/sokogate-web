@@ -85,7 +85,7 @@ export default {
 // 基础样式
 .about-page {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  line-height: 1.6;
+  line-height: 1,6;
   color: #333;
   max-width: 800px;
   margin: 0 auto;
@@ -126,7 +126,7 @@ export default {
   }
 }
 
-// 服务列表
+// 服务list
 .services-list {
   list-style: none;
   padding-left: 0;
@@ -150,7 +150,7 @@ export default {
   }
 }
 
-// 客户列表
+// 客户list
 .clients-list {
   list-style: none;
   padding-left: 0;

@@ -9,15 +9,15 @@ const service = axios.create({
 
 service.interceptors.request.use(
   (config) => {
-    // 设置请求头
+    // Set request headers
     // config.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'
     let token = localStorage.getItem("auth_token");
     if (config.auth && !token) {
-      console.log('需要登录的接口，却拿不到token');
+      console.log('Auth required but no token found');
       // return new Error('Auth fail.');
       let cancel;
       config.cancelToken = new CancelToken(function executor(c) {
-        // executor 函数接收一个 cancel 函数作为参数
+        // executor receives a cancel function as parameter
         cancel = c;
         // console.log(c('Auth fail.'));
       })
@@ -30,7 +30,7 @@ service.interceptors.request.use(
     ) {
       config.transformRequest = [
         function (data) {
-          // 在请求之前对data传参进行格式转换
+          // Transform data params before request
           data = qs.stringify(data);
           return data;
         },

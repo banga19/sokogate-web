@@ -31,7 +31,7 @@ export default {
       default: "20px",
     },
     pointer: {
-      //默认不开启鼠标手状
+      //default不enable鼠标手状
       type: Boolean,
       default: false,
     },
