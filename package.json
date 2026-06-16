@@ -54,7 +54,7 @@
     "compression-webpack-plugin": "^11.1.0",
     "css-loader": "^7.1.2",
     "eslint": "^8.57.0",
-    "eslint-plugin-vue": "^9.23.0",
+    "eslint-plugin-vue": "^10.9.2",
     "postcss-import": "^16.1.1",
     "postcss-loader": "^8.2.0",
     "postcss-preset-env": "^10.4.0",
