@@ -42,7 +42,6 @@ jest.mock('../../src/common/utils/pagination', () => ({
 
 const orderService = require('../../src/modules/order/order.service');
 const { Order, Product, ProductVariant } = require('../../src/common/database/models');
-const { getPagination } = require('../../src/common/utils/pagination');
 const { NotFoundError } = require('../../src/common/utils/errors');
 
 // ──────────────────────────────────────────────────────────────

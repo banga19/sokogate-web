@@ -25,8 +25,7 @@ const controller = require('../../src/modules/auth/auth.controller');
 const authService = require('../../src/modules/auth/auth.service');
 const { success, created } = require('../../src/common/utils/apiResponse');
 
-// We need a separate mock for the getProfile method which requires User model
-const mockUserModel = { findByPk: jest.fn() };
+// Mock the User model for getProfile tests
 jest.mock('../../src/common/database/models', () => ({
   User: { findByPk: jest.fn() },
 }), { virtual: true });

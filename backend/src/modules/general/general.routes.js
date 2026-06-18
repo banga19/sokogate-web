@@ -270,7 +270,7 @@ router.post('/smsVerify', async (req, res, next) => {
 // and search matching products. Falls back to newest products when no keywords found.
 router.post('/getSpuImagesearch', async (req, res, next) => {
   try {
-    const { search: imageUrl, page = 0 } = req.body;
+    const { search: imageUrl } = req.body;
 
     if (!imageUrl) {
       return success(res, { rows: { Auctions: [] } });
@@ -283,12 +283,10 @@ router.post('/getSpuImagesearch', async (req, res, next) => {
     try {
       const urlObj = new URL(imageUrl);
       const pathSegments = urlObj.pathname.split('/').filter(Boolean);
-      // Get the filename without extension
-      const fileName = pathSegments.pop() || '';
-      const nameWithoutExt = fileName.replace(/\.[^/.]+$/, '');
-      // For MD5 hashed names, there's no meaningful keyword.
+      // The filename (e.g. MD5 hash) carries no meaningful keyword.
       // In the future with Google Vision, this is where labels go.
       // For now, we use path segment as category hint.
+      pathSegments.pop();
       const categoryHint = pathSegments.join(' ');
       keywords = categoryHint;
     } catch {

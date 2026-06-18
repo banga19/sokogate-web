@@ -52,6 +52,12 @@ router.use('/', require('../modules/share/share.routes'));
 // Monitoring routes (Prometheus metrics)
 router.use('/', require('../modules/monitoring/monitoring.routes'));
 
+// Comment Agent routes
+router.use('/comment-agent', require('../modules/commentAgent/commentAgent.routes'));
+
+// Comment Agent — Apify Scraper routes (auto-ingestion)
+router.use('/comment-agent/scraper', require('../modules/commentAgent/scraperRoutes'));
+
 // Hermes AI routes
 const { User } = require('../common/database/models');
 const { authenticate } = require('../common/middleware/auth.middleware');

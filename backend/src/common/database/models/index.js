@@ -15,6 +15,9 @@ const ExchangeRate = require('./ExchangeRate');
 const VerificationCode = require('./VerificationCode');
 const Session = require('./Session');
 const ImChat = require('./ImChat');
+const CommentLead = require('./CommentLead');
+const SourcingAlert = require('./SourcingAlert');
+const ScrapedPost = require('./ScrapedPost');
 
 // --- Associations ---
 
@@ -99,6 +102,9 @@ const models = {
   VerificationCode,
   Session,
   ImChat,
+  CommentLead,
+  SourcingAlert,
+  ScrapedPost,
   sequelize,
 };
 

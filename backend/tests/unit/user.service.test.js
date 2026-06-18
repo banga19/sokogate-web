@@ -3,7 +3,6 @@
 // ──────────────────────────────────────────────────────────────
 
 const mockUser = { id: 'user-1', email: 'test@example.com', name: 'Test User', phone: '1234567890', password_hash: 'hashed' };
-const mockUserWithoutPassword = { id: 'user-1', email: 'test@example.com', name: 'Test User', phone: '1234567890' };
 const mockAddresses = [
   { id: 'addr-1', user_id: 'user-1', street: '123 Main St', city: 'NYC', is_default: true, created_at: new Date() },
   { id: 'addr-2', user_id: 'user-1', street: '456 Oak Ave', city: 'LA', is_default: false, created_at: new Date() },

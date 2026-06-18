@@ -14,7 +14,6 @@ const mockCartItems = [
 
 const mockCartItem = mockCartItems[0];
 const mockProduct = { id: 'prod-1', name: 'Smartphone', status: 'active' };
-const mockVariant = { id: 'var-1', product_id: 'prod-1', price: 250, stock: 10, is_active: true };
 
 jest.mock('../../src/common/database/models', () => ({
   CartItem: {

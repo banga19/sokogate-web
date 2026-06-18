@@ -77,6 +77,33 @@ const config = {
     endpoint: process.env.OSS_ENDPOINT || 'https://oss-sokogate-com.oss-cn-hongkong.aliyuncs.com',
   },
 
+  claude: {
+    apiKey: process.env.CLAUDE_API_KEY || '',
+    model: process.env.CLAUDE_MODEL || 'claude-sonnet-4-6',
+  },
+
+  nvidia: {
+    apiKey: process.env.NVIDIA_API_KEY || '',
+    model: process.env.NVIDIA_MODEL || 'meta/llama-3.3-70b-instruct',
+  },
+
+  apify: {
+    apiKey: process.env.APIFY_API_KEY || '',
+    facebookActorId: process.env.APIFY_FACEBOOK_ACTOR || 'apify/facebook-posts-scraper',
+    linkedInActorId: process.env.APIFY_LINKEDIN_ACTOR || 'curiosum/linkedin-post-scraper',
+  },
+
+  sendgrid: {
+    apiKey: process.env.SENDGRID_API_KEY || '',
+    fromEmail: process.env.SENDGRID_FROM_EMAIL || 'agent@sokogate.com',
+  },
+
+  commentAgent: {
+    dailyLimit: parseInt(process.env.COMMENT_AGENT_DAILY_LIMIT, 10) || 25,
+    minDelaySeconds: parseInt(process.env.COMMENT_AGENT_MIN_DELAY, 10) || 180,
+    maxDelaySeconds: parseInt(process.env.COMMENT_AGENT_MAX_DELAY, 10) || 480,
+  },
+
   easemob: {
     appkey: process.env.EASEMOB_APPKEY || '1101220606096669#demo',
     clientId: process.env.EASEMOB_CLIENT_ID || '',

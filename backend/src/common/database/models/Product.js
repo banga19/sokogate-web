@@ -1,6 +1,9 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../../../config/database');
 
+// Register pgvector type with Sequelize
+require('pgvector/sequelize');
+
 const Product = sequelize.define('Product', {
   id: {
     type: DataTypes.UUID,
@@ -67,6 +70,11 @@ const Product = sequelize.define('Product', {
   sale_count: {
     type: DataTypes.INTEGER,
     defaultValue: 0,
+  },
+  embedding: {
+    type: DataTypes.VECTOR(1024),
+    allowNull: true,
+    comment: 'Semantic embedding for AI-powered product matching (pgvector)',
   },
 }, {
   tableName: 'products',

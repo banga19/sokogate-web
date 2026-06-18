@@ -187,7 +187,7 @@ describe('getRecommListbyTypes', () => {
       pageSize: 12,
       sort: 'newest',
     });
-    expect(success).toHaveBeenCalledWith(res, { rows: mockProducts });
+    expect(success).toHaveBeenCalledWith(res, [{ spuList: mockProducts }]);
   });
 
   it('should call next on error', async () => {
