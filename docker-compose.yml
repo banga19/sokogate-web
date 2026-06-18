@@ -135,6 +135,41 @@ services:
   #     - sokogate
   #   restart: unless-stopped
 
+  # ---- Comment Agent Background Worker ----
+  # Processes deferred comment posting jobs from the Redis job queue.
+  # Runs the same image as the API but starts the worker entrypoint instead.
+  # Note: No HTTP health check — relies on Docker restart on crash.
+  # Monitor via: docker logs sokogate-comment-agent-worker
+  comment-agent-worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: sokogate-comment-agent-worker
+    entrypoint: ["node", "src/modules/commentAgent/worker.js"]
+    # PID 1 is the worker process — kill -0 checks if it's alive (POSIX, works on Alpine)
+    healthcheck:
+      test: ["CMD", "kill", "-0", "1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    networks:
+      - sokogate
+    restart: unless-stopped
+
   # ---- Prometheus (metrics collection) ----
   prometheus:
     image: prom/prometheus:v2.53.0

@@ -77,6 +77,30 @@ jobs:
         continue-on-error: true
 
   # ────────────────────────────────────────────────────────────
+  # Backend Lint (separate job for clear status reporting)
+  # ────────────────────────────────────────────────────────────
+  backend-lint:
+    name: Backend Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install backend dependencies
+        working-directory: ./backend
+        run: npm ci
+
+      - name: Run ESLint on backend
+        working-directory: ./backend
+        run: npm run lint
+
+  # ────────────────────────────────────────────────────────────
   # Backend Unit Tests (fast — no external services needed)
   # ────────────────────────────────────────────────────────────
   backend-unit:
@@ -113,7 +137,7 @@ jobs:
   # ────────────────────────────────────────────────────────────
   backend-integration:
     name: Backend Integration Tests
-    needs: [lint, backend-unit]
+    needs: [lint, backend-lint, backend-unit]
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -237,6 +261,47 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: visual-regression-diffs
+          path: |
+            test-results/
+            playwright-report/
+          retention-days: 14
+          if-no-files-found: warn
+
+  # ────────────────────────────────────────────────────────────
+  # Frontend Comment Agent E2E Tests (no backend needed — API mocked)
+  # ────────────────────────────────────────────────────────────
+  frontend-e2e-comment-agent:
+    name: Comment Agent E2E
+    needs: [lint]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Create .env from example
+        run: cp .env.example .env
+
+      - name: Install Playwright Chromium
+        run: npx playwright install chromium
+
+      - name: Run comment agent E2E tests
+        run: npm run test:e2e:comment-agent
+        # webServer in playwright.config.js auto-starts vue-cli-service on port 4500
+        # All API calls are intercepted via page.route() — no backend needed
+
+      - name: Upload test results on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: comment-agent-e2e-results
           path: |
             test-results/
             playwright-report/

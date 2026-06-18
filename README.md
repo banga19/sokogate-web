@@ -471,6 +471,30 @@ Flutterwave · Paystack · Stripe · PayPal · CinetPay · QuikkPay · PayDunya 
 - User preference tracking
 - Intelligent product recommendations
 
+### 🤝 Soko Comment Agent
+- Automated trade demand detection from social media posts
+- Smart comment generation for ground agents
+- Internal sourcing alerts to `info@sokogate.com`
+- Rate-limited workflow with anti-ban rules (3–8 min randomized delays, 20–30 comments/day per agent)
+- **Dual AI engine:** NVIDIA NIM (`meta/llama-3.3-70b-instruct`) as primary for testing, Claude API (`claude-sonnet-4-6`) as production-grade fallback
+- **Email transport:** SendGrid (preferred) or Nodemailer SMTP; falls back to console logging in dev mode
+- **Auto-ingestion (Phase 3):** Apify scraper integration for Facebook/LinkedIn post auto-collection
+- Frontend pages:
+  - `GET /v2/comment-agent` — Agent tool (paste post → AI analysis → comment/alert)
+  - `GET /v2/hq-dashboard` — HQ dashboard with KPIs, charts, date filtering, PDF export
+- Backend endpoints:
+  - `POST /api/comment-agent/analyze-post` — Full pipeline (analyze → comment or alert)
+  - `POST /api/comment-agent/analyze-only` — Preview/demo (analysis only)
+  - `POST /api/comment-agent/leads` — List comment leads
+  - `POST /api/comment-agent/alerts` — List sourcing alerts
+  - `POST /api/comment-agent/leads/confirm-post` — Confirm comment posted
+  - `POST /api/comment-agent/alerts/mark-listed` — Mark supplier listed
+  - `POST /api/comment-agent/dashboard` — Aggregated dashboard stats
+  - `POST /api/comment-agent/scraper/scrape-facebook` — Trigger Facebook scrape
+  - `POST /api/comment-agent/scraper/scrape-linkedin` — Trigger LinkedIn scrape
+  - `POST /api/comment-agent/scraper/posts` — List scraped posts
+  - `POST /api/comment-agent/scraper/webhook` — Apify webhook receiver
+
 ### 📊 Analytics & Monitoring
 - Google Analytics 4 (single consolidated tag)
 - Sentry error tracking (frontend + backend)
@@ -565,6 +589,29 @@ Key variables:
 - `FLUTTERWAVE_SECRET_KEY` — Payment gateway secrets
 - `SENTRY_DSN` — Error tracking
 - `VUE_APP_GA_MEASUREMENT_ID` — Google Analytics
+
+### Comment Agent Environment Variables
+
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `NVIDIA_API_KEY` | Yes | — | Primary AI for testing: post analysis, comment gen, embeddings (get at [build.nvidia.com](https://build.nvidia.com/)) |
+| `NVIDIA_MODEL` | No | `meta/llama-3.3-70b-instruct` | NVIDIA NIM model override |
+| `CLAUDE_API_KEY` | Recommended | — | Production-grade fallback AI (get at [console.anthropic.com](https://console.anthropic.com/)) |
+| `CLAUDE_MODEL` | No | `claude-sonnet-4-6` | Claude model override |
+| `SMTP_HOST` | See note | — | SMTP host for Nodemailer (use **or** SendGrid) |
+| `SMTP_USER` | See note | — | SMTP username |
+| `SMTP_PASS` | See note | — | SMTP password/app-password |
+| `SENDGRID_API_KEY` | See note | — | SendGrid API key (preferred over SMTP; get at [sendgrid.com](https://sendgrid.com/)) |
+| `SENDGRID_FROM_EMAIL` | No | `agent@sokogate.com` | SendGrid sender address |
+| `COMMENT_AGENT_DAILY_LIMIT` | No | `25` | Max comments/day per agent (spec: 20–30) |
+| `COMMENT_AGENT_MIN_DELAY` | No | `180` | Min delay between comments in seconds (spec: 3 min) |
+| `COMMENT_AGENT_MAX_DELAY` | No | `480` | Max delay between comments in seconds (spec: 8 min) |
+| `APIFY_API_KEY` | For Phase 3 | — | Apify API key for auto-ingestion (get at [console.apify.com](https://console.apify.com/)) |
+| `APIFY_FACEBOOK_ACTOR` | No | `apify/facebook-posts-scraper` | Apify Facebook scraper Actor ID |
+| `APIFY_LINKEDIN_ACTOR` | No | `curiosum/linkedin-post-scraper` | Apify LinkedIn scraper Actor ID |
+
+> **Email:** Choose **SendGrid** (recommended) **or** Nodemailer SMTP. If neither is configured, sourcing alerts are logged to the console in dev mode.
+> **AI engine:** NVIDIA is the primary AI (tested daily with free tier). Claude is the automatic fallback — when NVIDIA is rate-limited or unavailable, the system transparently switches to Claude without any agent-facing disruption.
 
 ---
 
