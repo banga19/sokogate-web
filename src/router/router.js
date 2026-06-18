@@ -261,6 +261,16 @@ export const routes = [
                 name: "aboutus",
                 component: () => import("@/pages/personal-center/aboutus")
             },
+            {
+                path: "/v2/comment-agent",
+                name: "commentAgent",
+                component: () => import("@/pages/comment-agent/index.vue"),
+            },
+            {
+                path: "/v2/hq-dashboard",
+                name: "hqDashboard",
+                component: () => import("@/pages/hq-dashboard/index.vue"),
+            },
         ],
     },
     {

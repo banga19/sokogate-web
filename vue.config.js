@@ -169,7 +169,7 @@ module.exports = {
                 // 是否删除源文件，默认: false          deleteOriginalAssets: false
             }),
             new SitemapPlugin({
-                base: process.env.VUE_APP_V2_HOMEPAGE_URL,
+                base: process.env.VUE_APP_V2_HOMEPAGE_URL || 'https://www.sokogate.com',
                 paths: paths.map(x => x.path),
                 options: {
                     filename: 'sitemap.xml',
@@ -184,7 +184,7 @@ module.exports = {
         config.plugins.delete('prefetch');
     },
     outputDir: process.env.outputDir,
-    publicPath: process.env.publicPath,
+    publicPath: '/',
     lintOnSave: false,
     // source map
     productionSourceMap: false,

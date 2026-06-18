@@ -368,6 +368,94 @@ export async function OnboardingSubmit(params) {
   });
 }
 
+// ──────────────────────────────────────────────
+// Comment Agent API — for ground agent tool
+// ──────────────────────────────────────────────
+
+/**
+ * Analyze a social media post and generate comment or sourcing alert.
+ */
+export function AnalyzeCommentAgentPost(params) {
+  return request({
+    url: `comment-agent/analyze-post`,
+    method: "POST",
+    data: params,
+    auth: 1,
+  });
+}
+
+/**
+ * Preview analysis only (no comment/alert generated).
+ */
+export function AnalyzeCommentAgentOnly(params) {
+  return request({
+    url: `comment-agent/analyze-only`,
+    method: "POST",
+    data: params,
+    auth: 1,
+  });
+}
+
+/**
+ * List comment leads.
+ */
+export function GetCommentLeads(params) {
+  return request({
+    url: `comment-agent/leads`,
+    method: "POST",
+    data: params,
+    auth: 1,
+  });
+}
+
+/**
+ * List sourcing alerts.
+ */
+export function GetSourcingAlerts(params) {
+  return request({
+    url: `comment-agent/alerts`,
+    method: "POST",
+    data: params,
+    auth: 1,
+  });
+}
+
+/**
+ * Confirm that a comment was posted.
+ */
+export function ConfirmCommentPosted(params) {
+  return request({
+    url: `comment-agent/leads/confirm-post`,
+    method: "POST",
+    data: params,
+    auth: 1,
+  });
+}
+
+/**
+ * Mark a sourcing alert's supplier as listed.
+ */
+export function MarkSupplierListed(params) {
+  return request({
+    url: `comment-agent/alerts/mark-listed`,
+    method: "POST",
+    data: params,
+    auth: 1,
+  });
+}
+
+/**
+ * Get HQ dashboard aggregated statistics.
+ */
+export function GetCommentAgentDashboard(params) {
+  return request({
+    url: `comment-agent/dashboard`,
+    method: "POST",
+    data: params,
+    auth: 1,
+  });
+}
+
 export async function GetHermesPersonalizedFeed(params) {
   return request({
     url: `hermes/personalizedFeed`,

@@ -8,7 +8,8 @@
     "build:test": "vue-cli-service build --mode test",
     "start": "vue-cli-service serve --port 4500 --watch",
     "sync:prod": "yarn build && ~/ossutilmac64 cp -r ./dist/ oss://www-sokogate-com/ -u",
-    "sync:test": "yarn build:test && ~/ossutilmac64 cp -r ./test/ oss://www-sokogate-test/ -u"
+    "sync:test": "yarn build:test && ~/ossutilmac64 cp -r ./test/ oss://www-sokogate-test/ -u",
+    "test:e2e:comment-agent": "npx playwright test tests/e2e/comment-agent.spec.js --config=tests/e2e/playwright.config.js"
   },
   "dependencies": {
     "@paystack/inline-js": "^2.12.6",

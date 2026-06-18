@@ -79,6 +79,12 @@
             <el-dropdown-item command="my-sokogate">
               {{ $t("layout.my-sokogate") }}
             </el-dropdown-item>
+            <el-dropdown-item command="comment-agent" divided>
+              🤖 Comment Agent
+            </el-dropdown-item>
+            <el-dropdown-item command="hq-dashboard">
+              📊 HQ Dashboard
+            </el-dropdown-item>
             <el-dropdown-item command="exit">
               {{ $t("login.out") }}
             </el-dropdown-item>
@@ -155,6 +161,10 @@ export default {
         this.$router.push('/v2/collection/collection')
       } else if (command === 'my-sokogate') {
         this.$router.push({ name: 'Personal Center' })
+      } else if (command === 'comment-agent') {
+        this.$router.push('/v2/comment-agent')
+      } else if (command === 'hq-dashboard') {
+        this.$router.push('/v2/hq-dashboard')
       }
     },
     initLocalStorage() {

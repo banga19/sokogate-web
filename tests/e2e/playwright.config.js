@@ -55,14 +55,13 @@ const config = {
   outputDir: 'test-results',
 };
 
-// In CI, auto-start the frontend dev server before tests and shut it down after
-if (process.env.CI) {
-  config.webServer = {
-    command: 'npx vue-cli-service serve --port 4500',
-    port: 4500,
-    timeout: 120000,
-    reuseExistingServer: false,
-  };
-}
+// Auto-start the frontend dev server before tests and shut it down after.
+// In CI this is required; locally it allows running tests with a single command.
+config.webServer = {
+  command: 'npx vue-cli-service serve --port 4500',
+  port: 4500,
+  timeout: 120000,
+  reuseExistingServer: true,
+};
 
 module.exports = defineConfig(config);

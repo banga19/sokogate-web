@@ -10,8 +10,8 @@
       </b-carousel-slide>
     </b-carousel>
 
-    <el-skeleton v-else slot="placeholder" style="width: 100%; height: 100%" :loading="true" animated>
-      <template slot="template">
+    <el-skeleton v-else style="width: 100%; height: 100%" :loading="true" animated>
+      <template #default>
         <el-skeleton-item variant="image" style="width: 100%; height: 100%" />
       </template>
     </el-skeleton>
