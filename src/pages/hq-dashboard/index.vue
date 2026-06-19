@@ -157,7 +157,7 @@
 
       <!-- Dashboard Content (wrapped for PDF export) -->
       <div v-else-if="data" id="pdfDom">
-        <!-- KPI Cards Row -->
+        <!-- KPI Cards Row + Markets Quick Access -->
         <b-row class="kpi-row">
           <b-col cols="6" md="4" lg="2" class="kpi-col" v-for="kpi in kpis" :key="kpi.label">
             <b-card class="kpi-card" no-body>
@@ -168,6 +168,30 @@
                 <div class="kpi-value">{{ kpi.value }}</div>
                 <div class="kpi-label">{{ kpi.label }}</div>
                 <div class="kpi-sub" v-if="kpi.sub">{{ kpi.sub }}</div>
+              </b-card-body>
+            </b-card>
+          </b-col>
+        </b-row>
+
+        <!-- Market Pages Quick Access -->
+        <b-row class="mb-4">
+          <b-col cols="12">
+            <b-card class="chart-card" no-body>
+              <b-card-header class="card-header-custom">
+                <span><i class="el-icon-connection"></i> Zero-Click SEO Market Pages</span>
+                <el-tag size="mini" type="success" effect="dark">8 Live</el-tag>
+              </b-card-header>
+              <b-card-body>
+                <div class="market-grid">
+                  <div v-for="m in marketLinks" :key="m.code" class="market-card" @click="goMarket(m.slug)">
+                    <div class="market-flag">{{ m.flag }}</div>
+                    <div class="market-info">
+                      <div class="market-name">{{ m.name }}</div>
+                      <div class="market-slug">{{ m.slug }}</div>
+                    </div>
+                    <div class="market-arrow"><i class="el-icon-arrow-right"></i></div>
+                  </div>
+                </div>
               </b-card-body>
             </b-card>
           </b-col>
@@ -574,15 +598,28 @@ export default {
         postedRate: parseInt(a.total) > 0 ? Math.round((parseInt(a.posted) || 0) / parseInt(a.total) * 100) : 0,
       }))
     },
-    trendDayCount() {
-      if (this.activePreset === 'last7') return 7
-      if (this.activePreset === 'last30') return 30
-      if (this.activePreset === 'last90') return 90
-      if (this.activePreset === 'custom' && this.customStartDate && this.customEndDate) {
-        const diff = new Date(this.customEndDate) - new Date(this.customStartDate)
-        return Math.max(Math.ceil(diff / (1000 * 60 * 60 * 24)) + 1, 1)
-      }
-      return 14 // default
+      trendDayCount() {
+        if (this.activePreset === 'last7') return 7
+        if (this.activePreset === 'last30') return 30
+        if (this.activePreset === 'last90') return 90
+        if (this.activePreset === 'custom' && this.customStartDate && this.customEndDate) {
+          const diff = new Date(this.customEndDate) - new Date(this.customStartDate)
+          return Math.max(Math.ceil(diff / (1000 * 60 * 60 * 24)) + 1, 1)
+        }
+        return 14 // default
+      },
+      marketLinks() {
+        return [
+          { code: 'GN', name: 'Guinea', slug: '/guinea', flag: '🇬🇳' },
+          { code: 'SN', name: 'Senegal', slug: '/senegal', flag: '🇸🇳' },
+          { code: 'GH', name: 'Ghana', slug: '/ghana', flag: '🇬🇭' },
+          { code: 'CI', name: 'Côte d\'Ivoire', slug: '/cote-divoire', flag: '🇨🇮' },
+          { code: 'CM', name: 'Cameroon', slug: '/cameroon', flag: '🇨🇲' },
+          { code: 'SL', name: 'Sierra Leone', slug: '/sierra-leone', flag: '🇸🇱' },
+          { code: 'KE', name: 'Kenya', slug: '/kenya', flag: '🇰🇪' },
+          { code: 'ZW', name: 'Zimbabwe', slug: '/zimbabwe', flag: '🇿🇼' },
+        ]
+      },
     },
   },
   created() {
@@ -595,6 +632,9 @@ export default {
     this.stopAutoRefresh()
   },
   methods: {
+    goMarket(slug) {
+      window.open(`https://sokogate.com${slug}`, '_blank')
+    },
     buildDateParams() {
       const params = {}
       if (this.activePreset === 'custom' && this.appliedStartDate && this.appliedEndDate) {
@@ -1313,6 +1353,62 @@ export default {
           padding: 3px 14px;
           border-radius: 16px;
         }
+      }
+    }
+  }
+
+  // ── Market Grid ──
+  .market-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+
+    .market-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      border: 1px solid #f0f0f0;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        border-color: #ef2e22;
+        background: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(239, 46, 34, 0.1);
+      }
+
+      .market-flag {
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .market-info {
+        flex: 1;
+        min-width: 0;
+
+        .market-name {
+          font-size: 13px;
+          font-weight: 600;
+          color: #1a1a2e;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .market-slug {
+          font-size: 12px;
+          color: #6c757d;
+          font-family: monospace;
+        }
+      }
+
+      .market-arrow {
+        color: #adb5bd;
+        font-size: 14px;
       }
     }
   }
