@@ -28,7 +28,7 @@
     "google-libphonenumber": "^3.2.27",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
-    "moment": "^2.29.4",
+    "moment": "^2.30.1",
     "qrcodejs2": "^0.0.2",
     "url-loader": "^4.1.1",
     "v-distpicker": "^1.2.12",
