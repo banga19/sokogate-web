@@ -55,7 +55,7 @@ jobs:
       - run: cp .env.example .env
       - run: yarn test
       - name: Upload coverage
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: coverage
           path: coverage/
