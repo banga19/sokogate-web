@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 env:
-  NODE_VERSION: '20'
+  NODE_VERSION: '22'
   DOCKER_REGISTRY: registry.cn-hongkong.aliyuncs.com
 
 jobs:
@@ -71,7 +71,7 @@ jobs:
         run: echo "${{ secrets.ALIYUN_DOCKER_PASSWORD }}" | docker login ${{ env.DOCKER_REGISTRY }} -u "${{ secrets.ALIYUN_DOCKER_USERNAME }}" --password-stdin
       - name: Build Frontend
         run: |
-          docker build -t ${{ env.DOCKER_REGISTRY }}/sokogate/frontend:latest -t ${{ env.DOCKER_REGISTRY }}/sokogate/frontend:${{ github.sha }} -f frontend/Dockerfile ./frontend
+          docker build -t ${{ env.DOCKER_REGISTRY }}/sokogate/frontend:latest -t ${{ env.DOCKER_REGISTRY }}/sokogate/frontend:${{ github.sha }} -f frontend/Dockerfile .
       - name: Build Backend
         run: |
           docker build -t ${{ env.DOCKER_REGISTRY }}/sokogate/backend:latest -t ${{ env.DOCKER_REGISTRY }}/sokogate/backend:${{ github.sha }} -f backend/Dockerfile ./backend
@@ -95,6 +95,7 @@ jobs:
           script: |
             cd /opt/sokogate
             docker compose pull
+            docker compose run --rm api npx sequelize-cli db:migrate
             docker compose up -d --remove-orphans
             docker system prune -f
 
@@ -113,4 +114,5 @@ jobs:
           script: |
             cd /opt/sokogate-staging
             git pull origin develop
+            docker compose -f docker-compose.staging.yml run --rm api npx sequelize-cli db:migrate
             docker compose -f docker-compose.staging.yml up -d --build --remove-orphans

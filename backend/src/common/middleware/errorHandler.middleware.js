@@ -1,17 +1,18 @@
 const logger = require('../logger/logger');
 const { AppError } = require('../utils/errors');
+const config = require('../../config');
 
 /**
  * Global error handler — catches all errors and returns standardized response
  */
 function errorHandler(err, req, res, _next) {
-  // Log error
+  const safeBody = config.env === 'production' ? '[REDACTED]' : req.body;
   logger.error(`${req.method} ${req.originalUrl} - ${err.message}`, {
     error: err.message,
-    stack: err.stack,
+    stack: config.env === 'production' ? undefined : err.stack,
     requestId: req.id,
     userId: req.user?.id,
-    body: req.body,
+    body: safeBody,
   });
 
   // If it's our custom AppError

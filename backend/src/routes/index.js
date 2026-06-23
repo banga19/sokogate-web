@@ -58,30 +58,7 @@ router.use('/comment-agent', require('../modules/commentAgent/commentAgent.route
 // Comment Agent — Apify Scraper routes (auto-ingestion)
 router.use('/comment-agent/scraper', require('../modules/commentAgent/scraperRoutes'));
 
-// Hermes AI routes
-const { User } = require('../common/database/models');
-const { authenticate } = require('../common/middleware/auth.middleware');
-const { success } = require('../common/utils/apiResponse');
-
-router.post('/hermes/personalizedFeed', authenticate, async (req, res, next) => {
-  try {
-    return success(res, { items: [], hasMore: false });
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.post('/hermes/updateUserPreference', authenticate, async (req, res, next) => {
-  try {
-    const user = await User.findByPk(req.user.id);
-    if (user) {
-      user.onboarding_data = { ...(user.onboarding_data || {}), preferences: req.body };
-      await user.save();
-    }
-    return success(res, { message: 'Preference updated' });
-  } catch (err) {
-    next(err);
-  }
-});
+// Hermes AI routes (personalized feed, user preferences)
+router.use('/hermes', require('../modules/hermes/hermes.routes'));
 
 module.exports = router;

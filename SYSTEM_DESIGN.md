@@ -534,7 +534,7 @@ sokogate-web (Vue 2.7.16)
 
 | Component | Technology | Reason |
 |-----------|-----------|--------|
-| **Runtime** | Node.js 20 LTS | Team familiarity, NPM ecosystem |
+| **Runtime** | Node.js 22 LTS | Runtime |
 | **Framework** | Express.js 4.x | Mature, well-known, extensive middleware |
 | **Language** | JavaScript → TypeScript (incremental) | Type safety |
 | **Database** | PostgreSQL 16 | ACID compliance, JSONB support, full-text search |
@@ -829,7 +829,7 @@ Permission Matrix:
 **Frontend Dockerfile:**
 ```dockerfile
 # Build stage
-FROM node:20-alpine AS build
+FROM node:22-alpine AS build
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
@@ -846,7 +846,7 @@ CMD ["nginx", "-g", "daemon off;"]
 
 **Backend Dockerfile:**
 ```dockerfile
-FROM node:20-alpine
+FROM node:22-alpine
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install --production --frozen-lockfile
@@ -1001,7 +1001,7 @@ on:
     branches: [main]
 
 env:
-  NODE_VERSION: '20'
+  NODE_VERSION: '22'
   DOCKER_REGISTRY: registry.cn-hongkong.aliyuncs.com
 
 jobs:

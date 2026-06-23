@@ -7,4 +7,5 @@ Sitemap: https://sokogate.com/sitemap.xml
 Disallow: /dashboard/
 Disallow: /admin/
 Disallow: /api/
+Disallow: /v2/
 Disallow: /login

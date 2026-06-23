@@ -73,6 +73,19 @@ export function UsedCinetPay(params) {
   });
 }
 
+/**
+ * Flutterwave payment verification — called after client-side modal completes.
+ * Verifies the transaction server-to-server with Flutterwave API.
+ */
+export function verifyFlutterwavePayment(params) {
+  return request({
+    url: `flutterwave/verify`,
+    method: "POST",
+    data: params,
+    auth: 1,
+  });
+}
+
 /** quikkPay payment */
 export function UsedQuikkPay(params) {
   return request({
@@ -556,6 +569,16 @@ export function Forget(params) {
   });
 }
 
+// Google SSO — exchange Google ID token for app session
+export function GoogleSSO(params) {
+  return request({
+    url: `google-sso`,
+    method: "POST",
+    data: params,
+    auth: 0,
+  });
+}
+
 // Create verification code
 export function AddVerifyCode(params) {
   return request({
@@ -596,7 +619,7 @@ export function GetCategoryChildenList(params) {
   });
 }
 
-// Get product list
+// Get store product list (uses getSpuList backend route)
 export function GetStoreSpuList(params) {
   return request({
     url: `getSpuList`,

@@ -45,13 +45,10 @@
 </template>
 
 <script>
-// import PayPal from "vue-paypal-checkout";
-// import klasha from "vue-klasha";
+// PayPal and Klasha — currently disabled. Enable by installing the respective packages.
 export default {
   components: {
     OfflinePayment,
-    // PayPal,
-    // klasha
   },
   props: {
     type: {

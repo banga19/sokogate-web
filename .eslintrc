@@ -6,6 +6,12 @@
         "ecmaVersion": 2020
     },
     "rules": {
-        "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }]
+        "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+        "no-console": ["warn", { "allow": ["warn", "error"] }],
+        "prefer-const": "warn",
+        "no-var": "warn",
+        "eqeqeq": ["warn", "smart"],
+        "no-trailing-spaces": "warn",
+        "eol-last": ["warn", "always"]
     }
 }

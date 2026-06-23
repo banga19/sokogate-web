@@ -65,8 +65,7 @@ import Paystack from "./Paystack";
 // import CashenvoyPay from "./CashenvoyPay.vue";
 // import Sharepaybyothers from "./Sharepaybyothers.vue";
 import Paydunya from "./Paydunya";
-// import Stripe from "./Stripe.vue";
-// import FlutterwaveTest from "./FlutterwaveTest.vue";
+// Stripe and FlutterwaveTest — currently disabled.
 export default {
   components: {
     Alipay,

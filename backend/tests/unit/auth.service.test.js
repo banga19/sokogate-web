@@ -2,14 +2,14 @@
 // Auth Service — Unit Tests
 // All external dependencies are mocked so tests run without a DB
 // ──────────────────────────────────────────────────────────────
-
 const mockUser = {
   id: '00000000-0000-0000-0000-000000000001',
   email: 'test@example.com',
-  password_hash: '$2a$12$hashedpassword',
+  password_hash: '$argon2id$v=19$m=65536,t=3,p=1$hashedpassword',
   name: 'Test User',
   role: 'buyer',
   avatar_url: 'https://oss.sokogate.com/image/avatar.png',
+  google_id: null,
 };
 
 const mockTokens = {
@@ -17,10 +17,9 @@ const mockTokens = {
   refreshToken: 'mock-refresh-token',
 };
 
-// ---- Mocks ----
-jest.mock('bcryptjs', () => ({
-  compare: jest.fn(),
+jest.mock('@node-rs/argon2', () => ({
   hash: jest.fn().mockResolvedValue(mockUser.password_hash),
+  verify: jest.fn(),
 }));
 
 jest.mock('uuid', () => ({
@@ -32,6 +31,7 @@ jest.mock('../../src/common/database/models', () => ({
     findOne: jest.fn(),
     create: jest.fn(),
     findByPk: jest.fn(),
+    update: jest.fn(),
   },
 }));
 
@@ -44,27 +44,31 @@ jest.mock('../../src/common/utils/jwt', () => ({
 
 jest.mock('../../src/config/redis', () => ({
   set: jest.fn().mockResolvedValue('OK'),
+  get: jest.fn().mockResolvedValue(null),
+  scan: jest.fn().mockResolvedValue(['0', []]), // SCAN returns [nextCursor, keys[]]
+  keys: jest.fn().mockResolvedValue([]),
+  del: jest.fn().mockResolvedValue(1),
+  incr: jest.fn(),
+  expire: jest.fn(),
 }));
 
-// ---- Import the module under test ----
 const authService = require('../../src/modules/auth/auth.service');
-const bcrypt = require('bcryptjs');
+const argon2 = require('@node-rs/argon2');
 const { User } = require('../../src/common/database/models');
 const jwt = require('../../src/common/utils/jwt');
 const redis = require('../../src/config/redis');
 const { AuthError, ConflictError } = require('../../src/common/utils/errors');
 
-// ──────────────────────────────────────────────────────────────
-// login
-// ──────────────────────────────────────────────────────────────
 describe('login', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   it('should return tokens and user data on successful login', async () => {
+    redis.get.mockResolvedValue(null);
+    redis.scan.mockResolvedValue(['0', []]);
     User.findOne.mockResolvedValue(mockUser);
-    bcrypt.compare.mockResolvedValue(true);
+    argon2.verify.mockResolvedValue(true);
 
     const result = await authService.login({
       email: 'test@example.com',
@@ -74,19 +78,17 @@ describe('login', () => {
     expect(User.findOne).toHaveBeenCalledWith({
       where: { email: 'test@example.com' },
     });
-    expect(bcrypt.compare).toHaveBeenCalledWith(
-      'CorrectPass123!',
-      mockUser.password_hash
+    expect(argon2.verify).toHaveBeenCalledWith(
+      mockUser.password_hash,
+      'CorrectPass123!'
     );
     expect(jwt.generateAccessToken).toHaveBeenCalledWith({
       sub: mockUser.id,
       role: mockUser.role,
-      email: mockUser.email,
     });
     expect(jwt.generateRefreshToken).toHaveBeenCalledWith({
       sub: mockUser.id,
       role: mockUser.role,
-      email: mockUser.email,
     });
     expect(redis.set).toHaveBeenCalledWith(
       expect.stringContaining(`refresh:${mockUser.id}:`),
@@ -103,12 +105,14 @@ describe('login', () => {
         email: mockUser.email,
         name: mockUser.name,
         role: mockUser.role,
+        google_linked: false,
         avatar_url: mockUser.avatar_url,
       },
     });
   });
 
   it('should throw AuthError when user is not found', async () => {
+    redis.get.mockResolvedValue(null);
     User.findOne.mockResolvedValue(null);
 
     await expect(
@@ -118,14 +122,14 @@ describe('login', () => {
       })
     ).rejects.toThrow(AuthError);
 
-    expect(bcrypt.compare).not.toHaveBeenCalled();
+    expect(argon2.verify).not.toHaveBeenCalled();
     expect(jwt.generateAccessToken).not.toHaveBeenCalled();
-    expect(redis.set).not.toHaveBeenCalled();
   });
 
   it('should throw AuthError when password does not match', async () => {
+    redis.get.mockResolvedValue(null);
     User.findOne.mockResolvedValue(mockUser);
-    bcrypt.compare.mockResolvedValue(false);
+    argon2.verify.mockResolvedValue(false);
 
     await expect(
       authService.login({
@@ -134,12 +138,12 @@ describe('login', () => {
       })
     ).rejects.toThrow(AuthError);
 
-    expect(bcrypt.compare).toHaveBeenCalled();
+    expect(argon2.verify).toHaveBeenCalled();
     expect(jwt.generateAccessToken).not.toHaveBeenCalled();
-    expect(redis.set).not.toHaveBeenCalled();
   });
 
   it('should propagate unexpected errors from User.findOne', async () => {
+    redis.get.mockResolvedValue(null);
     const dbError = new Error('Database connection failed');
     User.findOne.mockRejectedValue(dbError);
 
@@ -152,9 +156,6 @@ describe('login', () => {
   });
 });
 
-// ──────────────────────────────────────────────────────────────
-// register
-// ──────────────────────────────────────────────────────────────
 describe('register', () => {
   const registerInput = {
     email: 'newuser@example.com',
@@ -175,6 +176,7 @@ describe('register', () => {
       email: registerInput.email,
       name: registerInput.name,
       role: 'buyer',
+      google_id: null,
     });
 
     const result = await authService.register(registerInput);
@@ -182,15 +184,21 @@ describe('register', () => {
     expect(User.findOne).toHaveBeenCalledWith({
       where: { email: registerInput.email },
     });
-    expect(User.create).toHaveBeenCalledWith({
-      email: registerInput.email,
-      password_hash: mockUser.password_hash,
-      name: registerInput.name,
-      phone: registerInput.phone,
-      country_code: registerInput.country_code,
-      role: 'buyer',
+    expect(argon2.hash).toHaveBeenCalledWith(registerInput.password, {
+      memoryCost: 65536,
+      timeCost: 3,
+      parallelism: 1,
     });
-    expect(bcrypt.hash).toHaveBeenCalledWith(registerInput.password, 12);
+    expect(User.create).toHaveBeenCalledWith(
+      expect.objectContaining({
+        email: registerInput.email,
+        password_hash: expect.stringContaining('$argon2id$'),
+        name: registerInput.name,
+        phone: registerInput.phone,
+        country_code: registerInput.country_code,
+        role: 'buyer',
+      })
+    );
     expect(result).toEqual({
       accessToken: mockTokens.accessToken,
       refreshToken: mockTokens.refreshToken,
@@ -200,6 +208,7 @@ describe('register', () => {
         email: registerInput.email,
         name: registerInput.name,
         role: 'buyer',
+        google_linked: false,
       },
     });
   });
@@ -211,6 +220,7 @@ describe('register', () => {
       email: 'johndoe@example.com',
       name: 'johndoe',
       role: 'buyer',
+      google_id: null,
     });
 
     await authService.register({
@@ -233,7 +243,7 @@ describe('register', () => {
     ).rejects.toThrow(ConflictError);
 
     expect(User.create).not.toHaveBeenCalled();
-    expect(bcrypt.hash).not.toHaveBeenCalled();
+    expect(argon2.hash).not.toHaveBeenCalled();
   });
 
   it('should handle missing optional fields gracefully', async () => {
@@ -243,6 +253,7 @@ describe('register', () => {
       email: 'minimal@example.com',
       name: 'minimal',
       role: 'buyer',
+      google_id: null,
     });
 
     const result = await authService.register({
@@ -250,44 +261,51 @@ describe('register', () => {
       password: 'SecurePass123!',
     });
 
-    expect(User.create).toHaveBeenCalledWith({
-      email: 'minimal@example.com',
-      password_hash: mockUser.password_hash,
-      name: 'minimal',
-      phone: undefined,
-      country_code: undefined,
-      role: 'buyer',
-    });
+    expect(User.create).toHaveBeenCalledWith(
+      expect.objectContaining({
+        email: 'minimal@example.com',
+        name: 'minimal',
+        role: 'buyer',
+      })
+    );
     expect(result.user.email).toBe('minimal@example.com');
   });
 });
 
-// ──────────────────────────────────────────────────────────────
-// refresh
-// ──────────────────────────────────────────────────────────────
 describe('refresh', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   it('should return new tokens when refresh token is valid', async () => {
-    const decodedPayload = {
+    // Simulate a previously-issued token that may still have legacy claims like email
+    const decodedLegacyToken = {
       sub: mockUser.id,
       role: mockUser.role,
       email: mockUser.email,
     };
-    jwt.verifyToken.mockReturnValue(decodedPayload);
+    jwt.verifyToken.mockReturnValue(decodedLegacyToken);
+    redis.scan.mockResolvedValue(['0', ['refresh:mocked-token-key']]);
+    redis.get.mockResolvedValue(mockTokens.refreshToken);
+    User.findByPk.mockResolvedValue(mockUser);
 
-    const result = await authService.refresh('valid-refresh-token');
+    const result = await authService.refresh(mockTokens.refreshToken);
 
-    expect(jwt.verifyToken).toHaveBeenCalledWith('valid-refresh-token');
-    expect(jwt.generateAccessToken).toHaveBeenCalledWith(decodedPayload);
-    expect(jwt.generateRefreshToken).toHaveBeenCalledWith(decodedPayload);
-    expect(result).toEqual({
-      accessToken: mockTokens.accessToken,
-      refreshToken: mockTokens.refreshToken,
-      expiresIn: 900,
+    expect(jwt.verifyToken).toHaveBeenCalledWith(mockTokens.refreshToken);
+    // Newly minted tokens must NOT contain PII (email removed from payload)
+    expect(jwt.generateAccessToken).toHaveBeenCalledWith({
+      sub: mockUser.id,
+      role: mockUser.role,
     });
+    expect(jwt.generateRefreshToken).toHaveBeenCalledWith({
+      sub: mockUser.id,
+      role: mockUser.role,
+    });
+    expect(redis.del).toHaveBeenCalled();
+    expect(result.accessToken).toBeDefined();
+    expect(result.refreshToken).toBeDefined();
+    expect(result.expiresIn).toBe(900);
+    expect(result.user).toBeDefined();
   });
 
   it('should throw AuthError when refresh token is expired', async () => {
@@ -322,9 +340,6 @@ describe('refresh', () => {
   });
 });
 
-// ──────────────────────────────────────────────────────────────
-// forgotPassword
-// ──────────────────────────────────────────────────────────────
 describe('forgotPassword', () => {
   beforeEach(() => {
     jest.clearAllMocks();

@@ -20,6 +20,10 @@
   <link rel="apple-touch-icon" href="<%= BASE_URL %>img/icons/apple-touch-icon.png">
   <title><%= htmlWebpackPlugin.options.title %></title>
   <!-- Google Analytics (Consolidated — single GA4 tag) -->
+  <!-- SRI NOTE: gtag.js from googletagmanager.com is dynamically updated by Google,     -->
+  <!-- making a static integrity hash infeasible. Google does not provide CORS headers   -->
+  <!-- required for SRI validation. CSP script-src restricts execution to the allowed    -->
+  <!-- origin as an alternative security measure.                                       -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3N56WXZDE0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];

@@ -13,6 +13,7 @@ const Banner = require('./Banner');
 const Upload = require('./Upload');
 const ExchangeRate = require('./ExchangeRate');
 const VerificationCode = require('./VerificationCode');
+const LoginAttempt = require('./LoginAttempt');
 const Session = require('./Session');
 const ImChat = require('./ImChat');
 const CommentLead = require('./CommentLead');
@@ -100,6 +101,7 @@ const models = {
   Upload,
   ExchangeRate,
   VerificationCode,
+  LoginAttempt,
   Session,
   ImChat,
   CommentLead,

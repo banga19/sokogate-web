@@ -356,12 +356,15 @@ describe('BannerList.vue', () => {
       expect(wrapper.vm.list[0].image).toBe('https://oss.example.com/summer.jpg');
     });
 
-    it('should handle empty rows array', async () => {
+    it('should fall back to static banners when API returns empty rows', async () => {
       GetBannerList.mockResolvedValue({ data: { rows: [] } });
       const wrapper = createBannerListWrapper();
       await flushPromises();
 
-      expect(wrapper.vm.list).toEqual([]);
+      // Component falls back to STATIC_BANNERS (6 items) when rows is empty
+      expect(wrapper.vm.list.length).toBe(6);
+      expect(wrapper.vm.list[0].jumpContent).toBeDefined();
+      expect(wrapper.emitted('success')).toBeTruthy();
     });
   });
 
@@ -409,32 +412,40 @@ describe('BannerList.vue', () => {
   // Edge cases
   // ──────────────────────────────────────────────────────────────
   describe('edge cases', () => {
-    it('should handle null res.data gracefully', async () => {
+    it('should fall back to static banners when API returns null data', async () => {
       GetBannerList.mockResolvedValue({ data: null });
       const wrapper = createBannerListWrapper();
       await flushPromises();
 
-      expect(wrapper.vm.list).toEqual([]);
+      // Component falls back to STATIC_BANNERS (6 items) on null data
+      expect(wrapper.vm.list.length).toBe(6);
+      expect(wrapper.vm.list[0].jumpContent).toBeDefined();
+      expect(wrapper.emitted('success')).toBeTruthy();
     });
 
-    it('should handle undefined res.data gracefully', async () => {
+    it('should fall back to static banners when API returns undefined data', async () => {
       GetBannerList.mockResolvedValue({ data: undefined });
       const wrapper = createBannerListWrapper();
       await flushPromises();
 
-      expect(wrapper.vm.list).toEqual([]);
+      // Component falls back to STATIC_BANNERS on undefined data
+      expect(wrapper.vm.list.length).toBe(6);
+      expect(wrapper.vm.list[0].jumpContent).toBeDefined();
+      expect(wrapper.emitted('success')).toBeTruthy();
     });
 
-    it('should handle API error gracefully', async () => {
+    it('should fall back to static banners on API error', async () => {
       GetBannerList.mockRejectedValue(new Error('Network error'));
       const wrapper = createBannerListWrapper();
       await flushPromises();
 
-      // List should remain empty after error
-      expect(wrapper.vm.list).toEqual([]);
+      // Component falls back to STATIC_BANNERS (6 items) in the .catch handler
+      expect(wrapper.vm.list.length).toBe(6);
+      expect(wrapper.vm.list[0].jumpContent).toBeDefined();
+      expect(wrapper.emitted('success')).toBeTruthy();
     });
 
-    it('should emit success event when list has items', async () => {
+    it('should emit success event when list has items from API', async () => {
       GetBannerList.mockResolvedValue({ data: mockBannersArray });
       const wrapper = createBannerListWrapper();
       await flushPromises();
@@ -443,12 +454,14 @@ describe('BannerList.vue', () => {
       expect(wrapper.emitted('success').length).toBe(1);
     });
 
-    it('should NOT emit success event when list is empty', async () => {
+    it('should emit success event even when list uses static fallback', async () => {
       GetBannerList.mockResolvedValue({ data: [] });
       const wrapper = createBannerListWrapper();
       await flushPromises();
 
-      expect(wrapper.emitted('success')).toBeFalsy();
+      // Component falls back to STATIC_BANNERS (has items), so success IS emitted
+      expect(wrapper.vm.list.length).toBe(6);
+      expect(wrapper.emitted('success')).toBeTruthy();
     });
   });
 });
@@ -530,8 +543,8 @@ describe('BannerListMain.vue', () => {
       const wrapper = createBannerListMainWrapper();
       await flushPromises();
 
-      // Should have the static fallback banner
-      expect(wrapper.vm.list.length).toBe(1);
+      // Should have 6 static fallback banners
+      expect(wrapper.vm.list.length).toBe(6);
       expect(wrapper.vm.list[0].title).toBe('SokoGate');
       expect(wrapper.vm.list[0].jumpContent).toContain('sokogate.com');
     });
@@ -541,7 +554,7 @@ describe('BannerListMain.vue', () => {
       const wrapper = createBannerListMainWrapper();
       await flushPromises();
 
-      expect(wrapper.vm.list.length).toBe(1);
+      expect(wrapper.vm.list.length).toBe(6);
       expect(wrapper.vm.list[0].image).toBeDefined();
     });
 
@@ -568,31 +581,33 @@ describe('BannerListMain.vue', () => {
   // Edge cases
   // ──────────────────────────────────────────────────────────────
   describe('edge cases', () => {
-    it('should handle null res.data with fallback', async () => {
+    it('should fall back to static banners when API returns null data', async () => {
       GetBannerList.mockResolvedValue({ data: null });
       const wrapper = createBannerListMainWrapper();
       await flushPromises();
 
-      // Static fallback should kick in
-      expect(wrapper.vm.list.length).toBe(1);
+      // Static fallback (6 items) kicks in
+      expect(wrapper.vm.list.length).toBe(6);
       expect(wrapper.vm.list[0].title).toBe('SokoGate');
     });
 
-    it('should handle undefined res.data with fallback', async () => {
+    it('should fall back to static banners when API returns undefined data', async () => {
       GetBannerList.mockResolvedValue({ data: undefined });
       const wrapper = createBannerListMainWrapper();
       await flushPromises();
 
-      expect(wrapper.vm.list.length).toBe(1);
+      expect(wrapper.vm.list.length).toBe(6);
     });
 
-    it('should handle API error gracefully', async () => {
+    it('should fall back to static banners on API error', async () => {
       GetBannerList.mockRejectedValue(new Error('Network error'));
       const wrapper = createBannerListMainWrapper();
       await flushPromises();
 
-      // List should remain empty — no fallback on error
-      expect(wrapper.vm.list).toEqual([]);
+      // Component falls back to 6 static banners in the .catch handler
+      expect(wrapper.vm.list.length).toBe(6);
+      expect(wrapper.vm.list[0].title).toBe('SokoGate');
+      expect(wrapper.emitted('success')).toBeTruthy();
     });
   });
 });

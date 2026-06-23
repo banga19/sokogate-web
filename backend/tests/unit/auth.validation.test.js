@@ -1,7 +1,6 @@
 // ──────────────────────────────────────────────────────────────
 // Auth Validation — Unit Tests
 // ──────────────────────────────────────────────────────────────
-
 const {
   loginSchema,
   registerSchema,
@@ -9,19 +8,17 @@ const {
   refreshSchema,
   verifyCodeSchema,
   addVerifyCodeSchema,
+  googleLoginSchema,
 } = require('../../src/modules/auth/auth.validation');
 
-// ──────────────────────────────────────────────────────────────
-// loginSchema
-// ──────────────────────────────────────────────────────────────
 describe('loginSchema', () => {
   it('should accept valid login credentials', () => {
-    const { error } = loginSchema.validate({ email: 'test@example.com', password: 'password123' });
+    const { error } = loginSchema.validate({ email: 'test@example.com', password: 'Password123!' });
     expect(error).toBeUndefined();
   });
 
   it('should reject invalid email', () => {
-    const { error } = loginSchema.validate({ email: 'not-an-email', password: 'password123' });
+    const { error } = loginSchema.validate({ email: 'not-an-email', password: 'Password123!' });
     expect(error).toBeDefined();
     expect(error.details[0].message).toContain('valid email');
   });
@@ -29,11 +26,17 @@ describe('loginSchema', () => {
   it('should reject short password', () => {
     const { error } = loginSchema.validate({ email: 'test@example.com', password: '12345' });
     expect(error).toBeDefined();
-    expect(error.details[0].message).toContain('6 characters');
+    expect(error.details[0].message).toContain('12 characters');
+  });
+
+  it('should reject password without complexity', () => {
+    const { error } = loginSchema.validate({ email: 'test@example.com', password: 'alllowercase123' });
+    expect(error).toBeDefined();
+    expect(error.details[0].message).toContain('pattern');
   });
 
   it('should reject missing email', () => {
-    const { error } = loginSchema.validate({ password: 'password123' });
+    const { error } = loginSchema.validate({ password: 'Password123!' });
     expect(error).toBeDefined();
     expect(error.details[0].message).toContain('Email is required');
   });
@@ -45,14 +48,11 @@ describe('loginSchema', () => {
   });
 });
 
-// ──────────────────────────────────────────────────────────────
-// registerSchema
-// ──────────────────────────────────────────────────────────────
 describe('registerSchema', () => {
   it('should accept valid registration data', () => {
     const { error } = registerSchema.validate({
       email: 'new@example.com',
-      password: 'password123',
+      password: 'Password123!',
       name: 'New User',
       phone: '1234567890',
       country_code: 'US',
@@ -63,13 +63,13 @@ describe('registerSchema', () => {
   it('should accept registration with only required fields', () => {
     const { error } = registerSchema.validate({
       email: 'new@example.com',
-      password: 'password123',
+      password: 'Password123!',
     });
     expect(error).toBeUndefined();
   });
 
   it('should reject invalid email', () => {
-    const { error } = registerSchema.validate({ email: 'invalid', password: 'password123' });
+    const { error } = registerSchema.validate({ email: 'invalid', password: 'Password123!' });
     expect(error).toBeDefined();
   });
 
@@ -79,9 +79,6 @@ describe('registerSchema', () => {
   });
 });
 
-// ──────────────────────────────────────────────────────────────
-// forgetSchema
-// ──────────────────────────────────────────────────────────────
 describe('forgetSchema', () => {
   it('should accept valid email', () => {
     const { error } = forgetSchema.validate({ email: 'test@example.com' });
@@ -99,9 +96,6 @@ describe('forgetSchema', () => {
   });
 });
 
-// ──────────────────────────────────────────────────────────────
-// refreshSchema
-// ──────────────────────────────────────────────────────────────
 describe('refreshSchema', () => {
   it('should accept valid refresh token', () => {
     const { error } = refreshSchema.validate({ refreshToken: 'some-token-value' });
@@ -114,9 +108,19 @@ describe('refreshSchema', () => {
   });
 });
 
-// ──────────────────────────────────────────────────────────────
-// verifyCodeSchema
-// ──────────────────────────────────────────────────────────────
+describe('googleLoginSchema', () => {
+  it('should accept valid idToken', () => {
+    const { error } = googleLoginSchema.validate({ idToken: 'google-id-token' });
+    expect(error).toBeUndefined();
+  });
+
+  it('should reject missing idToken', () => {
+    const { error } = googleLoginSchema.validate({});
+    expect(error).toBeDefined();
+    expect(error.details[0].message).toContain('idToken is required');
+  });
+});
+
 describe('verifyCodeSchema', () => {
   it('should accept valid verification data', () => {
     const { error } = verifyCodeSchema.validate({
@@ -155,9 +159,6 @@ describe('verifyCodeSchema', () => {
   });
 });
 
-// ──────────────────────────────────────────────────────────────
-// addVerifyCodeSchema
-// ──────────────────────────────────────────────────────────────
 describe('addVerifyCodeSchema', () => {
   it('should accept valid request with email', () => {
     const { error } = addVerifyCodeSchema.validate({

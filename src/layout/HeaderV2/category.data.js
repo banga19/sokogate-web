@@ -5,26 +5,26 @@ export default [
     },
     {
         name: 'category.Electronics',
-        id: '61b017cca00181bf8190e8ce',
+        id: 'a0000000-0000-0000-0000-000000000001',
         children: [
             {
                 name: 'category.all',
-                id: '61b017cca00181bf8190e8ce',
+                id: 'a0000000-0000-0000-0000-000000000001',
                 img: 'HTTPS://oss.sokogate.com/image/8e497bb9e05d8cd9605f9472da8556fb.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Mobile Phone & Accessories',
-                id: '61b017cca00181bf8190e8d5',
+                id: 'a0000000-0000-0000-0000-000000000011',
                 img: 'HTTPS://oss.sokogate.com/image/9ca68556d04d7d8709b72e49e253678c.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Presentation Equipment',
-                id: '61b017cca00181bf8190e8d6',
+                id: 'a0000000-0000-0000-0000-000000000012',
                 img: 'HTTPS://oss.sokogate.com/image/62271a350e33b457a760e4a4b6150481,jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Earphone & Headphone',
-                id: '61b017cca00181bf8190e8dc',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/2634ce683e1eaa97bdeab7dc25afa2c5,jpeg?x-oss-process=image/format,webp',
             },
             {
@@ -34,83 +34,83 @@ export default [
             },
             {
                 name: 'category.Electronics Cigarettes',
-                id: '61b017cca00181bf8190e8d0',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/ff8f475d01a28b0918fa163682a97a99.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Accessories & Parts',
-                id: '61b017cca00181bf8190e8d1',
+                id: 'a0000000-0000-0000-0000-000000000011',
                 img: 'HTTPS://oss.sokogate.com/image/4c8fa79ddd011710715e5e0c6d5e8e03,jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Camera, Photo & Accessories',
-                id: '61b017cca00181bf8190e8d2',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/b66aa4db8bc0555b7859253e5d77a46c.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Electronics Publications',
-                id: '61b017cca00181bf8190e8d3',
+                id: 'a0000000-0000-0000-0000-000000000011',
                 img: 'HTTPS://oss.sokogate.com/image/ea1a6b4f95f400db5e2b61c927d55346,jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Home Audio, Video & Accessories',
-                id: '61b017cca00181bf8190e8d4',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/d73d44bb940acdd6b1b6c24e718b41b9.jpeg?x-oss-process=image/format,webp',
             },
             // {
             // 	name: 'category.Blockchain Miner',
-            // 	id: '61b017cca00181bf8190e8d7',
+            // 	id: 'a0000000-0000-0000-0000-000000000011',
             // 	img: 'HTTPS://oss.sokogate.com/image/278a4a6e12b1603dd23bb1130a9ba6d3,jpeg?x-oss-process=image/format,webp'
             // },
             {
                 name: 'category.Other Consumer Electronics',
-                id: '61b017cca00181bf8190e8d8',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/a9a38ad18ddc4c89c5bba1ae38648f81,jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Portable Audio, Video & Accessories',
-                id: '61b017cca00181bf8190e8d9',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/27722fa195b4c19c80f8f89c0aad3d88.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Video Game & Accessories',
-                id: '61b017cca00181bf8190e8da',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/90829f3ed85c02d321fd48fc21273084,jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Mobile Phone Parts',
-                id: '61b017cca00181bf8190e8db',
+                id: 'a0000000-0000-0000-0000-000000000011',
                 img: 'HTTPS://oss.sokogate.com/image/9d53f2c936728cdbe7ef6caca77a3e10.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Batteries, Charges & Power Supplies',
-                id: '61b017cca00181bf8190e8dd',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/507cc784b6ee0e3d2fed089fb1eba11b.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Radio & TV Accessories',
-                id: '61b017cca00181bf8190e8de',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/6952dc9248f797e13cc9a047a464198a.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Speaker',
-                id: '61b017cca00181bf8190e8df',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/e383e0f52c537069ad9acafaa36af5e3,jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Television',
-                id: '61b017cca00181bf8190e8e0',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/d5e0fa742b06d42a587daa9e8c20c7af.jpeg?x-oss-process=image/format,webp',
             },
         ],
     },
     {
         name: 'category.Automotive',
-        id: '61b017cca00181bf8190e88a',
+        id: 'a0000000-0000-0000-0000-000000000002',
         children: [
             {
                 name: 'category.all',
-                id: '61b017cca00181bf8190e88a',
+                id: 'a0000000-0000-0000-0000-000000000002',
                 img: 'HTTPS://oss.sokogate.com/image/3c027c0f36c218706f53d8e139123ad7,jpeg?x-oss-process=image/format,webp',
             },
             {
@@ -162,11 +162,11 @@ export default [
     },
     {
         name: 'category.Beauty',
-        id: '61b017cca00181bf8190e8ff',
+        id: 'a0000000-0000-0000-0000-000000000013',
         children: [
             {
                 name: 'category.all',
-                id: '61b017cca00181bf8190e8ff',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/4dd3ab5578cc0542c9ce0079cbda3ab4,jpeg?x-oss-process=image/format,webp',
             },
             {
@@ -268,76 +268,76 @@ export default [
     },
     {
         name: 'category.Appliance',
-        id: '61b017cca00181bf8190e8e1',
+        id: 'a0000000-0000-0000-0000-000000000013',
         children: [
             {
                 name: 'category.all',
-                id: '61b017cca00181bf8190e8e1',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/650be9a323bee7e9721b65180d8953f7,jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Home Appliance Parts',
-                id: '61b017cca00181bf8190e8e5',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/8df5495d1848857c6d448e546cf52fb6,jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Kitchen Appliances',
-                id: '61b017cca00181bf8190e8e7',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/dcf27223519cb3d58165c32f5a318e11,jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Home Heaters',
-                id: '61b017cca00181bf8190e8e6',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/dcf90cd2f6191c034a7f1e2dd6b68eb0.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Air Conditioning Appliances',
-                id: '61b017cca00181bf8190e8e2',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/8e9bf9c17f25e05d8569658e6a01aa02,jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Cleaning Appliances',
-                id: '61b017cca00181bf8190e8e3',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/10533cf0fd5a7232b83f21f5e10fd19d.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Hand Dryers',
-                id: '61b017cca00181bf8190e8e4',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/ada24447650ae64ca29c3d2a7262d98f.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Laundry Appliances',
-                id: '61b017cca00181bf8190e8e8',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/dbb1f59e68704cbf632aa3e025e1bec5,jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Other Home Appliances',
-                id: '61b017cca00181bf8190e8e9',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/f8c167499abd0161cadb39942fa52a3d.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Refrigerators & Freezers',
-                id: '61b017cca00181bf8190e8ea',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/650be9a323bee7e9721b65180d8953f7,jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Water Heaters',
-                id: '61b017cca00181bf8190e8eb',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/27f95f35f9defb2dfe524311363bb9bc.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Water Treatment Appliances',
-                id: '61b017cca00181bf8190e8ec',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/70215f961b31d35d30f0f20afa5380f6,jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Wet Towel Dispensers',
-                id: '61b017cca00181bf8190e8ed',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/80ad11972599200248cadf18368791b2,jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Vacuum Cleaners& Floor Care',
-                id: '61b017cca00181bf8190e8ee',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/44efa45b52902abe8d8d3c0bab9ad4c3,jpeg?x-oss-process=image/format,webp',
             },
         ],
@@ -387,7 +387,7 @@ export default [
             },
             {
                 name: 'category.Hand Dryers',
-                id: '61b017cca00181bf8190e8e4',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/61387cf72ab39a57b75e5d713b831f24,jpeg?x-oss-process=image/format,webp',
             },
             {
@@ -697,82 +697,82 @@ export default [
     },
     {
         name: 'category.Health',
-        id: '61b017cca00181bf8190e8f9',
+        id: 'a0000000-0000-0000-0000-000000000013',
         children: [
             {
                 name: 'category.all',
-                id: '61b017cca00181bf8190e8f9',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/64f871128c15e46f56226a70f9c4422b.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Health Care Products',
-                id: '61b017cca00181bf8190e8fa',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/7be35fb9a97ceb2499d3ce4c9ff1d45d.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Medical Devices',
-                id: '61b017cca00181bf8190e8fb',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/696eef530420911c2bf8212f84fa8329.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Sex Products',
-                id: '61b017cca00181bf8190e8fd',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/02033eece03a05635636d95577822bca.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Other Health& Medical',
-                id: '61b017cca00181bf8190e8fe',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/88c8293c8a12f014af3a1702c1687c3b.jpeg?x-oss-process=image/format,webp',
             },
         ],
     },
     {
         name: 'category.Security',
-        id: '61b017cca00181bf8190e8ef',
+        id: 'a0000000-0000-0000-0000-000000000013',
         children: [
             {
                 name: 'category.all',
-                id: '61b017cca00181bf8190e8ef',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/182ce4beadedca8c6a931cb00afce766,jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Locks & Keys',
-                id: '61b017cca00181bf8190e8f0',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/7393d5641a497ccea7dc14376aac7dcd.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Personal Protective Equipment',
-                id: '61b017cca00181bf8190e8f1',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/38a27820d3cdce1957df48d645134460.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Access Control Systems & Products',
-                id: '61b017cca00181bf8190e8f2',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/c61d204c9d21635e5e40dd1a087d7bff.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.CCTV Products',
-                id: '61b017cca00181bf8190e8f3',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/0ec113bdfcae7a6a1fc98fa626606cff.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Firefighting Supplies',
-                id: '61b017cca00181bf8190e8f4',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/f19b514ef285dcf60124770f8bb7a99f.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Other Security & Protection Products',
-                id: '61b017cca00181bf8190e8f5',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/1fd4f644d964de8fdcbdfda36d068c98.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Roadway Safety',
-                id: '61b017cca00181bf8190e8f6',
+                id: 'a0000000-0000-0000-0000-000000000000',
                 img: 'HTTPS://oss.sokogate.com/image/0e56306a03595d3dc8c8f5a277f3f3ac.jpeg?x-oss-process=image/format,webp',
             },
             {
                 name: 'category.Water Safety Products',
-                id: '61b017cca00181bf8190e8f7',
+                id: 'a0000000-0000-0000-0000-000000000013',
                 img: 'HTTPS://oss.sokogate.com/image/729d6ac64a421a9cd4b0b6c3a0b655ca.jpeg?x-oss-process=image/format,webp',
             },
         ],

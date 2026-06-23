@@ -100,10 +100,13 @@ Vue.use(BootstrapVue);
 Vue.use(VueI18n);
 Vue.use(IconsPlugin);
 
-// Vue.use(Flutterwave, { publicKey: 'FLWPUBK-5dc9f9cd81b9281b66830b32c6d79ff0-X' })
-// Vue.use(Flutterwave, { publicKey: 'FLWPUBK_TEST-e95910eabc6a967b8d27de49be9c69e5-X' })
-// Vue.use(Flutterwave, { publicKey: 'FLWPUBK-5dc9f9cd81b9281b66830b32c6d79ff0-X' })
-Vue.use(Flutterwave, { publicKey: 'FLWPUBK-1970364037b09e3a7f047b75911b4e30-X' })
+// Flutterwave payment gateway — key configured via VUE_APP_FLUTTERWAVE_PUBLIC_KEY env var
+// Conditionally registered — app loads gracefully even if the key is missing.
+if (process.env.VUE_APP_FLUTTERWAVE_PUBLIC_KEY) {
+  Vue.use(Flutterwave, { publicKey: process.env.VUE_APP_FLUTTERWAVE_PUBLIC_KEY })
+} else {
+  console.warn('[Flutterwave] VUE_APP_FLUTTERWAVE_PUBLIC_KEY env var not set — skipping registration. Payment via Flutterwave will not be available.')
+}
 
 ElementLocale.i18n((key, value) => i18n.t(key, value));
 
@@ -127,6 +130,17 @@ Vue.directive("title", {
     document.title = el.dataset.title;
   },
 });
+
+// Global error handler for uncaught errors
+Vue.config.errorHandler = function (err, vm, info) {
+  console.error('Vue Error:', err);
+  console.error('Error Info:', info);
+};
+
+// Global warning handler
+Vue.config.warnHandler = function (msg, vm, trace) {
+  console.warn('Vue Warning:', msg, trace);
+};
 
 window.vm = new Vue({
   el: "#app",

@@ -3,6 +3,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 const compression = require('compression');
 const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
 const config = require('./config');
 const logger = require('./common/logger/logger');
 const { globalLimiter } = require('./common/middleware/rateLimiter.middleware');
@@ -11,6 +12,20 @@ const routes = require('./routes');
 const { metricsMiddleware } = require('./common/middleware/metrics.middleware');
 
 const app = express();
+
+// ---- Trust Proxy (required for Secure cookies behind Nginx) ----
+if (config.env === 'production') {
+  app.set('trust proxy', 1);
+}
+
+// ---- CORS Preflight ----
+app.options('*', cors({
+  origin: config.cors.origin,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'],
+  maxAge: 86400,
+}));
 
 // ---- Sentry Error Tracking (must be first) ----
 if (config.sentry.dsn) {
@@ -37,16 +52,62 @@ if (config.sentry.dsn) {
 }
 
 // ---- Security Middleware ----
-app.use(helmet());
+app.use(helmet({
+  hsts: {
+    maxAge: 31536000,
+    includeSubDomains: true,
+    preload: true,
+  },
+  // Strict CSP for JSON API — "none" default blocks all resource loading.
+  // No scripts, styles, fonts, or plugin content should be served by this API.
+  // frame-ancestors "none" prevents clickjacking (defense-in-depth alongside X-Frame-Options).
+  // reportUri enables violation reporting via CSP_REPORT_URI env var (e.g., Report URI service).
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'none'"],
+      frameAncestors: ["'none'"],
+      baseUri: ["'none'"],
+      formAction: ["'none'"],
+      upgradeInsecureRequests: [],
+      reportUri: process.env.CSP_REPORT_URI || null,
+    },
+  },
+}));
+
 app.use(cors({
   origin: config.cors.origin,
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'x-auth-token'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'],
+  maxAge: 86400,
+}));
+
+// Fetch Metadata: block cross-origin state-changing requests
+app.use((req, res, next) => {
+  if (req.method !== 'GET' && req.method !== 'HEAD' && req.method !== 'OPTIONS') {
+    const site = req.get('sec-fetch-site');
+    if (site && site !== 'same-origin' && site !== 'none') {
+      return res.status(403).json({ errcode: 40304, errmsg: 'Cross-origin request denied', data: null });
+    }
+  }
+  next();
+});
+
+
+// ---- HTTP Parameter Pollution Protection ----
+const hpp = require('hpp');
+app.use(hpp({
+  whitelist: [
+    // Allow duplicate query params for known safe parameters
+    // (e.g., arrays of IDs, multiple sort values)
+  ],
 }));
 
 // ---- Compression ----
 app.use(compression());
+
+// ---- Cookie Parsing (for HttpOnly JWT cookies) ----
+app.use(cookieParser());
 
 // ---- Body Parsing ----
 app.use(express.json({ limit: '10mb' }));

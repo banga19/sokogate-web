@@ -18,7 +18,9 @@ const config = {
     logging: process.env.NODE_ENV === 'development' ? false : false,
     pool: {
       max: 20,
-      min: 5,
+      // In test mode, min=0 prevents Sequelize from eagerly creating connections
+      // during module initialization — avoids a 9s+ hang when PostgreSQL is unavailable.
+      min: process.env.NODE_ENV === 'test' ? 0 : 5,
       idle: 30000,
       acquire: 60000,
     },
@@ -32,7 +34,7 @@ const config = {
   },
 
   jwt: {
-    secret: process.env.JWT_SECRET || 'default-dev-secret-change-in-production',
+    secret: process.env.JWT_SECRET,
     expiresIn: process.env.JWT_EXPIRES_IN || '15m',
     refreshExpiresIn: process.env.JWT_REFRESH_EXPIRES_IN || '7d',
   },
@@ -58,6 +60,8 @@ const config = {
     flutterwave: {
       publicKey: process.env.FLUTTERWAVE_PUBLIC_KEY || '',
       secretKey: process.env.FLUTTERWAVE_SECRET_KEY || '',
+      secretHash: process.env.FLUTTERWAVE_SECRET_HASH || '',
+      webhookUrl: process.env.FLUTTERWAVE_WEBHOOK_URL || '',
     },
     paystack: {
       publicKey: process.env.PAYSTACK_PUBLIC_KEY || '',
@@ -102,6 +106,8 @@ const config = {
     dailyLimit: parseInt(process.env.COMMENT_AGENT_DAILY_LIMIT, 10) || 25,
     minDelaySeconds: parseInt(process.env.COMMENT_AGENT_MIN_DELAY, 10) || 180,
     maxDelaySeconds: parseInt(process.env.COMMENT_AGENT_MAX_DELAY, 10) || 480,
+    sourcingAlertEmail: process.env.SOURCING_ALERT_EMAIL || 'info@sokogate.com',
+    aiEngine: process.env.AI_ENGINE || 'nvidia',
   },
 
   easemob: {
@@ -117,5 +123,26 @@ const config = {
     pass: process.env.SMTP_PASS || '',
   },
 };
+
+const CRITICAL_SECRETS = [
+  'JWT_SECRET',
+  'FLUTTERWAVE_SECRET_KEY',
+  'NVIDIA_API_KEY',
+  'SENDGRID_API_KEY',
+  'OSS_ACCESS_KEY_SECRET',
+];
+
+if (config.env === 'production') {
+  const missing = CRITICAL_SECRETS.filter(k => !process.env[k]);
+  if (missing.length > 0) {
+    throw new Error(`Missing required environment variables: ${missing.join(', ')}`);
+  }
+  if (!config.jwt.secret) {
+    throw new Error('Missing required environment variable: JWT_SECRET');
+  }
+  if (config.db.password === 'changeme') {
+    throw new Error('DB_PASSWORD must be changed from default value in production');
+  }
+}
 
 module.exports = config;

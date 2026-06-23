@@ -1,6 +1,6 @@
 <template>
   <div class="Header">
-    <Tabs class="tabs" v-model="activeName" :stretch="true" @tab-click="handleClick">
+    <Tabs class="tabs" :active-name="activeName" :stretch="true" @tab-click="handleClick">
 <el-tab-pane v-for="item in tabs" :key="item.id" :label="$t(item.name)" :name="item.id" :info="item.name"
        :categoryName="item.categoryName"></el-tab-pane>
     </Tabs>
@@ -17,16 +17,8 @@ export default {
     Tabs
   },
   computed: {
-    topNavActive() {
-      return this.$store.getters['nav/getCurrentNav']
-    },
-    activeName: {
-      get() {
-        return this.$store.state.nav.currentNav ? this.$store.state.nav.currentNav.name : ''
-      },
-      set(val) {
-        this.$store.commit('nav/setCurrentNav', val)
-      }
+    activeName() {
+      return this.$store.state.nav.currentNav ? this.$store.state.nav.currentNav.name : ''
     },
     tabs() {
       return categoryData.map(i => ({ id: i.id, name: i.name, categoryName: i.categoryName }))
@@ -39,6 +31,12 @@ export default {
         window.scrollTo({
           top: 0,
           behavior: "smooth"
+        })
+        this.$router.push('/v2/product/list')
+      } else {
+        this.$router.push({
+          path: '/v2/product/list',
+          query: { cid: name }
         })
       }
       this.$store.commit('nav/setCurrentNav', {

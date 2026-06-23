@@ -2,7 +2,7 @@
  * Comment Agent Service
  *
  * Orchestrates the full pipeline:
- * 1. Analyze post with NVIDIA AI (primary for testing) / Claude (fallback for production)
+ * 1. Analyze post with NVIDIA AI (primary engine) / Claude (fallback)
  * 2. Check catalog for product match (pgvector + keyword)
  * 3A. Generate comment + log lead (if match found)
  * 3B. Generate sourcing alert + send email (if no match)
@@ -12,6 +12,7 @@ const { Op, QueryTypes } = require('sequelize');
 const claudeAiService = require('./claudeAiService');
 const nvidiaAiService = require('./nvidiaAiService');
 const { sendSourcingAlert } = require('./emailService');
+const config = require('../../config');
 const sequelize = require('../../config/database');
 const { CommentLead, SourcingAlert, Product } = require('../../common/database/models');
 const logger = require('../../common/logger/logger');
@@ -20,23 +21,34 @@ const embeddingService = require('./embeddingService');
 const prompts = require('./prompts');
 
 /**
- * Try an AI function with NVIDIA first (primary for testing), falling back to Claude on failure.
+ * Try an AI function with the primary engine first, falling back to the secondary.
+ *
+ * The primary is determined by `config.commentAgent.aiEngine`:
+ *   - 'nvidia' (default): NVIDIA → Claude
+ *   - 'claude':            Claude → NVIDIA
+ *
  * @param {string} name - Operation name for logging
  * @param {Function} nvidiaFn - Async function that calls NVIDIA
  * @param {Function} claudeFn - Async function that calls Claude
  * @returns {Promise<any>}
  */
 async function withAiFallback(name, nvidiaFn, claudeFn) {
+  const primaryEngine = config.commentAgent.aiEngine === 'claude' ? 'claude' : 'nvidia';
+  const [primaryFn, fallbackFn, primaryLabel, fallbackLabel] =
+    primaryEngine === 'claude'
+      ? [claudeFn, nvidiaFn, 'Claude', 'NVIDIA']
+      : [nvidiaFn, claudeFn, 'NVIDIA', 'Claude'];
+
   try {
-    logger.debug(`[CommentAgent] ${name}: trying NVIDIA AI`);
-    return await nvidiaFn();
-  } catch (nvidiaErr) {
-    logger.warn(`[CommentAgent] ${name}: NVIDIA failed (${nvidiaErr.message}), falling back to Claude`);
+    logger.debug(`[CommentAgent] ${name}: trying ${primaryLabel} AI`);
+    return await primaryFn();
+  } catch (primaryErr) {
+    logger.warn(`[CommentAgent] ${name}: ${primaryLabel} failed (${primaryErr.message}), falling back to ${fallbackLabel}`);
     try {
-      return await claudeFn();
-    } catch (claudeErr) {
-      logger.error(`[CommentAgent] ${name}: both NVIDIA and Claude failed`);
-      throw new Error(`AI ${name} failed: NVIDIA: ${nvidiaErr.message} | Claude: ${claudeErr.message}`);
+      return await fallbackFn();
+    } catch (fallbackErr) {
+      logger.error(`[CommentAgent] ${name}: both ${primaryLabel} and ${fallbackLabel} failed`);
+      throw new Error(`AI ${name} failed: ${primaryLabel}: ${primaryErr.message} | ${fallbackLabel}: ${fallbackErr.message}`);
     }
   }
 }
@@ -54,7 +66,7 @@ async function withAiFallback(name, nvidiaFn, claudeFn) {
  * @returns {Promise<{action: string, comment?: string, alert?: string, analysis: Object}>}
  */
 async function analyzeAndRespond({ postText, platform, agentId, agentName, postUrl, agentNote }) {
-  // Step 1: Analyze post with AI (NVIDIA primary for testing, Claude fallback for production)
+  // Step 1: Analyze post with AI (NVIDIA primary engine, Claude fallback)
   logger.info(`[CommentAgent] Analyzing ${platform} post from agent ${agentId}`);
   const analysis = await analyzePost(postText, platform);
 
@@ -130,7 +142,7 @@ async function analyzeAndRespond({ postText, platform, agentId, agentName, postU
 
 /**
  * Step 1: Analyze a post to extract trade intelligence.
- * Uses NVIDIA API (primary for testing) with Claude fallback (for production).
+ * Uses NVIDIA API (primary engine) with Claude fallback.
  */
 async function analyzePost(postText, platform) {
   const systemPrompt = prompts.ANALYSIS_SYSTEM_PROMPT;
@@ -239,7 +251,7 @@ async function checkCatalogMatch(productName, category) {
 
 /**
  * Step 3A: Generate a natural comment for the agent to post.
- * Uses NVIDIA API (primary for testing) with Claude fallback (for production).
+ * Uses NVIDIA API (primary engine) with Claude fallback.
  */
 async function generateComment(postText, analysis, agentName) {
   const systemPrompt = prompts.buildCommentSystemPrompt(agentName);
@@ -264,7 +276,7 @@ async function generateComment(postText, analysis, agentName) {
 
 /**
  * Step 3B: Generate a sourcing alert for the HQ team.
- * Uses NVIDIA API (primary for testing) with Claude fallback (for production).
+ * Uses NVIDIA API (primary engine) with Claude fallback.
  */
 async function generateSourcingAlert(postText, analysis, agentId, agentName, agentNote) {
   const userMessage = prompts.buildAlertUserPrompt(

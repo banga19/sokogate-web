@@ -1,11 +1,28 @@
+// ── Mock pgvector (ESM import that Jest can't parse) ──
+jest.mock('pgvector/sequelize', () => {
+  const Sequelize = require('sequelize');
+  function VECTOR(dimensions) {
+    if (!(this instanceof VECTOR)) return new VECTOR(dimensions);
+    this.dimensions = dimensions;
+  }
+  VECTOR.key = 'VECTOR';
+  VECTOR.prototype.toSql = function () { return 'VECTOR(' + this.dimensions + ')' };
+  Sequelize.DataTypes.VECTOR = VECTOR;
+  return {};
+});
+
+jest.setTimeout(30000);
+
 const request = require('supertest');
 const app = require('../../src/app');
 
-let dbAvailable = true;
+let dbAvailable = false;
 
 beforeAll(async () => {
   try {
     const { sequelize } = require('../../src/common/database/models');
+    // With pool.min=0 in test mode, authenticate() fails immediately
+    // (ECONNREFUSED) when PostgreSQL isn't running — no timeout needed.
     await sequelize.authenticate();
     dbAvailable = true;
   } catch (e) {

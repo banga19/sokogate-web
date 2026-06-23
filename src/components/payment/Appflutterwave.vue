@@ -35,7 +35,7 @@
   
   <script>
   // import { FlutterwavePayButton } from "flutterwave-vue-v3";
-  import { OrderPay } from "@/utils/api";
+  import { OrderPay, verifyFlutterwavePayment } from "@/utils/api";
   
   export default {
     props: {
@@ -152,9 +152,30 @@
             });
         }
       },
-      makePaymentCallback(response) {
+      async makePaymentCallback(response) {
         console.log("Payment callback", response);
         this.loading = false;
+
+        // Verify the transaction with our backend (server-to-server verification)
+        if (response && response.transaction_id) {
+          try {
+            await verifyFlutterwavePayment({
+              transaction_id: response.transaction_id,
+              tx_ref: this.outTradeNo,
+            });
+            this.$message.success(this.$t('payment.Payment successful'));
+            // Close this window and redirect the opener
+            if (window.opener) {
+              window.opener.location.href = '/v2/checkout/paymentSuccess?id=' + (this.idList || this.orderIdList?.[0]) + '&paymentMethod=flutterwave';
+              window.close();
+            }
+          } catch (err) {
+            console.error('Flutterwave verification failed:', err);
+            this.$message.error(
+              err.errmsg || this.$t('payment.Payment verification failed')
+            );
+          }
+        }
       },
       closedPaymentModal() {
         console.log("payment modal is closed");

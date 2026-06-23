@@ -1,6 +1,6 @@
 /**
  * Monitoring Routes
- * 
+ *
  * Provides /metrics endpoint for Prometheus scraping using
  * the shared metrics middleware module, and a simple healthz check.
  */

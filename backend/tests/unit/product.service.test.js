@@ -74,6 +74,7 @@ describe('getProductList', () => {
   });
 
   it('should filter by categoryId, search term, price range, and storeId', async () => {
+    Category.findAll.mockResolvedValue(mockCategories);
     Product.findAndCountAll.mockResolvedValue({ count: 1, rows: [mockProduct] });
 
     const result = await productService.getProductList({
@@ -91,7 +92,7 @@ describe('getProductList', () => {
     expect(getPagination).toHaveBeenCalledWith(2, 10);
     // Verify all filter conditions
     const callArgs = Product.findAndCountAll.mock.calls[0][0];
-    expect(callArgs.where.category_id).toBe('cat-1');
+    expect(callArgs.where.category_id).toEqual({ [require('sequelize').Op.in]: ['cat-1', 'cat-3'] });
     expect(callArgs.where.store_id).toBe('store-1');
     expect(callArgs.where.name).toEqual({ [require('sequelize').Op.iLike]: '%phone%' });
     expect(callArgs.where.max_price).toEqual({ [require('sequelize').Op.gte]: 50 });

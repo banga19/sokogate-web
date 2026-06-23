@@ -1,16 +1,24 @@
-FROM node:20-alpine
+# ============================================================================
+# Node.js API Backend
+# ============================================================================
+# To pin by digest: docker pull node:22-alpine && docker inspect node:22-alpine --format='{{index .RepoDigests 0}}'
+FROM node:22-alpine
+
+RUN apk add --no-cache postgresql-client
+
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup \
+  && mkdir -p /app/logs
 
 WORKDIR /app
 
-# Install all dependencies (sequelize-cli needed for migrations in production)
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 
-# Copy source code
 COPY . .
 
-# Make entrypoint executable
-RUN chmod +x docker-entrypoint.sh && mkdir -p logs
+RUN chmod +x docker-entrypoint.sh && chown -R appuser:appgroup /app
+
+USER appuser
 
 EXPOSE 3000
 

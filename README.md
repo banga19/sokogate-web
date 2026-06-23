@@ -72,7 +72,7 @@ sokogate-web/
 
 ### Prerequisites
 
-- **Node.js** 20.x (for frontend: use 16-20 — **Node 22+ may show deprecation warnings** for older Vue CLI dependencies)
+- **Node.js** >= 22 (frontend; `@paystack/inline-js` requires Node >= 22)
 - **Yarn** 1.x (required for frontend — do not use npm for install)
 - **Docker Desktop** (for full stack)
 - **PostgreSQL** 16 (if running backend locally)
@@ -140,8 +140,8 @@ The backend includes integration tests that validate the full HTTP request/respo
 | Requirement | Version | Notes |
 |-------------|---------|-------|
 | Docker Desktop | Latest | Required for test DB containers |
-| Node.js | 20.x | LTS recommended |
-| npm | 10.x | Bundled with Node 20 |
+| Node.js | 22.x | LTS recommended |
+| npm | 10+ | Bundled with Node 22 |
 
 ### Quick Start (One Command)
 
@@ -340,7 +340,7 @@ docker compose down -v
 | Service | Port | Image | Purpose |
 |---------|------|-------|---------|
 | `frontend` | 80 | nginx:1.25-alpine | Vue SPA served via Nginx |
-| `api` | 3000 | node:20-alpine | Express API server |
+| `api` | 3000 | node:22-alpine | Express API server |
 | `postgres` | 5432 | postgis/postgis:16 | Primary database |
 | `redis` | 6379 | redis:7-alpine | Cache + sessions |
 
@@ -730,7 +730,7 @@ For the complete system architecture covering all 14 domains (system design, arc
 ### Backend
 | Technology | Version | Purpose |
 |------------|---------|---------|
-| Node.js | 20 LTS | Runtime |
+| Node.js | 22 LTS | Runtime |
 | Express | 4.x | Web framework |
 | Sequelize | 6.x | ORM |
 | PostgreSQL | 16 | Database |

@@ -6,22 +6,41 @@ const service = axios.create({
   timeout: 60000,
 });
 
+/**
+ * Read a cookie value by name.
+ * Used by the CSRF interceptor below.
+ */
+function getCookie(name) {
+  const match = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([.$?*|{}()\[\]\\\/+^])/g, '\\$1') + '=([^;]*)'));
+  return match ? decodeURIComponent(match[1]) : null;
+}
+
 service.interceptors.request.use(
   (config) => {
     // Set request headers
     config.headers["Content-Type"] = "application/json; charset=UTF-8";
-    let token = localStorage.getItem("auth_token");
-    if (config.auth && !token) {
-      console.log("Auth required but no token found");
-      let cancel;
-      config.cancelToken = new CancelToken(function executor(c) {
-        cancel = c;
-        // console.log(c('Auth fail.'));
-      });
-      cancel("Auth fail.");
+    config.withCredentials = true; // Send HttpOnly cookies with every request
+
+    // CSRF protection: read the csrf-token cookie (set by backend on login/register)
+    // and send it as a custom header. The server compares the header to the cookie.
+    const csrfToken = getCookie('csrf-token');
+    if (csrfToken) {
+      config.headers['x-csrf-token'] = csrfToken;
     }
-    // console.log(config);
-    config.headers["x-auth-token"] = token;
+
+    // If auth is required, check the store for login state
+    // (Actual auth is handled server-side via HttpOnly cookie)
+    if (config.auth) {
+      const isLoggedIn = window?.vm?.$store?.state?.token;
+      if (!isLoggedIn) {
+        console.log("Auth required but user is not logged in");
+        let cancel;
+        config.cancelToken = new CancelToken(function executor(c) {
+          cancel = c;
+        });
+        cancel("Auth fail.");
+      }
+    }
     return config;
   },
   (error) => {

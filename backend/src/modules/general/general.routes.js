@@ -47,7 +47,7 @@ router.post('/addVerifyCode', async (req, res, next) => {
       expires_at: new Date(Date.now() + 10 * 60 * 1000), // 10 min
     });
 
-    logger.info(`[DEV] Verification code for ${email || phone}: ${code}`);
+    logger.debug(`[DEV] Verification code for ${email || phone}: [REDACTED]`);
 
     return success(res, { message: 'Verification code sent' });
   } catch (err) {
@@ -68,7 +68,7 @@ router.post('/addVerifyCodeV2', async (req, res, next) => {
       expires_at: new Date(Date.now() + 10 * 60 * 1000),
     });
 
-    logger.info(`[DEV] V2 Verification code for ${email || phone}: ${code}`);
+    logger.debug(`[DEV] V2 Verification code for ${email || phone}: [REDACTED]`);
 
     return success(res, { message: 'Verification code sent' });
   } catch (err) {

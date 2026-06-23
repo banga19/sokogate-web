@@ -28,16 +28,10 @@ export const getFileNameMd5 = (file) => {
 };
 
 export function jumpto(path) {
-  console.log("process.env:", process.env);
   if (path.indexOf("https://") > -1 || path.indexOf("http://") > -1) {
     window.location.href = path;
   } else if (process.env.VUE_APP_V1_HOMEPAGE_URL) {
     window.location.href = process.env.VUE_APP_V1_HOMEPAGE_URL + path;
-  } else {
-    console.log(
-      "process.env.VUE_APP_V1_HOMEPAGE_URL:",
-      process.env.VUE_APP_V1_HOMEPAGE_URL
-    );
   }
 }
 
@@ -118,35 +112,6 @@ export function keepTwoDecimal(num) {
     return num;
   }
 }
-
-// Four decimal places
-// export function formatToDecimal(num) {
-//   // Format as decimal, cents -> yuan
-//   const float = parseFloat(num);
-//   // console.log('float', float);
-//   if (isNaN(float)) {
-//     return "0.00";
-//   }
-//   return keepTwoDecimal(Math.round(num) / 10000);
-// }
-
-// export function keepTwoDecimal(num) {
-//   const xsd = num.toString().split(".");
-//   // console.log('xsd:', xsd);
-//   if (xsd.length === 1) {
-//     return num.toString() + ".00";
-//   }
-//   if (xsd.length > 1) {
-//     if (xsd[1].length === 1) {
-//       num = num.toString() + "0";
-//     } else if (xsd[1].length < 2) {
-//       num = num.toString() + "00";
-//     } else if (xsd[1].length > 2) {
-//       num = num.toFixed(4).replace(/(\.\d+?)0*$/, "$1");
-//     }
-//     return num;
-//   }
-// }
 
 export function formatDataTime(unix) {
   // Format timestamp to date time

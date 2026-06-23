@@ -3,7 +3,7 @@
 // ──────────────────────────────────────────────────────────────
 
 const mockAuthResult = {
-  token: 'access-token-123',
+  accessToken: 'access-token-123',
   refreshToken: 'refresh-token-456',
   user: { id: 'user-1', email: 'test@example.com', name: 'Test User' },
 };
@@ -21,9 +21,21 @@ jest.mock('../../src/common/utils/apiResponse', () => ({
   created: jest.fn().mockReturnValue('created-called'),
 }));
 
+jest.mock('../../src/common/middleware/csrf.middleware', () => ({
+  setCsrfCookie: jest.fn(),
+}));
+
 const controller = require('../../src/modules/auth/auth.controller');
 const authService = require('../../src/modules/auth/auth.service');
 const { success, created } = require('../../src/common/utils/apiResponse');
+
+// Mock cookies module — HttpOnly cookie setting is tested in integration tests
+jest.mock('../../src/common/utils/cookies', () => ({
+  setAccessTokenCookie: jest.fn(),
+  setRefreshTokenCookie: jest.fn(),
+  setCsrfCookie: jest.fn(),
+  clearAuthCookies: jest.fn(),
+}));
 
 // Mock the User model for getProfile tests
 jest.mock('../../src/common/database/models', () => ({
@@ -66,6 +78,18 @@ describe('login', () => {
     await controller.login(req, res, mockNext);
 
     expect(mockNext).toHaveBeenCalledWith(err);
+  });
+
+  it('should set HttpOnly cookies on successful login', async () => {
+    const req = mockReq({ email: 'test@example.com', password: 'password123' });
+    const res = mockRes();
+    authService.login.mockResolvedValue(mockAuthResult);
+    const cookies = require('../../src/common/utils/cookies');
+
+    await controller.login(req, res, mockNext);
+
+    expect(cookies.setAccessTokenCookie).toHaveBeenCalledWith(res, mockAuthResult.accessToken);
+    expect(cookies.setRefreshTokenCookie).toHaveBeenCalledWith(res, mockAuthResult.refreshToken);
   });
 });
 

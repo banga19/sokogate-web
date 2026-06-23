@@ -151,6 +151,15 @@ const paths = [
     {
         path: "/v2/checkout/payment"
     },
+    // Zero-Click SEO - 8 African market pages
+    { path: "/guinea", priority: 0.9, changefreq: "monthly" },
+    { path: "/senegal", priority: 0.9, changefreq: "monthly" },
+    { path: "/ghana", priority: 0.9, changefreq: "monthly" },
+    { path: "/cote-divoire", priority: 0.9, changefreq: "monthly" },
+    { path: "/cameroon", priority: 0.9, changefreq: "monthly" },
+    { path: "/sierra-leone", priority: 0.9, changefreq: "monthly" },
+    { path: "/kenya", priority: 0.9, changefreq: "monthly" },
+    { path: "/zimbabwe", priority: 0.9, changefreq: "monthly" },
 
 
 ];
@@ -194,6 +203,18 @@ module.exports = {
                 warnings: false,
                 errors: false
             }
+        },
+        historyApiFallback: {
+            rewrites: [
+                { from: /^\/guinea$/, to: '/' },
+                { from: /^\/senegal$/, to: '/' },
+                { from: /^\/ghana$/, to: '/' },
+                { from: /^\/cote-divoire$/, to: '/' },
+                { from: /^\/cameroon$/, to: '/' },
+                { from: /^\/sierra-leone$/, to: '/' },
+                { from: /^\/kenya$/, to: '/' },
+                { from: /^\/zimbabwe$/, to: '/' },
+            ]
         }
     },
 }

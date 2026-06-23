@@ -36,14 +36,11 @@
 
 <script>
 import { OrderPay, GetPayResult } from "@/utils/api";
-import {
-  StripeElementPayment,
-  //   StripeCheckout,
-} from "@vue-stripe/vue-stripe";
+// Stripe integration — currently disabled. Re-enable by installing @vue-stripe/vue-stripe
+// import { StripeElementPayment } from "@vue-stripe/vue-stripe";
 export default {
   components: {
-    StripeElementPayment,
-    // StripeCheckout,
+    // StripeElementPayment,
   },
   props: {
     orderIdList: {

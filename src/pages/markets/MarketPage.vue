@@ -101,16 +101,31 @@ export default {
       areaServed: m.name
     };
 
+    const breadcrumbSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://sokogate.com' },
+        { '@type': 'ListItem', position: 2, name: m.name, item: `https://sokogate.com/${m.slug}` }
+      ]
+    };
+
     return {
       title: m.metaTitle,
       meta: [
         { name: 'description', content: m.metaDesc },
-        { name: 'robots', content: 'index, follow' }
+        { name: 'robots', content: 'index, follow' },
+        { property: 'og:title', content: m.metaTitle },
+        { property: 'og:description', content: m.metaDesc },
+        { property: 'og:url', content: `https://sokogate.com/${m.slug}` },
+        { property: 'og:type', content: 'website' }
       ],
+      link: [{ rel: 'canonical', href: `https://sokogate.com/${m.slug}` }],
       script: [
         { type: 'application/ld+json', json: faqSchema },
         { type: 'application/ld+json', json: howToSchema },
-        { type: 'application/ld+json', json: localBusinessSchema }
+        { type: 'application/ld+json', json: localBusinessSchema },
+        { type: 'application/ld+json', json: breadcrumbSchema }
       ]
     };
   }
@@ -147,8 +162,8 @@ export default {
    font-weight: 700;
    color: #333;
    margin: 0;
-   line-height: 1,3;
- }
+   line-height: 1.3;
+  }
 
  .snippet-section {
   background: #f8f9ff;
@@ -159,7 +174,7 @@ export default {
 
 .featured-snippet {
   font-size: 18px;
-  line-height: 1,7;
+  line-height: 1.7;
   color: #555;
   margin: 0 0 20px 0;
 }
@@ -226,7 +241,7 @@ export default {
 .step-content p {
   margin: 0;
   color: #666;
-  line-height: 1,6;
+  line-height: 1.6;
 }
 
 .faq-section {
@@ -249,7 +264,7 @@ export default {
 .faq-answer {
   color: #666;
   margin: 0;
-  line-height: 1,6;
+  line-height: 1.6;
 }
 
 .market-footer {

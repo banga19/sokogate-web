@@ -58,7 +58,7 @@ async function chatComplete(messages, options = {}) {
 
   const maxRetries = options.maxRetries ?? MAX_RETRIES;
   let lastError = null;
-  let usedFallback = false;
+  const usedFallback = false;
 
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
     try {

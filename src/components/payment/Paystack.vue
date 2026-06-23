@@ -1,5 +1,5 @@
 <template>
-  <div class="paystack" :class="{ disabled: !available }" v-loading="loading">
+  <div class="paystack" v-loading="loading">
     <el-image
       @click="getOrderPay"
       src="https://oss.sokogate.com/static/paystack.jpg"
@@ -9,60 +9,32 @@
 </template>
 
 <script>
+import PaystackPop from "@paystack/inline-js";
 import { OrderPay } from "@/utils/api";
-// import PaystackPop from "@paystack/inline-js";
 
 export default {
   props: {
     orderIdList: {
       type: Array,
     },
-  },
-  // components: {
-  //   paystack
-  // },
-  data() {
+  },    data() {
     return {
       loading: false,
+      total: 0,
+      outTradeNo: "",
     };
   },
-  // created() {
-  //   const popup = document.createElement("script");
-  //   popup.setAttribute("src", "https://js.paystack.co/v2/inline.js");
-  //   popup.async = true;
-  //   document.head.appendChild(popup);
-  // },
   computed: {
     available() {
       return ["GHS"].includes(this.$store.state.currency);
     },
+    paystackPublicKey() {
+      return process.env.VUE_APP_V2_PAYSTACK_PUBLICKEY || "";
+    },
   },
   methods: {
     getOrderPay() {
-      // const paystack = new PaystackPop();
-      // paystack.newTransaction({
-      //   key: "pk_test_7111cdf83f4438328b6b7ef03870cb614c923dab",
-      //   email: this.$store.state.user.email,
-      //   amount: 311,
-      //   currency: "GHS",
-      //   ref: "ref" + this.generateReference(),
-      //   callback: function (response) {
-      //     //this happens after the payment is completed successfully
-      //     var reference = response.reference;
-      //     alert("Payment complete! Reference: " + reference);
-      //     // Make an AJAX call to your server with the reference to verify the transaction
-      //   },
-      //   onClose: function () {
-      //     alert("Transaction was not completed, window closed.");
-      //   },
-      //   onSuccess: (transaction) => {
-      //     console.log("onSuccess-transaction:", transaction);
-      //   },
-      //   onCancel: (res) => {
-      //     console.log("onCancel-res:", res);
-      //   },
-      // });
-      if (!this.payId && this.available) {
+      if (this.available) {
         this.$emit("onplaying");
         this.loading = true;
         OrderPay({
@@ -71,18 +43,10 @@ export default {
           currency: this.$store.state.currency,
         })
           .then((res) => {
-            // console.log("OrderPay-res:", res);
-            this.hasBeenActivated = true;
+            this.total = res.data.total;
+            this.outTradeNo = res.data.outTradeNo;
             this.$nextTick(() => {
-              // const paystack = new PaystackPop();
-              // console.log(paystack.resumeTransaction(res.data.payReturn));
-              // .then(popRes => {
-              //   console.log('popRes:', popRes);
-              // }).catch(popErr => {
-              //   console.log('popErr:', popErr);
-              // });
-              window.open(res.data.payReturn, "_blank");
-              this.loading = false;
+              this.payWithPaystack();
             });
           })
           .catch((err) => {
@@ -105,9 +69,43 @@ export default {
           });
       }
     },
-    generateReference() {
-      let date = new Date();
-      return date.getTime().toString();
+    payWithPaystack() {
+      const paystack = new PaystackPop();
+      paystack.newTransaction({
+        key: this.paystackPublicKey,
+        email: this.$store.state.user?.email || "",
+        amount: this.total,
+        currency: "GHS",
+        ref: this.outTradeNo,
+        callback: (response) => {
+          this.makePaymentCallback(response);
+        },
+        onClose: () => {
+          this.closedPaymentModal();
+        },
+        onCancel: () => {
+          this.loading = false;
+        },
+      });
+    },
+    makePaymentCallback(response) {
+      console.log("Paystack payment callback", response);
+      this.loading = false;
+
+      this.$message.success(this.$t("payment.Payment successful"));
+      setTimeout(() => {
+        this.$router.push({
+          path: "/v2/checkout/paymentSuccess",
+          query: {
+            id: this.orderIdList?.[0],
+            paymentMethod: "paystack",
+          },
+        });
+      }, 1000);
+    },
+    closedPaymentModal() {
+      console.log("Paystack payment modal closed");
+      this.loading = false;
     },
     abort() {
       this.loading = false;
@@ -132,18 +130,5 @@ export default {
     background-color: rgba($color: #ff9b00, $alpha: 0.3);
     border: 1px solid #ff9b00;
   }
-
-  // &.disabled {
-  //   border: 1px solid #888;
-
-  //   .title,
-  //   .sokogate {
-  //     color: #888;
-  //   }
-
-  //   .el-image {
-  //     filter: grayscale(100%);
-  //   }
-  // }
 }
 </style>

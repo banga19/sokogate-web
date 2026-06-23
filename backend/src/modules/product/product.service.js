@@ -4,12 +4,33 @@ const { NotFoundError } = require('../../common/utils/errors');
 const { getPagination } = require('../../common/utils/pagination');
 const redis = require('../../config/redis');
 
+async function getCategorySelfAndDescendants(categoryId) {
+  const all = await Category.findAll({
+    where: { is_active: true },
+    attributes: ['id', 'parent_id'],
+    raw: true,
+  });
+  const byParent = all.reduce((acc, c) => {
+    (acc[c.parent_id || '__root__'] = acc[c.parent_id || '__root__'] || []).push(c.id);
+    return acc;
+  }, {});
+  const descendants = new Set();
+  const queue = [categoryId];
+  while (queue.length) {
+    const curr = queue.shift();
+    descendants.add(curr);
+    (byParent[curr] || []).forEach((id) => queue.push(id));
+  }
+  return [...descendants];
+}
+
 async function getProductList(params = {}) {
   const { page, pageSize, offset, limit } = getPagination(params.page, params.pageSize);
   const where = { status: 'active' };
 
   if (params.categoryId) {
-    where.category_id = params.categoryId;
+    const selfAndDescendants = await getCategorySelfAndDescendants(params.categoryId)
+    where.category_id = { [Op.in]: selfAndDescendants }
   }
   if (params.search) {
     where.name = { [Op.iLike]: `%${params.search}%` };

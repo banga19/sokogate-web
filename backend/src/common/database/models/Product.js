@@ -1,8 +1,13 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../../../config/database');
 
-// Register pgvector type with Sequelize
-require('pgvector/sequelize');
+// Register pgvector type with Sequelize (optional - gracefully degrades in test/dev without pgvector)
+try {
+  require('pgvector/sequelize');
+} catch (err) {
+  // pgvector not available (e.g., in test environments without the extension)
+  // The embedding column will still work with raw SQL queries when pgvector IS available
+}
 
 const Product = sequelize.define('Product', {
   id: {

@@ -3,6 +3,7 @@ const config = require('./config');
 const logger = require('./common/logger/logger');
 const sequelize = require('./config/database');
 const { connectRedis, disconnectRedis } = require('./config/redis');
+const { execSync } = require('child_process');
 
 async function start() {
   try {
@@ -10,10 +11,15 @@ async function start() {
     await sequelize.authenticate();
     logger.info('Database connection established successfully');
 
-    // In development, sync models (use migrations in production)
+    // Run pending migrations on startup (safe - no-op if up-to-date)
+    // In production, migrations are run via docker-entrypoint.sh
     if (config.env === 'development') {
-      await sequelize.sync({ alter: false });
-      logger.info('Database models synchronized');
+      try {
+        execSync('npx sequelize-cli db:migrate', { stdio: 'inherit' });
+        logger.info('Database migrations completed');
+      } catch (err) {
+        logger.warn('Migration command failed: ' + err.message);
+      }
     }
 
     // Connect to Redis (lazy connect by default — explicitly connect here)
@@ -24,6 +30,17 @@ async function start() {
       logger.info(`Server running on port ${config.port} in ${config.env} mode`);
       logger.info(`Health check: http://localhost:${config.port}/health`);
       logger.info(`API: http://localhost:${config.port}/api/v2`);
+
+      // Log active AI engine for the Comment Agent
+      const aiEngine = config.commentAgent.aiEngine === 'claude' ? 'Claude' : 'NVIDIA';
+      const fallbackEngine = config.commentAgent.aiEngine === 'claude' ? 'NVIDIA' : 'Claude';
+      const hasPrimaryKey = config.commentAgent.aiEngine === 'claude'
+        ? !!config.claude.apiKey
+        : !!config.nvidia.apiKey;
+      const hasFallbackKey = config.commentAgent.aiEngine === 'claude'
+        ? !!config.nvidia.apiKey
+        : !!config.claude.apiKey;
+      logger.info(`Comment Agent AI engine: ${aiEngine} (primary) → ${fallbackEngine} (fallback)${!hasPrimaryKey ? ' ⚠️ No API key configured' : ''}${!hasFallbackKey ? ' — fallback unavailable' : ''}`);
     });
 
     // Graceful shutdown

@@ -9,11 +9,12 @@
     "start": "vue-cli-service serve --port 4500 --watch",
     "sync:prod": "yarn build && ~/ossutilmac64 cp -r ./dist/ oss://www-sokogate-com/ -u",
     "sync:test": "yarn build:test && ~/ossutilmac64 cp -r ./test/ oss://www-sokogate-test/ -u",
-    "test:e2e:comment-agent": "npx playwright test tests/e2e/comment-agent.spec.js --config=tests/e2e/playwright.config.js"
+    "test:e2e:comment-agent": "npx playwright test tests/e2e/comment-agent.spec.js --config=tests/e2e/playwright.config.js",
+    "test:unit": "npx jest --config jest.config.js"
   },
   "dependencies": {
-    "@paystack/inline-js": "^2.12.6",
-    "@vue-stripe/vue-stripe": "^4.4.4",
+    "@paystack/inline-js": "^2.23.1",
+    "@vue-stripe/vue-stripe": "^4.5.0",
     "@vueuse/core": "^10.5.0",
     "axios": "^1.5.0",
     "better-scroll": "^2.5.1",
@@ -42,7 +43,6 @@
     "vue-owl-carousel": "^2.0.3",
     "vue-paypal-checkout": "^3.2.0",
     "vue-router": "^3.6.5",
-    "vue-stripe": "^0.1.52",
     "vue-uweb": "^0.2.2",
     "vuejs-picture-zoom": "^1.0.0",
     "vuex": "^3.6.2"
@@ -50,12 +50,19 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^5.0.8",
     "@vue/cli-plugin-eslint": "^5.0.8",
+    "@vue/cli-plugin-unit-jest": "^5.0.8",
     "@vue/cli-service": "^5.0.8",
+    "@vue/test-utils": "1",
+    "@vue/vue2-jest": "^29.2.6",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^29.7.0",
     "compression-webpack-plugin": "^11.1.0",
     "css-loader": "^7.1.2",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.23.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "postcss-import": "^16.1.1",
     "postcss-loader": "^8.2.0",
     "postcss-preset-env": "^10.4.0",

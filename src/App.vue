@@ -20,6 +20,8 @@ export default {
   },
   created() {
     this.autoChange();
+    // Rehydrate auth state from HttpOnly cookie on app startup
+    this.$store.dispatch('initializeAuth');
   },
   methods: {
     autoChange() {

@@ -1,18 +1,21 @@
 /**
- * Email service for sending sourcing alerts to info@sokogate.com
+ * Email service for sending sourcing alerts to the Sokogate sourcing team.
  *
  * Supports two transports:
  * 1. SendGrid (preferred) — via @sendgrid/mail
  * 2. Nodemailer SMTP — fallback when SendGrid is not configured
  *
  * Falls back to logging when neither is configured (dev mode).
+ *
+ * The destination email is configured via the SOURCING_ALERT_EMAIL env var.
+ * Defaults to info@sokogate.com if not set.
  */
 
 const nodemailer = require('nodemailer');
 const config = require('../../config');
 const logger = require('../../common/logger/logger');
 
-const SOURCING_EMAIL = 'info@sokogate.com';
+const SOURCING_EMAIL = config.commentAgent.sourcingAlertEmail;
 
 let transporter = null;
 let transportType = null;
@@ -88,7 +91,10 @@ function getTransporter() {
 }
 
 /**
- * Send a sourcing alert email to info@sokogate.com.
+ * Send a sourcing alert email to the configured sourcing team address.
+ *
+ * The recipient is set via the SOURCING_ALERT_EMAIL env var
+ * (defaults to info@sokogate.com).
  *
  * @param {Object} params
  * @param {string} params.subject - Email subject line

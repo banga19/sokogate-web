@@ -32,6 +32,19 @@ services:
     networks:
       - sokogate
     restart: unless-stopped
+    # Resource limits for docker compose up (non-swarm)
+    mem_limit: 256m
+    mem_reservation: 64m
+    cpus: '0.5'
+    # Resource limits for docker stack deploy (swarm)
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.1'
+          memory: 64M
 
   # ---- Backend API ----
   api:
@@ -60,6 +73,19 @@ services:
     restart: unless-stopped
     volumes:
       - api_logs:/app/logs
+    # Resource limits for docker compose up (non-swarm)
+    mem_limit: 512m
+    mem_reservation: 128m
+    cpus: '1'
+    # Resource limits for docker stack deploy (swarm)
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
 
   # ---- PostgreSQL Database ----
   postgres:
@@ -82,6 +108,19 @@ services:
     networks:
       - sokogate
     restart: unless-stopped
+    # Resource limits for docker compose up (non-swarm)
+    mem_limit: 1g
+    mem_reservation: 256m
+    cpus: '2'
+    # Resource limits for docker stack deploy (swarm)
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 256M
 
   # ---- Redis Cache ----
   redis:
@@ -103,6 +142,19 @@ services:
     networks:
       - sokogate
     restart: unless-stopped
+    # Resource limits for docker compose up (non-swarm)
+    mem_limit: 256m
+    mem_reservation: 64m
+    cpus: '0.5'
+    # Resource limits for docker stack deploy (swarm)
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.1'
+          memory: 64M
 
   # ---- Optional: pgAdmin for DB management ----
   # pgadmin:
@@ -169,6 +221,19 @@ services:
     networks:
       - sokogate
     restart: unless-stopped
+    # Resource limits for docker compose up (non-swarm)
+    mem_limit: 256m
+    mem_reservation: 64m
+    cpus: '0.5'
+    # Resource limits for docker stack deploy (swarm)
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.1'
+          memory: 64M
 
   # ---- Prometheus (metrics collection) ----
   prometheus:
@@ -192,6 +257,19 @@ services:
     networks:
       - sokogate
     restart: unless-stopped
+    # Resource limits for docker compose up (non-swarm)
+    mem_limit: 512m
+    mem_reservation: 128m
+    cpus: '0.5'
+    # Resource limits for docker stack deploy (swarm)
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.1'
+          memory: 128M
 
   # ---- Grafana (metrics dashboards) ----
   grafana:
@@ -211,6 +289,19 @@ services:
     networks:
       - sokogate
     restart: unless-stopped
+    # Resource limits for docker compose up (non-swarm)
+    mem_limit: 256m
+    mem_reservation: 64m
+    cpus: '0.5'
+    # Resource limits for docker stack deploy (swarm)
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.1'
+          memory: 64M
 
 volumes:
   postgres_data:

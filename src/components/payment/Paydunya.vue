@@ -40,7 +40,6 @@
 
 <script>
 import { OrderPay, GetPayResult } from "@/utils/api";
-// import PaystackPop from "@paystack/inline-js";
 import SuiProductPrice from "@/components/product/Price";
 
 export default {

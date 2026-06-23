@@ -34,16 +34,14 @@ const store = new Vuex.Store({
   },
   getters: {
     authTokenIsValid(state) {
-      if (state.token && state.auth_token_expire) {
-        const nowUnix = Math.round(new Date().getTime() / 1000);
-        if (state.auth_token_expire - nowUnix > 60 * 5) {
-          return true;
-        } else {
-          return false;
-        }
-      } else {
-        return false;
+      // With HttpOnly cookies, JS can't read the actual cookie expiry.
+      // 'token' is a placeholder set by initializeAuth when the /profile
+      // call succeeds. Real auth validation happens server-side via the
+      // HttpOnly cookie on every request.
+      if (state.token) {
+        return true;
       }
+      return false;
     },
   },
   mutations: {
@@ -60,8 +58,7 @@ const store = new Vuex.Store({
     login(state, data) {
       const { user, token, expire } = data;
       if (user && token && expire && expire !== "undefined" && expire !== "0") {
-        localStorage.setItem("auth_token_expire", expire);
-        localStorage.setItem("auth_token", token);
+        // Token stored in HttpOnly cookie by backend — state tracks user info only
         localStorage.setItem("currentUser", JSON.stringify(user));
         state.user = user;
         state.token = token;
@@ -69,8 +66,7 @@ const store = new Vuex.Store({
       }
     },
     loginout(state) {
-      localStorage.removeItem("auth_token_expire");
-      localStorage.removeItem("auth_token");
+      // Clear client-side state (server-side HttpOnly cookie cleared via /logout endpoint)
       localStorage.removeItem("currentUser");
       state.auth_token_expire = 0;
       state.user = null;
@@ -132,6 +128,33 @@ const store = new Vuex.Store({
     }
   },
   actions: {
+    /**
+     * Initialize auth state by checking the HttpOnly cookie via /profile.
+     * Called on app startup — replaces the old localStorage token hydration.
+     */
+    async initializeAuth({ commit }) {
+      try {
+        const { default: request } = await import('@/utils/request')
+        const res = await request({
+          url: 'profile',
+          method: 'GET',
+          auth: 0,
+        })
+        if (res.errcode === 0 && res.data) {
+          const user = res.data
+          // Placeholder token for state tracking (real auth is in HttpOnly cookie).
+          // Expire is set generously — the server validates the actual cookie.
+          commit('login', {
+            user,
+            token: 'cookie-auth',
+            expire: String(Math.round(Date.now() / 1000) + 86400 * 7), // 7 days — matches refresh token TTL
+          })
+        }
+      } catch (e) {
+        // Not logged in — that's fine
+        commit('loginout')
+      }
+    },
     async submitOnboarding({ commit }, payload) {
       const { OnboardingSubmit } = await import('@/utils/api')
       const res = await OnboardingSubmit(payload)
