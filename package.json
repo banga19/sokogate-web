@@ -29,7 +29,7 @@
     "flutterwave-vue-v3": "^1.0.9",
     "google-libphonenumber": "^3.2.27",
     "html2canvas": "^1.4.1",
-    "jspdf": "^2.5.1",
+    "jspdf": "^4.2.1",
     "moment": "^2.29.4",
     "qrcodejs2": "^0.0.2",
     "url-loader": "^4.1.1",
